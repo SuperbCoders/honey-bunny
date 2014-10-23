@@ -1,0 +1,18 @@
+li.item
+  .item-cnt
+    figure
+      = link_to item do
+        = image_tag item.main_image.thumb, height: '420', width: '200'
+    .info
+      .descript.hidden-tablet Не утяжеляет волосы и придает блеск
+      .ttl
+        = link_to item.title, item
+      - if item.volume.to_i > 0
+        .size.hidden-tablet — #{item.volume} мл
+      .price #{humanized_money item.price} руб.
+      .btn-wrap.hidden.visible-tablet
+        a.btn.btn-orn href="#"  Купить
+        p.more
+          = link_to item do
+            | Подробнее
+            span.hidden-tablet  о продукте

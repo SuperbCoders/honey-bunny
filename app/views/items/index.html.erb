@@ -1,0 +1,71 @@
+<section class="case-sort">
+  <div class="container globalwidth">
+    <ul class="items">
+      <li class="item current"><a href="#"><span class="label">Вся продукция</span><span class="count">20</span></a></li>
+      <li class="item"><a href="#"><span class="label">Для волос</span><span class="count">12</span></a></li>
+      <li class="item"><a href="#"><span class="label">Уход за лицом</span><span class="count">4</span></a></li>
+      <li class="item"><a href="#"><span class="label">Косметология</span><span class="count">11</span></a></li>
+    </ul>
+  </div>
+</section>
+<section class="case-products">
+  <div class="container">
+    <ul class="items">
+      <%= render @items %>
+    </ul>
+  </div>
+</section>
+<section class="case-social-min hidden-tablet">
+  <div class="container globalwidth">
+    <div class="likebox hidden-tablet">
+      <img width="275" height="75" src="images/likebox_min.jpg" alt="" />
+    </div>
+    <div class="follow">
+      <ul class="items">
+        <li class="item">
+          <a href="#"><i class="icon icon-ig_gry"></i></a></li><li class="item">
+          <a href="#"><i class="icon icon-fb_gry"></i></a></li><li class="item">
+          <a href="#"><i class="icon icon-vk_gry"></i></a></li><li class="item">
+          <a href="#"><i class="icon icon-tw_gry"></i></a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+<section class="case-article case-article_new">
+  <div class="container globalwidth">
+    <div class="wrapper">
+      <h2 class="center">Новые товары</h2>
+      <div class="text">
+        <p>Мы постоянно совершенствуемся и улучшаем нашу продукцию, чтобы быть вкурсе новинок, подписывайтесь на обновления, для этого введите свою почту ниже</p>
+      </div>
+      <div class="forms">
+        <form method="post" action="">
+          <div class="field"><input type="text" placeholder="Ваша почта" /></div>
+          <button class="btn btn-grn" type="submit">Отправить</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="case-article case-article_callback darkstyle" style="background: #6ddec9;">
+  <div class="container globalwidth">
+    <div class="wrapper">
+      <h2 class="center">Обратная связь</h2>
+      <div class="text">
+        <p>Мы делаем косметику для вас. Поэтому будет очень правильно получить от вас обратную связь: что понравилось, какие пожелания или вопросы возникли. Это поможет нам делать продукты в большей степени отвечающие вашим пожеланиям.</p>
+      </div>
+      <div class="btn-wrap">
+        <a class="btn btn-wte-cut" href="#">Написать</a>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="case-social hidden visible-tablet">
+  <div class="container globalwidth">
+    <div class="follow-mob center">
+      <a href="#"><i class="icon icon-fb_grn"></i></a>
+      <a href="#"><i class="icon icon-vk_grn"></i></a>
+      <a href="#"><i class="icon icon-ig_grn"></i></a>
+    </div>
+  </div>
+</section>

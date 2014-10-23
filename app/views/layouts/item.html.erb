@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="viewport" content="width=device-width; initial-scale=1.0">
+  <title>Honey-Bunny</title>
+  <link rel="shortcut icon" type="image/x-icon" href="<%= image_path 'favicon.ico' %>" />
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+  <!--[if lt IE 9]>
+    <%= javascript_include_tag 'html5shiv' %>
+  <![endif]-->
+  <%= javascript_include_tag 'application' %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <article class="page">
+    <header class="page-header page-header-left page-header-short">
+      <div class="container globalwidth">
+        <div class="page-header-top">
+          <a class="btn-navbar navbar-toggle hidden visible-tablet" href="#">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="logo logo-min" href="/"></a>
+          <nav class="navbar">
+            <div class="navbar-cnt">
+              <ul class="items">
+                <li class="item item1"><a href="#">О косметике</a></li>
+                <li class="item item2"><%= link_to 'Продукты', items_path %></li>
+                <li class="item item3"><a href="company.html">О компании</a></li>
+                <li class="item item4"><a href="company_values.html">Наши ценности</a></li>
+                <li class="item item5"><a href="faq.html">Вопросы и ответы</a></li>
+                <li class="item item6 hidden-tablet"><a href="cart.html">Корзина<span class="count">1</span></a></li>
+              </ul>
+              <a class="close navbar-toggle hidden visible-tablet" href="#"></a>
+              <div class="follow-mob hidden visible-tablet">
+                <a href="#"><i class="icon icon-fb_grn"></i></a>
+                <a href="#"><i class="icon icon-vk_grn"></i></a>
+                <a href="#"><i class="icon icon-ig_grn"></i></a>
+              </div>
+            </div>
+          </nav>
+          <a class="store hidden visible-tablet" href="cart.html">1</a>
+        </div>
+      </div>
+    </header>
+    <section class="page-body">
+      <%= yield %>
+    </section>
+    <%= render 'footer' %>
+  </article>
+</body>
+</html>

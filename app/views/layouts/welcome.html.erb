@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="viewport" content="width=device-width; initial-scale=1.0">
+  <title>Honey-Bunny</title>
+  <link rel="shortcut icon" type="image/x-icon" href="<%= image_path 'favicon.ico' %>" />
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+  <!--[if lt IE 9]>
+    <%= javascript_include_tag 'html5shiv' %>
+  <![endif]-->
+  <%= javascript_include_tag 'application' %>
+  <%= csrf_meta_tags %>
+</head>
+<body class="main">
+  <article class="page">
+    <header class="page-header page-header-center covered darkstyle" style="background-image: url(/images/main_bg.jpg);">
+      <div class="blackout">
+        <div class="container globalwidth">
+          <div class="page-header-top">
+            <a class="btn-navbar navbar-toggle hidden visible-tablet" href="#">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </a>
+            <a class="logo logo-fn" href="/"></a>
+            <nav class="navbar">
+              <div class="navbar-cnt">
+                <ul class="items">
+                  <li class="item item1"><a href="#">О косметике</a></li>
+                  <li class="item item2"><%= link_to 'Продукты', items_path %></li>
+                  <li class="item item3"><a href="company.html">О компании</a></li>
+                  <li class="item item4"><a href="company_values.html">Наши ценности</a></li>
+                  <li class="item item5"><a href="faq.html">Вопросы и ответы</a></li>
+                </ul>
+                <a class="close navbar-toggle hidden visible-tablet" href="#"></a>
+                <div class="follow-mob hidden visible-tablet">
+                  <a href="#"><i class="icon icon-fb_grn"></i></a>
+                  <a href="#"><i class="icon icon-vk_grn"></i></a>
+                  <a href="#"><i class="icon icon-ig_grn"></i></a>
+                </div>
+              </div>
+            </nav>
+            <a class="store hidden visible-tablet" href="cart.html">1</a>
+          </div>
+          <div class="page-header-bottom">
+            <div class="caption center">
+              <h1>Новая классная<br /> косметика</h1>
+            </div>
+            <section class="case-worth-min hidden-tablet">
+              <ul class="items">
+                <li class="item"><i class="icon icon-worth1_min"></i><div class="ttl">Качественная</div></li><li class="item">
+                <i class="icon icon-worth2_min"></i><div class="ttl">Минималистичная</div></li><li class="item">
+                <i class="icon icon-worth3_min"></i><div class="ttl">Для России</div></li><li class="item">
+                <i class="icon icon-worth4_min"></i><div class="ttl">Доступная</div></li><li class="item">
+                <i class="icon icon-worth5_min"></i><div class="ttl">Честная</div></li><li class="item">
+                <i class="icon icon-worth6_min"></i><div class="ttl">Сделана с любовью</div></li>
+              </ul>
+            </section>
+            <div class="btn-wrap hidden-tablet"><a class="btn btn-grn" href="#">Закажите сейчас</a></div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <section class="page-body">
+      <%= yield %>
+    </section>
+    <%= render 'footer' %>
+  </article>
+  <div class="mfp-hide white-popup-block" id="popup-comment">
+    <div class="popup-wrap">
+      <div class="popup-row" id="popup-form">
+        <form method="post" action="">
+          <h2 class="center">Оставить отзыв</h2>
+          <div class="forms">
+            <div class="field field-required"><input type="text" placeholder="Как вас зовут?" /></div>
+            <div class="field field-required"><input type="text" placeholder="Эл. почта" /></div>
+            <div class="field field-required"><input type="text" placeholder="Город" /></div>
+            <div class="case-used">
+              <h3>Какими продуктами пользовались?</h3>
+              <ul class="items">
+                <li class="item">
+                  <figure><img width="120" height="120" src="images/thumb1.jpg" alt="" /></figure>
+                  <div class="title">Витаминный шампунь для нормальных волос</div>
+                  <input class="hidden" type="checkbox" name="used" value="1" />
+                </li><li class="item current">
+                  <figure><img width="120" height="120" src="images/thumb2.jpg" alt="" /></figure>
+                  <div class="title">Шампунь для жирных волос</div>
+                  <input class="hidden" type="checkbox" name="used" value="2" checked="ckecked" />
+                </li><li class="item">
+                  <figure><img width="120" height="120" src="images/thumb1.jpg" alt="" /></figure>
+                  <div class="title">Витаминный шампунь для нормальных волос</div>
+                  <input class="hidden" type="checkbox" name="used" value="3" />
+                </li><li class="item">
+                  <figure><img width="120" height="120" src="images/thumb2.jpg" alt="" /></figure>
+                  <div class="title">Шампунь для жирных волос</div>
+                  <input class="hidden" type="checkbox" name="used" value="4" />
+                </li><li class="item">
+                  <figure><img width="120" height="120" src="images/thumb1.jpg" alt="" /></figure>
+                  <div class="title">Витаминный шампунь для нормальных волос</div>
+                  <input class="hidden" type="checkbox" name="used" value="5" />
+                </li><li class="item">
+                  <figure><img width="120" height="120" src="images/thumb2.jpg" alt="" /></figure>
+                  <div class="title">Шампунь для жирных волос</div>
+                  <input class="hidden" type="checkbox" name="used" value="6" />
+                </li><li class="item">
+                  <figure><img width="120" height="120" src="images/thumb1.jpg" alt="" /></figure>
+                  <div class="title">Витаминный шампунь для нормальных волос</div>
+                  <input class="hidden" type="checkbox" name="used" value="7" />
+                </li>
+              </ul>
+            </div>
+            <div class="field field-required"><textarea rows="" cols="" placeholder="Сообщение"></textarea></div>
+            <div class="btn-wrap">
+              <button class="btn btn-grn" id="btn-send" type="submit">Отправить отзыв</button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="popup-row" id="popup-thanks" style="display:none;">
+        <form method="post" action="">
+          <div class="hgroup">
+            <h2 class="center">Ваш отзыв отправлен,<br />спасибо!</h2>
+          </div>
+          <div class="btn-wrap">
+            <button class="btn btn-grn" type="submit">Закрыть</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

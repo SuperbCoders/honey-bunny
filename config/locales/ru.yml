@@ -10,8 +10,9 @@ ru:
         title: Название
         main_image: Изображение
         motto: Эпиграф
-        volume: Объем
+        volume: 'Объем, мл'
         short_description: Краткое описание
+        price: 'Цена, руб.'
       page:
         slug: URL
         title: Заголовок

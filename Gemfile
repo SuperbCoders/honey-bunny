@@ -52,6 +52,7 @@ gem 'cancancan'
 gem 'simple_form', '~> 3.1.0.rc2'
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'money-rails'
 
 gem 'superb_auth', github: 'SuperbCoders/superb_auth'
 gem 'superb_pages', github: 'SuperbCoders/superb_pages'
