@@ -1,0 +1,17 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: 'honey_bunny-development'
+  pool: 5
+  host: localhost
+  username:
+  password:
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: 'honey_bunny-test'
+  pool: 5
+  host: localhost
+  username:
+  password:
