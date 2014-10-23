@@ -1,0 +1,62 @@
+doctype html
+html lang="en"
+  head
+    meta charset="utf-8"
+    title Панель администрирования Honey-Bunny
+    meta content="width=device-width, maximum-scale=1.0, user-scalable=yes" name="viewport"
+    link href=image_path('favicon.icon') rel="shortcut icon" type="image/x-icon"
+    = stylesheet_link_tag "admin"
+    = javascript_include_tag "admin"
+
+    /! Le HTML5 shim, for IE6-8 support of HTML elements
+    /[if lt IE 9]
+      = javascript_include_tag 'html5shiv'
+
+    = csrf_meta_tags
+  body
+    /! header
+    header#header.navbar
+      - if false #current_user
+        ul.nav.navbar-nav.navbar-avatar.pull-right
+          li.dropdown
+            a.dropdown-toggle data-toggle="dropdown" href="#"
+              span.hidden-xs-only = current_user.display_name
+              / span.thumb-small.avatar.inline
+                = image_tag (current_user.avatar? ? current_user.avatar.thumb.url : "/images/avatar.jpg"), class: 'img-circle'
+              b.caret.hidden-xs-only
+            |  
+            ul.dropdown-menu
+              li= link_to "Выйти", destroy_user_session_path, method: :delete
+      = link_to 'Honey-Bunny', root_path, class: 'navbar-brand'
+      button.btn.btn-link.pull-left.nav-toggle.visible-xs data-target="body" data-toggle="class:slide-nav slide-nav-left" type="button"
+        i.icon-reorder.icon-xlarge.text-default
+
+    /! / header
+    /! nav
+    nav#nav.nav-primary.hidden-xs.nav-vertical
+      ul.nav data-offset-top="50" data-spy="affix"
+        li class=('active' if params[:controller] == 'admin/items')
+          = link_to admin_items_path do
+            i.icon-gift.icon-xlarge
+            span Товары
+
+    /! / nav
+    section#content
+      section.main.padder.m-t
+        - if flash.present?
+          .flashes style="padding-top: 20px"
+            - flash.each do |kind, messages|
+              - [messages].flatten.each do |msg|
+                = content_tag :div, class: "alert alert-#{kind == 'notice' ? 'success' : 'error'}" do
+                  button.close type="button" data-dismiss="alert"
+                    i.icon-remove
+                  |  
+                  i.icon-large class="icon-#{kind == 'notice' ? 'ok-sign' : 'remove-sign'}"
+                  |  
+                  = msg
+        = yield
+    /! footer
+    footer#footer
+      .text-center.padder.clearfix
+        p
+          small &copy; Robo-t 2014

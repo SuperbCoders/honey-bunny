@@ -1,0 +1,22 @@
+ru:
+  activerecord:
+    models:
+      user: Пользователь
+      category: Категория
+      page: Страница
+      meta_block: Мета данные
+    attributes: &activerecord_attributes
+      item:
+        title: Название
+        main_image: Изображение
+        motto: Эпиграф
+        volume: Объем
+        short_description: Краткое описание
+  simple_form:
+    labels:
+      <<: *activerecord_attributes
+  shared:
+    create: Создать
+    edit: Редактировать
+    save: Сохранить
+    back: Назад

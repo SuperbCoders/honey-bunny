@@ -1,0 +1,36 @@
+section#content
+  section.main.padder
+    .clearfix
+      h4
+        i.icon-gift
+        |  Товары
+    .row
+      section.panel
+        .panel-body
+          => link_to 'Добавить', new_admin_item_path, class: 'btn btn-primary btn-sm'
+        .table-responsive
+          table.table.table-striped.b-t.text-small
+            thead
+              tr
+                th ID
+                th Название
+                th
+            tbody
+              - @items.each do |item|
+                tr
+                  td= item.id
+                  td= item.title
+                  td
+                    .btn-group
+                      a.dropdown-toggle data-toggle="dropdown" href="#"
+                        i.icon-pencil
+                      ul.dropdown-menu.pull-right
+                        li
+                          = link_to edit_admin_item_path(item) do
+                            i.icon-external-link
+                            | Редактировать
+                        li
+                          = link_to admin_item_path(item), method: :delete, data: { confirm: 'Точно удалить?' } do
+                            i.icon-trash
+                            | Удалить
+        footer.panel-footer

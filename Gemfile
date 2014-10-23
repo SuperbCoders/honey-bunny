@@ -41,3 +41,13 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+end
+
+gem 'slim-rails'
+gem 'russian'
+gem 'simple_form', '~> 3.1.0.rc2'
+gem 'carrierwave'
+gem 'mini_magick'

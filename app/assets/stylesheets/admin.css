@@ -1,0 +1,79 @@
+/*
+ *= require_tree ./admin
+ *= require_self
+ */
+
+legend{
+  margin-bottom: 5px !important;
+  margin-top: 20px;
+}
+
+#main-container {
+    margin-top: 50px;
+}
+
+#request_bank_product_api .spinner{
+  position: absolute;
+  left: 100%;
+  margin-left: 35px;
+  top: -10px;
+} 
+
+.control-label > abbr{
+  display: none;
+}
+.c-autosubmit-forms{
+
+}
+
+.c-autosubmit-forms.__op-50{
+  opacity: 0.5;
+  filter: alpha(opacity=50);
+}
+
+.c-dependent-select{
+  margin-right: 10px;
+}
+
+.c-dependent-select{
+  width: 48% !important;
+  margin-bottom: 5px;
+}
+.c-dependent-select-good{
+  width: 48% !important;
+}
+
+.c-inactive-readonly-input, .c-inactive-readonly-input[readonly]{
+  background-color: transparent !important;
+  cursor: default !important;
+  width: auto !important;
+  max-width: 120px !important;
+  text-align: right;
+  box-shadow: none;
+  font-weight: bold;
+  font-size: 18px;
+  border:0;
+  padding: 0;
+}
+
+.wysihtml5-sandbox{
+  padding-right: 0px !important;
+  resize: both;
+}
+
+.c-preview-form{
+  display: none;
+}
+
+label.error {
+  color: red;
+  position: absolute;
+  white-space: nowrap;
+  font-weight: normal;
+}
+
+input.error {
+  border-color: #f26c4f;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}

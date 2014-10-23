@@ -1,0 +1,18 @@
+.clearfix
+  h4 #{@item.persisted? ? t('shared.edit') : t('shared.create')} товар
+
+section class="panel pos-rlt clearfix"
+  header.panel-heading
+    = @item.persisted? ? @item.title : 'Новый товар'
+  .panel-body.clearfix
+    = simple_form_for [:admin, @item], wrapper: :horizontal_form, html: { class: 'form-horizontal' } do |f|
+      = f.input :title
+      = f.input :main_image, hint: (image_tag @item.main_image.thumb if @item.main_image?)
+      = f.input :motto
+      = f.input :volume
+      = f.input :short_description
+
+      .form-group
+        .col-lg-9.col-lg-offset-3
+          => f.button :submit, @item.new_record? ? t('shared.create') : t('shared.save'), class: 'btn-primary'
+          => link_to t('shared.back'), admin_items_path, class: 'btn btn-default'
