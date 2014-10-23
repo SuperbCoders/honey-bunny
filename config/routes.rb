@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
+  resources :pages, only: :show
   devise_for :users
   root 'welcome#index'
 
   namespace :admin do
     root 'items#index'
+    resources :pages, except: :show
     resources :items, except: :show
   end
 

@@ -1,0 +1,16 @@
+.clearfix
+  h4 #{@page.persisted? ? t('shared.edit') : t('shared.create')} страницу
+
+section class="panel pos-rlt clearfix"
+  header.panel-heading
+    = @page.persisted? ? @page.title : 'Новая страница'
+  .panel-body.clearfix
+    = simple_form_for [:admin, @page], wrapper: :horizontal_form, html: { class: 'form-horizontal' } do |f|
+      - if @page.new_record?
+        = f.input :slug
+      = f.input :title
+
+      .form-group
+        .col-lg-9.col-lg-offset-3
+          => f.button :submit, @page.new_record? ? t('shared.create') : t('shared.save'), class: 'btn-primary'
+          => link_to t('shared.back'), admin_pages_path, class: 'btn btn-default'

@@ -4,7 +4,7 @@ html lang="en"
     meta charset="utf-8"
     title Панель администрирования Honey-Bunny
     meta content="width=device-width, maximum-scale=1.0, user-scalable=yes" name="viewport"
-    link href=image_path('favicon.icon') rel="shortcut icon" type="image/x-icon"
+    link href=image_path('favicon.ico') rel="shortcut icon" type="image/x-icon"
     = stylesheet_link_tag "admin"
     = javascript_include_tag "admin"
 
@@ -35,6 +35,11 @@ html lang="en"
     /! nav
     nav#nav.nav-primary.hidden-xs.nav-vertical
       ul.nav data-offset-top="50" data-spy="affix"
+        - if can? :manage, Item
+          li class=('active' if params[:controller] == 'admin/pages')
+            = link_to admin_pages_path do
+              i.icon-file.icon-xlarge
+              span Страницы
         - if can? :manage, Item
           li class=('active' if params[:controller] == 'admin/items')
             = link_to admin_items_path do

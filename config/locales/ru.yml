@@ -12,6 +12,9 @@ ru:
         motto: Эпиграф
         volume: Объем
         short_description: Краткое описание
+      page:
+        slug: URL
+        title: Заголовок
   simple_form:
     labels:
       <<: *activerecord_attributes

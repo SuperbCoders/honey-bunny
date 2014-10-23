@@ -5,4 +5,9 @@ def create_admins
   User.where(email: 'kostia.pizhon@gmail.com').first_or_create(role: 'admin', password: 'qwerty123')
 end
 
+def create_pages
+  Page.where(slug: 'index').first_or_create(title: 'Honey-Bunny')
+end
+
 create_admins
+create_pages

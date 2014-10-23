@@ -54,3 +54,4 @@ gem 'carrierwave'
 gem 'mini_magick'
 
 gem 'superb_auth', github: 'SuperbCoders/superb_auth'
+gem 'superb_pages', github: 'SuperbCoders/superb_pages'

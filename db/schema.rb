@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141023112444) do
+ActiveRecord::Schema.define(version: 20141023114859) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,33 @@ ActiveRecord::Schema.define(version: 20141023112444) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "meta_blocks", force: true do |t|
+    t.integer  "meta_blockable_id"
+    t.string   "meta_blockable_type"
+    t.string   "title"
+    t.text     "description"
+    t.text     "keywords"
+    t.text     "javascript"
+    t.string   "fb_image"
+    t.string   "fb_title"
+    t.text     "fb_description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "meta_blocks", ["meta_blockable_id", "meta_blockable_type"], name: "index_meta_blocks_on_meta_blockable_id_and_meta_blockable_type", using: :btree
+
+  create_table "pages", force: true do |t|
+    t.string   "slug"
+    t.string   "title"
+    t.text     "text"
+    t.boolean  "published",  default: true
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "pages", ["slug"], name: "index_pages_on_slug", unique: true, using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email"

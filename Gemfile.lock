@@ -7,6 +7,14 @@ GIT
       open_uri_redirections
       rails (~> 4.1.0)
 
+GIT
+  remote: git://github.com/SuperbCoders/superb_pages.git
+  revision: 766fd1e4ed3a3918a03a991172807de2e75c4dca
+  specs:
+    superb_pages (0.0.1)
+      carrierwave
+      rails (>= 4.0.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -200,4 +208,5 @@ DEPENDENCIES
   slim-rails
   spring
   superb_auth!
+  superb_pages!
   uglifier (>= 1.3.0)
