@@ -16,11 +16,11 @@ html lang="en"
   body
     /! header
     header#header.navbar
-      - if false #current_user
+      - if current_user
         ul.nav.navbar-nav.navbar-avatar.pull-right
           li.dropdown
             a.dropdown-toggle data-toggle="dropdown" href="#"
-              span.hidden-xs-only = current_user.display_name
+              span.hidden-xs-only = current_user.email
               / span.thumb-small.avatar.inline
                 = image_tag (current_user.avatar? ? current_user.avatar.thumb.url : "/images/avatar.jpg"), class: 'img-circle'
               b.caret.hidden-xs-only
@@ -35,10 +35,11 @@ html lang="en"
     /! nav
     nav#nav.nav-primary.hidden-xs.nav-vertical
       ul.nav data-offset-top="50" data-spy="affix"
-        li class=('active' if params[:controller] == 'admin/items')
-          = link_to admin_items_path do
-            i.icon-gift.icon-xlarge
-            span Товары
+        - if can? :manage, Item
+          li class=('active' if params[:controller] == 'admin/items')
+            = link_to admin_items_path do
+              i.icon-gift.icon-xlarge
+              span Товары
 
     /! / nav
     section#content

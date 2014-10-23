@@ -1,4 +1,5 @@
 class Admin::ItemsController < Admin::ApplicationController
+  before_action { authorize! :manage, Item }
   before_action :set_item, only: [:edit, :update, :destroy]
 
   # GET /admin/items

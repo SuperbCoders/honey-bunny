@@ -7,12 +7,13 @@ section#content
     .row
       section.panel
         .panel-body
-          => link_to 'Добавить', new_admin_item_path, class: 'btn btn-primary btn-sm'
+          - if can? :create, Item
+            => link_to 'Добавить', new_admin_item_path, class: 'btn btn-primary btn-sm'
         .table-responsive
           table.table.table-striped.b-t.text-small
             thead
               tr
-                th ID
+                th width='64px' ID
                 th Название
                 th
             tbody
@@ -30,7 +31,7 @@ section#content
                             i.icon-external-link
                             | Редактировать
                         li
-                          = link_to admin_item_path(item), method: :delete, data: { confirm: 'Точно удалить?' } do
+                          = link_to admin_item_path(item), method: :delete, data: { confirm: t('shared.are_you_sure') } do
                             i.icon-trash
                             | Удалить
         footer.panel-footer

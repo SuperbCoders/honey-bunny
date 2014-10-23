@@ -48,6 +48,9 @@ end
 
 gem 'slim-rails'
 gem 'russian'
+gem 'cancancan'
 gem 'simple_form', '~> 3.1.0.rc2'
 gem 'carrierwave'
 gem 'mini_magick'
+
+gem 'superb_auth', github: 'SuperbCoders/superb_auth'
