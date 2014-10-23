@@ -1,0 +1,49 @@
+.case-creators {
+	padding: 35px 0;
+	background: #f7f7f7;
+	@include respond-to(medium-screen) {
+		padding: 50px 0 0 0;
+	}
+	.subtitle {
+		margin-bottom: 35px;
+		@include respond-to(medium-screen) {
+			margin-bottom: 60px;
+		}
+	}
+	.item {
+		display: inline-block;
+		width: 50%;
+		margin-bottom: 50px;
+		vertical-align: top;
+		@include respond-to(medium-screen) {
+			width: 100%;
+			margin-bottom: 70px;
+		}
+		.item-cnt {
+			padding: 0 10%;
+		}
+		figure {
+			width: 140px;
+			height: 140px;
+			margin-right: 40px;
+			float: left;
+			@include respond-to(medium-screen) {
+				width: 170px;
+				height: 170px;
+				margin-right: 60px;
+			}
+			img {
+				width: 100%;
+				border-radius: 50%;
+			}
+		} 
+		.info {
+			font-size: 30px;
+			line-height: 1.5;
+			overflow: hidden;
+		}
+		.name {
+			font-weight: bold;
+		}
+	}
+}

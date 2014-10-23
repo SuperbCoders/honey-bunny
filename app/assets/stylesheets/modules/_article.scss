@@ -1,0 +1,103 @@
+.case-article {
+	.wrapper {
+		padding: 70px 100px;
+		@include respond-to(medium-screen) {
+			padding: 60px;
+		}
+	}
+	.cols {
+		padding: 70px 0;
+		overflow: hidden;
+		@include respond-to(medium-screen) {
+			padding: 60px;
+		}
+		.column1 {
+			width: 200px;
+			margin-right: 40px;
+			float: left;
+			@include respond-to(medium-screen) {
+				width: auto;
+				margin: 0;
+				float: none;
+			}
+		}
+		.column2 {
+			overflow: hidden;
+		}
+	}
+	.quote {
+		margin: 0 -70px;
+		margin-bottom: 50px;
+		padding-top: 25px;
+		font-weight: bold;
+		border-top: 3px solid #2e2e2e;
+		border-bottom: 3px solid #2e2e2e;
+		@include respond-to(medium-screen) {
+			margin: 0 0 50px 0;
+		}
+	}
+	.picture {
+		text-align: center;
+		margin-bottom: 50px;
+		@include respond-to(medium-screen) {
+			margin-right: -60px;
+			margin-left: -60px;
+		}
+		img {
+			max-width: 100%;
+		}
+	}
+}
+
+.case-article_new {
+	.forms {
+		padding: 0 60px;
+		text-align: center;
+		@include respond-to(medium-screen) {
+			padding: 0;
+		}
+		.field {
+			margin-bottom: 40px;
+		}
+		.btn {
+			@include btn(200px, 50px);
+			font-size: 20px;
+			@include respond-to(medium-screen) {
+				@include btn(280px, 70px);
+				font-size: 32px;
+			}
+		}
+	}
+}
+
+.case-article_callback {
+	.btn {
+		@include btn(228px, 48px);
+		font-size: 20px;
+		@include respond-to(medium-screen) {
+			@include btn(350px, 70px);
+			font-size: 32px;
+		}
+	}
+}
+
+.case-article_ask {
+	.forms {
+		padding: 0 60px;
+		text-align: center;
+		@include respond-to(medium-screen) {
+			padding: 0;
+		}
+		.btn-wrap {
+			padding-top: 25px;
+		}
+		.btn {
+			@include btn(200px, 50px);
+			font-size: 20px;
+			@include respond-to(medium-screen) {
+				@include btn(280px, 70px);
+				font-size: 32px;
+			}
+		}
+	}
+}

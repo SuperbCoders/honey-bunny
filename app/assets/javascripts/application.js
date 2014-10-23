@@ -12,5 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
-//= require_tree .
+//= require jquery.migrate.min.js
+//= require jquery.placeholder.min.js
+//= require jquery.magnific-popup.min.js
+//= require script.js

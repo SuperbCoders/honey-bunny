@@ -1,0 +1,29 @@
+.case-tile {
+	.cols {
+		display: table;
+		width: 100%;
+		overflow: hidden;
+		.column {
+			display: table-cell;
+			width: 33.33%;
+			height: 400px;
+			vertical-align: middle;
+			text-align: center;
+			.prs {
+				margin-bottom: 10px;
+				font-size: 60px;
+				font-weight: bold;
+				@extend .circe;
+			}
+			.ttl {
+				font-size: 19px;
+				font-weight: bold;
+			}
+		}
+		.covered {
+			img {
+				width: 100%;
+			}
+		}
+	}
+}

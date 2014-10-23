@@ -1,0 +1,117 @@
+.icon-fb {@include retina-sprite(soc_icon-fb);}
+.icon-vk {@include retina-sprite(soc_icon-vk);}
+.icon-ig {@include retina-sprite(soc_icon-ig);}
+.icon-tel {@include retina-sprite(soc_icon-tel);}
+.icon-mail {@include retina-sprite(soc_icon-mail);}
+.icon-tw {@include retina-sprite(soc_icon-tw);}
+
+.icon-fb_grn {@include retina-sprite(soc_icon-fb_grn);}
+.icon-vk_grn {@include retina-sprite(soc_icon-vk_grn);}
+.icon-ig_grn {@include retina-sprite(soc_icon-ig_grn);}
+
+.icon-fb_gry {@include retina-sprite(soc_icon-fb_gry);}
+.icon-vk_gry {@include retina-sprite(soc_icon-vk_gry);}
+.icon-ig_gry {@include retina-sprite(soc_icon-ig_gry);}
+.icon-tw_gry {@include retina-sprite(soc_icon-tw_gry);}
+
+.case-social {
+	padding: 60px 30px 80px;
+	@include respond-to(medium-screen) {
+		padding: 60px 20px;
+	}
+	.likebox {
+		max-width: 900px;
+		margin-bottom: 70px;
+		overflow: hidden;
+	}
+	.follow {
+		.items {
+			height: 86px;
+			text-align: center;
+			overflow: hidden;
+		}
+		.item {
+			display: inline-block;
+			width: 238px;
+			height: 86px;
+			margin: 0 10px;
+			a {
+				display: block;
+				height: 34px;
+				padding: 26px 0;
+				color: #fff;
+				font-size: 20px;
+				line-height: 34px;
+				text-decoration: none;
+				background: #527acc;
+			}
+			.icon {
+				display: inline-block;
+				width: 34px;
+				height: 34px;
+				vertical-align: top;
+			}
+		}
+	}
+}
+
+.case-social-min {
+	padding: 25px 0;
+	background: #f6f5f3;
+	.container {
+		overflow: hidden;
+	}
+	.likebox {
+		float: left;
+	}
+	.follow {
+		float: right;
+		.items {
+			height: 84px;
+		}
+		.item {
+			display: inline-block;
+			width: 84px;
+			height: 84px;
+			a {
+				display: block;
+				width: 34px;
+				height: 34px;
+				padding: 25px;
+				&:hover {
+					background: #fff;
+				}
+			}
+			.icon {
+				display: inline-block;
+				width: 34px;
+				height: 34px;
+			}
+		}
+	}
+}
+
+.follow-mob {
+	height: 86px;
+	overflow: hidden;
+	a {
+		display: inline-block;
+		width: 34px;
+		height: 34px;
+		padding: 24px;
+		margin-right: 40px;
+		color: #fff;
+		font-size: 20px;
+		line-height: 34px;
+		text-decoration: none;
+		border: 1px solid #4fcf92;
+		&:last-child {
+			margin: 0;
+		}
+	}
+	.icon {
+		display: block;
+		width: 34px;
+		height: 34px;
+	}
+}

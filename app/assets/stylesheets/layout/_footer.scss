@@ -1,0 +1,83 @@
+.page-footer {
+	padding: 54px 0 30px;
+	background: #212424;
+	@include respond-to(medium-screen) {
+		padding: 45px 0 90px;
+	}
+	.contact {
+		margin-bottom: 25px;
+		@include respond-to(medium-screen) {
+			margin: 0;
+			position: relative;
+		}
+		.items {
+			height: 84px;
+			text-align: center;
+			@include respond-to(medium-screen) {
+				height: 0;
+				.item1 {left: 70px;}
+				.item2 {right: 70px;}
+			}
+		}
+		.item {
+			display: inline-block;
+			width: 84px;
+			height: 84px;
+			a {
+				display: block;
+				width: 34px;
+				height: 34px;
+				padding: 25px;
+				@include respond-to(large-screen) {
+					&:hover {
+						background: #356ca1;
+					}
+				}
+			}
+			.icon {
+				display: inline-block;
+				width: 34px;
+				height: 34px;
+			}
+			@include respond-to(medium-screen) {
+				width: 46px;
+				height: 46px;
+				position: absolute;
+				top: 70px;
+				a {
+					width: 46px;
+					height: 46px;
+					padding: 0;
+				}
+				.icon {
+					width: 46px;
+					height: 46px;
+				}
+				.icon-mail {@include retina-sprite(soc_icon-mail_b);}
+				.icon-tel {@include retina-sprite(soc_icon-tel_b);}
+			}
+		}
+	}
+	.logo {
+		display: block;
+		width: 90px;
+		height: 90px;
+		margin: 0 auto;
+		margin-bottom: 45px;
+		text-decoration: none;
+		@include retina-sprite(logo-fn_w);
+		@include respond-to(medium-screen) {
+			width: 136px;
+			height: 136px;
+			margin-bottom: 35px;
+			@include retina-sprite(logo-mob-fs_w);
+		}
+	}
+	.copyright {
+		font-size: 13px;
+		text-align: center;
+		@include respond-to(medium-screen) {
+			font-size: 20px;
+		}
+	}
+}

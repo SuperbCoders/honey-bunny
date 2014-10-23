@@ -1,0 +1,58 @@
+.carousel-responsive {
+	width: auto;
+	img {
+		width: 100%;
+		height: 100%;
+	}
+}
+
+.carousel-wrap {
+	position: relative;
+	z-index: 99;
+	@include respond-to(medium-screen) {
+		margin: 0 -60px;
+	}
+	ul {
+		display: block;
+		margin: 0;
+		position: relative;
+	}
+	li {
+		display: block;
+		float: left;
+		overflow: hidden;
+		a {
+			display: block;
+			position: relative;
+			overflow: hidden;
+		}
+		img {
+			vertical-align: top;
+		}
+	}
+	.arr {
+		display: block;
+		width: 13px;
+		height: 34px;
+		margin-top: -37px;
+		position: absolute;
+		top: 50%;
+		@include respond-to(medium-screen) {
+			display: none;
+		}
+	}
+	.prev {
+		left: -43px;
+		@include retina-sprite(carousel_prev);
+	}
+	.next {
+		right: -43px;
+		@include retina-sprite(carousel_next);
+	}
+	.pagination {
+		padding-top: 24px;
+		@include respond-to(medium-screen) {
+			padding-top: 50px;
+		}
+	}
+}

@@ -1,0 +1,72 @@
+.input {
+	width: 100%;
+	padding: 16px 20px;
+	color: #999;
+	font-size: 16px;
+	@extend .arkadia;
+	border: 1px solid #999;
+	background: #fff;
+	box-sizing: border-box;
+	@include respond-to(medium-screen) {
+		font-size: 30px;
+	}
+}
+
+.forms {
+	.field {
+		margin-bottom: 15px;
+		position: relative;
+		textarea {
+			@extend .input;
+			min-height: 106px;
+		}
+		input {
+			height: 50px;
+			vertical-align: middle;
+			@extend .input;
+			@include respond-to(medium-screen) {
+				height: 74px;
+			}
+		}
+		.table {
+			width: 100%;
+			.td {
+				width: 50%;
+			}
+			.td1 {
+				@include respond-to(medium-screen) {
+					margin-bottom: 15px;
+				}
+			}
+			.td2 {
+				input {
+					@include respond-to(large-screen) {
+						border-left: 0;
+					}
+				}
+			}
+		}
+		@include respond-to(medium-screen) {
+			.table, .tr, .td {
+				display: block!important;
+				width: auto!important;
+			}
+		}
+	}
+	.field-required {
+		&:after {
+			display: block;
+			content: '*';
+			position: absolute;
+			top: 18px;
+			right: 18px;
+			color: #ff3f3f;
+			font-size: 14px;
+			z-index: 10;
+			@include respond-to(medium-screen) {
+				top: 26px;
+				font-size: 30px;
+			}
+		}
+	}
+}

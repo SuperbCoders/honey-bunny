@@ -1,0 +1,17 @@
+.case-promo {
+	.wrapper {
+		padding: 115px 0;
+		@include respond-to(medium-screen) {
+			padding: 60px;
+		}
+	}
+	h2 {
+		margin-bottom: 20px;
+		font-size: 75px;
+		line-height: 1.2;
+	}
+	.text {
+		width: 600px;
+		font-size: 30px;
+	}
+}

@@ -1,0 +1,226 @@
+.page-header-short {
+	padding-bottom: 40px;
+	border-bottom: 1px solid #f0f0f0;
+	@include respond-to(medium-screen) {
+		padding: 0;
+	}
+}
+
+.page-header-top {
+	height: 90px;
+	padding-top: 40px;
+	position: relative;
+	@include respond-to(medium-screen) {
+		height: 142px;
+		padding-top: 0;
+		background: #fff;
+	}
+	.logo {
+		display: block;
+		width: 90px;
+		height: 90px;
+		text-decoration: none;
+		.page-header-center & {
+			margin-left: -48px;
+			position: absolute;
+			top: 40px;
+			left: 50%;
+		}
+		.page-header-left & {
+			float: left;
+		}
+		@include respond-to(medium-screen) {
+			width: 110px!important;
+			height: 110px!important;
+			margin: 0 0 0 -55px!important;
+			float: none!important;
+			position: absolute;
+			top: 16px!important;
+			left: 50%;
+		}
+	}
+	.logo-fn {
+		.darkstyle & {
+			@include retina-sprite(logo-fn_w);
+			@include respond-to(medium-screen) {@include retina-sprite(logo-mob-fn_b);}
+		}
+	}
+	.logo-min {
+		@include retina-sprite(logo-min_b);
+		@include respond-to(medium-screen) {@include retina-sprite(logo-mob-min_b);}
+		.darkstyle & {
+			@include retina-sprite(logo-min_w);
+			@include respond-to(medium-screen) {@include retina-sprite(logo-mob-min_b);}
+		}
+	}
+	.navbar {
+		.items {
+			height: 90px;
+			line-height: 90px;
+			overflow: hidden;
+			.page-header-center & {
+				.item3 {
+					padding-right: 96px;
+					margin-right: 40px;
+				}
+			}
+			.page-header-left & {
+				float: right;			
+			}
+		}
+		.item {
+			font-size: 17px;
+			float: left;
+			.page-header-center & {
+				margin-left: 40px;
+			}
+			.page-header-left & {
+				margin-left: 30px;
+			}
+			a {
+				color: #292b2d;
+				text-decoration: none;
+				.darkstyle & {
+					color: #fff;
+				}
+				&:hover {
+					@include respond-to(large-screen) {
+						color: #a5eac9;
+					}
+				}
+			}
+			.count {
+				display: inline-block;
+				width: 30px;
+				height: 20px;
+				margin-left: 10px;
+				color: #fff;
+				font-size: 17px;
+				font-weight: bold;
+				line-height: 16px;
+				text-align: center;
+				background: #64d095;
+				border-radius: 10px;
+			}
+		}
+		.current {
+			a {
+				@include respond-to(large-screen) {
+					color: #a5eac9!important;
+				}
+			}
+		}
+		@include respond-to(medium-screen) {
+			display: none;
+			width: 100%;
+			height: 100%;
+			position: fixed;
+			top: 0;
+			left: 0;
+			background: rgba(#000, 0.8);
+			overflow-y: auto;
+			z-index: 100;
+			.navbar-wrap & {
+				display: block!important;
+			}
+			.navbar-cnt {
+				padding: 200px 0 60px 75px;
+				position: relative;
+			}
+			.items {
+				height: auto!important;
+				padding-bottom: 40px;
+				float: none!important;
+			}
+			.item {
+				margin: 0 0 50px 0!important;
+				font-size: 60px!important;
+				font-weight: bold;
+				line-height: 1!important;
+				float: none!important;
+				white-space: nowrap;
+				a {
+					color: #fff!important;
+				}
+			}
+			.close {
+				display: block;
+				width: 45px;
+				height: 45px;
+				position: absolute;
+				top: 50px;
+				left: 40px;
+				@include retina-sprite(btn-close);
+			}
+		}
+	}
+	.btn-navbar {
+		display: block;
+		width: 54px;
+		height: 35px;
+		padding: 10px 10px 0;
+		margin: 48px 0 0 38px;
+		float: left;
+		text-decoration: none;
+		.icon-bar {
+			display: block;
+			width: 54px;
+			height: 5px;
+			margin-bottom: 10px;
+			background: #4a4a4a;
+		}
+	}
+	.store {
+		display: block;
+		width: 142px;
+		height: 142px;
+		float: right;
+		color: #fff;
+		font-size: 40px;
+		font-weight: bold;
+		line-height: 142px;
+		text-align: center;
+		text-decoration: none;
+		background: #64d095;
+	}
+}
+
+.page-header-bottom {
+	padding: 100px 0 200px;
+	@include respond-to(medium-screen) {
+		padding: 240px 0 240px;
+	}
+	.main & {
+		padding: 80px 0 110px;
+		@include respond-to(medium-screen) {
+			padding: 140px 0 140px;
+		}
+	}
+	.caption {
+		padding: 0 125px;
+		letter-spacing: 0.1em;
+		@include respond-to(medium-screen) {
+			padding: 0 40px!important;
+			text-align: center;
+		}
+		.main & {
+			padding: 0 70px;
+			margin-bottom: 70px;
+			h1 {
+				font-size: 70px;
+				letter-spacing: 3px;
+			}
+			@include respond-to(medium-screen) {
+				margin: 0;
+				h1 {
+					font-size: 90px;
+				}
+			}
+			
+		}
+	}
+	.btn {
+		@include btn(230px, 64px);
+		font-size: 20px;
+	}
+}

@@ -1,0 +1,123 @@
+.case-products {
+	.items {
+		position: relative;
+		border-bottom: 1px solid #f0f0f0;
+		&:after {
+			@include respond-to(large-screen) {
+				display: block;
+				content: '';
+				width: 0;
+				height: 100%;
+				position: absolute;
+				top: 0;
+				left: 50%;
+				border-left: 1px solid #f0f0f0;
+			}
+		}
+	}
+	.item {
+		display: inline-block;
+		width: 50%;
+		font-weight: bold;
+		vertical-align: top;
+		border-top: 1px solid #f0f0f0;
+		@include respond-to(medium-screen) {width: 100%;}
+		.item-cnt {
+			padding: 40px;
+			overflow: hidden;
+		}
+		figure {
+			width: 200px;
+			margin-right: 40px;
+			float: left;
+			text-align: center;
+			overflow: hidden;
+			@include respond-to(small-screen) {
+				width: auto!important;
+				margin: 0!important;
+				float: none!important;
+			}
+		}
+		.info {
+			padding-top: 40px;
+			padding-bottom: 5px;
+			overflow: hidden;
+			@include respond-to(small-screen) {
+				text-align: center;
+			}
+		}
+		.descript {
+			margin-bottom: 15px;
+			color: #64d095;
+			font-size: 14px;
+		}
+		.ttl {
+			margin-bottom: 20px;
+			font-size: 26px;
+			line-height: 1.5;
+			@include respond-to(medium-screen) {font-size: 30px;}
+			a {
+				color: #252929;
+				text-decoration: none;
+			}
+		}
+		.size {
+			margin-bottom: 20px;
+			color: #adbfbf;
+			font-size: 21px;
+			@extend .circe;
+		}
+		.price {
+			margin-bottom: 20px;
+			font-size: 50px;
+			@extend .circe;
+			@include respond-to(medium-screen) {margin-bottom: 30px;}
+		}
+		.btn-wrap {
+			width: 210px;
+			@include respond-to(small-screen) {
+				margin: 0 auto;
+			}
+			.btn {
+				@include btn(210px, 50px);
+				font-size: 18px;
+			}
+			.more {
+				padding-top: 18px;
+				font-size: 16px;
+			}
+			@include respond-to(medium-screen) {
+				width: 280px;
+				.btn {
+					@include btn(280px, 72px);
+					font-size: 32px;
+				}
+				.more {
+					padding-top: 30px;
+					font-size: 24px;
+					a {
+						text-decoration: none;
+					}
+				}
+			}
+		}
+		&:nth-child(2n) {
+			.item-cnt {
+				
+			}
+			figure {
+				@include respond-to(medium-screen) {
+					margin: 0 0 0 40px;
+					float: right;
+				}
+			}
+		}
+		&:hover {
+			.btn-wrap {
+				@include respond-to(large-screen) {
+					display: block!important;
+				}
+			}
+		}
+	}
+}

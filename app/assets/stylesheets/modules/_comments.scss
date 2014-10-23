@@ -1,0 +1,136 @@
+.case-comments {
+	padding: 70px 0;
+	.case-capt {
+		margin-bottom: 35px;
+		@include respond-to(medium-screen) {
+			margin-bottom: 50px;
+		}
+		.btn {
+			@include btn(150px, 36px);
+			font-size: 14px;
+			@include respond-to(medium-screen) {
+				@include btn(350px, 70px);
+				font-size: 32px;
+			}
+		}
+	}
+	.item {
+		margin-bottom: 50px;
+		overflow: hidden;
+		@include respond-to(medium-screen) {
+			padding: 0 60px;
+		}
+		.preview {
+			width: 122px;
+			padding-top: 5px;
+			margin-right: 40px;
+			float: left;
+			@include respond-to(medium-screen) {
+				width: auto;
+				margin: 0 0 40px 0;
+				float: none;
+				overflow: hidden;
+			}
+			figure {
+				width: 122px;
+				@include respond-to(medium-screen) {
+					margin-right: 40px;
+					float: left;
+				}
+			}
+		}
+		.rate {
+			width: 220px;
+			padding-top: 8px;
+			float: right;
+			.value {
+				font-size: 11px;
+				font-weight: bold;
+				text-align: center;
+				text-transform: uppercase;
+			}
+		}
+		.stars {
+			width: 185px;
+			margin: 0 auto;
+			padding-bottom: 20px;
+			overflow: hidden;
+			.star {
+				width: 29px;
+				height: 28px;
+				margin: 0 4px;
+				float: left;
+				color: #fff;
+				font-size: 14px;
+				font-weight: bold;
+				line-height: 26px;
+				text-align: center;
+				@include retina-sprite(icon-star);
+			}
+			.star-fill {
+				@include retina-sprite(icon-star_fill);
+			}
+		}
+		.info {
+			overflow: hidden;
+			.descript {
+				margin-bottom: 10px;
+				font-size: 20px;
+				line-height: 1.5;
+				@include respond-to(medium-screen) {
+					font-size: 30px;
+				}
+			}
+		}
+		.author {
+			font-size: 16px;
+			line-height: 1.5;
+			overflow: hidden;
+			@include respond-to(medium-screen) {
+				padding-top: 10px;
+				font-size: 28px;
+			}
+			.name {
+				font-weight: bold;
+			}
+			.post {
+				color: #a0a0a0;
+			}
+		}
+		.chart {
+			padding-top: 30px;
+			table {
+				width: 100%;
+			}
+			td {
+				width: 50%;
+				padding-bottom: 20px;
+			}
+			.ttl {
+				margin-right: 10px;
+				font-size: 24px;
+				font-weight: bold;
+				text-transform: uppercase;
+			}
+			.detect {
+				height: 12px;
+				background: #eaeaea;
+				.pct {
+					height: 12px;
+					background: #ffbc00;
+				}
+			}
+		}
+	}
+	.btn-more {
+		@include btn(310px, 62px);
+		font-size: 18px;
+	}
+	.btn-refresh {
+		display: block;
+		width: 90px;
+		height: 65px;
+		margin: 0 auto;
+		@include retina-sprite(btn-refresh);
+	}
+}

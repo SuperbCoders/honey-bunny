@@ -1,0 +1,117 @@
+.icon-worth1_min {@include retina-sprite(worth-min_icon1);}
+.icon-worth2_min {@include retina-sprite(worth-min_icon2);}
+.icon-worth3_min {@include retina-sprite(worth-min_icon3);}
+.icon-worth4_min {@include retina-sprite(worth-min_icon4);}
+.icon-worth5_min {@include retina-sprite(worth-min_icon5);}
+.icon-worth6_min {@include retina-sprite(worth-min_icon6);}
+
+.icon-worth1 {
+	@include retina-sprite(worth_icon1);
+	@include respond-to(medium-screen) {@include retina-sprite(worth-max_icon1);}
+}
+.icon-worth2 {
+	@include retina-sprite(worth_icon2);
+	@include respond-to(medium-screen) {@include retina-sprite(worth-max_icon2);}
+}
+.icon-worth3 {
+	@include retina-sprite(worth_icon3);
+	@include respond-to(medium-screen) {@include retina-sprite(worth-max_icon3);}
+}
+.icon-worth4 {
+	@include retina-sprite(worth_icon4);
+	@include respond-to(medium-screen) {@include retina-sprite(worth-max_icon4);}
+}
+.icon-worth5 {
+	@include retina-sprite(worth_icon5);
+	@include respond-to(medium-screen) {@include retina-sprite(worth-max_icon5);}
+}
+.icon-worth6 {
+	@include retina-sprite(worth_icon6);
+	@include respond-to(medium-screen) {@include retina-sprite(worth-max_icon6);}
+}
+.icon-worth7 {
+	@include retina-sprite(worth_icon7);
+	@include respond-to(medium-screen) {@include retina-sprite(worth-max_icon7);}
+}
+.icon-worth8 {
+	@include retina-sprite(worth_icon8);
+	@include respond-to(medium-screen) {@include retina-sprite(worth-max_icon8);}
+}
+
+.case-worth-min {
+	margin-bottom: 110px;
+	.item {
+		display: inline-block;
+		width: 16%;
+		vertical-align: top;
+		.icon {
+			display: block;
+			width: 62px;
+			height: 62px;
+			margin: 0 auto 20px;
+		}
+		.ttl {
+			font-size: 12px;
+			font-weight: bold;
+			text-align: center;
+			text-transform: uppercase;
+		}
+		&:last-child {
+			width: 20%;
+		}
+	}
+}
+
+.case-worth {
+	@include respond-to(medium-screen) {
+		padding-bottom: 90px;
+		border-bottom: 1px solid #f0f0f0;
+	}
+	.item {
+		display: inline-block;
+		width: 25%;
+		vertical-align: top;
+		border-top: 1px solid #f0f0f0;
+		@include respond-to(medium-screen) {
+			display: none;
+			width: 100%;
+		}
+		.item-cnt {
+			padding: 40px;
+			text-align: center;
+			@include respond-to(medium-screen) {
+				padding: 90px 40px;
+			}
+		}
+		.icon {
+			display: block;
+			width: 110px;
+			height: 110px;
+			margin: 0 auto 20px;
+			@include respond-to(medium-screen) {
+				width: 220px;
+				height: 220px;
+				margin-bottom: 90px;
+			}
+		}
+		.ttl {
+			margin-bottom: 15px;
+			@include respond-to(medium-screen) {
+				margin-bottom: 35px;
+			}
+		}
+		.descript {
+			font-size: 19px;
+			font-weight: bold;
+			line-height: 1.5;
+			@include respond-to(medium-screen) {
+				font-size: 40px;
+			}
+		}
+	}
+	.current {
+		@include respond-to(medium-screen) {
+			display: block;
+		}
+	}
+}

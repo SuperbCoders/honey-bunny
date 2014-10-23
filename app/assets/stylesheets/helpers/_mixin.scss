@@ -1,0 +1,9 @@
+$sprites: sprite-map("sprites/*.png", $spacing: 5px);
+$sprites2x: sprite-map("sprites-retina/*.png", $spacing: 10px);
+
+@mixin btn($width, $height) {
+	height: $height;
+	width: $width;
+	line-height: $height;
+	border-radius: $height/2+1px;
+}

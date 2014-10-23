@@ -1,0 +1,35 @@
+.case-service {
+	padding: 15px 0;
+	background: #181a1f;
+	.items {
+		overflow: hidden;
+	}
+	li {
+		width: 33.3%;
+		float: left;
+		.item-cnt {
+			padding-bottom: 10px;
+			border-left: 1px dashed #fff;
+		}
+		.icon {
+			display: block;
+			width: 62px;
+			height: 62px;
+			margin: 0 auto;
+		}
+		.ttl {
+			height: 30px;
+			color: #fff;
+			font-size: 11px;
+			font-weight: bold;
+			line-height: 15px;
+			text-align: center;
+			text-transform: uppercase;
+			overflow: hidden;
+		}
+		&.item1 .item-cnt {border: 0;}
+		&.item1 .icon {@include retina-sprite(serv_icon-box);}
+		&.item2 .icon {@include retina-sprite(serv_icon-moto);}
+		&.item3 .icon {@include retina-sprite(serv_icon-shop);}
+	}
+}

@@ -1,0 +1,108 @@
+.case-shops {
+	padding: 60px 0 50px;
+	background: #f5f5f5;
+	.case-capt {
+		margin-bottom: 35px;
+		a {
+			text-decoration: none;
+			@include respond-to(large-screen) {
+				display: inline-block;
+				line-height: 1;
+				border-bottom: 1px dashed #64d095;
+			}
+		}
+	}
+	.list {
+		margin-bottom: 20px;
+		font-size: 18px;
+		line-height: 1.5;
+		@include respond-to(medium-screen) {
+			padding: 0 20px;
+			font-size: 26px;
+		}
+		a {
+			text-decoration: none;
+		}
+		table {
+			width: 100%;
+		}
+		td {
+			padding: 20px;
+			vertical-align: top;
+			border-bottom: 20px solid #f5f5f5;
+			background: #fff;
+			&.numb {
+				width: 40px;
+				text-align: center;
+				@include respond-to(medium-screen) {
+					width: 10px;
+				}
+			}
+			&.logo {
+				width: 65px;
+			}
+			&.contact {
+				width: 200px;
+			}
+			&.note {
+				width: 150px;
+				text-align: center;
+				@include respond-to(medium-screen) {
+					width: 50px;
+				}
+			}
+		}
+		.numb {
+			color: #4fcf92;
+			font-size: 24px;
+			font-weight: bold;
+			@include respond-to(medium-screen) {
+				font-size: 32px;
+			}
+		}
+		.info {
+			.ttl {
+				font-weight: bold;
+			}
+			.map {
+				padding-top: 3px;
+				font-size: 16px;
+				@include respond-to(medium-screen) {
+					font-size: 24px;
+				}
+			}
+		}
+		.status {
+			margin-top: -10px;
+			@include respond-to(medium-screen) {
+				margin: 0;
+			}
+			.icon {
+				display: inline-block;
+				width: 50px;
+				height: 50px;
+				line-height: 50px;
+			}
+			.icon-verify {
+				@include retina-sprite(label-verify);
+				@include respond-to(medium-screen) {
+					@include retina-sprite(label-verify-mobi);
+				}
+			}
+			.ttl {
+				margin-top: -5px;
+				font-size: 15px;
+				line-height: 1.2;
+			}
+		}
+
+	}
+	.btn-more {
+		@include btn(310px, 62px);
+		font-size: 18px;
+		@include respond-to(medium-screen) {
+			@include btn(350px, 70px);
+			font-size: 32px;
+		}
+	}
+}

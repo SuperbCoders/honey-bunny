@@ -1,0 +1,45 @@
+.case-thanks {
+	.wrapper {
+		padding: 80px;
+		text-align: center;
+		@include respond-to(medium-screen) {
+			padding: 120px 60px;
+		}
+	}
+	.logo {
+		display: block;
+		width: 160px;
+		height: 160px;
+		margin: 0 auto;
+		margin-bottom: 100px;
+		text-decoration: none;
+		@include retina-sprite(logo-tnx);
+		@include respond-to(medium-screen) {
+			width: 240px;
+			height: 240px;
+			margin-bottom: 120px;
+			@include retina-sprite(logo-mob-tnx);
+		}
+	}
+	.capt {
+		margin-bottom: 40px;
+		font-size: 75px;
+		font-weight: bold;
+		line-height: 1.2;
+		@include respond-to(medium-screen) {
+			margin-bottom: 60px;
+			font-size: 65px;
+		}
+	}
+	.return {
+		margin-bottom: 120px;
+		font-size: 16px;
+		@include respond-to(medium-screen) {
+			margin-bottom: 260px;
+			font-size: 40px;
+		}
+	}
+	.copyright {
+		font-size: 13px;
+	}
+}
