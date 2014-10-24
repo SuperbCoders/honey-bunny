@@ -8,8 +8,9 @@ class Page < ActiveRecord::Base
 
   validates :cover, presence: true
 
-  # @return [Boolean] whether anyone can destroy this page
-  def destroyable?
+  # @return [Boolean] whether this is system page
+  def system?
     SYSTEM_PAGES.include?(slug)
   end
+  alias :destroyable? :system?
 end

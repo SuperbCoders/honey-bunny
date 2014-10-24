@@ -44,7 +44,9 @@ class Admin::PagesController < Admin::ApplicationController
   private
 
     def page_params
-      params.require(:page).permit(:slug, :title, :published, :cover)
+      allowed_params = [:slug, :title, :cover]
+      allowed_params << :published unless @page.try(:system?)
+      params.require(:page).permit(allowed_params)
     end
 
     def set_page
