@@ -1,0 +1,14 @@
+li.item.item1 class=('current' if @page.try(:slug) == 'cosmetics')
+  = link_to 'О косметике', '#'
+li.item.item2 class=('current' if @page.try(:slug) == 'products')
+  = link_to 'Продукты', items_path
+li.item.item3 class=('current' if @page.try(:slug) == 'company')
+  = link_to 'О компании', '#'
+li.item.item4 class=('current' if @page.try(:slug) == 'company_values')
+  = link_to 'Наши ценности', '#'
+li.item.item5 class=('current' if @page.try(:slug) == 'faq')
+  = link_to 'Вопросы и ответы', '#'
+li.item.item6.hidden-tablet class=('current' if params[:controller] == 'orders' && params[:action] == 'new')
+  = link_to '#' do
+    | Корзина
+    span.count 1

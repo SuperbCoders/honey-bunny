@@ -29,11 +29,7 @@
             <nav class="navbar">
               <div class="navbar-cnt">
                 <ul class="items">
-                  <li class="item item1"><a href="#">О косметике</a></li>
-                  <li class="item item2"><%= link_to 'Продукты', items_path %></li>
-                  <li class="item item3"><a href="company.html">О компании</a></li>
-                  <li class="item item4"><a href="company_values.html">Наши ценности</a></li>
-                  <li class="item item5"><a href="faq.html">Вопросы и ответы</a></li>
+                  <%= render 'navigation' %>
                 </ul>
                 <a class="close navbar-toggle hidden visible-tablet" href="#"></a>
                 <div class="follow-mob hidden visible-tablet">
