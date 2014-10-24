@@ -16,6 +16,22 @@
       </div>
     </div>
   </section>
+<% elsif block.background_type == 'color' && block.background_color.present? %>
+  <section class="case-article" style="background: <%= block.background_color %>;">
+    <div class="container globalwidth">
+      <div class="wrapper">
+        <% if block.subtitle.present? %>
+          <div class="subtitle center"><%= block.subtitle %></div>
+        <% end %>
+        <h2 class="center"><%= sanitize_block block.title %></h2>
+        <% if block.text.present? %>
+            <div class="text">
+              <%= sanitize_and_paragraph_block block.text %>
+            </div>
+          <% end %>
+      </div>
+    </div>
+  </section>
 <% else %>
   <section class="case-article">
     <div class="container globalwidth">
