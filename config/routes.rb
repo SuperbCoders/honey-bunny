@@ -6,6 +6,8 @@ Rails.application.routes.draw do
     root 'items#index'
     resources :pages, except: :show
     resources :items, except: :show
+
+    superb_text_constructor_for :pages
   end
 
   resources :items, only: [:index, :show]

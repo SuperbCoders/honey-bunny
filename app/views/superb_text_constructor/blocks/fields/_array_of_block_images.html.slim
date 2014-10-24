@@ -1,0 +1,10 @@
+.form-group
+  = f.label field.to_sym, class: 'col-sm-2 control-label'
+  .col-sm-10
+    = f.fields_for :images do |builder|
+      .fields.well
+        = builder.file_field :image
+        - if builder.object.image?
+          = image_tag builder.object.image.thumb
+        = builder.link_to_remove t('superb_text_constructor.shared.remove'), class: 'btn btn-sm btn-danger'
+    = f.link_to_add t('superb_text_constructor.shared.add'), :images, class: 'btn btn-sm btn-success'

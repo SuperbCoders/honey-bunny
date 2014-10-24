@@ -1,0 +1,32 @@
+ru:
+  activerecord:
+    attributes:
+      block:
+        text: Текст
+        title: Заголовок
+        subtitle: Подзаголовок
+        background_color: Цвет
+        background: Фоновое изображение
+        background_type: Тип фона
+        images: Изображения
+
+  superb_text_constructor:
+    background_type:
+      none: Нет
+      background: Фоновое изображение
+      color: Цвет
+
+    blocks:
+      page_block: Блок
+      separator: Разделитель
+      gallery_columns: Галерея (колонки)
+
+    groups:
+      images: Изображения
+
+    shared:
+      back: Назад
+      save: Сохранить
+      are_you_sure: Вы уверены?
+      remove: Удалить
+      add: Добавить

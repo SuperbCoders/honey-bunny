@@ -1,0 +1,9 @@
+<section class="case-tile hidden-tablet">
+  <div class="container">
+    <ul class="cols">
+      <% block.images.each do |image| %>
+        <li class="column covered"><%= image_tag image.image.full %></li>
+      <% end %>
+    </ul>
+  </div>
+</section>

@@ -1,0 +1,32 @@
+blocks:
+  page_block:
+    fields:
+      subtitle:
+        type: string
+      title:
+        type: string
+        required: true
+      text:
+        type: text
+      background_color:
+        type: string
+      background:
+        type: image
+        uploader: BlockBackgroundUploader
+      background_type:
+        type: bg_or_color_select
+        required: true
+  separator:
+  gallery_columns:
+    fields:
+      images:
+        type: array_of_block_images
+        required: true
+
+namespaces:
+  pages:
+    images:
+      - gallery_columns
+    no_group:
+      - page_block
+      - separator

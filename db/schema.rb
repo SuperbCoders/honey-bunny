@@ -11,10 +11,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141024083650) do
+ActiveRecord::Schema.define(version: 20141024114252) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "block_images", force: true do |t|
+    t.integer  "block_id"
+    t.string   "image"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "block_images", ["block_id"], name: "index_block_images_on_block_id", using: :btree
+
+  create_table "blocks", force: true do |t|
+    t.string   "blockable_type"
+    t.integer  "blockable_id"
+    t.integer  "position"
+    t.string   "template"
+    t.text     "data"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "blocks", ["blockable_type", "blockable_id"], name: "index_blocks_on_blockable_type_and_blockable_id", using: :btree
 
   create_table "items", force: true do |t|
     t.string   "title"
