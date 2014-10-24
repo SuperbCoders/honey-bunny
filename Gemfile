@@ -59,6 +59,7 @@ gem 'nested_form'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'money-rails'
+gem 'non-stupid-digest-assets'
 
 gem 'devise'
 # gem 'superb_auth', github: 'SuperbCoders/superb_auth'

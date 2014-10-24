@@ -135,6 +135,7 @@ GEM
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (2.9.1)
+    non-stupid-digest-assets (1.0.4)
     orm_adapter (0.5.0)
     pg (0.17.1)
     rack (1.5.2)
@@ -253,6 +254,7 @@ DEPENDENCIES
   mini_magick
   money-rails
   nested_form
+  non-stupid-digest-assets
   pg
   rails (= 4.1.6)
   rspec-rails
