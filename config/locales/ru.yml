@@ -16,6 +16,8 @@ ru:
       page:
         slug: URL
         title: Заголовок
+        published: Опубликовано?
+        cover: Обложка
   simple_form:
     labels:
       <<: *activerecord_attributes

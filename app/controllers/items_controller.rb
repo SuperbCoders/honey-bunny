@@ -3,6 +3,7 @@ class ItemsController < ApplicationController
   # GET /items
   def index
     @items = Item.all
+    @page = Page.find_by(slug: 'products')
   end
 
   # GET /items/:id

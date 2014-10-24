@@ -14,12 +14,14 @@ section#content
             thead
               tr
                 th URL
+                th Опубликовано?
                 th Заголовок
                 th
             tbody
               - @pages.each do |page|
                 tr
                   td= page.slug
+                  td= '✓' if page.published?
                   td= page.title
                   td
                     .btn-group

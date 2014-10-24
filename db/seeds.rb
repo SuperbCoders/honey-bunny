@@ -6,7 +6,8 @@ def create_admins
 end
 
 def create_pages
-  Page.where(slug: 'index').first_or_create(title: 'Honey-Bunny')
+  Page.where(slug: 'index').first_or_create(title: 'Honey-Bunny', cover: File.open("#{Rails.root}/db/seeds/index_cover.jpg"))
+  Page.where(slug: 'products').first_or_create(title: 'Продукты', cover: File.open("#{Rails.root}/db/seeds/products_cover.jpg"))
 end
 
 create_admins
