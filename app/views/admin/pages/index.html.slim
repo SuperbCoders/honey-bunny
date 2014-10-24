@@ -33,10 +33,11 @@ section#content
                             = link_to edit_admin_page_path(page) do
                               i.icon-external-link
                               | Редактировать
+                        - if can?(:update, page) && page.has_content?
                           li
                             = link_to admin_page_superb_text_constructor_path(page, namespace: :pages) do
                               i.icon-edit
-                              | WYSIWYG
+                              | Контент
                         - if !page.destroyable? && can?(:destroy, page)
                           li
                             = link_to admin_page_path(page), method: :delete, data: { confirm: t('shared.are_you_sure') } do

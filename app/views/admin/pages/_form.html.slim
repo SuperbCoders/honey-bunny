@@ -9,6 +9,8 @@ section class="panel pos-rlt clearfix"
       - if @page.new_record?
         = f.input :slug
       = f.input :title
+      = f.input :motto
+      = f.input :subtitle
       - unless @page.system?
         = f.input :published
       = f.input :cover, hint: (image_tag @page.cover.thumb if @page.cover?)

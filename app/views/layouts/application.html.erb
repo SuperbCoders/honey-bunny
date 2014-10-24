@@ -48,9 +48,15 @@
           </div>
           <div class="page-header-bottom hidden-tablet">
             <div class="caption">
-              <div class="subtitle">Наше все</div>
-              <h1>Продукция HB</h1>
-              <div class="dubtitle">Все текущие товары</div>
+              <% if @page.try(:motto).present? %>
+                <div class="subtitle"><%= @page.motto %></div>
+              <% end %>
+              <% if @page.try(:title).present? %>
+                <h1><%= @page.title %></h1>
+              <% end %>
+              <% if @page.try(:subtitle).present? %>
+                <div class="dubtitle"><%= @page.subtitle %></div>
+              <% end %>
             </div>
           </div>
         </div>
