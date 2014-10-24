@@ -60,6 +60,7 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'money-rails'
 
-gem 'superb_auth', github: 'SuperbCoders/superb_auth'
+gem 'devise'
+# gem 'superb_auth', github: 'SuperbCoders/superb_auth'
 gem 'superb_pages', github: 'SuperbCoders/superb_pages'
 gem 'superb_text_constructor', github: 'SuperbCoders/superb_text_constructor'

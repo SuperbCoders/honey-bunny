@@ -1,13 +1,4 @@
 GIT
-  remote: git://github.com/SuperbCoders/superb_auth.git
-  revision: 5c0cf38a468bf7d87cef74401b5d3c28d5109884
-  specs:
-    superb_auth (0.0.1)
-      devise
-      open_uri_redirections
-      rails (~> 4.1.0)
-
-GIT
   remote: git://github.com/SuperbCoders/superb_pages.git
   revision: 766fd1e4ed3a3918a03a991172807de2e75c4dca
   specs:
@@ -144,7 +135,6 @@ GEM
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (2.9.1)
-    open_uri_redirections (0.1.4)
     orm_adapter (0.5.0)
     pg (0.17.1)
     rack (1.5.2)
@@ -256,6 +246,7 @@ DEPENDENCIES
   carrierwave
   coffee-rails (~> 4.0.0)
   compass-rails
+  devise
   factory_girl_rails
   jbuilder (~> 2.0)
   jquery-rails
@@ -271,7 +262,6 @@ DEPENDENCIES
   simple_form (~> 3.1.0.rc2)
   slim-rails
   spring
-  superb_auth!
   superb_pages!
   superb_text_constructor!
   therubyracer
