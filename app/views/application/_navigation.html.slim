@@ -3,7 +3,7 @@ li.item.item1 class=('current' if @page.try(:slug) == 'cosmetics')
 li.item.item2 class=('current' if @page.try(:slug) == 'products')
   = link_to 'Продукты', items_path
 li.item.item3 class=('current' if @page.try(:slug) == 'company')
-  = link_to 'О компании', '#'
+  = link_to 'О компании', company_pages_path
 li.item.item4 class=('current' if @page.try(:slug) == 'company_values')
   = link_to 'Наши ценности', '#'
 li.item.item5 class=('current' if @page.try(:slug) == 'faq')

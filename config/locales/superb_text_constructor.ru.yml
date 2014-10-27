@@ -17,6 +17,7 @@ ru:
       color: Цвет
 
     blocks:
+      big: Врезка
       page_block: Блок
       separator: Разделитель
       gallery_columns: Галерея (колонки)

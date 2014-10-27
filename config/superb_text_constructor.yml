@@ -1,4 +1,9 @@
 blocks:
+  big:
+    fields:
+      text:
+        type: text
+        required: true
   page_block:
     fields:
       subtitle:
@@ -29,4 +34,5 @@ namespaces:
       - gallery_columns
     no_group:
       - page_block
+      - big
       - separator

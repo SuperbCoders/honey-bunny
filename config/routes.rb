@@ -11,5 +11,9 @@ Rails.application.routes.draw do
   end
 
   resources :items, only: [:index, :show]
-  resources :pages, only: :show
+  resources :pages, only: :show, path: :info do
+    collection do
+      get :company
+    end
+  end
 end
