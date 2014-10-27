@@ -1,0 +1,5 @@
+h1= block.title
+.progress
+  - block.charts.order(:id).each do |chart|
+    .progress-bar style="width: #{chart.value}%; background: #{chart.color};"
+      span style=('color: #000' unless chart.inverse_font_color?) #{chart.value}% #{chart.title}

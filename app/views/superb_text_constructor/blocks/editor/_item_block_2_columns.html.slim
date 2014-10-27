@@ -1,0 +1,5 @@
+.row
+  .col-md-3
+    h2= block.title
+  .col-md-9 style=('font-size: small;' if block.font_size == 'small')
+    = sanitize_and_paragraph_block block.text

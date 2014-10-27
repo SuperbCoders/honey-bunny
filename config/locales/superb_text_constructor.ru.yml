@@ -9,18 +9,42 @@ ru:
         background: Фоновое изображение
         background_type: Тип фона
         images: Изображения
+        font_size: Размер шрифта
+        elements: Элементы
+        charts: Значения
+        items: Товары
+      block_element:
+        title: Заголовок
+        text: Описание
+        image: Иконка
+      block_chart:
+        value: '%'
+        title: Заголовок
+        color: Цвет
+        inverse_font_color: Инвертировать цвет шрифта?
 
   superb_text_constructor:
     background_type:
       none: Нет
       background: Фоновое изображение
       color: Цвет
+    font_size:
+      normal: Обычный
+      small: Маленький
 
     blocks:
       big: Врезка
       page_block: Блок
       separator: Разделитель
       gallery_columns: Галерея (колонки)
+      item_block_2_columns: 'Описание / состав продукта'
+      item_feature: 'Фото + фича'
+      item_elements: Активные компоненты
+      item_chart: Диаграмма
+      items: Товары
+      social_panel: Соц. сети
+      reviews: Отзывы
+      shops: Магазины
 
     groups:
       images: Изображения

@@ -1,0 +1,5 @@
+.row
+  - block.items.each do |item|
+    .col-md-6
+      = image_tag item.main_image.thumb_small
+      | [#{item.id}] #{item.title}

@@ -1,0 +1,7 @@
+h1= sanitize_block block.title
+.row
+  - block.elements.order(:id).each do |element|
+    .col-md-4
+      div= image_tag element.image.full
+      h2= sanitize_block element.title
+      = sanitize_and_paragraph_block element.text

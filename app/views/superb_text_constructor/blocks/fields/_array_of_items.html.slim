@@ -1,0 +1,4 @@
+.form-group
+  = f.label field.to_sym, class: 'col-sm-2 control-label'
+  .col-sm-10
+    = f.select :item_ids, options_for_select(Item.all.map { |item| ["#{item.id} #{item.title}", item.id] }, f.object.item_ids), {},  multiple: 'multiple', class: 'chosen-select span9'

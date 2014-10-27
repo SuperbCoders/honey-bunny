@@ -22,10 +22,58 @@ blocks:
         type: bg_or_color_select
         required: true
   separator:
+  social_panel:
+  reviews:
+  shops:
   gallery_columns:
     fields:
       images:
         type: array_of_block_images
+        required: true
+
+  item_block_2_columns:
+    fields:
+      title:
+        type: string
+        required: true
+      text:
+        type: text
+        required: true
+      font_size:
+        type: font_size_select
+        required: true
+  item_feature:
+    fields:
+      title:
+        type: string
+        required: true
+      text:
+        type: text
+        required: true
+      background:
+        type: image
+        uploader: BlockBackgroundUploader
+        required: true
+  item_elements:
+    fields:
+      title:
+        type: string
+        required: true
+      elements:
+        type: array_of_block_elements
+        required: true
+  item_chart:
+    fields:
+      title:
+        type: string
+        required: true
+      charts:
+        type: array_of_block_charts
+        required: true
+  items:
+    fields:
+      items:
+        type: array_of_items
         required: true
 
 namespaces:
@@ -35,4 +83,23 @@ namespaces:
     no_group:
       - page_block
       - big
+      - items
       - separator
+      - social_panel
+      - reviews
+      - shops
+
+  items:
+    images:
+      - gallery_columns
+    no_group:
+      - page_block
+      - item_block_2_columns
+      - item_feature
+      - item_elements
+      - item_chart
+      - items
+      - separator
+      - social_panel
+      - reviews
+      - shops

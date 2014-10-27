@@ -1,0 +1,27 @@
+.form-group
+  = f.label field.to_sym, class: 'col-sm-2 control-label'
+  .col-sm-10
+    = f.fields_for :charts do |builder|
+      .fields.well
+        .form-group
+          = builder.label :value, class: 'col-sm-2 control-label'
+          .col-sm-10
+            = builder.text_field :value, class: 'form-control'
+        .form-group
+          = builder.label :title, class: 'col-sm-2 control-label'
+          .col-sm-10
+            = builder.text_field :title, class: 'form-control'
+        .form-group
+          = builder.label :color, class: 'col-sm-2 control-label'
+          .col-sm-10
+            = builder.text_field :color, class: 'form-control'
+
+        .form-group
+          .col-sm-offset-2.col-sm-10
+            .checkbox
+              label
+                = builder.check_box :inverse_font_color
+                = builder.label :inverse_font_color
+            
+        = builder.link_to_remove t('superb_text_constructor.shared.remove'), class: 'btn btn-sm btn-danger'
+    = f.link_to_add t('superb_text_constructor.shared.add'), :charts, class: 'btn btn-sm btn-success'

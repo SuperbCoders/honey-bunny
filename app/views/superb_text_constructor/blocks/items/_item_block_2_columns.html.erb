@@ -1,0 +1,14 @@
+<section class="case-article">
+  <div class="container globalwidth">
+    <div class="wrapper cols">
+      <div class="column1">
+        <h2><%= block.title %></h2>
+      </div>
+      <div class="column2">
+        <div class="text<%= ' small' if block.font_size == 'small' %>">
+          <%= sanitize_and_paragraph_block block.text %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

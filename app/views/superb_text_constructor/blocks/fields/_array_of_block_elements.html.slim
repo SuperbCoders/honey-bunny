@@ -1,0 +1,23 @@
+.form-group
+  = f.label field.to_sym, class: 'col-sm-2 control-label'
+  .col-sm-10
+    = f.fields_for :elements do |builder|
+      .fields.well
+        .form-group
+          = builder.label :title, class: 'col-sm-2 control-label'
+          .col-sm-10
+            = builder.text_field :title, class: 'form-control'
+        .form-group
+          = builder.label :text, class: 'col-sm-2 control-label'
+          .col-sm-10
+            = builder.text_area :text, class: 'form-control'
+
+        .form-group
+          = builder.label :image, class: 'col-sm-2 control-label'
+          .col-sm-10
+            = builder.file_field :image, class: 'form-control'
+
+        - if builder.object.image?
+          = image_tag builder.object.image.full
+        = builder.link_to_remove t('superb_text_constructor.shared.remove'), class: 'btn btn-sm btn-danger'
+    = f.link_to_add t('superb_text_constructor.shared.add'), :elements, class: 'btn btn-sm btn-success'

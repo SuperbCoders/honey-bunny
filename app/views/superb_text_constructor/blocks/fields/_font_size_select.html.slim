@@ -1,0 +1,6 @@
+.form-group
+  = f.label field.to_sym, class: 'col-sm-2 control-label'
+  .col-sm-10
+    - сollection = %w(normal small).map do |item|
+      - [t("superb_text_constructor.font_size.#{item}"), item]
+    = f.select field.to_sym, options_for_select(сollection, f.object.send(field)), class: 'form-control'

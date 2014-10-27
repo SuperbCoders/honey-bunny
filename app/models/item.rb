@@ -1,4 +1,6 @@
 class Item < ActiveRecord::Base
+  include SuperbTextConstructor::Concerns::Models::Blockable
+
   mount_uploader :main_image, ItemMainImageUploader
 
   monetize :price_cents

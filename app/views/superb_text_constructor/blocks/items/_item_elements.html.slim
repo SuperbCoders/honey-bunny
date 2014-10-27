@@ -1,0 +1,12 @@
+section.case-consist
+  .container.globalwidth
+    h2.center= block.title
+    ul.items
+      - block.elements.order(:id).each do |element|
+        li.item
+          .item-cnt
+            i.icon
+              = image_tag element.image.full
+            .info
+              .ttl= element.title
+              .descript= element.text
