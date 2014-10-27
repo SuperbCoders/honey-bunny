@@ -28,12 +28,4 @@
   </div>
 </div>
 <%= render_blocks @item.blocks, namespace: :items %>
-<section class="case-social hidden visible-tablet">
-  <div class="container globalwidth">
-    <div class="follow-mob center">
-      <a href="#"><i class="icon icon-fb_grn"></i></a>
-      <a href="#"><i class="icon icon-vk_grn"></i></a>
-      <a href="#"><i class="icon icon-ig_grn"></i></a>
-    </div>
-  </div>
-</section>
+<%= render 'social_buttons_mobile' %>

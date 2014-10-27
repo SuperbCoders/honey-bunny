@@ -19,22 +19,18 @@
 </div>
 <%= render partial: 'reviews/list' %>
 <%= render partial: 'shops/list' %>
-<section class="case-social">
+<section class="case-social hidden-tablet">
   <div class="container globalwidth">
-    <div class="likebox hidden-tablet">
+    <div class="likebox">
       <img width="900" height="240" src="images/likebox.jpg" alt="" />
     </div>
-    <div class="follow hidden-tablet">
+    <div class="follow">
       <ul class="items">
         <li class="item"><a href="#"><i class="icon icon-fb"></i><span class="label">Facebook</span></a></li><li class="item">
         <a href="#"><i class="icon icon-vk"></i><span class="label">Vkontakte</span></a></li><li class="item">
-        <a href="#"><i class="icon icon-ig"></i><span class="label"> Instagram</span></a></li>
+        <a href="#"><i class="icon icon-ig"></i><span class="label">Instagram</span></a></li>
       </ul>
-    </div>
-    <div class="follow-mob center hidden visible-tablet">
-      <a href="#"><i class="icon icon-fb_grn"></i></a>
-      <a href="#"><i class="icon icon-vk_grn"></i></a>
-      <a href="#"><i class="icon icon-ig_grn"></i></a>
     </div>
   </div>
 </section>
+<%= render 'social_buttons_mobile' %>
