@@ -15,4 +15,5 @@
 //= require jquery.migrate.min.js
 //= require jquery.placeholder.min.js
 //= require jquery.magnific-popup.min.js
+//= require jquery.chosen.min.js
 //= require script.js

@@ -15,4 +15,8 @@ class ItemMainImageUploader < BaseImageUploader
     process :resize_to_fill => [100, 220]
   end
 
+  version :thumb_square do
+    process :resize_to_fit => [120, 120]
+  end
+
 end

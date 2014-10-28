@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141027125643) do
+ActiveRecord::Schema.define(version: 20141028080754) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,6 +68,24 @@ ActiveRecord::Schema.define(version: 20141027125643) do
   add_index "blocks_items", ["block_id", "item_id"], name: "index_blocks_items_on_block_id_and_item_id", unique: true, using: :btree
   add_index "blocks_items", ["block_id"], name: "index_blocks_items_on_block_id", using: :btree
   add_index "blocks_items", ["item_id"], name: "index_blocks_items_on_item_id", using: :btree
+
+  create_table "cart_items", force: true do |t|
+    t.integer  "cart_id"
+    t.integer  "item_id"
+    t.integer  "quantity"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "cart_items", ["cart_id", "item_id"], name: "index_cart_items_on_cart_id_and_item_id", unique: true, using: :btree
+  add_index "cart_items", ["cart_id"], name: "index_cart_items_on_cart_id", using: :btree
+  add_index "cart_items", ["item_id"], name: "index_cart_items_on_item_id", using: :btree
+
+  create_table "carts", force: true do |t|
+    t.string   "token"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "items", force: true do |t|
     t.string   "title"

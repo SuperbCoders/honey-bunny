@@ -17,4 +17,8 @@ Rails.application.routes.draw do
       get :company
     end
   end
+  resources :orders, only: [:new]
+
+  post 'carts/items/:item_id' => 'carts#add', as: :add_to_cart
+  delete 'carts/items/:item_id' => 'carts#remove', as: :remove_from_cart
 end
