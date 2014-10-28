@@ -18,24 +18,56 @@
 .btn-orn {
 	color: #fff;
 	background: #ff3725;
+	&:hover {
+		@include respond-to(large-screen) {
+			background: #ed2c0e;
+		}
+	}
 }
 
 .btn-grn {
 	color: #fff;
 	background: #4fcf92;
+	&:hover {
+		@include respond-to(large-screen) {
+			background: #55de9c;
+		}
+	}
 }
 
 .btn-grn-cut {
 	color: #64d095;
 	border: 2px solid #64d095;
+	&:hover {
+		@include respond-to(large-screen) {
+			color: #63e0a3;
+			border-color: #81e6ae;
+		}
+	}
 }
 
 .btn-gry-cut {
 	color: #ccc;
-	border: 2px solid #ccc;
+	border: 2px solid #ddd;
+	&:hover {
+		@include respond-to(large-screen) {
+			color: #949494;
+			border-color: #bdbdbd;
+		}
+	}
 }
 
 .btn-wte-cut {
 	color: #fff;
 	border: 2px solid #fff;
+}
+
+.link {
+	color: #4fcf92;
+	text-decoration: none;
+	&:hover {
+		@include respond-to(large-screen) {
+			color: #fa3b14;
+		}
+	}
 }

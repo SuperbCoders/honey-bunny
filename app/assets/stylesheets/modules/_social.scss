@@ -44,6 +44,11 @@
 				line-height: 34px;
 				text-decoration: none;
 				background: #527acc;
+				&:hover {
+					@include respond-to(large-screen) {
+						background: #4f7ddb;
+					}
+				}
 			}
 			.icon {
 				display: inline-block;
@@ -71,13 +76,14 @@
 		}
 		.item {
 			display: inline-block;
-			width: 84px;
-			height: 84px;
+			width: 64px;
+			height: 64px;
+			padding: 10px;
 			a {
 				display: block;
 				width: 34px;
 				height: 34px;
-				padding: 25px;
+				padding: 15px;
 				&:hover {
 					background: #fff;
 				}

@@ -18,21 +18,25 @@
 				.item1 {left: 70px;}
 				.item2 {right: 70px;}
 			}
+			@include respond-to(large-screen) {
+				.item1 a:hover {background: #4fcf92;}
+				.item2 a:hover {background: #527acc;}
+				.item3 a:hover {background: #527ba6;}
+				.item4 a:hover {background: #4466a9;}
+				.item5 a:hover {background: #356ca1;}
+				.item6 a:hover {background: #55acee;}
+			}
 		}
 		.item {
 			display: inline-block;
-			width: 84px;
-			height: 84px;
+			width: 64px;
+			height: 64px;
+			padding: 10px; 
 			a {
 				display: block;
 				width: 34px;
 				height: 34px;
-				padding: 25px;
-				@include respond-to(large-screen) {
-					&:hover {
-						background: #356ca1;
-					}
-				}
+				padding: 15px;
 			}
 			.icon {
 				display: inline-block;
@@ -42,6 +46,7 @@
 			@include respond-to(medium-screen) {
 				width: 46px;
 				height: 46px;
+				padding: 0; 
 				position: absolute;
 				top: 70px;
 				a {

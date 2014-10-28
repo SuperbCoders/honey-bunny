@@ -9,9 +9,6 @@
 .carousel-wrap {
 	position: relative;
 	z-index: 99;
-	@include respond-to(medium-screen) {
-		margin: 0 -60px;
-	}
 	ul {
 		display: block;
 		margin: 0;

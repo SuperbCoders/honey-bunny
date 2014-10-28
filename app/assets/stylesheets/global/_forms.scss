@@ -10,6 +10,11 @@
 	@include respond-to(medium-screen) {
 		font-size: 30px;
 	}
+	&:focus {
+		@include respond-to(large-screen) {
+			border-color: #666;
+		}
+	}
 }
 
 .forms {

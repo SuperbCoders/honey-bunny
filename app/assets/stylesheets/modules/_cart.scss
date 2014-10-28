@@ -38,6 +38,11 @@
 			height: 240px;
 			border: 1px solid #f0f0f0;
 			cursor: pointer;
+			&:hover {
+				@include respond-to(large-screen) {
+					background: #f7f7f7;
+				}
+			}
 			&.current {
 				color: #fff;
 				background: #566069;
