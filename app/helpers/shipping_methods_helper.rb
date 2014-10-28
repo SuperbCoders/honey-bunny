@@ -1,5 +1,4 @@
 module ShippingMethodsHelper
-
   # Returns icon name for specified shipping method
   # @param shipping_method [ShippingMethod]
   # @return [String] icon name for shipping method

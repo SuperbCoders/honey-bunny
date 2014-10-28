@@ -6,6 +6,7 @@ class OrdersController < ApplicationController
   # GET /orders/new
   def new
     @shipping_methods = ShippingMethod.all
+    @payment_methods = PaymentMethod.all
     @cities = City.all
   end
 

@@ -64,7 +64,7 @@
                   <i class="icon icon-<%= shipping_method_icon(shipping_method) %>"></i>
                   <span class="title"><%= shipping_method.title %></span>
                   <span class="price"><%= humanized_money shipping_method.calculate_price(city_id: 1) %> руб.</span>
-                  <input class="hidden" type="radio" name="shipping_method" value="<%= shipping_method.id %>" checked="checked" />
+                  <input class="hidden" type="radio" name="shipping_method_id" value="<%= shipping_method.id %>" checked="checked" />
                 </label>
               <% end %>
             </div>
@@ -120,16 +120,13 @@
         <div class="switcher-wrap">
           <div class="switcher table">
             <div class="switcher-cnt tr">
-              <label class="td current">
-                <i class="icon icon-money"></i>
-                <span class="title">Наличными</span>
-                <input class="hidden" type="radio" name="payment" value="1" checked="ckecked" />
-              </label>
-              <label class="td">
-                <i class="icon icon-card"></i>
-                <span class="title">Банковской картой</span>
-                <input class="hidden" type="radio" name="payment" value="2" />
-              </label>
+              <% @payment_methods.each_with_index do |payment_method, index| %>
+                <label class="td<%= ' current' if index == 0 %>">
+                  <i class="icon icon-<%= payment_method_icon(payment_method) %>"></i>
+                  <span class="title"><%= payment_method.title %></span>
+                  <input class="hidden" type="radio" name="payment_method_id" value="<%= payment_method.id %>" checked="checked" />
+                </label>
+              <% end %>
             </div>
           </div>
         </div>

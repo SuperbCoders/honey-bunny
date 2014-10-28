@@ -37,9 +37,15 @@ def create_shipping_prices_for(shipping_method_name)
   end
 end
 
+def create_payment_methods
+  PaymentMethod.where(name: 'cash').first_or_create(title: 'Наличными')
+  PaymentMethod.where(name: 'w1').first_or_create(title: 'Банковской картой')
+end
+
 create_admins
 create_pages
 create_cities
 create_shipping_methods
 create_shipping_prices_for('courier')
 create_shipping_prices_for('regions')
+create_payment_methods
