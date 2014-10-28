@@ -1,0 +1,38 @@
+section#content
+  section.main.padder
+    .clearfix
+      h4
+        i.icon-truck
+        |  Способы доставки
+    .row
+      section.panel
+        .panel-body
+          - if can? :create, ShippingMethod
+            => link_to 'Добавить', new_admin_shipping_method_path, class: 'btn btn-primary btn-sm'
+        .table-responsive
+          table.table.table-striped.b-t.text-small
+            thead
+              tr
+                th Название
+                th Заголовок
+                th Тип
+                th Наценка
+                th
+            tbody
+              - @shipping_methods.each do |shipping_method|
+                tr
+                  td= shipping_method.name
+                  td= shipping_method.title
+                  td= t("shipping_method.rate_type.#{shipping_method.rate_type}")
+                  td #{humanized_money shipping_method.extra_charge} руб.
+                  td
+                    .btn-group
+                      a.dropdown-toggle data-toggle="dropdown" href="#"
+                        i.icon-pencil
+                      ul.dropdown-menu.pull-right
+                        - if can? :update, shipping_method
+                          li
+                            = link_to edit_admin_shipping_method_path(shipping_method) do
+                              i.icon-external-link
+                              | Редактировать
+        footer.panel-footer

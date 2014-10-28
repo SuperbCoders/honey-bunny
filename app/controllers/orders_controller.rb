@@ -5,6 +5,8 @@ class OrdersController < ApplicationController
 
   # GET /orders/new
   def new
+    @shipping_methods = ShippingMethod.all
+    @cities = City.all
   end
 
   private

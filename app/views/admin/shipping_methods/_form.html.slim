@@ -1,0 +1,45 @@
+.clearfix
+  h4 #{@shipping_method.persisted? ? t('shared.edit') : t('shared.create')} способ доставки
+
+section class="panel pos-rlt clearfix"
+  header.panel-heading
+    = @shipping_method.persisted? ? @shipping_method.title : 'Новый способ доставки'
+  .panel-body.clearfix
+    = simple_form_for [:admin, @shipping_method], wrapper: :horizontal_form, html: { class: 'form-horizontal' } do |f|
+      - if @shipping_method.new_record?
+        = f.input :name
+      = f.input :title
+
+      = f.input :rate_type, collection: ShippingMethod::RATE_TYPES.map { |t| [t("shipping_method.rate_type.#{t}"), t] }, include_blank: false
+      = f.input :extra_charge
+
+      - if %w(fix_rate city_and_fix_rate).include?(@shipping_method.rate_type)
+        = f.input :rate
+
+      .form-group
+        .col-lg-9.col-lg-offset-3
+          => f.button :submit, @shipping_method.new_record? ? t('shared.create') : t('shared.save'), class: 'btn-primary'
+          => link_to t('shared.back'), admin_shipping_methods_path, class: 'btn btn-default'
+
+- if @shipping_method.persisted?
+  - if %w(city_rate city_and_fix_rate).include?(@shipping_method.rate_type)
+    section class="panel pos-rlt clearfix"
+      header.panel-heading Доступные города
+      .panel-body.clearfix
+        table.table
+          tr
+            th Город
+            th Стоимость доставки
+            th
+          - @shipping_method.shipping_prices.each do |shipping_price|
+            tr
+              td= shipping_price.city.name
+              td #{humanized_money shipping_price.price} руб.
+              td
+                = link_to admin_shipping_method_shipping_price_path(@shipping_method, shipping_price), method: :delete, data: { confirm: t('shared.are_you_sure') } do
+                  i.icon-trash
+          = simple_form_for [:admin, @shipping_method, @shipping_method.shipping_prices.build], html: { class: 'form-horizontal' } do |f|
+            tr
+              td= f.input_field :city_id, collection: City.where('id NOT IN (?)', @shipping_method.city_ids), class: 'chosen-select', style: 'width: 300px'
+              td= f.input_field :price, class: 'form-control', style: 'width: 150px'
+              td= f.button :submit, t('shared.add'), class: 'btn btn-success btn-sm'

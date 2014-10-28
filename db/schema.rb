@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141028080754) do
+ActiveRecord::Schema.define(version: 20141028163234) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -87,6 +87,14 @@ ActiveRecord::Schema.define(version: 20141028080754) do
     t.datetime "updated_at"
   end
 
+  create_table "cities", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "cities", ["name"], name: "index_cities_on_name", unique: true, using: :btree
+
   create_table "items", force: true do |t|
     t.string   "title"
     t.string   "main_image"
@@ -128,6 +136,33 @@ ActiveRecord::Schema.define(version: 20141028080754) do
   end
 
   add_index "pages", ["slug"], name: "index_pages_on_slug", unique: true, using: :btree
+
+  create_table "shipping_methods", force: true do |t|
+    t.string   "name"
+    t.string   "title"
+    t.string   "rate_type"
+    t.integer  "rate_cents",            default: 0,     null: false
+    t.string   "rate_currency",         default: "RUB", null: false
+    t.integer  "extra_charge_cents",    default: 0,     null: false
+    t.string   "extra_charge_currency", default: "RUB", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "shipping_methods", ["name"], name: "index_shipping_methods_on_name", unique: true, using: :btree
+
+  create_table "shipping_prices", force: true do |t|
+    t.integer  "city_id"
+    t.integer  "shipping_method_id"
+    t.integer  "price_cents",        default: 0,     null: false
+    t.string   "price_currency",     default: "RUB", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "shipping_prices", ["city_id"], name: "index_shipping_prices_on_city_id", using: :btree
+  add_index "shipping_prices", ["shipping_method_id", "city_id"], name: "index_shipping_prices_on_shipping_method_id_and_city_id", unique: true, using: :btree
+  add_index "shipping_prices", ["shipping_method_id"], name: "index_shipping_prices_on_shipping_method_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email"

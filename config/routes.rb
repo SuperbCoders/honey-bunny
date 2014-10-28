@@ -6,6 +6,9 @@ Rails.application.routes.draw do
     root 'items#index'
     resources :pages, except: :show
     resources :items, except: :show
+    resources :shipping_methods, except: [:show, :destroy] do
+      resources :shipping_prices, only: [:create, :destroy]
+    end
 
     superb_text_constructor_for :pages
     superb_text_constructor_for :items

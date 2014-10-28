@@ -59,18 +59,14 @@
         <div class="switcher-wrap">
           <div class="switcher table">
             <div class="switcher-cnt tr">
-              <label class="td current">
-                <i class="icon icon-moto"></i>
-                <span class="title">Курьер</span>
-                <span class="price">300 руб.</span>
-                <input class="hidden" type="radio" name="delivery" value="1" checked="ckecked" />
-              </label>
-              <label class="td">
-                <i class="icon icon-truck"></i>
-                <span class="title">Почта в регионы</span>
-                <span class="price">1000 руб.</span>
-                <input class="hidden" type="radio" name="delivery" value="2" />
-              </label>
+              <% @shipping_methods.each_with_index do |shipping_method, index| %>
+                <label class="td<%= ' current' if index == 0 %>">
+                  <i class="icon icon-<%= shipping_method_icon(shipping_method) %>"></i>
+                  <span class="title"><%= shipping_method.title %></span>
+                  <span class="price"><%= humanized_money shipping_method.calculate_price(city_id: 1) %> руб.</span>
+                  <input class="hidden" type="radio" name="shipping_method" value="<%= shipping_method.id %>" checked="checked" />
+                </label>
+              <% end %>
             </div>
           </div>
         </div>
@@ -87,12 +83,7 @@
                   <div class="tr">
                     <div class="td td1">
                       <div class="chosen">
-                        <select class="chosen-select">
-                          <option>Город</option>
-                          <option>Москва</option>
-                          <option>Санкт-Петербург</option>
-                          <option>Новосибирск</option>
-                        </select>
+                        <%= select_tag :city, options_for_select(@cities.map { |c| c.name }), class: 'chosen-select' %>
                       </div>
                     </div>
                     <div class="td td2"><input type="text" placeholder="Индекс" /></div>

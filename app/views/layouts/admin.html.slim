@@ -45,6 +45,11 @@ html lang="en"
             = link_to admin_items_path do
               i.icon-gift.icon-xlarge
               span Товары
+        - if can? :manage, ShippingMethod
+          li class=('active' if params[:controller] == 'admin/shipping_methods')
+            = link_to admin_shipping_methods_path do
+              i.icon-truck.icon-xlarge
+              span Способы доставки
 
     /! / nav
     section#content

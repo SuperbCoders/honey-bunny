@@ -20,12 +20,29 @@ ru:
         subtitle: Подзаголовок
         published: Опубликовано?
         cover: Обложка
+      shipping_method:
+        name: Название
+        title: Заголовок
+        rate_type: Тип
+        rate: Стоимость
+        extra_charge: Наценка
   simple_form:
     labels:
       <<: *activerecord_attributes
+
+  shipping_method:
+    rate_type:
+      fix_rate: Фиксированая цена
+      city_rate: По городам
+      city_and_fix_rate: По городам + фиксированая цена
+
   shared:
     create: Создать
     edit: Редактировать
     save: Сохранить
     back: Назад
     are_you_sure: Вы уверены?
+    created: Изменения сохранены
+    saved: Изменения сохранены
+    add: Добавить
+    remove: Удалить
