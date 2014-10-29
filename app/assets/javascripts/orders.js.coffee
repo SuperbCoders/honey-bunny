@@ -10,6 +10,37 @@ $ ->
     updateShippingMethodSubtitles()
     updateTotalPrice()
 
+  $('.js-order-item a.plus').on 'click', (event) ->
+    event.preventDefault()
+    increment(this)
+    false
+
+  $('.js-order-item a.minus').on 'click', (event) ->
+    event.preventDefault()
+    decrement(this)
+    false
+
+  $('input.js-order-item-quantity').on 'focusout', (event) ->
+    $(this).closest('form').submit()
+
+  increment = (button) ->
+    $form = $(button).closest('form')
+    $input = $form.find('input.js-order-item-quantity')
+    value = $input.val()
+    if /^\d+$/.test(value)
+      $input.val(parseInt(value) + 1)
+      $form.submit()
+
+  decrement = (button) ->
+    $form = $(button).closest('form')
+    $input = $form.find('input.js-order-item-quantity')
+    value = $input.val()
+    if /^\d+$/.test(value)
+      value = parseInt(value) - 1
+      if value >= 0
+        $input.val(value)
+        $form.submit()
+
   # Filters cities list by current shipping method
   filterCitiesByShippingMethod = ->
     options = $(cities).filter("option[data-shipping-method-#{currentShippingMethod().val()}]")
@@ -23,7 +54,7 @@ $ ->
       $(shippingMethod).closest('label').find('span.price').text(subtitle)
 
   # Updates order total price value as sum of items price and shipping price
-  updateTotalPrice = ->
+  window.updateTotalPrice = ->
     itemsPrice = parseFloat($('#order-items-price').text().toString().replace(' ', ''))
     shippingPrice = parseFloat(currentShippingPrice().toString().replace(' ', ''))
     totalPrice = humanizedMoney(itemsPrice + shippingPrice)

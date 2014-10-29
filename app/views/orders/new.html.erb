@@ -13,7 +13,7 @@
             <div class="th">&nbsp;</div>
           </div>
           <% current_cart.cart_items.each do |cart_item| %>
-            <div class="tr item">
+            <div class="tr item" id="cart-item-<%= cart_item.item.id %>">
               <div class="td td1">
                 <figure>
                   <%= link_to cart_item.item do %>
@@ -29,12 +29,14 @@
               <div class="td td3 hidden-tablet"><div class="price"><%= humanized_money cart_item.price %> руб.</div></div>
               <div class="td td4">
                 <div class="count">
-                  <a class="minus hidden-tablet" href="#"></a>
-                  <input type="text" value="<%= cart_item.quantity %>" />
-                  <a class="plus hidden-tablet" href="#"></a>
+                  <%= form_tag add_to_cart_path(cart_item.item), remote: true, class: 'js-order-item' do %>
+                    <a class="minus hidden-tablet" href="#"></a>
+                    <%= text_field_tag :quantity, cart_item.quantity, class: 'js-order-item-quantity', autocomplete: 'off' %>
+                    <a class="plus hidden-tablet" href="#"></a>
+                  <% end %>
                 </div>
               </div>
-              <div class="td td5"><div class="price"><%= humanized_money cart_item.total_price %> руб.</div></div>
+              <div class="td td5"><div class="price"><span class="js-cart-item-total-price"><%= humanized_money cart_item.total_price %></span> руб.</div></div>
               <div class="td td6">
                 <%= link_to '', remove_from_cart_path(cart_item.item), method: :delete, remote: true, class: 'delete hidden-tablet' %>
                 <%= link_to 'Удалить', remove_from_cart_path(cart_item.item), method: :delete, remote: true, class: 'btn btn-grn hidden visible-tablet' %>
@@ -47,7 +49,7 @@
   </div>
   <div class="sum">
     <div class="container globalwidth">
-      <span>Итого <%= current_cart.total_quantity %> <%= Russian.p(current_cart.total_quantity, 'товар', 'товара', 'товаров') %> на сумму <b><span id="order-items-price"><%= humanized_money current_cart.total_price %></span> руб.</b></span>
+      <span>Итого <span id="cart-total-quantity"><%= current_cart.total_quantity %> <%= Russian.p(current_cart.total_quantity, 'товар', 'товара', 'товаров') %></span> на сумму <b><span id="order-items-price"><%= humanized_money current_cart.total_price %></span> руб.</b></span>
     </div>
   </div>
   <%= form_for @order do |f| %>
