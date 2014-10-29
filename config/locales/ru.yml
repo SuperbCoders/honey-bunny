@@ -26,6 +26,19 @@ ru:
         rate_type: Тип
         rate: Стоимость
         extra_charge: Наценка
+        priority: Приоритет
+      order:
+        city: Город
+        zipcode: Индекс
+        address: Адрес
+        name: Имя
+        phone: Телефон
+        email: E-mail
+        comment: Комментарий
+        shipping_method: Способ доставки
+        shipping_price: Стоимость доставки
+        payment_method: Способ оплаты
+        paid: Оплачено?
   simple_form:
     labels:
       <<: *activerecord_attributes
@@ -35,6 +48,13 @@ ru:
       fix_rate: Фиксированая цена
       city_rate: По городам
       city_and_fix_rate: По городам + фиксированая цена
+
+  order:
+    workflow_state:
+      new: Новый
+      shipped: Отправлен
+      delivered: Доставлен
+      canceled: Отменен
 
   shared:
     create: Создать

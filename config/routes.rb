@@ -3,9 +3,10 @@ Rails.application.routes.draw do
   devise_for :users
 
   namespace :admin do
-    root 'items#index'
+    root 'orders#index', workflow_state: 'new'
     resources :pages, except: :show
     resources :items, except: :show
+    resources :orders, except: [:show, :destroy]
     resources :shipping_methods, except: [:show, :destroy] do
       resources :shipping_prices, only: [:create, :destroy]
     end
@@ -20,7 +21,9 @@ Rails.application.routes.draw do
       get :company
     end
   end
-  resources :orders, only: [:new]
+  resources :orders, only: [:new, :create] do
+    get :success, on: :member
+  end
 
   post 'carts/items/:item_id' => 'carts#add', as: :add_to_cart
   delete 'carts/items/:item_id' => 'carts#remove', as: :remove_from_cart

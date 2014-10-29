@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="viewport" content="width=device-width; initial-scale=1.0">
+  <title>Honey-Bunny</title>
+  <link rel="shortcut icon" type="image/x-icon" href="<%= image_path 'favicon.ico' %>" />
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+  <!--[if lt IE 9]>
+    <%= javascript_include_tag 'html5shiv' %>
+  <![endif]-->
+  <%= javascript_include_tag 'application' %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <article class="page">
+    <section class="page-body">
+      <%= yield %>
+    </section>
+  </article>
+</body>
+</html>

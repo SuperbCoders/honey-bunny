@@ -13,3 +13,7 @@
  *= require style
  *= require_self
  */
+
+.error {
+  border: 1px solid #F00;
+}

@@ -8,6 +8,7 @@ section class="panel pos-rlt clearfix"
     = simple_form_for [:admin, @shipping_method], wrapper: :horizontal_form, html: { class: 'form-horizontal' } do |f|
       - if @shipping_method.new_record?
         = f.input :name
+      = f.input :priority
       = f.input :title
 
       = f.input :rate_type, collection: ShippingMethod::RATE_TYPES.map { |t| [t("shipping_method.rate_type.#{t}"), t] }, include_blank: false

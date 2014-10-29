@@ -42,6 +42,6 @@ class Admin::ShippingMethodsController < Admin::ApplicationController
     end
 
     def shipping_method_params
-      params.require(:shipping_method).permit(:name, :title, :rate_type, :rate, :extra_charge)
+      params.require(:shipping_method).permit(:name, :title, :rate_type, :rate, :extra_charge, :priority)
     end
 end

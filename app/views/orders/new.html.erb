@@ -1,56 +1,57 @@
+<%= @order.errors.messages.inspect %>
 <section class="case-cart">
-  <form method="post" action="">
-    <div class="case-row case-cart-list">
-      <div class="container globalwidth">
-        <div class="wrapper">
-          <h2 class="center">Корзина</h2>
-          <div class="table items">
-            <div class="tr caption hidden-tablet">
-              <div class="th">Товар</div>
-              <div class="th">&nbsp;</div>
-              <div class="th">Цена</div>
-              <div class="th">Количество</div>
-              <div class="th">Итого</div>
-              <div class="th">&nbsp;</div>
-            </div>
-            <% current_cart.cart_items.each do |cart_item| %>
-              <div class="tr item">
-                <div class="td td1">
-                  <figure>
-                    <%= link_to cart_item.item do %>
-                      <%= image_tag cart_item.item.main_image.thumb_square %>
-                    <% end %>
-                  </figure>
-                </div>
-                <div class="td td2">
-                  <div class="title">
-                    <%= link_to cart_item.item.title, cart_item.item %>
-                  </div>
-                </div>
-                <div class="td td3 hidden-tablet"><div class="price"><%= humanized_money cart_item.price %> руб.</div></div>
-                <div class="td td4">
-                  <div class="count">
-                    <a class="minus hidden-tablet" href="#"></a>
-                    <input type="text" value="<%= cart_item.quantity %>" />
-                    <a class="plus hidden-tablet" href="#"></a>
-                  </div>
-                </div>
-                <div class="td td5"><div class="price"><%= humanized_money cart_item.total_price %> руб.</div></div>
-                <div class="td td6">
-                  <%= link_to '', remove_from_cart_path(cart_item.item), method: :delete, remote: true, class: 'delete hidden-tablet' %>
-                  <%= link_to 'Удалить', remove_from_cart_path(cart_item.item), method: :delete, remote: true, class: 'btn btn-grn hidden visible-tablet' %>
+  <div class="case-row case-cart-list">
+    <div class="container globalwidth">
+      <div class="wrapper">
+        <h2 class="center">Корзина</h2>
+        <div class="table items">
+          <div class="tr caption hidden-tablet">
+            <div class="th">Товар</div>
+            <div class="th">&nbsp;</div>
+            <div class="th">Цена</div>
+            <div class="th">Количество</div>
+            <div class="th">Итого</div>
+            <div class="th">&nbsp;</div>
+          </div>
+          <% current_cart.cart_items.each do |cart_item| %>
+            <div class="tr item">
+              <div class="td td1">
+                <figure>
+                  <%= link_to cart_item.item do %>
+                    <%= image_tag cart_item.item.main_image.thumb_square %>
+                  <% end %>
+                </figure>
+              </div>
+              <div class="td td2">
+                <div class="title">
+                  <%= link_to cart_item.item.title, cart_item.item %>
                 </div>
               </div>
-            <% end %>
-          </div>
+              <div class="td td3 hidden-tablet"><div class="price"><%= humanized_money cart_item.price %> руб.</div></div>
+              <div class="td td4">
+                <div class="count">
+                  <a class="minus hidden-tablet" href="#"></a>
+                  <input type="text" value="<%= cart_item.quantity %>" />
+                  <a class="plus hidden-tablet" href="#"></a>
+                </div>
+              </div>
+              <div class="td td5"><div class="price"><%= humanized_money cart_item.total_price %> руб.</div></div>
+              <div class="td td6">
+                <%= link_to '', remove_from_cart_path(cart_item.item), method: :delete, remote: true, class: 'delete hidden-tablet' %>
+                <%= link_to 'Удалить', remove_from_cart_path(cart_item.item), method: :delete, remote: true, class: 'btn btn-grn hidden visible-tablet' %>
+              </div>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>
-    <div class="sum">
-      <div class="container globalwidth">
-        <span>Итого <%= current_cart.total_quantity %> <%= Russian.p(current_cart.total_quantity, 'товар', 'товара', 'товаров') %> на сумму <b><%= humanized_money current_cart.total_price %> руб.</b></span>
-      </div>
+  </div>
+  <div class="sum">
+    <div class="container globalwidth">
+      <span>Итого <%= current_cart.total_quantity %> <%= Russian.p(current_cart.total_quantity, 'товар', 'товара', 'товаров') %> на сумму <b><span id="order-items-price"><%= humanized_money current_cart.total_price %></span> руб.</b></span>
     </div>
+  </div>
+  <%= form_for @order do |f| %>
     <div class="case-row case-cart-delivery">
       <div class="container globalwidth">
         <div class="wrapper">
@@ -59,12 +60,12 @@
         <div class="switcher-wrap">
           <div class="switcher table">
             <div class="switcher-cnt tr">
-              <% @shipping_methods.each_with_index do |shipping_method, index| %>
-                <label class="td<%= ' current' if index == 0 %>">
+              <% @shipping_methods.each do |shipping_method| %>
+                <label class="td<%= ' current' if @order.shipping_method_id == shipping_method.id %>">
                   <i class="icon icon-<%= shipping_method_icon(shipping_method) %>"></i>
                   <span class="title"><%= shipping_method.title %></span>
                   <span class="price"><%= humanized_money shipping_method.calculate_price(city_id: 1) %> руб.</span>
-                  <input class="hidden" type="radio" name="shipping_method_id" value="<%= shipping_method.id %>" checked="checked" />
+                  <%= f.radio_button :shipping_method_id, shipping_method.id, class: 'hidden' %>
                 </label>
               <% end %>
             </div>
@@ -77,39 +78,37 @@
         <div class="wrapper">
           <h2 class="center">Укажите адрес доставки<br />и контактные данные</h2>
           <div class="forms">
-            <form method="post" action="">
-              <div class="field">
-                <div class="table">
-                  <div class="tr">
-                    <div class="td td1">
-                      <div class="chosen">
-                        <%= select_tag :city, options_for_select(@cities.map { |c| c.name }), class: 'chosen-select' %>
-                      </div>
+            <div class="field">
+              <div class="table">
+                <div class="tr">
+                  <div class="td td1<%= ' error' if @order.errors['city'].any? %>">
+                    <div class="chosen">
+                      <%= f.select :city, order_city_options_for_select(@cities, @order.city, shipping_methods: @shipping_methods), {}, class: 'chosen-select' %>
                     </div>
-                    <div class="td td2"><input type="text" placeholder="Индекс" /></div>
                   </div>
+                  <div class="td td2<%= ' error' if @order.errors['zipcode'].any? %>"><%= f.text_field :zipcode, placeholder: 'Индекс' %></div>
                 </div>
               </div>
-              <div class="field"><input type="text" placeholder="Адрес" /></div>
-              <div class="field"><input type="text" placeholder="Имя" /></div>
-              <div class="field">
-                <div class="table">
-                  <div class="tr">
-                    <div class="td td1"><input type="text" placeholder="Телефон" /></div>
-                    <div class="td td2"><input type="text" placeholder="Эл. почта" /></div>
-                  </div>
+            </div>
+            <div class="field<%= ' error' if @order.errors['address'].any? %>"><%= f.text_field :address, placeholder: 'Адрес' %></div>
+            <div class="field<%= ' error' if @order.errors['name'].any? %>"><%= f.text_field :name, placeholder: 'Имя' %></div>
+            <div class="field">
+              <div class="table">
+                <div class="tr">
+                  <div class="td td1<%= ' error' if @order.errors['phone'].any? %>"><%= f.text_field :phone, placeholder: 'Телефон' %></div>
+                  <div class="td td2<%= ' error' if @order.errors['email'].any? %>"><%= f.text_field :email, placeholder: 'Эл. почта' %></div>
                 </div>
               </div>
-              <div class="field"><textarea rows="" cols="" placeholder="Комментарий"></textarea></div>
-              <div class="field"><input type="text" placeholder="Подарочная карта или купон" /></div>
-            </form>
+            </div>
+            <div class="field"><%= f.text_area :comment, placeholder: 'Комментарий' %></div>
+            <div class="field"><%= text_field_tag :discount_code, nil, placeholder: 'Подарочная карта или купон' %></div>
           </div>
         </div>
       </div>
     </div>
     <div class="sum">
       <div class="container globalwidth">
-        <span>Итого с доставкой <b>4 300 руб.</b></span>
+        <span>Итого с доставкой <b><span id="order-total-price"><%= humanized_money @order.total_price %></span> руб.</b></span>
       </div>
     </div>
     <div class="case-row case-cart-payment">
@@ -120,11 +119,11 @@
         <div class="switcher-wrap">
           <div class="switcher table">
             <div class="switcher-cnt tr">
-              <% @payment_methods.each_with_index do |payment_method, index| %>
-                <label class="td<%= ' current' if index == 0 %>">
+              <% @payment_methods.each do |payment_method| %>
+                <label class="td<%= ' current' if @order.payment_method_id == payment_method.id %>">
                   <i class="icon icon-<%= payment_method_icon(payment_method) %>"></i>
                   <span class="title"><%= payment_method.title %></span>
-                  <input class="hidden" type="radio" name="payment_method_id" value="<%= payment_method.id %>" checked="checked" />
+                  <%= f.radio_button :payment_method_id, payment_method.id, class: 'hidden' %>
                 </label>
               <% end %>
             </div>
@@ -135,5 +134,5 @@
         </div>
       </div>
     </div>
-  </form>
+  <% end %>
 </section>

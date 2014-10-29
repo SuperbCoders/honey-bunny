@@ -1,0 +1,89 @@
+section#content
+  section.main.padder
+    .clearfix
+      h4
+        i.icon-list
+        |  Заказы
+    .row
+      .col-lg-3
+        .list-group.m-b-small
+          = link_to admin_orders_path(workflow_state: 'new'), class: "list-group-item#{' bg-lighter' if params[:workflow_state] == 'new'}" do
+            i.icon-chevron-right
+            span.badge= Order.with_new_state.count
+            i.icon-bell
+            | Новые
+          = link_to admin_orders_path(workflow_state: 'shipped'), class: "list-group-item#{' bg-lighter' if params[:workflow_state] == 'shipped'}" do
+            i.icon-chevron-right
+            span.badge= Order.with_shipped_state.count
+            i.icon-truck
+            | Отправленные
+          = link_to admin_orders_path(workflow_state: 'delivered'), class: "list-group-item#{' bg-lighter' if params[:workflow_state] == 'delivered'}" do
+            i.icon-chevron-right
+            span.badge= Order.with_delivered_state.count
+            i.icon-ok
+            | Доставленные
+          = link_to admin_orders_path(workflow_state: 'canceled'), class: "list-group-item#{' bg-lighter' if params[:workflow_state] == 'canceled'}" do
+            i.icon-chevron-right
+            span.badge= Order.with_canceled_state.count
+            i.icon-remove
+            | Отмененные
+          = link_to admin_orders_path, class: "list-group-item#{' bg-lighter' unless params[:workflow_state].present?}" do
+            i.icon-chevron-right
+            span.badge= Order.count
+            i.icon-list
+            | Все
+      .col-lg-9
+        section.panel
+          header.panel-heading
+            | Найдено <b>#{@total_count}</b> #{Russian.p(@total_count, 'заказ', 'заказа', 'заказов')} на сумму <b>#{humanized_money @total_price}</b> руб.
+          .panel-body
+          .table-responsive
+            table.table.table-striped.b-t.text-small
+              thead
+                tr
+                  th width='48px' ID
+                  th width='48px'
+                  th width='48px'
+                  th Имя
+                  th Содержимое
+                  th Стоимость, руб.
+                  th Дата
+                  th Статус
+                  th
+              tbody
+                - @orders.each do |order|
+                  tr
+                    td= order.id
+                    th
+                      - icon =  case order.shipping_method.name
+                      - when 'courier' then 'male'
+                      - when 'regions' then 'truck'
+                      - else 'question'
+                      i class="icon-#{icon}" title=order.shipping_method.title
+                    th
+                      - icon =  case order.payment_method.name
+                      - when 'cash' then 'money'
+                      - when 'w1' then 'credit-card'
+                      - else 'question'
+                      i class="icon-#{icon}" title=order.payment_method.title
+                    td= order.name
+                    td
+                      - order.order_items.each do |order_item|
+                        p
+                          = link_to order_item.item.title, order_item.item
+                          br/
+                          | × #{order_item.quantity} = #{humanized_money order_item.total_price} руб.
+                    td #{humanized_money order.items_price} + #{humanized_money order.shipping_price} = #{humanized_money order.total_price}
+                    td=l order.created_at, format: :short
+                    td= t("order.workflow_state.#{order.workflow_state}")
+                    td
+                      .btn-group
+                        a.dropdown-toggle data-toggle="dropdown" href="#"
+                          i.icon-pencil
+                        ul.dropdown-menu.pull-right
+                          - if can? :update, order
+                            li
+                              = link_to edit_admin_order_path(order) do
+                                i.icon-external-link
+                                | Редактировать
+          footer.panel-footer

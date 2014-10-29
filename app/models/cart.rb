@@ -1,5 +1,5 @@
 class Cart < ActiveRecord::Base
-  has_many :cart_items, inverse_of: :cart
+  has_many :cart_items, inverse_of: :cart, dependent: :destroy
 
   validates :token, presence: true
 

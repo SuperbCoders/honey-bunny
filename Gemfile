@@ -60,6 +60,7 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'money-rails'
 gem 'non-stupid-digest-assets'
+gem 'workflow'
 
 gem 'devise'
 # gem 'superb_auth', github: 'SuperbCoders/superb_auth'

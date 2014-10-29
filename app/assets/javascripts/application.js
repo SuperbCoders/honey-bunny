@@ -12,8 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery.migrate.min.js
-//= require jquery.placeholder.min.js
-//= require jquery.magnific-popup.min.js
-//= require jquery.chosen.min.js
-//= require script.js
+//= require jquery.migrate.min
+//= require jquery.placeholder.min
+//= require jquery.magnific-popup.min
+//= require jquery.chosen.min
+//= require jquery.maskedinput
+//= require script
+//= require orders

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141028185141) do
+ActiveRecord::Schema.define(version: 20141029075443) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -123,6 +123,41 @@ ActiveRecord::Schema.define(version: 20141028185141) do
 
   add_index "meta_blocks", ["meta_blockable_id", "meta_blockable_type"], name: "index_meta_blocks_on_meta_blockable_id_and_meta_blockable_type", using: :btree
 
+  create_table "order_items", force: true do |t|
+    t.integer  "order_id"
+    t.integer  "item_id"
+    t.integer  "price_cents",    default: 0,     null: false
+    t.string   "price_currency", default: "RUB", null: false
+    t.integer  "quantity"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "order_items", ["item_id"], name: "index_order_items_on_item_id", using: :btree
+  add_index "order_items", ["order_id", "item_id"], name: "index_order_items_on_order_id_and_item_id", unique: true, using: :btree
+  add_index "order_items", ["order_id"], name: "index_order_items_on_order_id", using: :btree
+
+  create_table "orders", force: true do |t|
+    t.integer  "shipping_method_id"
+    t.integer  "payment_method_id"
+    t.string   "workflow_state"
+    t.boolean  "paid",                    default: false
+    t.string   "city"
+    t.string   "zipcode"
+    t.text     "address"
+    t.string   "name"
+    t.string   "phone"
+    t.string   "email"
+    t.text     "comment"
+    t.integer  "shipping_price_cents",    default: 0,     null: false
+    t.string   "shipping_price_currency", default: "RUB", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "orders", ["payment_method_id"], name: "index_orders_on_payment_method_id", using: :btree
+  add_index "orders", ["shipping_method_id"], name: "index_orders_on_shipping_method_id", using: :btree
+
   create_table "pages", force: true do |t|
     t.string   "slug"
     t.string   "title"
@@ -156,6 +191,7 @@ ActiveRecord::Schema.define(version: 20141028185141) do
     t.string   "extra_charge_currency", default: "RUB", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "priority"
   end
 
   add_index "shipping_methods", ["name"], name: "index_shipping_methods_on_name", unique: true, using: :btree

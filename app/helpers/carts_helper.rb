@@ -5,6 +5,13 @@ module CartsHelper
     @current_cart ||= Cart.find_by(token: session[:cart_token]) || create_cart
   end
 
+  # Destroys old cart and creates a new one
+  # @return [Cart] new cart
+  def reset_current_cart
+    current_cart.destroy
+    @current_cart = create_cart
+  end
+
   private
 
     # Creates new cart and writes its token to cookies
