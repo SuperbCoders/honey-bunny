@@ -1,0 +1,21 @@
+.carousel.slide data-ride="carousel" id="carousel-#{block.id}"
+  /! Indicators
+  ol.carousel-indicators
+    - block.images.each_with_index do |image, index|
+      li.active data-slide-to=index data-target="#carousel-#{block.id}"
+  /! Wrapper for slides
+  .carousel-inner role="listbox"
+    - block.images.each_with_index do |image, index|
+      .item class=('active' if index == 0)
+        = image_tag image.image.full
+
+  /! Controls
+  a.left.carousel-control data-slide="prev" href="#carousel-#{block.id}" role="button" 
+    span.glyphicon.glyphicon-chevron-left
+    span.sr-only Previous
+  a.right.carousel-control data-slide="next" href="#carousel-#{block.id}" role="button"
+    span.glyphicon.glyphicon-chevron-right
+    span.sr-only Next
+
+javascript:
+  $('#carousel-#{block.id}').carousel();

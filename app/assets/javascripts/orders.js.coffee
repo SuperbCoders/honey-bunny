@@ -1,27 +1,4 @@
 $ ->
-  # Callback on city select
-  $('#order_city').on 'change', ->
-    updateShippingMethodSubtitles()
-    updateTotalPrice()
-
-  # Callback on shipping method change
-  $("input[name='order[shipping_method_id]']").on 'change', ->
-    filterCitiesByShippingMethod()
-    updateShippingMethodSubtitles()
-    updateTotalPrice()
-
-  $('.js-order-item a.plus').on 'click', (event) ->
-    event.preventDefault()
-    increment(this)
-    false
-
-  $('.js-order-item a.minus').on 'click', (event) ->
-    event.preventDefault()
-    decrement(this)
-    false
-
-  $('input.js-order-item-quantity').on 'focusout', (event) ->
-    $(this).closest('form').submit()
 
   increment = (button) ->
     $form = $(button).closest('form')
@@ -81,12 +58,38 @@ $ ->
         str[1] = str[1].replace(/(\d{3})/g, '$1 ')
     str.join('.')
 
-  # Full list of cities. It could be filtered by data-shipping-method-* attribute
-  cities = $('#order_city').html()
+  # Initialize scripts on /orders/new page
+  if $('#new_order').length
+    # Full list of cities. It could be filtered by data-shipping-method-* attribute
+    cities = $('#order_city').html()
 
-  # Setup input masks
-  $('#order_phone').mask('+7 (999) 999-99-99')
+    # Setup input masks
+    $('#order_phone').mask('+7 (999) 999-99-99')
 
-  filterCitiesByShippingMethod()
-  updateShippingMethodSubtitles()
-  updateTotalPrice()
+    filterCitiesByShippingMethod()
+    updateShippingMethodSubtitles()
+    updateTotalPrice()
+
+    # Callback on city select
+    $('#order_city').on 'change', ->
+      updateShippingMethodSubtitles()
+      updateTotalPrice()
+
+    # Callback on shipping method change
+    $("input[name='order[shipping_method_id]']").on 'change', ->
+      filterCitiesByShippingMethod()
+      updateShippingMethodSubtitles()
+      updateTotalPrice()
+
+    $('.js-order-item a.plus').on 'click', (event) ->
+      event.preventDefault()
+      increment(this)
+      false
+
+    $('.js-order-item a.minus').on 'click', (event) ->
+      event.preventDefault()
+      decrement(this)
+      false
+
+    $('input.js-order-item-quantity').on 'focusout', (event) ->
+      $(this).closest('form').submit()

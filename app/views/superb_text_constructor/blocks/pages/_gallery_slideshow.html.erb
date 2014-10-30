@@ -1,0 +1,16 @@
+<section class="case-article case-article_media">
+  <div class="container globalwidth">
+    <div class="wrapper"> 
+      <div class="carousel-wrap carousel-responsive">
+        <ul class="items carousel" id="carousel-<%= block.id %>" data-id="<%= block.id %>">
+          <% block.images.each do |image| %>
+            <li class="item"><%= image_tag image.image.full, width: '740', height: '450' %></li>
+          <% end %>
+        </ul>
+        <a class="arr prev" id="carousel-prev-<%= block.id %>" href="#"></a>
+        <a class="arr next" id="carousel-next-<%= block.id %>" href="#"></a>
+        <div class="pagination" id="carousel-pag-<%= block.id %>"></div>
+      </div>
+    </div>
+  </div>
+</section>

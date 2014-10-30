@@ -17,5 +17,8 @@
 //= require jquery.magnific-popup.min
 //= require jquery.chosen.min
 //= require jquery.maskedinput
+//= require jquery.touchSwipe.min
+//= require jquery.carouFredSel
+//= require carousel
 //= require script
 //= require orders
