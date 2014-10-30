@@ -5,6 +5,7 @@ class Admin::ItemsController < Admin::ApplicationController
   # GET /admin/items
   def index
     @items = Item.order(id: :desc)
+    @items = @items.page(params[:page]).per(25)
   end
 
   # GET /admin/items/new

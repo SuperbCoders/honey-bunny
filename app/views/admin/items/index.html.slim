@@ -43,3 +43,5 @@ section#content
                               i.icon-trash
                               | Удалить
         footer.panel-footer
+            .text-right.text-center-sm
+              = paginate @items, theme: 'twitter-bootstrap-3'
