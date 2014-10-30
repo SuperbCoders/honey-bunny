@@ -27,7 +27,13 @@ html lang="en"
             |  
             ul.dropdown-menu
               li= link_to "Выйти", destroy_user_session_path, method: :delete
-      = link_to 'Honey-Bunny', root_path, class: 'navbar-brand'
+      = link_to 'Honey-Bunny', admin_root_path, class: 'navbar-brand'
+      ul.nav.navbar-nav.hidden-xs
+        li
+          .m-t-small
+            a.btn.btn-sm.btn-info href="/"
+              i.icon-external-link
+              | Перейти на сайт
       button.btn.btn-link.pull-left.nav-toggle.visible-xs data-target="body" data-toggle="class:slide-nav slide-nav-left" type="button"
         i.icon-reorder.icon-xlarge.text-default
 
