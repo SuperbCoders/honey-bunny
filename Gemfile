@@ -61,6 +61,8 @@ gem 'mini_magick'
 gem 'money-rails'
 gem 'non-stupid-digest-assets'
 gem 'workflow'
+gem 'kaminari'
+gem 'bootstrap-kaminari-views'
 
 gem 'devise'
 # gem 'superb_auth', github: 'SuperbCoders/superb_auth'

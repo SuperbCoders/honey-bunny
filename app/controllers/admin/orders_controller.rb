@@ -4,10 +4,12 @@ class Admin::OrdersController < Admin::ApplicationController
 
   # GET /admin/orders
   def index
-    @orders = Order.order(created_at: :desc)
+    @orders = Order.includes(:shipping_method, :payment_method, order_items: :item).order(created_at: :desc)
     @orders = @orders.where(workflow_state: params[:workflow_state]) if params[:workflow_state].present?
     @total_price = OrderItem.where(order_id: @orders.pluck(:id)).sum('price_cents * quantity') / 100
     @total_count = @orders.count
+
+    @orders = @orders.page(params[:page]).per(25)
   end
 
   # GET /admin/orders/:id/edit
