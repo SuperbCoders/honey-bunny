@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     resources :shipping_methods, except: [:show, :destroy] do
       resources :shipping_prices, only: [:create, :destroy]
     end
+    resources :shops, except: :show
 
     superb_text_constructor_for :pages
     superb_text_constructor_for :items

@@ -1,0 +1,31 @@
+section.case-shops
+  .container.globalwidth
+    .case-capt.center
+      h2
+        | Наши магазины в 
+        a href="#" Москве
+    .case-cnt
+      .list
+        table
+          - Shop.all.each_with_index do |shop, index|
+            tr class=('hidden' if index >= 3)
+              td.numb= index + 1
+              td.logo.hidden-tablet= image_tag shop.logo.full, width: '65', height: '65'
+              td.info
+                p.ttl= shop.name
+                p.addr= shop.address
+                - if shop.lat.present? && shop.lon.present?
+                  p.map
+                    a.link href="https://www.google.ru/maps/place/#{shop.address}/@#{shop.lat},#{shop.lon},17z/" target="_blank" На карте
+              td.contact.hidden-tablet
+                p.tel
+                  | Тел: #{shop.phone}
+                p.mail= link_to shop.email, "mailto:# shop.email ", class: 'link'
+              td.note
+                .status
+                  i.icon.icon-verify
+                  p.ttl.hidden-tablet Официальный магазин H•B
+      - if Shop.count > 3
+        .btn-wrap
+          a.btn.btn-more.btn-gry-cut.js-shops-more href="#" 
+            span Показать еще #{Shop.count - 3} #{Russian.p(Shop.count - 3, 'магазин', 'магазина', 'магазинов')}

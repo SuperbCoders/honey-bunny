@@ -1,0 +1,46 @@
+section#content
+  section.main.padder
+    .clearfix
+      h4
+        i.icon-building
+        |  Магазины
+    .row
+      section.panel
+        .panel-body
+          - if can? :create, Shop
+            => link_to 'Добавить', new_admin_shop_path, class: 'btn btn-primary btn-sm'
+        .table-responsive
+          table.table.table-striped.b-t.text-small
+            thead
+              tr
+                th width='70px' Логотип
+                th Название
+                th Информация
+                th
+            tbody
+              - @shops.each do |shop|
+                tr
+                  td= image_tag shop.logo.full
+                  td= shop.name
+                  td
+                    p= shop.address
+                    p= shop.phone
+                    p= shop.email
+                    - if shop.lat.present? && shop.lon.present?
+                      p #{shop.lat}, #{shop.lon}
+                  td
+                    .btn-group
+                      a.dropdown-toggle data-toggle="dropdown" href="#"
+                        i.icon-pencil
+                      ul.dropdown-menu.pull-right
+                        - if can? :update, shop
+                          li
+                            = link_to edit_admin_shop_path(shop) do
+                              i.icon-external-link
+                              | Редактировать
+                        - if can? :destroy, shop
+                          li
+                            = link_to admin_shop_path(shop), method: :delete, data: { confirm: t('shared.are_you_sure') } do
+                              i.icon-trash
+                              | Удалить
+        footer.panel-footer

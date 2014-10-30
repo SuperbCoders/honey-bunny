@@ -1,0 +1,19 @@
+.clearfix
+  h4 #{@shop.persisted? ? t('shared.edit') : t('shared.create')} магазин
+
+section class="panel pos-rlt clearfix"
+  header.panel-heading Информация
+  .panel-body.clearfix
+    = simple_form_for [:admin, @shop], wrapper: :horizontal_form, html: { class: 'form-horizontal' } do |f|
+      = f.input :name
+      = f.input :logo, hint: (image_tag @shop.logo.full if @shop.logo?)
+      = f.input :address
+      = f.input :phone
+      = f.input :email
+      = f.input :lat
+      = f.input :lon
+
+      .form-group
+        .col-lg-9.col-lg-offset-3
+          => f.button :submit, @shop.new_record? ? t('shared.create') : t('shared.save'), class: 'btn-primary'
+          => link_to t('shared.back'), admin_shops_path, class: 'btn btn-default'

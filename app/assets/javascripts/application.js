@@ -22,3 +22,4 @@
 //= require carousel
 //= require script
 //= require orders
+//= require shops

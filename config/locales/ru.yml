@@ -44,6 +44,14 @@ ru:
       order_item:
         item: Товар
         quantity: Количество
+      shop:
+        name: Название
+        logo: Логотип
+        address: Адрес
+        phone: Телефон
+        email: E-mail
+        lat: Широта
+        lon: Долгота
   simple_form:
     labels:
       <<: *activerecord_attributes
@@ -73,6 +81,7 @@ ru:
     are_you_sure: Вы уверены?
     created: Изменения сохранены
     saved: Изменения сохранены
+    destroyed: Запись удалена
     not_saved: Изменения не были сохранены
     add: Добавить
     remove: Удалить

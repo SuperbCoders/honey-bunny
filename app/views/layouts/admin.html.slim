@@ -41,7 +41,7 @@ html lang="en"
     /! nav
     nav#nav.nav-primary.hidden-xs.nav-vertical
       ul.nav data-offset-top="50" data-spy="affix"
-        - if can? :manage, Item
+        - if can? :manage, Page
           li class=('active' if params[:controller] == 'admin/pages')
             = link_to admin_pages_path do
               i.icon-file.icon-xlarge
@@ -56,11 +56,20 @@ html lang="en"
             = link_to admin_orders_path(workflow_state: 'new') do
               i.icon-list.icon-xlarge
               span Заказы
+
+        - lists_set = []
         - if can? :manage, ShippingMethod
-          li class=('active' if params[:controller] == 'admin/shipping_methods')
-            = link_to admin_shipping_methods_path do
-              i.icon-truck.icon-xlarge
-              span Способы доставки
+          - lists_set << link_to('Способы доставки', admin_shipping_methods_path)
+        - if can? :manage, Shop
+          - lists_set << link_to('Магазины', admin_shops_path)
+        - if lists_set.any?
+          li.dropdown-submenu class=('active' if ['admin/shipping_methods', 'admin/shops'].include?(params[:controller]))
+            a href="#"
+              i.icon-book.icon-xlarge
+              span Справочники
+            ul.dropdown-menu
+              - lists_set.each do |link|
+                li= link
 
     /! / nav
     section#content
