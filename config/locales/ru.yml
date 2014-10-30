@@ -6,6 +6,14 @@ ru:
       page: Страница
       meta_block: Мета данные
     attributes: &activerecord_attributes
+      user:
+        email: E-mail
+        role: Роль
+        name: Имя
+        avatar: Аватар
+        remove_avatar: Удалить аватару
+        password: Пароль
+        password_confirmation: Подтверждеие пароля
       item:
         title: Название
         main_image: Изображение
@@ -73,6 +81,11 @@ ru:
     add_to_cart: 'Купить'
     not_available: 'Нет на складе :('
 
+  user:
+    role:
+      user: Пользователь
+      admin: Администратор
+
   shared:
     create: Создать
     edit: Редактировать
@@ -81,8 +94,10 @@ ru:
     are_you_sure: Вы уверены?
     created: Изменения сохранены
     saved: Изменения сохранены
-    destroyed: Запись удалена
     not_saved: Изменения не были сохранены
+    destroyed: Запись удалена
+    not_destroyed: Запись не была удалена
     add: Добавить
     remove: Удалить
     close: Закрыть
+    change: Изменить

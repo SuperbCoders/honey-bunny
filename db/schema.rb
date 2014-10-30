@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141030100131) do
+ActiveRecord::Schema.define(version: 20141030192105) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -94,6 +94,20 @@ ActiveRecord::Schema.define(version: 20141030100131) do
   end
 
   add_index "cities", ["name"], name: "index_cities_on_name", unique: true, using: :btree
+
+  create_table "identities", force: true do |t|
+    t.integer  "user_id"
+    t.string   "provider"
+    t.string   "uid"
+    t.text     "data"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "identities", ["provider", "uid"], name: "index_identities_on_provider_and_uid", unique: true, using: :btree
+  add_index "identities", ["provider", "user_id"], name: "index_identities_on_provider_and_user_id", unique: true, using: :btree
+  add_index "identities", ["provider"], name: "index_identities_on_provider", using: :btree
+  add_index "identities", ["user_id"], name: "index_identities_on_user_id", using: :btree
 
   create_table "items", force: true do |t|
     t.string   "title"
@@ -237,6 +251,8 @@ ActiveRecord::Schema.define(version: 20141030100131) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "role"
+    t.string   "name"
+    t.string   "avatar"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

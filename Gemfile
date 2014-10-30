@@ -64,7 +64,10 @@ gem 'workflow'
 gem 'kaminari'
 gem 'bootstrap-kaminari-views'
 
-gem 'devise'
-# gem 'superb_auth', github: 'SuperbCoders/superb_auth'
+gem 'superb_auth', github: 'SuperbCoders/superb_auth'
 gem 'superb_pages', github: 'SuperbCoders/superb_pages'
 gem 'superb_text_constructor', github: 'SuperbCoders/superb_text_constructor'
+
+# OmniAuth strategies
+gem 'omniauth-facebook'
+gem 'omniauth-vkontakte'

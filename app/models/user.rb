@@ -1,10 +1,19 @@
 class User < ActiveRecord::Base
   ROLES = %w(user admin)
 
+  mount_uploader :avatar, UserAvatarUploader
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable,
+         :omniauthable, omniauth_providers: %w(facebook vkontakte)
+  include SuperbAuth::Concerns::Omniauthable
+  include SuperbAuth::Concerns::NonEmailAuthenticable
+
+  oauth_attr :email
+  oauth_attr :name
+  oauth_attr :avatar, assign_to: :remote_avatar_url, if: -> (user) { !user.avatar? }
 
   validates :role, presence: true, inclusion: { in: ROLES }
 
@@ -14,6 +23,11 @@ class User < ActiveRecord::Base
     define_method "#{role}?" do
       self.role == role
     end
+  end
+
+  # @return [String] present name that could be displayed
+  def display_name
+    [name, email, id].select(&:present?).first
   end
 
   private

@@ -20,13 +20,15 @@ html lang="en"
         ul.nav.navbar-nav.navbar-avatar.pull-right
           li.dropdown
             a.dropdown-toggle data-toggle="dropdown" href="#"
-              span.hidden-xs-only = current_user.email
-              / span.thumb-small.avatar.inline
-                = image_tag (current_user.avatar? ? current_user.avatar.thumb.url : "/images/avatar.jpg"), class: 'img-circle'
+              span.hidden-xs-only = current_user.display_name
+              - if current_user.avatar?
+                span.thumb-small.avatar.inline
+                  = image_tag current_user.avatar.medium, class: 'img-circle'
               b.caret.hidden-xs-only
             |  
             ul.dropdown-menu
-              li= link_to "Выйти", destroy_user_session_path, method: :delete
+              li= link_to 'Профиль', edit_admin_user_path(current_user)
+              li= link_to 'Выйти', destroy_user_session_path, method: :delete
       = link_to 'Honey-Bunny', admin_root_path, class: 'navbar-brand'
       ul.nav.navbar-nav.hidden-xs
         li
@@ -58,12 +60,14 @@ html lang="en"
               span Заказы
 
         - lists_set = []
+        - if can? :manage, User
+          - lists_set << link_to('Пользователи', admin_users_path)
         - if can? :manage, ShippingMethod
           - lists_set << link_to('Способы доставки', admin_shipping_methods_path)
         - if can? :manage, Shop
           - lists_set << link_to('Магазины', admin_shops_path)
         - if lists_set.any?
-          li.dropdown-submenu class=('active' if ['admin/shipping_methods', 'admin/shops'].include?(params[:controller]))
+          li.dropdown-submenu class=('active' if ['admin/users', 'admin/shipping_methods', 'admin/shops'].include?(params[:controller]))
             a href="#"
               i.icon-book.icon-xlarge
               span Справочники

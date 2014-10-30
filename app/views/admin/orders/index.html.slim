@@ -54,13 +54,13 @@ section#content
                 - @orders.each do |order|
                   tr
                     td= order.id
-                    th
+                    td
                       - icon =  case order.shipping_method.name
                       - when 'courier' then 'male'
                       - when 'regions' then 'truck'
                       - else 'question'
                       i class="icon-#{icon}" title=order.shipping_method.title
-                    th
+                    td
                       - icon =  case order.payment_method.name
                       - when 'cash' then 'money'
                       - when 'w1' then 'credit-card'

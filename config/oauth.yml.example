@@ -1,0 +1,18 @@
+development: &defaults
+  facebook:
+    app_id: xxxxxxxxxxxxxxxx
+    app_secret: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+  vkontakte:
+    app_id: xxxxxxx
+    app_secret: 'xxxxxxxxxxxxxxxxxxxx'
+
+test:
+  <<: *defaults
+
+staging:
+  facebook:
+    app_id: xxxxxxxxxxxxxxxx
+    app_secret: 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+  vkontakte:
+    app_id: xxxxxxx
+    app_secret: 'xxxxxxxxxxxxxxxxxxxx'

@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root 'welcome#index'
-  devise_for :users
+
+  devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks', sessions: 'sessions' }
+  delete 'identities/:provider' => 'admin/identities#destroy', as: :identity
 
   namespace :admin do
     root 'orders#index', workflow_state: 'new'
@@ -13,6 +15,7 @@ Rails.application.routes.draw do
       resources :shipping_prices, only: [:create, :destroy]
     end
     resources :shops, except: :show
+    resources :users, except: :show
 
     superb_text_constructor_for :pages
     superb_text_constructor_for :items
