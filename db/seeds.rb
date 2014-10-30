@@ -23,7 +23,7 @@ def create_cities
 end
 
 def create_shipping_methods
-  ShippingMethod.where(name: 'courier').first_or_create(title: 'Курьер', rate_type: 'city_rate')
+  ShippingMethod.where(name: 'courier').first_or_create(title: 'Курьер по Москве', rate_type: 'city_rate')
   ShippingMethod.where(name: 'regions').first_or_create(title: 'Почта в регионы', rate_type: 'city_and_fix_rate', rate: 1000)
 end
 

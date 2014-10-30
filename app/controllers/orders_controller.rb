@@ -49,7 +49,7 @@ class OrdersController < ApplicationController
     end
 
     def set_lists
-      @shipping_methods = ShippingMethod.includes(:shipping_prices)
+      @shipping_methods = ShippingMethod.includes(:shipping_prices).order(priority: :asc)
       @payment_methods = PaymentMethod.all
       @cities = City.all
     end
