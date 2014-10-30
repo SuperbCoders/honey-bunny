@@ -27,8 +27,8 @@ $ ->
   updateShippingMethodSubtitles = ->
     $("input[name='order[shipping_method_id]']").each (index, shippingMethod) ->
       price = shippingPriceFor(shippingMethod, currentCity())
-      subtitle = if price is undefined then '-' else "#{price} руб."
-      $(shippingMethod).closest('label').find('span.price').text(subtitle)
+      unless price is undefined
+        $(shippingMethod).closest('label').find('span.price').text("#{humanizedMoney(price)} руб.")
 
   # Updates order total price value as sum of items price and shipping price
   window.updateTotalPrice = ->

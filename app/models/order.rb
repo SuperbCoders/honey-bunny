@@ -52,6 +52,7 @@ class Order < ActiveRecord::Base
   def set_default_values
     self.shipping_method ||= ShippingMethod.find_by(name: 'courier')
     self.payment_method ||= PaymentMethod.find_by(name: 'cash')
+    self.city ||= 'Москва'
     set_default_shipping_price
   end
 
