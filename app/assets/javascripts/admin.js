@@ -16,3 +16,4 @@
 //= require admin/file-input/bootstrap.file-input
 //= require chosen-jquery
 //= require admin/chosen_setup
+//= require admin/modal

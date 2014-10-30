@@ -76,8 +76,15 @@ section class="panel pos-rlt clearfix"
           td= humanized_money order_item.price
           td= humanized_money order_item.total_price
           td
+            = link_to edit_admin_order_order_item_path(@order, order_item), data: { toggle: "modal", target: "#myModal" } do
+              i.icon-edit
+            = link_to admin_order_order_item_path(@order, order_item), method: :delete, data: { confirm: t('shared.are_you_sure') } do
+              i.icon-trash
       tr
         td colspan='4'
         td.text-right Итого
         td= humanized_money @order.items_price
         td
+    .text-right
+      = link_to new_admin_order_order_item_path(@order), data: { toggle: "modal", target: "#myModal" }, class: 'btn btn-success' do
+        i.icon-plus

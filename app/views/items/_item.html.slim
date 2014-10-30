@@ -11,7 +11,7 @@ li.item
         .size.hidden-tablet — #{item.volume} мл
       .price #{humanized_money item.price} руб.
       .btn-wrap.hidden.visible-tablet
-        = link_to 'Купить', add_to_cart_path(item), method: :post, remote: true, class: 'btn btn-orn'
+        = link_to_add_to_cart item
         p.more
           = link_to item do
             | Подробнее

@@ -3,7 +3,7 @@ class CartsController < ApplicationController
 
   # POST /carts/items/:item_id
   def add
-    @cart_item = current_cart.set(@item, quantity)
+    @cart_item = current_cart.set(@item, quantity) || current_cart.cart_items.where(item_id: @item.id).first_or_initialize
     current_cart.reload
   end
 

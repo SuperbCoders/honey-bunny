@@ -6,7 +6,9 @@ Rails.application.routes.draw do
     root 'orders#index', workflow_state: 'new'
     resources :pages, except: :show
     resources :items, except: :show
-    resources :orders, except: [:show, :destroy]
+    resources :orders, except: [:show, :destroy] do
+      resources :order_items, except: [:index, :show]
+    end
     resources :shipping_methods, except: [:show, :destroy] do
       resources :shipping_prices, only: [:create, :destroy]
     end

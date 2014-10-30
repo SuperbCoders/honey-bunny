@@ -1,9 +1,14 @@
-$('#cart-desktop span.count').text('<%= current_cart.total_quantity %>');
-$('#cart-tablet').text('<%= current_cart.total_quantity %>');
+<% if @cart_item.quantity == @quantity %>
+  $('#cart-desktop span.count').text('<%= current_cart.total_quantity %>');
+  $('#cart-tablet').text('<%= current_cart.total_quantity %>');
 
-if ($('section.case-cart').length) {
-  $('#cart-item-<%= @cart_item.item.id %> .js-cart-item-total-price').text('<%= humanized_money @cart_item.total_price %>');
-  $('#order-items-price').text('<%= humanized_money current_cart.total_price %>');
-  $('#cart-total-quantity').text('<%= "#{current_cart.total_quantity} #{Russian.p(current_cart.total_quantity, 'товар', 'товара', 'товаров')}" %>');
-  updateTotalPrice();
-}
+  if ($('section.case-cart').length) {
+    $('#cart-item-<%= @cart_item.item.id %> .js-cart-item-total-price').text('<%= humanized_money @cart_item.total_price %>');
+    $('#order-items-price').text('<%= humanized_money current_cart.total_price %>');
+    $('#cart-total-quantity').text('<%= "#{current_cart.total_quantity} #{Russian.p(current_cart.total_quantity, 'товар', 'товара', 'товаров')}" %>');
+    updateTotalPrice();
+  }
+<% else %>
+  alert("Товара на складе меньше, чем вы хотите купить. Попробуйте заказать меньшее количество.")
+  $('#cart-item-<%= @cart_item.item.id %> input.js-order-item-quantity').val('<%= @cart_item.quantity || 0 %>');
+<% end %>

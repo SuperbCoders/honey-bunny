@@ -13,6 +13,8 @@ ru:
         volume: 'Объем, мл'
         short_description: Краткое описание
         price: 'Цена, руб.'
+        quantity: Количество
+        negative_quantity_allowed: Разрешать продажи при нуле?
       page:
         slug: URL
         title: Заголовок
@@ -39,6 +41,9 @@ ru:
         shipping_price: Стоимость доставки
         payment_method: Способ оплаты
         paid: Оплачено?
+      order_item:
+        item: Товар
+        quantity: Количество
   simple_form:
     labels:
       <<: *activerecord_attributes
@@ -56,6 +61,10 @@ ru:
       delivered: Доставлен
       canceled: Отменен
 
+  cart:
+    add_to_cart: 'Купить'
+    not_available: 'Нет на складе :('
+
   shared:
     create: Создать
     edit: Редактировать
@@ -64,5 +73,7 @@ ru:
     are_you_sure: Вы уверены?
     created: Изменения сохранены
     saved: Изменения сохранены
+    not_saved: Изменения не были сохранены
     add: Добавить
     remove: Удалить
+    close: Закрыть

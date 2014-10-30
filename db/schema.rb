@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141029075443) do
+ActiveRecord::Schema.define(version: 20141030063305) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -103,8 +103,10 @@ ActiveRecord::Schema.define(version: 20141029075443) do
     t.text     "short_description"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "price_cents",       default: 0,     null: false
-    t.string   "price_currency",    default: "RUB", null: false
+    t.integer  "price_cents",               default: 0,     null: false
+    t.string   "price_currency",            default: "RUB", null: false
+    t.integer  "quantity",                  default: 0
+    t.boolean  "negative_quantity_allowed", default: false
   end
 
   create_table "meta_blocks", force: true do |t|

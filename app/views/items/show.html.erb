@@ -17,7 +17,7 @@
           <p><%= @item.short_description %></p>
         </div>
         <span class="price"><%= humanized_money @item.price %> руб.</span>
-        <%= link_to 'Купить', add_to_cart_path(@item), method: :post, remote: true, class: 'btn btn-orn' %>
+        <%= link_to_add_to_cart @item %>
       </div>
     </div>
   </div>

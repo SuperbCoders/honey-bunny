@@ -27,6 +27,7 @@ class Cart < ActiveRecord::Base
   # @return [nil] if item was not added to the cart
   def set(item, quantity)
     quantity = 0 if !quantity.is_a?(Integer) || quantity < 0
+    return nil unless can_set_item?(item, quantity)
     cart_item = cart_items.where(item_id: item.id).first_or_initialize(cart: self)
     cart_item.quantity = quantity
     quantity > 0 ? cart_item.save! : remove(item)
@@ -39,6 +40,13 @@ class Cart < ActiveRecord::Base
   # @return [nil] if nothing was removed
   def remove(item)
     cart_items.where(item_id: item.id).first.try(:destroy)
+  end
+
+  # @param item [Item] item that should be added
+  # @param quantity [Integer] new quantity of the item
+  # @return [Boolean] whether item could be added to cart in desired quantity
+  def can_set_item?(item, quantity)
+    item.could_be_ordered?(quantity)
   end
 
   private

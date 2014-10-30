@@ -4,7 +4,7 @@ class Admin::ItemsController < Admin::ApplicationController
 
   # GET /admin/items
   def index
-    @items = Item.all
+    @items = Item.order(id: :desc)
   end
 
   # GET /admin/items/new
@@ -44,7 +44,7 @@ class Admin::ItemsController < Admin::ApplicationController
   private
 
     def item_params
-      params.require(:item).permit(:title, :main_image, :motto, :volume, :short_description, :price)
+      params.require(:item).permit(:title, :main_image, :motto, :volume, :short_description, :price, :quantity, :negative_quantity_allowed)
     end
 
     def set_item

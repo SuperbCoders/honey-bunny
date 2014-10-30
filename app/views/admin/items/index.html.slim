@@ -15,12 +15,14 @@ section#content
               tr
                 th width='64px' ID
                 th Название
+                th Количество, шт.
                 th
             tbody
               - @items.each do |item|
                 tr
                   td= item.id
                   td= item.title
+                  td= item.quantity
                   td
                     .btn-group
                       a.dropdown-toggle data-toggle="dropdown" href="#"

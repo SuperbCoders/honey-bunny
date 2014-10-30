@@ -62,6 +62,11 @@ class Order < ActiveRecord::Base
     end
   end
 
+  # @return [Boolean] whether its items could be edited
+  def editable?
+    new?
+  end
+
   private
 
     # Validate that selected shipping method is available for this order

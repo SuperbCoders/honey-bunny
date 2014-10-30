@@ -1,0 +1,8 @@
+.modal-dialog
+  .modal-content
+    .modal-header
+      button.close data-dismiss="modal" type="button" 
+        span aria-hidden="true"  &times;
+        span.sr-only= t('shared.close')
+      h4#myModalLabel.modal-title Добавить строку заказа
+    = render 'form'
