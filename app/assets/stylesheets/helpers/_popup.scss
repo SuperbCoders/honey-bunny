@@ -677,8 +677,8 @@ button {
 		@include btn(300px, 64px);
 		font-size: 19px;
 		@include respond-to(medium-screen) {
-			@include btn(350px, 70px);
-			font-size: 32px;
+			@include btn(176px, 36px);
+			font-size: 16px;
 		}
 	}
 }

@@ -2,8 +2,8 @@
 	.wrapper {
 		padding: 80px;
 		text-align: center;
-		@include respond-to(medium-screen) {
-			padding: 120px 60px;
+		@include respond-to(small-screen) {
+			padding: 60px 30px;
 		}
 	}
 	.logo {
@@ -14,11 +14,8 @@
 		margin-bottom: 100px;
 		text-decoration: none;
 		@include retina-sprite(logo-tnx);
-		@include respond-to(medium-screen) {
-			width: 240px;
-			height: 240px;
-			margin-bottom: 120px;
-			@include retina-sprite(logo-mob-tnx);
+		@include respond-to(small-screen) {
+			margin-bottom: 60px;
 		}
 	}
 	.capt {
@@ -26,17 +23,16 @@
 		font-size: 75px;
 		font-weight: bold;
 		line-height: 1.2;
-		@include respond-to(medium-screen) {
-			margin-bottom: 60px;
-			font-size: 65px;
+		@include respond-to(small-screen) {
+			margin-bottom: 30px;
+			font-size: 32px;
 		}
 	}
 	.return {
 		margin-bottom: 120px;
 		font-size: 16px;
-		@include respond-to(medium-screen) {
-			margin-bottom: 260px;
-			font-size: 40px;
+		@include respond-to(small-screen) {
+			font-size: 20px;
 		}
 	}
 	.copyright {

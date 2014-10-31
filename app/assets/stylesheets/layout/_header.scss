@@ -11,9 +11,12 @@
 	padding-top: 40px;
 	position: relative;
 	@include respond-to(medium-screen) {
-		height: 142px;
+		height: 110px;
 		padding-top: 0;
 		background: #fff;
+	}
+	@include respond-to(small-screen) {
+		height: 80px;
 	}
 	.logo {
 		display: block;
@@ -21,7 +24,7 @@
 		height: 90px;
 		text-decoration: none;
 		.page-header-center & {
-			margin-left: -48px;
+			margin-left: -45px;
 			position: absolute;
 			top: 40px;
 			left: 50%;
@@ -30,27 +33,32 @@
 			float: left;
 		}
 		@include respond-to(medium-screen) {
-			width: 110px!important;
-			height: 110px!important;
-			margin: 0 0 0 -55px!important;
+			margin-left: -45px;
 			float: none!important;
 			position: absolute;
-			top: 16px!important;
+			top: 10px!important;
 			left: 50%;
+		}
+		@include respond-to(small-screen) {
+			width: 60px;
+			height: 60px;
+			margin-left: -30px!important;
 		}
 	}
 	.logo-fn {
 		.darkstyle & {
 			@include retina-sprite(logo-fn_w);
-			@include respond-to(medium-screen) {@include retina-sprite(logo-mob-fn_b);}
+			@include respond-to(medium-screen) {@include retina-sprite(logo-fn_b);}
+			@include respond-to(small-screen) {@include retina-sprite(logo-mob-fn_b);}
 		}
 	}
 	.logo-min {
 		@include retina-sprite(logo-min_b);
-		@include respond-to(medium-screen) {@include retina-sprite(logo-mob-min_b);}
+		@include respond-to(small-screen) {@include retina-sprite(logo-mob-min_b);}
 		.darkstyle & {
 			@include retina-sprite(logo-min_w);
-			@include respond-to(medium-screen) {@include retina-sprite(logo-mob-min_b);}
+			@include respond-to(medium-screen) {@include retina-sprite(logo-min_b);}
+			@include respond-to(small-screen) {@include retina-sprite(logo-mob-min_b);}
 		}
 	}
 	.navbar {
@@ -59,6 +67,10 @@
 			line-height: 90px;
 			overflow: hidden;
 			.page-header-center & {
+				margin-right: -70px;
+				@include respond-to(middle-screen) {
+					margin-right: 0;
+				}
 				.item3 {
 					padding-right: 96px;
 					margin-right: 40px;
@@ -124,17 +136,17 @@
 				display: block!important;
 			}
 			.navbar-cnt {
-				padding: 200px 0 60px 75px;
+				padding: 100px 0 100px 35px;
 				position: relative;
 			}
 			.items {
 				height: auto!important;
-				padding-bottom: 40px;
+				padding-bottom: 20px;
 				float: none!important;
 			}
 			.item {
-				margin: 0 0 50px 0!important;
-				font-size: 60px!important;
+				margin: 0 0 25px 0!important;
+				font-size: 30px!important;
 				font-weight: bold;
 				line-height: 1!important;
 				float: none!important;
@@ -145,78 +157,90 @@
 			}
 			.close {
 				display: block;
-				width: 45px;
-				height: 45px;
+				width: 23px;
+				height: 23px;
 				position: absolute;
-				top: 50px;
-				left: 40px;
+				top: 25px;
+				left: 20px;
 				@include retina-sprite(btn-close);
 			}
 		}
 	}
 	.btn-navbar {
 		display: block;
-		width: 54px;
-		height: 35px;
-		padding: 10px 10px 0;
-		margin: 48px 0 0 38px;
+		width: 28px;
+		height: 25px;
+		padding: 5px 5px 0;
+		margin: 40px 0 0 35px;
 		float: left;
 		text-decoration: none;
+		@include respond-to(small-screen) {
+			margin: 25px 0 0 20px;
+		}
 		.icon-bar {
 			display: block;
-			width: 54px;
-			height: 5px;
-			margin-bottom: 10px;
+			width: 28px;
+			height: 3px;
+			margin-bottom: 5px;
 			background: #4a4a4a;
 		}
 	}
 	.store {
 		display: block;
-		width: 142px;
-		height: 142px;
+		width: 110px;
+		height: 110px;
 		float: right;
 		color: #fff;
-		font-size: 40px;
+		font-size: 30px;
 		font-weight: bold;
-		line-height: 142px;
+		line-height: 110px;
 		text-align: center;
 		text-decoration: none;
 		background: #64d095;
+		@include respond-to(small-screen) {
+			width: 80px;
+			height: 80px;
+			font-size: 22px;
+			line-height: 80px;
+		}
 	}
 }
 
 .page-header-bottom {
 	padding: 100px 0 200px;
 	@include respond-to(medium-screen) {
-		padding: 240px 0 240px;
+		padding: 120px 0;
 	}
 	.main & {
 		padding: 80px 0 110px;
 		@include respond-to(medium-screen) {
-			padding: 140px 0 140px;
+			padding: 70px 0;
 		}
 	}
 	.caption {
 		padding: 0 125px;
 		letter-spacing: 0.1em;
 		@include respond-to(medium-screen) {
-			padding: 0 40px!important;
+			padding: 0 60px;
 			text-align: center;
+		}
+		@include respond-to(small-screen) {
+			padding: 0 30px!important;
 		}
 		.main & {
 			padding: 0 70px;
 			margin-bottom: 70px;
+			@include respond-to(medium-screen) {
+				margin: 0;
+			}
+
 			h1 {
 				font-size: 70px;
 				letter-spacing: 3px;
-			}
-			@include respond-to(medium-screen) {
-				margin: 0;
-				h1 {
-					font-size: 90px;
+				@include respond-to(small-screen) {
+					font-size: 45px;
 				}
 			}
-			
 		}
 	}
 	.btn {

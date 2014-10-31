@@ -10,7 +10,7 @@ section.case-shops
           - Shop.all.each_with_index do |shop, index|
             tr class=('hidden' if index >= 3)
               td.numb= index + 1
-              td.logo.hidden-tablet= image_tag shop.logo.full, width: '65', height: '65'
+              td.logo.hidden-phone= image_tag shop.logo.full, width: '65', height: '65'
               td.info
                 p.ttl= shop.name
                 p.addr= shop.address
@@ -24,7 +24,8 @@ section.case-shops
               td.note
                 .status
                   i.icon.icon-verify
-                  p.ttl.hidden-tablet Официальный магазин H•B
+                  i.icon= image_tag 'label-verify.png'
+                  p.ttl.hidden-phone Официальный магазин H•B
       - if Shop.count > 3
         .btn-wrap
           a.btn.btn-more.btn-gry-cut.js-shops-more href="#" 

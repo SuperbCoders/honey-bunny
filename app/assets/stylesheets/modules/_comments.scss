@@ -1,47 +1,58 @@
 .case-comments {
 	padding: 70px 0;
+	@include respond-to(small-screen) {
+		padding: 30px 0;
+	}
 	.case-capt {
 		margin-bottom: 35px;
-		@include respond-to(medium-screen) {
-			margin-bottom: 50px;
+		@include respond-to(small-screen) {
+			margin-bottom: 20px;
 		}
 		.btn {
-			@include btn(150px, 36px);
-			font-size: 14px;
-			@include respond-to(medium-screen) {
-				@include btn(350px, 70px);
-				font-size: 32px;
-			}
+			@include btn(176px, 36px);
+			font-size: 16px;
 		}
 	}
 	.item {
 		margin-bottom: 50px;
 		overflow: hidden;
 		@include respond-to(medium-screen) {
-			padding: 0 60px;
+			padding: 0 30px;
+		}
+		@include respond-to(small-screen) {
+			margin-bottom: 30px;
 		}
 		.preview {
-			width: 122px;
 			padding-top: 5px;
 			margin-right: 40px;
 			float: left;
 			@include respond-to(medium-screen) {
-				width: auto;
-				margin: 0 0 40px 0;
+				margin-right: 30px;
+			}
+			@include respond-to(small-screen) {
+				margin: 0 0 20px 0;
 				float: none;
 				overflow: hidden;
 			}
 			figure {
 				width: 122px;
 				@include respond-to(medium-screen) {
-					margin-right: 40px;
+					width: 61px;
+					height: 61px;
+				}
+				@include respond-to(small-screen) {
+					margin-right: 20px;
 					float: left;
+				}
+				img {
+					width: 100%;
+					height: 100%;
 				}
 			}
 		}
 		.rate {
-			width: 220px;
 			padding-top: 8px;
+			margin-left: 30px;
 			float: right;
 			.value {
 				font-size: 11px;
@@ -77,8 +88,8 @@
 				margin-bottom: 10px;
 				font-size: 20px;
 				line-height: 1.5;
-				@include respond-to(medium-screen) {
-					font-size: 30px;
+				@include respond-to(small-screen) {
+					font-size: 16px;
 				}
 			}
 		}
@@ -86,9 +97,9 @@
 			font-size: 16px;
 			line-height: 1.5;
 			overflow: hidden;
-			@include respond-to(medium-screen) {
-				padding-top: 10px;
-				font-size: 28px;
+			@include respond-to(small-screen) {
+				padding-top: 5px;
+				font-size: 14px;
 			}
 			.name {
 				font-weight: bold;
@@ -98,25 +109,25 @@
 			}
 		}
 		.chart {
-			padding-top: 30px;
+			padding-top: 15px;
 			table {
 				width: 100%;
 			}
 			td {
 				width: 50%;
-				padding-bottom: 20px;
+				padding-bottom: 10px;
 			}
 			.ttl {
 				margin-right: 10px;
-				font-size: 24px;
+				font-size: 12px;
 				font-weight: bold;
 				text-transform: uppercase;
 			}
 			.detect {
-				height: 12px;
+				height: 6px;
 				background: #eaeaea;
 				.pct {
-					height: 12px;
+					height: 6px;
 					background: #ffbc00;
 				}
 			}
@@ -128,8 +139,8 @@
 	}
 	.btn-refresh {
 		display: block;
-		width: 90px;
-		height: 65px;
+		width: 45px;
+		height: 32px;
 		margin: 0 auto;
 		@include retina-sprite(btn-refresh);
 	}

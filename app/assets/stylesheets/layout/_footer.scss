@@ -1,22 +1,22 @@
 .page-footer {
-	padding: 54px 0 30px;
+	padding: 54px 0 45px;
 	background: #212424;
-	@include respond-to(medium-screen) {
-		padding: 45px 0 90px;
+	@include respond-to(small-screen) {
+		padding-top: 22px;
 	}
 	.contact {
 		margin-bottom: 25px;
-		@include respond-to(medium-screen) {
+		@include respond-to(small-screen) {
 			margin: 0;
 			position: relative;
 		}
 		.items {
 			height: 84px;
 			text-align: center;
-			@include respond-to(medium-screen) {
+			@include respond-to(small-screen) {
 				height: 0;
-				.item1 {left: 70px;}
-				.item2 {right: 70px;}
+				.item1 {left: 60px;}
+				.item2 {right: 60px;}
 			}
 			@include respond-to(large-screen) {
 				.item1 a:hover {background: #4fcf92;}
@@ -32,35 +32,28 @@
 			width: 64px;
 			height: 64px;
 			padding: 10px; 
+			@include respond-to(small-screen) {
+				width: 34px;
+				height: 34px;
+				padding: 0; 
+				position: absolute;
+				top: 30px;
+			}
 			a {
 				display: block;
 				width: 34px;
 				height: 34px;
 				padding: 15px;
+				@include respond-to(small-screen) {
+					padding: 0;
+				}
 			}
 			.icon {
 				display: inline-block;
 				width: 34px;
 				height: 34px;
 			}
-			@include respond-to(medium-screen) {
-				width: 46px;
-				height: 46px;
-				padding: 0; 
-				position: absolute;
-				top: 70px;
-				a {
-					width: 46px;
-					height: 46px;
-					padding: 0;
-				}
-				.icon {
-					width: 46px;
-					height: 46px;
-				}
-				.icon-mail {@include retina-sprite(soc_icon-mail_b);}
-				.icon-tel {@include retina-sprite(soc_icon-tel_b);}
-			}
+			
 		}
 	}
 	.logo {
@@ -71,18 +64,18 @@
 		margin-bottom: 45px;
 		text-decoration: none;
 		@include retina-sprite(logo-fn_w);
-		@include respond-to(medium-screen) {
-			width: 136px;
-			height: 136px;
-			margin-bottom: 35px;
-			@include retina-sprite(logo-mob-fs_w);
+		@include respond-to(small-screen) {
+			width: 68px;
+			height: 68px;
+			margin-bottom: 16px;
+			@include retina-sprite(logo-ft_w);
 		}
 	}
 	.copyright {
 		font-size: 13px;
 		text-align: center;
-		@include respond-to(medium-screen) {
-			font-size: 20px;
+		@include respond-to(small-screen) {
+			font-size: 11px;
 		}
 	}
 }

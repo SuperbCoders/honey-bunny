@@ -4,6 +4,9 @@
 		@include respond-to(medium-screen) {
 			padding: 60px;
 		}
+		@include respond-to(small-screen) {
+			padding: 30px;
+		}
 	}
 	h2 {
 		margin-bottom: 20px;

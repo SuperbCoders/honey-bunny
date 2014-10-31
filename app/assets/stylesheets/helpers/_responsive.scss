@@ -29,3 +29,10 @@ $break-large: 960px;
 	@include respond-to(medium-screen) {display: block!important;}
 }
 
+.hidden-phone {
+  @include respond-to(small-screen) {display: none!important;}
+}
+
+.visible-phone {
+  @include respond-to(small-screen) {display: block!important;}
+}

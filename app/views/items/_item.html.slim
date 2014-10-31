@@ -4,11 +4,11 @@ li.item
       = link_to item do
         = image_tag item.main_image.thumb, height: '420', width: '200'
     .info
-      .descript.hidden-tablet= item.motto
+      .descript.hidden-phone= item.motto
       .ttl
         = link_to item.title, item
       - if item.volume.to_i > 0
-        .size.hidden-tablet — #{item.volume} мл
+        .size.hidden-phone — #{item.volume} мл
       .price #{humanized_money item.price} руб.
       .btn-wrap.hidden.visible-tablet
         = link_to_add_to_cart item

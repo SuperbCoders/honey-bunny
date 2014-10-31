@@ -3,6 +3,7 @@ html, body {
 }
 
 .page {
+	min-width: 320px;
 	min-height: 100%;
 	overflow: hidden;
 	.navbar-wrap & {
@@ -13,7 +14,6 @@ html, body {
 }
 
 .globalwidth {
-	min-width: 320px;
 	max-width: 960px;
 	margin: 0 auto;
 }
@@ -55,11 +55,6 @@ html, body {
 		margin: 0 5px;
 		background: #dbdbdb;
 		border-radius: 50%;
-		@include respond-to(medium-screen) {
-			width: 16px;
-			height: 16px;
-			margin: 0 8px;
-		}
 		&.selected {
 			background: #64d196;
 		}

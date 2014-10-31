@@ -8,13 +8,24 @@
 			padding-left: 60px;
 			padding-right: 60px;
 		}
+		@include respond-to(small-screen) {
+			padding-left: 30px;
+			padding-right: 30px;
+			margin-top: 30px;
+			margin-bottom: 30px;
+		}
 	}
 	.cols {
 		padding-left: 0;
 		padding-right: 0;
 		overflow: hidden;
 		@include respond-to(medium-screen) {
-			padding: 60px;
+			padding-left: 60px;
+			padding-right: 60px;
+		}
+		@include respond-to(small-screen) {
+			padding-left: 30px;
+			padding-right: 30px;
 		}
 		.column1 {
 			width: 200px;
@@ -36,6 +47,10 @@
 		padding-top: 60px;
 		padding-bottom: 60px;
 		margin: 0;
+		@include respond-to(small-screen) {
+			padding-top: 30px;
+			padding-bottom: 30px;
+		}
 	}
 }
 
@@ -79,13 +94,16 @@
 		}
 		.field {
 			margin-bottom: 40px;
+			@include respond-to(small-screen) {
+				margin-bottom: 20px;
+			}
 		}
 		.btn {
 			@include btn(200px, 50px);
 			font-size: 20px;
-			@include respond-to(medium-screen) {
-				@include btn(280px, 70px);
-				font-size: 32px;
+			@include respond-to(small-screen) {
+				@include btn(140px, 36px);
+				font-size: 16px;
 			}
 		}
 	}
@@ -95,9 +113,9 @@
 	.btn {
 		@include btn(228px, 48px);
 		font-size: 20px;
-		@include respond-to(medium-screen) {
-			@include btn(350px, 70px);
-			font-size: 32px;
+		@include respond-to(small-screen) {
+			@include btn(176px, 36px);
+			font-size: 16px;
 		}
 	}
 }
@@ -115,9 +133,9 @@
 		.btn {
 			@include btn(200px, 50px);
 			font-size: 20px;
-			@include respond-to(medium-screen) {
-				@include btn(280px, 70px);
-				font-size: 32px;
+			@include respond-to(small-screen) {
+				@include btn(140px, 36px);
+				font-size: 16px;
 			}
 		}
 	}

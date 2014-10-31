@@ -15,10 +15,10 @@ section.case-comments
             .preview
               figure
                 = image_tag review.user.avatar.medium, width: '122', height: '122'
-              .author.hidden.visible-tablet
+              .author.hidden.visible-phone
                 p.name= review.user.display_name
                 p.post= review.city
-            .rate.hidden-tablet
+            .rate.hidden-phone
               ul.stars
                 - (1..5).each do |i|
                   li.star class=('star-fill' if review.rating >= i)
@@ -27,13 +27,13 @@ section.case-comments
             .info
               .descript
                 p= review.message
-              .author.hidden-tablet
+              .author.hidden-phone
                 p.name= review.user.display_name
                 p.post= review.city
       - if reviews.count > 3
         .btn-wrap
-          a.btn.btn-more.btn-gry-cut.hidden-tablet.js-reviews-more href="#"  Показать еще #{reviews.count - 3} #{Russian.p(reviews.count - 3, 'отзыв', 'отзыва', 'отзывов')}
-          a.btn-refresh.hidden.visible-tablet.js-reviews-more href="#"
+          a.btn.btn-more.btn-gry-cut.hidden-phone.js-reviews-more href="#"  Показать еще #{reviews.count - 3} #{Russian.p(reviews.count - 3, 'отзыв', 'отзыва', 'отзывов')}
+          a.btn-refresh.hidden.visible-phone.js-reviews-more href="#"
 
 - if signed_in?
   = render 'reviews/popup_form'

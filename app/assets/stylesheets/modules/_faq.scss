@@ -2,21 +2,30 @@
 	.wrapper {
 		padding: 80px 0 0 0;
 		@include respond-to(medium-screen) {
-			padding: 60px 60px 0 60px;
+			padding: 60px;
 			border-bottom: 1px solid #e9e9e9;
+		}
+		@include respond-to(small-screen) {
+			padding: 30px;
 		}
 	}
 	.items {
 		padding: 0 60px;
+		@include respond-to(small-screen) {
+			padding: 0 30px;
+		}
 	}
 	.item {
 		margin-bottom: 40px;
+		@include respond-to(small-screen) {
+			margin-bottom: 20px;
+		}
 		.capt {
 			font-size: 30px;
 			font-weight: bold;
 			line-height: 1.5;
-			@include respond-to(medium-screen) {
-				font-size: 40px;
+			@include respond-to(small-screen) {
+				font-size: 20px;
 			}
 			a {
 				position: relative;
@@ -32,12 +41,21 @@
 					left: -55px;
 					background: #2e2e2e;
 					border-radius: 50%;
+					@include respond-to(small-screen) {
+						width: 8px;
+						height: 8px;
+						top: 10px;
+						left: -25px;
+					}
 				}
 			}
 		}
 		.descript {
 			display: none;
 			padding-top: 20px;
+			@include respond-to(small-screen) {
+				padding-top: 10px;
+			}
 		}
 	}
 	.item_open {
@@ -53,6 +71,12 @@
 					border-right: 10px solid transparent;
 					background: none;
 					border-radius: 0;
+					@include respond-to(small-screen) {
+						top: 11px;
+						border-top: 8px solid #97e9bd;
+						border-left: 5px solid transparent;
+						border-right: 5px solid transparent;
+					}
 				}
 			}
 		}
@@ -65,8 +89,8 @@
 .search {
 	margin: 0 60px 60px;
 	position: relative;
-	@include respond-to(medium-screen) {
-		margin: 0 0 60px 0;
+	@include respond-to(small-screen) {
+		margin: 0 0 30px 0;
 	}
 	input {
 		height: 50px;
@@ -74,12 +98,6 @@
 		padding-left: 68px;
 		border-color: #e9e9e9;
 		border-radius: 25px;
-		@include respond-to(medium-screen) {
-			height: 100px;
-			padding-left: 130px;
-			border-color: #999;
-			border-radius: 50px;
-		}
 	}
 	.icon {
 		display: block;
@@ -88,18 +106,9 @@
 		position: absolute;
 		top: 13px;
 		left: 22px;
-		@include respond-to(medium-screen) {
-			width: 55px;
-			height: 55px;
-			top: 22px;
-			left: 40px;
-		}
 	}
 }
 
 .icon-search {
 	@include retina-sprite(icon-search);
-	@include respond-to(medium-screen) {
-		@include retina-sprite(icon-search-mob);
-	}
 }
