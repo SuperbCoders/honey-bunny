@@ -1,4 +1,5 @@
 $('#cart-desktop span.count').text('<%= current_cart.total_quantity %>');
+$('#cart-desktop span.count').toggleClass('hidden', $('#cart-desktop span.count').text() == 0);
 $('#cart-tablet').text('<%= current_cart.total_quantity %>');
 
 <% if @cart_item %>

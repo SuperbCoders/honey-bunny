@@ -11,4 +11,5 @@ li.item.item5 class=('current' if @page.try(:slug) == 'faq')
 li#cart-desktop.item.item6.hidden-tablet class=('current' if params[:controller] == 'orders' && params[:action] == 'new')
   = link_to new_order_path do
     | Корзина
-    span.count= current_cart.total_quantity
+    span.count class=('hidden' if current_cart.empty_cart?)
+      = current_cart.total_quantity
