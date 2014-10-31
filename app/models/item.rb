@@ -15,6 +15,10 @@ class Item < ActiveRecord::Base
 
   scope :available, -> { where('items.quantity > ? OR items.negative_quantity_allowed = ?', 0, true) }
 
+  def to_param
+    "#{id}-#{title.to_s.parameterize}"
+  end
+
   # @param quantity [Integer] desired quantity
   # @return [Boolean] whether desired quantity is available to order
   def could_be_ordered?(quantity = 1)
