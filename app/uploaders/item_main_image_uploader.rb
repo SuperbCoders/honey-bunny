@@ -16,11 +16,11 @@ class ItemMainImageUploader < BaseImageUploader
   end
 
   version :thumb_square do
-    process :resize_to_fit => [120, 120]
+    process :resize_and_pad => [120, 120]
   end
 
   version :thumb_square_small do
-    process :resize_to_fit => [50, 50]
+    process :resize_and_pad => [50, 50]
   end
 
 end

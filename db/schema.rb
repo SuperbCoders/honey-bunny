@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141030192105) do
+ActiveRecord::Schema.define(version: 20141031085855) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -123,6 +123,15 @@ ActiveRecord::Schema.define(version: 20141030192105) do
     t.boolean  "negative_quantity_allowed", default: false
   end
 
+  create_table "items_reviews", force: true do |t|
+    t.integer "item_id"
+    t.integer "review_id"
+  end
+
+  add_index "items_reviews", ["item_id"], name: "index_items_reviews_on_item_id", using: :btree
+  add_index "items_reviews", ["review_id", "item_id"], name: "index_items_reviews_on_review_id_and_item_id", unique: true, using: :btree
+  add_index "items_reviews", ["review_id"], name: "index_items_reviews_on_review_id", using: :btree
+
   create_table "meta_blocks", force: true do |t|
     t.integer  "meta_blockable_id"
     t.string   "meta_blockable_type"
@@ -196,6 +205,21 @@ ActiveRecord::Schema.define(version: 20141030192105) do
   end
 
   add_index "payment_methods", ["name"], name: "index_payment_methods_on_name", unique: true, using: :btree
+
+  create_table "reviews", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "rating"
+    t.string   "name"
+    t.string   "email"
+    t.string   "city"
+    t.text     "message"
+    t.string   "workflow_state"
+    t.string   "place"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "reviews", ["user_id"], name: "index_reviews_on_user_id", using: :btree
 
   create_table "shipping_methods", force: true do |t|
     t.string   "name"

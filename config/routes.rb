@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   namespace :admin do
     root 'orders#index', workflow_state: 'new'
     resources :pages, except: :show
-    resources :items, except: :show
+    resources :items, except: [:show, :destroy]
     resources :orders, except: [:show, :destroy] do
       resources :order_items, except: [:index, :show]
     end
@@ -15,6 +15,12 @@ Rails.application.routes.draw do
       resources :shipping_prices, only: [:create, :destroy]
     end
     resources :shops, except: :show
+    resources :reviews, except: :show do
+      member do
+        patch :approve
+        patch :decline
+      end
+    end
     resources :users, except: :show
 
     superb_text_constructor_for :pages
@@ -30,6 +36,7 @@ Rails.application.routes.draw do
   resources :orders, only: [:new, :create] do
     get :success, on: :member
   end
+  resources :reviews, only: [:create]
 
   post 'carts/items/:item_id' => 'carts#add', as: :add_to_cart
   delete 'carts/items/:item_id' => 'carts#remove', as: :remove_from_cart

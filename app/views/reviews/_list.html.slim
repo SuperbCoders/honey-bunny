@@ -1,0 +1,40 @@
+section.case-comments
+  .container.globalwidth
+    .case-capt.center
+      h2 Что говорят люди
+      a.btn.btn-grn-cut.popup-with-form href=("##{signed_in? ? 'popup-comment' : 'popup-login'}")  Написать отзыв
+    .case-cnt
+      ul.items
+        - reviews = Review.with_approved_state.order(created_at: :desc).includes(:user)
+        - if @item.nil?
+          - reviews = reviews.where(place: %w(index both))
+        - else
+          - reviews = reviews.where(place: %w(item both)).joins(:items).where(items: { id: @item.id })
+        - reviews.each_with_index do |review, index|
+          li.item class=('hidden' if index >= 3)
+            .preview
+              figure
+                = image_tag review.user.avatar.medium, width: '122', height: '122'
+              .author.hidden.visible-tablet
+                p.name= review.user.display_name
+                p.post= review.city
+            .rate.hidden-tablet
+              ul.stars
+                - (1..5).each do |i|
+                  li.star class=('star-fill' if review.rating >= i)
+                    = review.rating if review.rating == i
+              .value Оценка
+            .info
+              .descript
+                p= review.message
+              .author.hidden-tablet
+                p.name= review.user.display_name
+                p.post= review.city
+      - if reviews.count > 3
+        .btn-wrap
+          a.btn.btn-more.btn-gry-cut.hidden-tablet.js-reviews-more href="#"  Показать еще #{reviews.count - 3} #{Russian.p(reviews.count - 3, 'отзыв', 'отзыва', 'отзывов')}
+          a.btn-refresh.hidden.visible-tablet.js-reviews-more href="#"
+
+- if signed_in?
+  = render 'reviews/popup_form'
+  = render 'reviews/popup_thanks'

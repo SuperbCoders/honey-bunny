@@ -65,67 +65,8 @@
     </section>
     <%= render 'footer' %>
   </article>
-  <div class="mfp-hide white-popup-block" id="popup-comment">
-    <div class="popup-wrap">
-      <div class="popup-row" id="popup-form">
-        <form method="post" action="">
-          <h2 class="center">Оставить отзыв</h2>
-          <div class="forms">
-            <div class="field field-required"><input type="text" placeholder="Как вас зовут?" /></div>
-            <div class="field field-required"><input type="text" placeholder="Эл. почта" /></div>
-            <div class="field field-required"><input type="text" placeholder="Город" /></div>
-            <div class="case-used">
-              <h3>Какими продуктами пользовались?</h3>
-              <ul class="items">
-                <li class="item">
-                  <figure><img width="120" height="120" src="images/thumb1.jpg" alt="" /></figure>
-                  <div class="title">Витаминный шампунь для нормальных волос</div>
-                  <input class="hidden" type="checkbox" name="used" value="1" />
-                </li><li class="item current">
-                  <figure><img width="120" height="120" src="images/thumb2.jpg" alt="" /></figure>
-                  <div class="title">Шампунь для жирных волос</div>
-                  <input class="hidden" type="checkbox" name="used" value="2" checked="ckecked" />
-                </li><li class="item">
-                  <figure><img width="120" height="120" src="images/thumb1.jpg" alt="" /></figure>
-                  <div class="title">Витаминный шампунь для нормальных волос</div>
-                  <input class="hidden" type="checkbox" name="used" value="3" />
-                </li><li class="item">
-                  <figure><img width="120" height="120" src="images/thumb2.jpg" alt="" /></figure>
-                  <div class="title">Шампунь для жирных волос</div>
-                  <input class="hidden" type="checkbox" name="used" value="4" />
-                </li><li class="item">
-                  <figure><img width="120" height="120" src="images/thumb1.jpg" alt="" /></figure>
-                  <div class="title">Витаминный шампунь для нормальных волос</div>
-                  <input class="hidden" type="checkbox" name="used" value="5" />
-                </li><li class="item">
-                  <figure><img width="120" height="120" src="images/thumb2.jpg" alt="" /></figure>
-                  <div class="title">Шампунь для жирных волос</div>
-                  <input class="hidden" type="checkbox" name="used" value="6" />
-                </li><li class="item">
-                  <figure><img width="120" height="120" src="images/thumb1.jpg" alt="" /></figure>
-                  <div class="title">Витаминный шампунь для нормальных волос</div>
-                  <input class="hidden" type="checkbox" name="used" value="7" />
-                </li>
-              </ul>
-            </div>
-            <div class="field field-required"><textarea rows="" cols="" placeholder="Сообщение"></textarea></div>
-            <div class="btn-wrap">
-              <button class="btn btn-grn" id="btn-send" type="submit">Отправить отзыв</button>
-            </div>
-          </div>
-        </form>
-      </div>
-      <div class="popup-row" id="popup-thanks" style="display:none;">
-        <form method="post" action="">
-          <div class="hgroup">
-            <h2 class="center">Ваш отзыв отправлен,<br />спасибо!</h2>
-          </div>
-          <div class="btn-wrap">
-            <button class="btn btn-grn" type="submit">Закрыть</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
+  <% unless signed_in? %>
+    <%= render 'popup_login' %>
+  <% end %>
 </body>
 </html>

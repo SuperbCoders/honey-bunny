@@ -5,6 +5,8 @@ class Item < ActiveRecord::Base
 
   monetize :price_cents
 
+  has_and_belongs_to_many :reviews
+
   validates :title, presence: true
   validates :main_image, presence: true
   validates :price_cents, presence: true, numericality: { greater_than: 0 }

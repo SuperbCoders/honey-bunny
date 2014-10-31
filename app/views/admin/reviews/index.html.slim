@@ -1,0 +1,71 @@
+section#content
+  section.main.padder
+    .clearfix
+      h4
+        i.icon-comment
+        |  Отзывы
+    .row
+      .col-lg-3
+        .list-group.m-b-small
+          = link_to admin_reviews_path(workflow_state: 'approved'), class: "list-group-item#{' bg-lighter' if params[:workflow_state] == 'approved'}" do
+            i.icon-chevron-right
+            i.icon-ok
+            | Утверждены
+          = link_to admin_reviews_path(workflow_state: 'declined'), class: "list-group-item#{' bg-lighter' if params[:workflow_state] == 'declined'}" do
+            i.icon-chevron-right
+            i.icon-remove
+            | Отклонены
+          = link_to admin_reviews_path, class: "list-group-item#{' bg-lighter' if params[:workflow_state] == 'new' || params[:workflow_state].blank?}" do
+            i.icon-chevron-right
+            i.icon-question
+            | Новые
+      .col-lg-9
+        section.panel
+          header.panel-heading
+            | Найдено <b>#{@reviews.total_count}</b> #{Russian.p(@reviews.total_count, 'отзыв', 'отзыва', 'отзывов')}
+          .table-responsive
+            table.table.table-striped.b-t.text-small
+              thead
+                tr
+                  th Имя
+                  th Email
+                  th Город
+                  th Оценка
+                  th Тип
+                  th
+              tbody
+                - @reviews.each do |review|
+                  tr
+                    td= link_to_if can?(:update, review.user), review.name, edit_admin_user_path(review.user)
+                    td= review.email
+                    td= review.city
+                    td= review.rating
+                    td= t("review.place.#{review.place}")
+                    td
+                      .btn-group
+                        a.dropdown-toggle data-toggle="dropdown" href="#"
+                          i.icon-pencil
+                        ul.dropdown-menu.pull-right
+                          - if can? :update, review
+                            li
+                              = link_to edit_admin_review_path(review) do
+                                i.icon-external-link
+                                | Редактировать
+                            - if review.can_approve?
+                              li
+                                = link_to approve_admin_review_path(review), method: :patch do
+                                  i.icon-ok
+                                  | Утвердить
+                            - if review.can_decline?
+                              li
+                                = link_to decline_admin_review_path(review), method: :patch do
+                                  i.icon-remove
+                                  | Отклонить
+                          - if can? :destroy, review
+                            li
+                              = link_to admin_review_path(review), method: :delete, data: { confirm: t('shared.are_you_sure') } do
+                                i.icon-trash
+                                | Удалить
+          footer.panel-footer
+            .text-right.text-center-sm
+              = paginate @reviews, theme: 'twitter-bootstrap-3'

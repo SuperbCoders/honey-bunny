@@ -47,5 +47,8 @@
     </section>
     <%= render 'footer' %>
   </article>
+  <% unless signed_in? %>
+    <%= render 'popup_login' %>
+  <% end %>
 </body>
 </html>

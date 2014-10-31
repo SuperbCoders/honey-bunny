@@ -60,6 +60,14 @@ ru:
         email: E-mail
         lat: Широта
         lon: Долгота
+      review:
+        name: Имя
+        email: E-mail
+        city: Город
+        rating: Оценка
+        items: Товары
+        message: Сообщение
+        place: Тип
   simple_form:
     labels:
       <<: *activerecord_attributes
@@ -85,6 +93,12 @@ ru:
     role:
       user: Пользователь
       admin: Администратор
+
+  review:
+    place:
+      index: Для главной
+      item: Для товара
+      both: Везде
 
   shared:
     create: Создать

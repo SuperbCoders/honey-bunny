@@ -20,6 +20,8 @@
 //= require jquery.touchSwipe.min
 //= require jquery.carouFredSel
 //= require carousel
+//= require popup
 //= require script
 //= require orders
 //= require shops
+//= require reviews

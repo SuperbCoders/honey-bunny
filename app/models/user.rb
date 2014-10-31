@@ -19,6 +19,8 @@ class User < ActiveRecord::Base
 
   before_validation :set_default_values
 
+  has_many :reviews, dependent: :restrict_with_error
+
   ROLES.each do |role|
     define_method "#{role}?" do
       self.role == role

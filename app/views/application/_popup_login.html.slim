@@ -1,0 +1,6 @@
+#popup-login.mfp-hide.white-popup-block
+  .popup-wrap
+    #popup-form.popup-row
+      h1 Войти через
+      p= link_to 'Facebook', user_omniauth_authorize_path('facebook')
+      p= link_to 'Vkontakte', user_omniauth_authorize_path('vkontakte')

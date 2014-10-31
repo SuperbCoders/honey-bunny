@@ -66,8 +66,10 @@ html lang="en"
           - lists_set << link_to('Способы доставки', admin_shipping_methods_path)
         - if can? :manage, Shop
           - lists_set << link_to('Магазины', admin_shops_path)
+        - if can? :manage, Review
+          - lists_set << link_to('Отзывы', admin_reviews_path)
         - if lists_set.any?
-          li.dropdown-submenu class=('active' if ['admin/users', 'admin/shipping_methods', 'admin/shops'].include?(params[:controller]))
+          li.dropdown-submenu class=('active' if ['admin/users', 'admin/shipping_methods', 'admin/shops', 'admin/reviews'].include?(params[:controller]))
             a href="#"
               i.icon-book.icon-xlarge
               span Справочники

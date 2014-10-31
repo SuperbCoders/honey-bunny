@@ -1,0 +1,27 @@
+= form_for review, remote: true do |f|
+  h2.center Оставить отзыв
+  .forms
+    div
+      | Оценка
+      - (1..5).each do |i|
+        = f.radio_button :rating, i, style: 'display: inline'
+        = i
+    .field.field-required
+      = f.text_field :name, placeholder: 'Как вас зовут?'
+    .field.field-required
+      = f.text_field :email, placeholder: 'Эл. почта'
+    .field.field-required
+      = f.text_field :city, placeholder: 'Город'
+    .case-used
+      h3 Какими продуктами пользовались?
+      ul.items
+        - Item.all.each do |item|
+          li.item class=('current' if f.object.item_ids.include?(item.id))
+            figure
+              = image_tag item.main_image.thumb_square
+            .title= item.title
+            = check_box_tag 'review[item_ids][]', item.id, f.object.item_ids.include?(item.id), class: 'hidden'
+    .field.field-required
+      = f.text_area :message, placeholder: 'Сообщение'
+    .btn-wrap
+      = f.submit 'Отправить отзыв', class: 'btn btn-grn'
