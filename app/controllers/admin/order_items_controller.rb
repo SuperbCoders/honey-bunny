@@ -7,7 +7,7 @@ class Admin::OrderItemsController < Admin::ApplicationController
   # GET /admin/orders/:order_id/order_items/new
   def new
     @order_item = @order.order_items.build
-    @items = Item.available
+    @items = Item.all
   end
 
   # POST /admin/orders/:order_id/order_items
@@ -22,7 +22,7 @@ class Admin::OrderItemsController < Admin::ApplicationController
 
   # GET /admin/orders/:order_id/order_items/:id/edit
   def edit
-    @items = [Item.available.to_a, @order_item.item].flatten.uniq(&:id)
+    @items = Item.all
   end
 
   # PUT/PATCH /admin/orders/:order_id/order_items/:id
