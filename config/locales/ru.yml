@@ -30,6 +30,14 @@ ru:
         subtitle: Подзаголовок
         published: Опубликовано?
         cover: Обложка
+      meta_block:
+        title: Meta title
+        description: Meta description
+        keywords: Meta keywords
+        javascript: Javascript
+        fb_title: Заголовок для FB
+        fb_description: Описание для FB
+        fb_image: Превью для FB
       shipping_method:
         name: Название
         title: Заголовок

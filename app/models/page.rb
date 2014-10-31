@@ -13,7 +13,11 @@ class Page < ActiveRecord::Base
   def system?
     SYSTEM_PAGES.include?(slug)
   end
-  alias :destroyable? :system?
+
+  # @return [Boolean] whether this page could be destroyed
+  def destroyable?
+    !system?
+  end
 
   # @return [Boolean] whether this page has customizable content
   def has_content?

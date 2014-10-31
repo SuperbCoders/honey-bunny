@@ -1,22 +1,19 @@
 class Admin::PagesController < Admin::ApplicationController
-  before_action { authorize! :manage, Page }
-  before_action :set_page, only: [:edit, :update, :destroy]
+  load_and_authorize_resource param_method: :page_params
+  before_action :build_meta_block, only: [:new, :create, :edit, :update]
 
   # GET /admin/pages
   def index
-    @pages = Page.all
   end
 
   # GET /admin/pages/new
   def new
-    @page = Page.new
   end
 
   # POST /admin/pages
   def create
-    @page = Page.new(page_params)
     if @page.save
-      redirect_to admin_pages_url
+      redirect_to admin_pages_url, notice: I18n.t('shared.saved')
     else
       render 'new'
     end
@@ -29,7 +26,7 @@ class Admin::PagesController < Admin::ApplicationController
   # PUT/PATCH /admin/pages/:id
   def update
     if @page.update_attributes(page_params)
-      redirect_to admin_pages_url
+      redirect_to admin_pages_url, notice: I18n.t('shared.saved')
     else
       render 'edit'
     end
@@ -37,19 +34,22 @@ class Admin::PagesController < Admin::ApplicationController
 
   # DELETE /admin/pages:/id
   def destroy
-    @page.destroy if page.destroyable?
-    redirect_to admin_pages_url
+    if @page.destroyable? && @page.destroy!
+      redirect_to admin_pages_url, notice: I18n.t('shared.destroyed')
+    else
+      redirect_to admin_pages_url, alert: I18n.t('shared.not_destroyed')
+    end
   end
 
   private
 
     def page_params
-      allowed_params = [:slug, :title, :cover]
+      allowed_params = [:slug, :title, :cover, { meta_block_attributes: [:id, :title, :description, :keywords, :javascript, :fb_image, :remove_fb_image, :fb_title, :fb_description] }]
       allowed_params << :published unless @page.try(:system?)
       params.require(:page).permit(allowed_params)
     end
 
-    def set_page
-      @page = Page.find(params[:id])
+    def build_meta_block
+      @page.build_meta_block if @page.meta_block.nil?
     end
 end

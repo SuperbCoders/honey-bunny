@@ -5,13 +5,15 @@
   <meta name="keywords" content="" />
   <meta name="description" content="" />
   <meta name="viewport" content="width=device-width; initial-scale=1.0">
-  <title>Honey-Bunny</title>
+  <%= title_tag %>
+  <%= meta_tags %>
   <link rel="shortcut icon" type="image/x-icon" href="<%= image_path 'favicon.ico' %>" />
   <%= stylesheet_link_tag 'application', media: 'all' %>
   <!--[if lt IE 9]>
     <%= javascript_include_tag 'html5shiv' %>
   <![endif]-->
   <%= javascript_include_tag 'application' %>
+  <%= javascript_block %>
   <%= csrf_meta_tags %>
 </head>
 <body>
