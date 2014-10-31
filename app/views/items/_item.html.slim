@@ -4,7 +4,7 @@ li.item
       = link_to item do
         = image_tag item.main_image.thumb, height: '420', width: '200'
     .info
-      .descript.hidden-tablet Не утяжеляет волосы и придает блеск
+      .descript.hidden-tablet= item.motto
       .ttl
         = link_to item.title, item
       - if item.volume.to_i > 0
