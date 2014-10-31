@@ -67,7 +67,7 @@
 			line-height: 90px;
 			overflow: hidden;
 			.page-header-center & {
-				margin-right: -70px;
+				margin-right: -80px;
 				@include respond-to(middle-screen) {
 					margin-right: 0;
 				}
