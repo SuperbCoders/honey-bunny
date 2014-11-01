@@ -1,4 +1,7 @@
 class Admin::ReviewsController < Admin::ApplicationController
+  include WorkflowController
+
+  workflow_events :approve, :decline
   load_and_authorize_resource param_method: :review_params
 
   # GET /admin/reviews
@@ -42,24 +45,6 @@ class Admin::ReviewsController < Admin::ApplicationController
     else
       redirect_to admin_reviews_url(workflow_state: @review.workflow_state), alert: I18n.t('shared.not_destroyed')
     end
-  end
-
-  # PATCH /admin/reviews/:id/approve
-  def approve
-    old_state = @review.workflow_state
-    @review.approve!
-    redirect_to admin_reviews_url(workflow_state: old_state), notice: I18n.t('shared.saved')
-  rescue Workflow::NoTransitionAllowed
-    redirect_to admin_reviews_url(workflow_state: @review.workflow_state), alert: I18n.t('shared.not_saved')
-  end
-
-  # PATCH /admin/reviews/:id/decline
-  def decline
-    old_state = @review.workflow_state
-    @review.decline!
-    redirect_to admin_reviews_url(workflow_state: old_state), notice: I18n.t('shared.saved')
-  rescue Workflow::NoTransitionAllowed
-    redirect_to admin_reviews_url(workflow_state: @review.workflow_state), alert: I18n.t('shared.not_saved')
   end
 
   private
