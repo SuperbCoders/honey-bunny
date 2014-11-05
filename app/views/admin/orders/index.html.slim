@@ -75,7 +75,24 @@ section#content
                           | × #{order_item.quantity} = #{humanized_money order_item.total_price} руб.
                     td #{humanized_money order.items_price} + #{humanized_money order.shipping_price} = #{humanized_money order.total_price}
                     td=l order.created_at, format: :short
-                    td= t("order.workflow_state.#{order.workflow_state}")
+                    td
+                      - actions = []
+                      - if order.can_ship?
+                        - actions << (link_to t("order.workflow_state.shipped"), ship_admin_order_path(order), method: :patch, data: { confirm: t('shared.are_you_sure') })
+                      - if order.can_deliver?
+                        - actions << (link_to t("order.workflow_state.delivered"), deliver_admin_order_path(order), method: :patch, data: { confirm: t('shared.are_you_sure') })
+                      - if order.can_cancel?
+                        - actions << (link_to t("order.workflow_state.canceled"), cancel_admin_order_path(order), method: :patch, data: { confirm: t('shared.are_you_sure') })
+                      - if can?(:update, order) && actions.any?
+                        .btn-group
+                          button.btn.btn-default.btn-sm.dropdown-toggle data-toggle='dropdown' type='button'
+                            = t("order.workflow_state.#{order.workflow_state}")
+                            span.caret
+                          ul.dropdown-menu role="menu"
+                            - actions.each do |action|
+                              li= action
+                      - else
+                        = t("order.workflow_state.#{order.workflow_state}")
                     td
                       .btn-group
                         a.dropdown-toggle data-toggle="dropdown" href="#"

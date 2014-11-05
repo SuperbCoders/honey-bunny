@@ -10,6 +10,11 @@ Rails.application.routes.draw do
     resources :items, except: [:show, :destroy]
     resources :orders, except: [:show, :destroy] do
       resources :order_items, except: [:index, :show]
+      member do
+        patch :ship
+        patch :deliver
+        patch :cancel
+      end
     end
     resources :shipping_methods, except: [:show, :destroy] do
       resources :shipping_prices, only: [:create, :destroy]

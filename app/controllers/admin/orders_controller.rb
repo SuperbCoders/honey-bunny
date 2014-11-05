@@ -1,6 +1,10 @@
 class Admin::OrdersController < Admin::ApplicationController
+  include WorkflowController
+
+  workflow_events :ship, :deliver, :cancel
+
   before_action { authorize! :manage, Order }
-  before_action :set_order, only: [:edit, :update]
+  before_action :set_order, only: [:edit, :update, :ship, :deliver, :cancel]
 
   # GET /admin/orders
   def index
