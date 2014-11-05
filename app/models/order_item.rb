@@ -20,6 +20,18 @@ class OrderItem < ActiveRecord::Base
     price * quantity
   end
 
+  def decrease_item_quantity(options = {})
+    return true if !options[:force] && order.canceled?
+    item.quantity -= quantity - quantity_was.to_i
+    item.save
+  end
+
+  def increase_item_quantity(options = {})
+    return true if !options[:force] && order.canceled?
+    item.quantity += quantity
+    item.save
+  end
+
   private
 
     def set_default_values
@@ -32,15 +44,5 @@ class OrderItem < ActiveRecord::Base
       unless item.could_be_ordered?(quantity - quantity_was.to_i) # check only quantities diff
         errors.add(:quantity, :could_not_be_ordered)
       end
-    end
-
-    def decrease_item_quantity
-      item.quantity -= quantity - quantity_was.to_i
-      item.save
-    end
-
-    def increase_item_quantity
-      item.quantity += quantity
-      item.save
     end
 end

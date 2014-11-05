@@ -82,4 +82,9 @@ class Order < ActiveRecord::Base
     def city_id
       City.where(name: city).pluck(:id).first
     end
+
+    # Rollback items' quantities
+    def cancel
+      order_items.each { |oi| oi.increase_item_quantity(force: true) }
+    end
 end
