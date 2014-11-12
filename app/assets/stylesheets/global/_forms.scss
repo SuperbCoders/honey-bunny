@@ -29,6 +29,11 @@
 			vertical-align: middle;
 			@extend .input;
 		}
+		select {
+			height: 50px;
+			@extend .input;
+			padding: 10px 20px;
+		}
 		.table {
 			width: 100%;
 			.td {
