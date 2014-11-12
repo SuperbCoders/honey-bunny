@@ -1,0 +1,15 @@
+<%= form_for @question, remote: true do |f| %>
+  <div class="field"><%= f.text_area :text, placeholder: 'Введите текст вопроса' %></div>
+  <div class="field"><%= f.text_field :name, placeholder: 'Как вас зовут?' %></div>
+  <div class="field">
+    <div class="table">
+      <div class="tr">
+        <div class="td td1"><%= f.text_field :email, placeholder: 'Ваша эл. почта' %></div>
+        <div class="td td2"><%= f.text_field :phone, placeholder: 'Номер телефона для связи' %></div>
+      </div>
+    </div>
+  </div>
+  <div class="btn-wrap">
+    <%= f.submit 'Отправить', class: 'btn btn-grn' %>
+  </div>
+<% end %>

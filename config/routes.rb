@@ -30,6 +30,7 @@ Rails.application.routes.draw do
     end
     resources :users, except: :show
     resources :faqs, except: :show, path: 'faq', controller: 'faq'
+    resources :questions, only: :index
 
     superb_text_constructor_for :pages
     superb_text_constructor_for :items
@@ -46,6 +47,7 @@ Rails.application.routes.draw do
   end
   resources :reviews, only: [:create]
   resources :faqs, only: :index, path: 'faq', controller: 'faq'
+  resources :questions, only: :create
 
   post 'carts/items/:item_id' => 'carts#add', as: :add_to_cart
   delete 'carts/items/:item_id' => 'carts#remove', as: :remove_from_cart

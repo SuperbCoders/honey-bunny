@@ -1,0 +1,7 @@
+<% if @question.persisted? %>
+  $('.case-article_ask input, .case-article_ask textarea').val('');
+  alert('Спасибо за ваш вопрос!')
+<% else %>
+  $('.case-article_ask .forms').html('<%=j render partial: 'questions/form' %>');
+  $('#question_phone').mask('+7 (999) 999-99-99');
+<% end %>

@@ -1,0 +1,24 @@
+section#content
+  section.main.padder
+    .clearfix
+      h4
+        i.icon-question
+        |  Вопросы
+    .row
+      section.panel
+        .table-responsive
+          table.table.table-striped.b-t.text-small
+            thead
+              tr
+                th Имя
+                th Email
+                th Телефон
+                th Вопрос
+            tbody
+              - @questions.each do |question|
+                tr
+                  td= link_to_if question.user, question.name, edit_admin_user_path(question.user)
+                  td= question.email
+                  td= question.phone
+                  td= question.text
+        footer.panel-footer

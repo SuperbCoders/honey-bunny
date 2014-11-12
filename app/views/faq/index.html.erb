@@ -13,21 +13,7 @@
     <div class="wrapper">
       <h2 class="center">Задать свой вопрос</h2>
       <div class="forms">
-        <form method="post" action="">
-          <div class="field"><textarea rows="" cols="" placeholder="Введите текст вопроса"></textarea></div>
-          <div class="field"><input type="text" placeholder="Как вас зовут?" /></div>
-          <div class="field">
-            <div class="table">
-              <div class="tr">
-                <div class="td td1"><input type="text" placeholder="Ваша эл. почта" /></div>
-                <div class="td td2"><input type="text" placeholder="Номер телефона для связи" /></div>
-              </div>
-            </div>
-          </div>
-          <div class="btn-wrap">
-            <button class="btn btn-grn" type="submit">Отправить</button>
-          </div>
-        </form>
+        <%= render partial: 'questions/form' %>
       </div>
     </div>
   </div>

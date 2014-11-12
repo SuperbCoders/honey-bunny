@@ -70,6 +70,8 @@ html lang="en"
           - lists_set << link_to('Отзывы', admin_reviews_path)
         - if can? :manage, FAQ
           - lists_set << link_to('FAQ', admin_faqs_path)
+        - if can? :manage, Question
+          - lists_set << link_to('Вопросы', admin_questions_path)
         - if lists_set.any?
           li.dropdown-submenu class=('active' if ['admin/users', 'admin/shipping_methods', 'admin/shops', 'admin/reviews'].include?(params[:controller]))
             a href="#"
