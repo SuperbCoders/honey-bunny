@@ -25,3 +25,4 @@
 //= require orders
 //= require shops
 //= require reviews
+//= require mobile
