@@ -7,7 +7,7 @@ li.item.item3 class=('current' if @page.try(:slug) == 'company')
 li.item.item4 class=('current' if @page.try(:slug) == 'values')
   = link_to 'Наши ценности', page_path('values')
 li.item.item5 class=('current' if @page.try(:slug) == 'faq')
-  = link_to 'Вопросы и ответы', '#'
+  = link_to 'Вопросы и ответы', faqs_path
 li#cart-desktop.item.item6.hidden-tablet class=('current' if params[:controller] == 'orders' && params[:action] == 'new')
   = link_to new_order_path do
     | Корзина

@@ -1,6 +1,6 @@
 class Page < ActiveRecord::Base
-  SYSTEM_PAGES = %w(index products company values cosmetics)
-  WITHOUT_CONTENT = %w(products)
+  SYSTEM_PAGES = %w(index products company values cosmetics faq)
+  WITHOUT_CONTENT = %w(products faq)
 
   include SuperbPages::Concerns::Models::Page
   include SuperbTextConstructor::Concerns::Models::Blockable

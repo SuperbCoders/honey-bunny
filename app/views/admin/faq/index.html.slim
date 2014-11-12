@@ -1,0 +1,39 @@
+section#content
+  section.main.padder
+    .clearfix
+      h4
+        i.icon-question
+        |  FAQ
+    .row
+      section.panel
+        .panel-body
+          - if can? :create, FAQ
+            => link_to 'Добавить', new_admin_faq_path, class: 'btn btn-primary btn-sm'
+        .table-responsive
+          table.table.table-striped.b-t.text-small
+            thead
+              tr
+                th Вопрос
+                th Ответ
+                th
+            tbody
+              - @faqs.each do |faq|
+                tr
+                  td= faq.question
+                  td= faq.answer
+                  td
+                    .btn-group
+                      a.dropdown-toggle data-toggle="dropdown" href="#"
+                        i.icon-pencil
+                      ul.dropdown-menu.pull-right
+                        - if can? :update, faq
+                          li
+                            = link_to edit_admin_faq_path(faq) do
+                              i.icon-external-link
+                              | Редактировать
+                        - if can? :destroy, faq
+                          li
+                            = link_to admin_faq_path(faq), method: :delete, data: { confirm: t('shared.are_you_sure') } do
+                              i.icon-trash
+                              | Удалить
+        footer.panel-footer

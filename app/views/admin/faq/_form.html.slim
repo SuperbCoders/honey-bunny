@@ -1,0 +1,14 @@
+.clearfix
+  h4 #{@faq.persisted? ? t('shared.edit') : t('shared.create')} часто задаваемый вопрос
+
+section class="panel pos-rlt clearfix"
+  header.panel-heading Информация
+  .panel-body.clearfix
+    = simple_form_for [:admin, @faq], wrapper: :horizontal_form, html: { class: 'form-horizontal' } do |f|
+      = f.input :question
+      = f.input :answer
+
+      .form-group
+        .col-lg-9.col-lg-offset-3
+          => f.button :submit, @faq.new_record? ? t('shared.create') : t('shared.save'), class: 'btn-primary'
+          => link_to t('shared.back'), admin_faqs_path, class: 'btn btn-default'
