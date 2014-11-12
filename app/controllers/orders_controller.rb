@@ -36,7 +36,7 @@ class OrdersController < ApplicationController
   private
 
     def check_cart
-      redirect_to root_url if current_cart.empty_cart?
+      redirect_to items_url if current_cart.empty_cart?
     end
 
     # Allow to visit some pages only with correct cookies
