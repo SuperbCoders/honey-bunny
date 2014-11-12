@@ -3,7 +3,7 @@ class WelcomeController < ApplicationController
 
   # GET /
   def index
-    @items = Item.all
+    @items = Item.not_deleted
     @page = Page.find_by(slug: 'index')
   end
 end

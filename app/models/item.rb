@@ -1,5 +1,6 @@
 class Item < ActiveRecord::Base
   include SuperbTextConstructor::Concerns::Models::Blockable
+  include SoftDeletable
   acts_as_taggable
 
   mount_uploader :main_image, ItemMainImageUploader
@@ -14,7 +15,7 @@ class Item < ActiveRecord::Base
   validates :quantity, presence: true
   validates :quantity, numericality: { greater_than_or_equal_to: 0 }, unless: :negative_quantity_allowed?
 
-  scope :available, -> { where('items.quantity > ? OR items.negative_quantity_allowed = ?', 0, true) }
+  scope :available, -> { not_deleted.where('items.quantity > ? OR items.negative_quantity_allowed = ?', 0, true) }
 
   def to_param
     "#{id}-#{title.to_s.parameterize}"
@@ -23,6 +24,7 @@ class Item < ActiveRecord::Base
   # @param quantity [Integer] desired quantity
   # @return [Boolean] whether desired quantity is available to order
   def could_be_ordered?(quantity = 1)
+    return false if deleted?
     return true if negative_quantity_allowed?
     self.quantity - quantity >= 0
   end

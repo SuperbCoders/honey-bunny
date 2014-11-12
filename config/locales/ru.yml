@@ -109,6 +109,15 @@ ru:
       item: Для товара
       both: Везде
 
+  admin:
+    items:
+      destroy:
+        success: Товар удален
+        fail: Не удалось удалить товар
+      restore:
+        success: Товар восстановлен
+        fail: Не удалось восстановить товар
+
   shared:
     create: Создать
     edit: Редактировать

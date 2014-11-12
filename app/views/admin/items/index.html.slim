@@ -5,43 +5,64 @@ section#content
         i.icon-gift
         |  Товары
     .row
-      section.panel
-        .panel-body
-          - if can? :create, Item
-            => link_to 'Добавить', new_admin_item_path, class: 'btn btn-primary btn-sm'
-        .table-responsive
-          table.table.table-striped.b-t.text-small
-            thead
-              tr
-                th width='64px' ID
-                th Название
-                th Количество, шт.
-                th
-            tbody
-              - @items.each do |item|
+      .col-lg-3
+        .list-group.m-b-small
+          = link_to admin_items_path(state: 'available'), class: "list-group-item#{' bg-lighter' if params[:state] == 'available'}" do
+            i.icon-chevron-right
+            i.icon-ok
+            | В наличии
+          = link_to admin_items_path(state: 'deleted'), class: "list-group-item#{' bg-lighter' if params[:state] == 'deleted'}" do
+            i.icon-chevron-right
+            i.icon-trash
+            | Удаленные
+          = link_to admin_items_path, class: "list-group-item#{' bg-lighter' unless params[:state].present?}" do
+            i.icon-chevron-right
+            i.icon-list
+            | Все
+
+      .col-lg-9
+        section.panel
+          .panel-body
+            - if can? :create, Item
+              => link_to 'Добавить', new_admin_item_path, class: 'btn btn-primary btn-sm'
+          .table-responsive
+            table.table.table-striped.b-t.text-small
+              thead
                 tr
-                  td= item.id
-                  td= item.title
-                  td= item.quantity
-                  td
-                    .btn-group
-                      a.dropdown-toggle data-toggle="dropdown" href="#"
-                        i.icon-pencil
-                      ul.dropdown-menu.pull-right
-                        - if can? :update, item
-                          li
-                            = link_to edit_admin_item_path(item) do
-                              i.icon-external-link
-                              | Редактировать
-                          li
-                            = link_to admin_item_superb_text_constructor_path(item, namespace: :items) do
-                              i.icon-edit
-                              | Контент
-                        - if can? :destroy, item
-                          li
-                            = link_to admin_item_path(item), method: :delete, data: { confirm: t('shared.are_you_sure') } do
-                              i.icon-trash
-                              | Удалить
-        footer.panel-footer
-            .text-right.text-center-sm
-              = paginate @items, theme: 'twitter-bootstrap-3'
+                  th width='64px' ID
+                  th Название
+                  th Количество, шт.
+                  th
+              tbody
+                - @items.each do |item|
+                  tr
+                    td= item.id
+                    td= item.title
+                    td= item.quantity
+                    td
+                      .btn-group
+                        a.dropdown-toggle data-toggle="dropdown" href="#"
+                          i.icon-pencil
+                        ul.dropdown-menu.pull-right
+                          - if can? :update, item
+                            li
+                              = link_to edit_admin_item_path(item) do
+                                i.icon-external-link
+                                | Редактировать
+                            li
+                              = link_to admin_item_superb_text_constructor_path(item, namespace: :items) do
+                                i.icon-edit
+                                | Контент
+                          - if !item.deleted? && can?(:destroy, item)
+                            li
+                              = link_to admin_item_path(item), method: :delete, data: { confirm: t('shared.are_you_sure') } do
+                                i.icon-trash
+                                | Удалить
+                          - if item.deleted? && can?(:restore, item)
+                            li
+                              = link_to restore_admin_item_path(item), method: :patch, data: { confirm: t('shared.are_you_sure') } do
+                                i.icon-undo
+                                | Восстановить
+          footer.panel-footer
+              .text-right.text-center-sm
+                = paginate @items, theme: 'twitter-bootstrap-3'

@@ -1,10 +1,12 @@
 class Admin::ItemsController < Admin::ApplicationController
   before_action { authorize! :manage, Item }
-  before_action :set_item, only: [:edit, :update, :destroy]
+  before_action :set_item, only: [:edit, :update, :destroy, :restore]
 
   # GET /admin/items
   def index
     @items = Item.order(id: :desc)
+    @items = @items.available if params[:state] == 'available'
+    @items = @items.deleted if params[:state] == 'deleted'
     @items = @items.page(params[:page]).per(25)
   end
 
@@ -36,10 +38,22 @@ class Admin::ItemsController < Admin::ApplicationController
     end
   end
 
-  # DELETE /admin/items:/id
+  # DELETE /admin/items/:id
   def destroy
-    @item.destroy
-    redirect_to admin_items_url
+    if @item.mark_as_deleted
+      redirect_to admin_items_url, notice: I18n.t('admin.items.destroy.success')
+    else
+      redirect_to admin_items_url, alert: I18n.t('admin.items.destroy.fail')
+    end
+  end
+
+  # PATCH/PUT /admin/items/:id/restore
+  def restore
+    if @item.restore
+      redirect_to admin_items_url, notice: I18n.t('admin.items.restore.success')
+    else
+      redirect_to admin_items_url, alert: I18n.t('admin.items.restore.fail')
+    end
   end
 
   private

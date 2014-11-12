@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
 
   # GET /items
   def index
-    @items = Item.order(created_at: :desc)
+    @items = Item.not_deleted
     @items = @items.tagged_with(params[:tag]) if params[:tag].present?
     @page = Page.find_by(slug: 'products')
     set_tags
@@ -22,10 +22,10 @@ class ItemsController < ApplicationController
     end
 
     def set_quantities_by_tag
-      @total_quantity = Item.count
+      @total_quantity = Item.not_deleted.count
       @quantities_by_tag = {}
       @tags.each do |tag|
-        count = Item.tagged_with(tag.name).count
+        count = Item.not_deleted.tagged_with(tag.name).count
         @quantities_by_tag[tag] = count if count > 0
       end
     end

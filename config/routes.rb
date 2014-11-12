@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   namespace :admin do
     root 'orders#index', workflow_state: 'new'
     resources :pages, except: :show
-    resources :items, except: [:show, :destroy]
+    resources :items, except: [:show] do
+      patch :restore, on: :member
+    end
     resources :orders, except: [:show, :destroy] do
       resources :order_items, except: [:index, :show]
       member do
