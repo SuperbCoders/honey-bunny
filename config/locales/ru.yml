@@ -23,6 +23,7 @@ ru:
         price: 'Цена, руб.'
         quantity: Количество
         negative_quantity_allowed: Разрешать продажи при нуле?
+        tag_list: Теги
       page:
         slug: URL
         title: Заголовок

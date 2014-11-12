@@ -1,5 +1,6 @@
 class Item < ActiveRecord::Base
   include SuperbTextConstructor::Concerns::Models::Blockable
+  acts_as_taggable
 
   mount_uploader :main_image, ItemMainImageUploader
 

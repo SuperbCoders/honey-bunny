@@ -1,10 +1,18 @@
 <section class="case-sort">
   <div class="container globalwidth">
     <ul class="items">
-      <li class="item current"><a href="#"><span class="label">Вся продукция</span><span class="count">20</span></a></li>
-      <li class="item"><a href="#"><span class="label">Для волос</span><span class="count">12</span></a></li>
-      <li class="item"><a href="#"><span class="label">Уход за лицом</span><span class="count">4</span></a></li>
-      <li class="item"><a href="#"><span class="label">Косметология</span><span class="count">11</span></a></li>
+      <li class="item<%= ' current' if params[:tag].blank? %>">
+        <%= link_to items_path do %>
+          <span class="label">Вся продукция</span><span class="count"><%= @total_quantity %></span>
+        <% end %>
+      </li>
+      <% @quantities_by_tag.each do |tag, quantity| %>
+        <li class="item<%= ' current' if params[:tag].to_s == tag.name %>">
+          <%= link_to items_path(tag: tag.name) do %>
+            <span class="label"><%= tag.name %></span><span class="count"><%= quantity %></span>
+          <% end %>
+        </li>
+      <% end %>
     </ul>
   </div>
 </section>

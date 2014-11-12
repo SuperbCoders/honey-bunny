@@ -45,7 +45,7 @@ class Admin::ItemsController < Admin::ApplicationController
   private
 
     def item_params
-      params.require(:item).permit(:title, :main_image, :motto, :volume, :short_description, :price, :quantity, :negative_quantity_allowed)
+      params.require(:item).permit(:title, :main_image, :motto, :volume, :short_description, :price, :quantity, :negative_quantity_allowed, :tag_list)
     end
 
     def set_item
