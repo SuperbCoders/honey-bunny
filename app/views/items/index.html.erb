@@ -3,7 +3,7 @@
     <ul class="items">
       <li class="item<%= ' current' if params[:tag].blank? %>">
         <%= link_to items_path do %>
-          <span class="label">Вся продукция</span><span class="count"><%= @total_quantity %></span>
+          <span class="label">Все</span><span class="count"><%= @total_quantity %></span>
         <% end %>
       </li>
       <% @quantities_by_tag.each do |tag, quantity| %>
