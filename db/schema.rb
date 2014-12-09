@@ -11,63 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141112181654) do
+ActiveRecord::Schema.define(version: 20141205121916) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "block_charts", force: true do |t|
-    t.integer  "block_id"
-    t.integer  "value"
-    t.string   "title"
-    t.string   "color"
-    t.boolean  "inverse_font_color", default: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "block_charts", ["block_id"], name: "index_block_charts_on_block_id", using: :btree
-
-  create_table "block_elements", force: true do |t|
-    t.integer  "block_id"
-    t.string   "image"
-    t.string   "title"
-    t.text     "text"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "block_elements", ["block_id"], name: "index_block_elements_on_block_id", using: :btree
-
-  create_table "block_images", force: true do |t|
-    t.integer  "block_id"
-    t.string   "image"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "block_images", ["block_id"], name: "index_block_images_on_block_id", using: :btree
-
-  create_table "blocks", force: true do |t|
-    t.string   "blockable_type"
-    t.integer  "blockable_id"
-    t.integer  "position"
-    t.string   "template"
-    t.text     "data"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "blocks", ["blockable_type", "blockable_id"], name: "index_blocks_on_blockable_type_and_blockable_id", using: :btree
-
-  create_table "blocks_items", force: true do |t|
-    t.integer "block_id"
-    t.integer "item_id"
-  end
-
-  add_index "blocks_items", ["block_id", "item_id"], name: "index_blocks_items_on_block_id_and_item_id", unique: true, using: :btree
-  add_index "blocks_items", ["block_id"], name: "index_blocks_items_on_block_id", using: :btree
-  add_index "blocks_items", ["item_id"], name: "index_blocks_items_on_item_id", using: :btree
 
   create_table "cart_items", force: true do |t|
     t.integer  "cart_id"
@@ -282,6 +229,19 @@ ActiveRecord::Schema.define(version: 20141112181654) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "superb_text_constructor_blocks", force: true do |t|
+    t.string   "blockable_type"
+    t.integer  "blockable_id"
+    t.integer  "position"
+    t.string   "type"
+    t.text     "data"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "superb_text_constructor_blocks", ["blockable_type", "blockable_id"], name: "superb_text_constructor_blocks_blockable_index", using: :btree
+  add_index "superb_text_constructor_blocks", ["type"], name: "superb_text_constructor_blocks_type_index", using: :btree
 
   create_table "taggings", force: true do |t|
     t.integer  "tag_id"

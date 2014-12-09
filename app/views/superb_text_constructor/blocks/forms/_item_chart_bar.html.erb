@@ -1,0 +1,17 @@
+<div class="nested-block well">
+  <div class="pull-right">
+    <%= link_to block_path(block), method: :delete, remote: true, class: 'destroy btn btn-danger' do %>
+      <i class="glyphicon glyphicon-trash"></i>
+    <% end %>
+  </div>
+
+  Значение: <%= superb_text_field block, :value %>
+  <br />
+  Заголовок: <%= superb_text_field block, :title %>
+  <br />
+  Цвет: <%= superb_text_field block, :color %>
+  <br />
+  <label>
+    <%= superb_check_box_tag block, :inverse_font_color %> Инвертировать цвет заголовка
+  </label>
+</div>

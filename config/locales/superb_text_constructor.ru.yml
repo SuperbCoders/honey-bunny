@@ -36,13 +36,13 @@ ru:
       big: Врезка
       page_block: Блок
       separator: Разделитель
-      gallery_columns: Галерея (колонки)
+      gallery_column: Галерея (колонки)
       gallery_slideshow: Галерея (слайды)
-      item_block_2_columns: 'Описание / состав продукта'
+      item2_columns_block: 'Описание / состав продукта'
       item_feature: 'Фото + фича'
-      item_elements: Активные компоненты
+      item_elements_list: Активные компоненты
       item_chart: Диаграмма
-      items: Товары
+      items_list: Товары
       social_panel: Соц. сети
       reviews: Отзывы
       shops: Магазины
