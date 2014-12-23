@@ -2,7 +2,7 @@
   <div class="container">
     <h2 class="center"><%= block.title %></h2>
     <ul class="cols">
-      <% block.charts.order(:id).each do |chart| %>
+      <% block.bars.order(:id).each do |chart| %>
         <li class="column<%= ' darkstyle' if chart.inverse_font_color %>" style="width: <%= chart.value %>%; background: <%= chart.color %>;">
           <div class="prs"><%= chart.value %>%</div>
           <div class="ttl"><%= chart.title %></div>
