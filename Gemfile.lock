@@ -17,7 +17,7 @@ GIT
 
 GIT
   remote: git://github.com/SuperbCoders/superb_text_constructor.git
-  revision: afd1ff83dbfb0703a5ab5344c195fc32c479c761
+  revision: 27ad1ea835e6812674410f85f8b662d8bb49599e
   specs:
     superb_text_constructor (0.0.1)
       carrierwave
