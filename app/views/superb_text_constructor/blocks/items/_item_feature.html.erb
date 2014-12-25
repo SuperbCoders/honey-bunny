@@ -1,4 +1,4 @@
-<section class="case-promo covered hidden-tablet" style="background-image: url(<%= block.background.full %>);">
+<section class="case-promo covered hidden-tablet<%= ' darkstyle' if block.inverse_font_color %>" style="background-image: url(<%= block.background.full %>);">
   <div class="container globalwidth">
     <div class="wrapper">
       <h2><%= sanitize_block block.title %></h2>

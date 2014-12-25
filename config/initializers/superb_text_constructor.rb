@@ -47,6 +47,7 @@ SuperbTextConstructor.configure do
   block :item_feature do
     field :title
     field :text, partial: :text
+    field :inverse_font_color, type: TrueClass
     field :background, type: BlockBackgroundUploader, partial: :image
   end
 
