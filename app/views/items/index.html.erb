@@ -23,23 +23,6 @@
     </ul>
   </div>
 </section>
-<%= render 'social_panel' %>
-<section class="case-article case-article_new">
-  <div class="container globalwidth">
-    <div class="wrapper">
-      <h2 class="center">Новые товары</h2>
-      <div class="text">
-        <p>Мы постоянно совершенствуемся и улучшаем нашу продукцию, чтобы быть вкурсе новинок, подписывайтесь на обновления, для этого введите свою почту ниже</p>
-      </div>
-      <div class="forms">
-        <form method="post" action="">
-          <div class="field"><input type="text" placeholder="Ваша почта" /></div>
-          <button class="btn btn-grn" type="submit">Отправить</button>
-        </form>
-      </div>
-    </div>
-  </div>
-</section>
 <section class="case-article case-article_callback covered darkstyle" style="background: #6ddec9;">
   <div class="container globalwidth">
     <div class="wrapper">
@@ -48,9 +31,14 @@
         <p>Мы делаем косметику для вас. Поэтому будет очень правильно получить от вас обратную связь: что понравилось, какие пожелания или вопросы возникли. Это поможет нам делать продукты в большей степени отвечающие вашим пожеланиям.</p>
       </div>
       <div class="btn-wrap">
-        <a class="btn btn-wte-cut" href="#">Написать</a>
+        <a class="btn btn-wte-cut popup-with-form" href="<%= "##{signed_in? ? 'popup-comment' : 'popup-login'}" %>">Написать</a>
       </div>
     </div>
   </div>
 </section>
 <%= render 'social_buttons_mobile' %>
+
+<% if signed_in? %>
+  <%= render 'reviews/popup_form' %>
+  <%= render 'reviews/popup_thanks' %>
+<% end %>
