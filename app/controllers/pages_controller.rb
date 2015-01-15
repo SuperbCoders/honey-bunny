@@ -11,4 +11,9 @@ class PagesController < ApplicationController
     @page = Page.find_by!(slug: 'company')
   end
 
+  # GET /info/cosmetics
+  def cosmetics
+    @page = Page.find_by!(slug: 'cosmetics')
+  end
+
 end

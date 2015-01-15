@@ -40,6 +40,7 @@ Rails.application.routes.draw do
   resources :pages, only: :show, path: :info do
     collection do
       get :company
+      get :cosmetics
     end
   end
   resources :orders, only: [:new, :create] do
