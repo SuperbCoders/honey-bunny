@@ -6,7 +6,7 @@ module MetaHelper
   # @return [String] title tag
   def title_tag(value = nil)
     content_tag :title do
-      value || page_meta.title
+      value || page_title
     end
   end
 
@@ -25,6 +25,12 @@ module MetaHelper
   end
 
   private
+
+    # Returns title for the current page
+    # @return [String] title for the current page
+    def page_title
+      page_meta.title.present? ? page_meta.title : default_meta.title
+    end
 
     # Tries to retrieve meta data for current context
     # or returns default meta data if nothing else was found
