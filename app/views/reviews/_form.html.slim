@@ -1,11 +1,6 @@
 = form_for review, remote: true do |f|
   h2.center Оставить отзыв
   .forms
-    div
-      | Оценка
-      - (1..5).each do |i|
-        = f.radio_button :rating, i, style: 'display: inline'
-        = i
     .field.field-required
       = f.text_field :name, placeholder: 'Как вас зовут?'
     .field.field-required
@@ -23,5 +18,14 @@
             = check_box_tag 'review[item_ids][]', item.id, f.object.item_ids.include?(item.id), class: 'hidden'
     .field.field-required
       = f.text_area :message, placeholder: 'Сообщение'
+    br/
+    .rate.center
+      ul.stars
+        - (1..5).each do |i|
+          li.star id="star-#{i}" class=('star-fill' if i <= review.rating.to_i)
+            = f.radio_button :rating, i, style: 'display: none'
+            span= i if i == review.rating.to_i
+      .value Ваша оценка
+    br/
     .btn-wrap
       = f.submit 'Отправить отзыв', class: 'btn btn-grn'

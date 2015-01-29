@@ -2,7 +2,7 @@ section.case-comments
   .container.globalwidth
     .case-capt.center
       h2 Что говорят люди
-      a.btn.btn-grn-cut.popup-with-form href=("##{signed_in? ? 'popup-comment' : 'popup-login'}")  Написать отзыв
+      a.btn.btn-grn-cut.popup-with-form href=("##{signed_in? ? 'popup-comment' : 'popup-auth'}")  Написать отзыв
     .case-cnt
       ul.items
         - reviews = Review.with_approved_state.order(created_at: :desc).includes(:user)

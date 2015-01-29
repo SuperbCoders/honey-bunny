@@ -1,4 +1,4 @@
 #popup-comment.mfp-hide.white-popup-block
   .popup-wrap
-    #popup-form.popup-row
+    .popup-row
       = render partial: 'reviews/form', locals: { review: current_user.reviews.build(name: current_user.name, email: current_user.email, item_ids: [@item.try(:id)].select(&:present?)) }

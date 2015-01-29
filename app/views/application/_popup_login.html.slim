@@ -1,6 +1,21 @@
-#popup-login.mfp-hide.white-popup-block
+#popup-auth.mfp-hide.white-popup-block
   .popup-wrap
-    #popup-form.popup-row
-      h1 Войти через
-      p= link_to 'Facebook', user_omniauth_authorize_path('facebook')
-      p= link_to 'Vkontakte', user_omniauth_authorize_path('vkontakte')
+    .popup-row
+      br/
+      h2.center
+        | Для отправки отзыва
+        br>/
+        | нужно авторизироваться
+      br/
+      .social-auth
+        ul.items
+          li.item.item1
+            = link_to user_omniauth_authorize_path('facebook') do
+              i.icon.icon-fb
+              span.label Войти через Facebook
+          li.item.item2
+            = link_to user_omniauth_authorize_path('vkontakte') do
+              i.icon.icon-vk
+              span.label Войти через ВКонтакте
+      .btn-wrap
+        a.popup-close.btn.btn-grn Отмена
