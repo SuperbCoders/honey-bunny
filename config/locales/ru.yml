@@ -31,7 +31,7 @@ ru:
         subtitle: Подзаголовок
         published: Опубликовано?
         cover: Обложка
-        dark_cover: Темная обложка?
+        dark_cover: Инвертировать цвет текста на обложке?
         shadow_cover: Добавить тень на обложку?
       meta_block:
         title: Meta title
