@@ -13,6 +13,8 @@ section class="panel pos-rlt clearfix"
       - unless @page.system?
         = f.input :published
       = f.input :cover, hint: (image_tag @page.cover.thumb if @page.cover?)
+      = f.input :dark_cover
+      = f.input :shadow_cover
 
       .form-group
         .col-lg-9.col-lg-offset-3
