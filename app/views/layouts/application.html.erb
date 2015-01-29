@@ -18,8 +18,8 @@
 </head>
 <body>
   <article class="page">
-    <header class="page-header page-header-left<%= ' covered' if @page.try(:shadow_cover?) %><%= ' darkstyle' if @page.try(:dark_cover?) %>" style="background-image: url(<%= @page.try(:cover).try(:full) || '/images/main_bg.jpg' %>);">
-      <div class="blackout">
+    <header class="page-header page-header-left covered<%= ' darkstyle' if @page.try(:dark_cover?) %>" style="background-image: url(<%= @page.try(:cover).try(:full) || '/images/main_bg.jpg' %>);">
+      <div<%= ' class="blackout"'.html_safe if @page.try(:shadow_cover?) %>>
         <div class="container globalwidth">
           <div class="page-header-top">
             <a class="btn-navbar navbar-toggle hidden visible-tablet" href="#">
