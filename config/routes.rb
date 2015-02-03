@@ -29,7 +29,10 @@ Rails.application.routes.draw do
       end
     end
     resources :users, except: :show
-    resources :faqs, except: :show, path: 'faq', controller: 'faq'
+    resources :faqs, except: :show, path: 'faq', controller: 'faq' do
+      post :up, on: :member
+      post :down, on: :member
+    end
     resources :questions, only: :index
 
     superb_text_constructor_for :pages

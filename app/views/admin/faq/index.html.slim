@@ -36,4 +36,10 @@ section#content
                             = link_to admin_faq_path(faq), method: :delete, data: { confirm: t('shared.are_you_sure') } do
                               i.icon-trash
                               | Удалить
+                    - unless faq.first?
+                      = link_to up_admin_faq_path(faq), method: :post do
+                        i.icon-arrow-up
+                    - unless faq.last?
+                      = link_to down_admin_faq_path(faq), method: :post do
+                        i.icon-arrow-down
         footer.panel-footer
