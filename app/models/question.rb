@@ -4,7 +4,6 @@ class Question < ActiveRecord::Base
   validates :text, presence: true
   validates :name, presence: true
   validates :email, presence: true, format: { with: /([\.A-Za-z0-9_-]+@[\.A-Za-z0-9_-]+\.[A-Za-z]{2,})+/ }
-  validates :phone, presence: true
 
   # Initializes question attributes by user attributes
   # @param user [User, nil] user
