@@ -3,10 +3,10 @@ footer.page-footer.darkstyle
     .contact
       ul.items
         li.item.item1
-          a href="#" 
+          a.popup-with-form href='#popup-phone'
             i.icon.icon-tel
         li.item.item2
-          a href="#" 
+          a href="mailto:#{Settings::Social.email}"
             i.icon.icon-mail
         li.item.item3.hidden-phone
           a href=Settings::Social.instagram target='_blank'
@@ -20,3 +20,11 @@ footer.page-footer.darkstyle
     .logo-wrap
       a.logo href='/'
     .copyright © 2015 Honey-Bunny
+
+#popup-phone.mfp-hide.white-popup-block
+  .popup-wrap
+    .popup-row
+      .hgroup
+        h2.center= Settings::Social.phone
+      .btn-wrap
+        button.btn.btn-grn.popup-close Закрыть
