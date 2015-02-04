@@ -4,10 +4,10 @@
   <meta charset="utf-8" />
   <meta name="keywords" content="" />
   <meta name="description" content="" />
-  <meta name="viewport" content="width=device-width; initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <%= title_tag %>
   <%= meta_tags %>
-  <link rel="shortcut icon" type="image/x-icon" href="<%= image_path 'favicon.ico' %>" />
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
   <%= stylesheet_link_tag 'application', media: 'all' %>
   <!--[if lt IE 9]>
     <%= javascript_include_tag 'html5shiv' %>
@@ -17,6 +17,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <%= render 'social_buttons/facebook_header' %>
   <article class="page">
     <header class="page-header page-header-left page-header-short">
       <div class="container globalwidth">
@@ -34,9 +35,9 @@
               </ul>
               <a class="close navbar-toggle hidden visible-tablet" href="#"></a>
               <div class="follow-mob hidden visible-tablet">
-                <a href="#"><i class="icon icon-fb_grn"></i></a>
-                <a href="#"><i class="icon icon-vk_grn"></i></a>
-                <a href="#"><i class="icon icon-ig_grn"></i></a>
+                <a href="<%= Settings::Social.instagram %>" target="_blank"><i class="icon icon-ig_grn"></i></a>
+                <a href="<%= Settings::Social.facebook %>" target="_blank"><i class="icon icon-fb_grn"></i></a>
+                <a href="<%= Settings::Social.vkontakte %>" target="_blank"><i class="icon icon-vk_grn"></i></a>
               </div>
             </div>
           </nav>

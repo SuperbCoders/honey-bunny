@@ -1,0 +1,46 @@
+section.case-products
+  .container
+    ul.items
+      = render @items
+section.case-service
+  .container
+    ul.items
+      li.item.item1
+        .item-cnt
+          i.icon
+          .ttl
+            | Доставка
+            br/
+            | по всей России
+      li.item.item2
+        .item-cnt
+          i.icon
+          .ttl
+            | Быстрая доставка курьером
+            br/
+            | по москве
+      li.item.item3
+        .item-cnt
+          i.icon
+          .ttl
+            | Офлайн-магазины открыты
+            br/
+            | с 11:00 до 22:00
+= render_blocks @page.blocks, namespace: :pages
+section.case-social.hidden-tablet
+  .container.globalwidth
+    .follow
+      ul.items
+        li.item
+          a href=Settings::Social.instagram target='_blank'
+            i.icon.icon-ig
+            span.label Instagram
+        li.item
+          a href=Settings::Social.facebook target='_blank'
+            i.icon.icon-fb
+            span.label Facebook
+        li.item
+          a href=Settings::Social.vkontakte target='_blank'
+            i.icon.icon-vk
+            span.label Vkontakte
+= render 'social_buttons_mobile'

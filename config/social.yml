@@ -1,0 +1,13 @@
+development: &defaults
+  facebook: https://www.facebook.com/myhoneybunny.ru
+  vkontakte: http://vk.com/myhoneybunny
+  instagram: http://instagram.com/myhoneybunnyru
+
+test:
+  <<: *defaults
+
+staging:
+  <<: *defaults
+
+production:
+  <<: *defaults
