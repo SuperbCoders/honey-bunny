@@ -47,8 +47,11 @@
             <div class="caption center">
               <h1>Новая классная<br /> косметика</h1>
             </div>
-            <section class="case-worth-min hidden-tablet">
-              <ul class="items">
+            <div class="btn-wrap hidden-tablet">
+              <%= link_to 'Закажите сейчас', items_path, class: 'btn btn-grn', style: 'opacity:0.8;' %>
+            </div>
+            <section class="case-worth-min hidden-tablet" style="margin-top:70px;">
+              <ul class="items" style="color:#000000;">
                 <li class="item"><i class="icon icon-worth1_min"></i><div class="ttl">Качественная</div></li><li class="item">
                 <i class="icon icon-worth2_min"></i><div class="ttl">Минималистичная</div></li><li class="item">
                 <i class="icon icon-worth3_min"></i><div class="ttl">Для России</div></li><li class="item">
@@ -57,7 +60,6 @@
                 <i class="icon icon-worth6_min"></i><div class="ttl">Сделана с любовью</div></li>
               </ul>
             </section>
-            <div class="btn-wrap hidden-tablet"><%= link_to 'Закажите сейчас', items_path, class: 'btn btn-grn' %></div>
           </div>
         </div>
       </div>
