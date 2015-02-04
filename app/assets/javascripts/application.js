@@ -27,3 +27,4 @@
 //= require reviews
 //= require questions
 //= require mobile
+//= require carts

@@ -18,7 +18,7 @@ module CartsHelper
   # @return [String] correct link element
   def link_to_add_to_cart(item)
     if item.could_be_ordered?
-      link_to I18n.t('cart.add_to_cart'), add_to_cart_path(item), method: :post, remote: true, class: 'btn btn-orn'
+      link_to I18n.t('cart.add_to_cart'), add_to_cart_path(item), method: :post, remote: true, class: 'btn btn-orn js-thanks'
     else
       link_to I18n.t('cart.not_available'), '#', remote: true, class: 'btn btn-orn'
     end
