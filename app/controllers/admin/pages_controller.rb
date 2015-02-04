@@ -44,7 +44,7 @@ class Admin::PagesController < Admin::ApplicationController
   private
 
     def page_params
-      allowed_params = [:slug, :title, :cover, :dark_cover, :shadow_cover, { meta_block_attributes: [:id, :title, :description, :keywords, :javascript, :fb_image, :remove_fb_image, :fb_title, :fb_description] }]
+      allowed_params = [:slug, :title, :motto, :subtitle, :cover, :dark_cover, :shadow_cover, { meta_block_attributes: [:id, :title, :description, :keywords, :javascript, :fb_image, :remove_fb_image, :fb_title, :fb_description] }]
       allowed_params << :published unless @page.try(:system?)
       params.require(:page).permit(allowed_params)
     end
