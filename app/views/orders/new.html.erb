@@ -59,7 +59,7 @@
           <h2 class="center">Как вам доставить товар</h2>
         </div>
         <div class="switcher-wrap">
-          <div class="switcher table">
+          <div class="js-switcher switcher table">
             <div class="switcher-cnt tr">
               <% @shipping_methods.each do |shipping_method| %>
                 <label class="td<%= ' current' if @order.shipping_method_id == shipping_method.id %>">
@@ -121,11 +121,18 @@
           <div class="switcher table">
             <div class="switcher-cnt tr">
               <% @payment_methods.each do |payment_method| %>
-                <label class="td<%= ' current' if @order.payment_method_id == payment_method.id %>">
-                  <i class="icon icon-<%= payment_method_icon(payment_method) %>"></i>
-                  <span class="title"><%= payment_method.title %></span>
-                  <%= f.radio_button :payment_method_id, payment_method.id, class: 'hidden' %>
-                </label>
+                <% if payment_method.name == 'w1' %>
+                  <label class="td">
+                    <i class="icon icon-<%= payment_method_icon(payment_method) %>"></i>
+                    <span class="title"><%= payment_method.title %><br />(скоро)</span>
+                  </label>
+                <% else %>
+                  <label class="td<%= ' current' if @order.payment_method_id == payment_method.id %>">
+                    <i class="icon icon-<%= payment_method_icon(payment_method) %>"></i>
+                    <span class="title"><%= payment_method.title %></span>
+                    <%= f.radio_button :payment_method_id, payment_method.id, class: 'hidden' %>
+                  </label>
+                <% end %>
               <% end %>
             </div>
           </div>
