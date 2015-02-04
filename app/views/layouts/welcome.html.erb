@@ -17,6 +17,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body class="main">
+  <%= render 'social_buttons/facebook_header' %>
   <article class="page">
     <header class="page-header page-header-center covered<%= ' darkstyle' if @page.try(:dark_cover?) %>" style="background-image: url(<%= @page.cover.full %>);">
       <div<%= ' class="blackout"'.html_safe if @page.try(:shadow_cover?) %>>

@@ -64,6 +64,7 @@ gem 'workflow'
 gem 'kaminari'
 gem 'bootstrap-kaminari-views'
 gem 'acts-as-taggable-on'
+gem 'settingslogic'
 
 gem 'superb_auth', github: 'SuperbCoders/superb_auth'
 gem 'superb_pages', github: 'SuperbCoders/superb_pages'
