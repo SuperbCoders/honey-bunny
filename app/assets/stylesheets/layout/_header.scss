@@ -46,6 +46,9 @@
 		}
 	}
 	.logo-fn {
+		@include retina-sprite(logo-fn_b);
+		@include respond-to(medium-screen) {@include retina-sprite(logo-fn_b);}
+		@include respond-to(small-screen) {@include retina-sprite(logo-mob-fn_b);}
 		.darkstyle & {
 			@include retina-sprite(logo-fn_w);
 			@include respond-to(medium-screen) {@include retina-sprite(logo-fn_b);}
