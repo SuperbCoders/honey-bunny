@@ -2,8 +2,7 @@ section.case-shops
   .container.globalwidth
     .case-capt.center
       h2
-        | Наши магазины в 
-        a href="#" Москве
+        | Наши магазины
     .case-cnt
       .list
         table
@@ -20,7 +19,7 @@ section.case-shops
               td.contact.hidden-tablet
                 p.tel
                   | Тел: #{shop.phone}
-                p.mail= link_to shop.email, "mailto:# shop.email ", class: 'link'
+                p.mail= link_to shop.email, "mailto:#{shop.email}", class: 'link'
               td.note
                 .status
                   i.icon= image_tag 'label-verify.png'
