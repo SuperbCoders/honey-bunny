@@ -34,6 +34,9 @@ Rails.application.routes.draw do
       post :down, on: :member
     end
     resources :questions, only: :index
+    resources :settings, only: :index do
+      patch :update_meta_block, on: :collection
+    end
 
     superb_text_constructor_for :pages
     superb_text_constructor_for :items

@@ -43,6 +43,17 @@ def create_payment_methods
   PaymentMethod.where(name: 'w1').first_or_create(title: 'Банковской картой')
 end
 
+def create_default_meta_block
+  MetaBlock.where(default: true).first_or_create(
+    title: 'Косметика Honey Bunny',
+    description: 'Новая классная косметика. Качественная, простая, сбалансированная, доступная, для России',
+    fb_title: 'Новая классная косметика Honey Bunny',
+    fb_description: 'Простая, доступная, красивая',
+    fb_image: File.open("#{Rails.root}/db/seeds/meta_blocks/fb_image.png"),
+    javascript: File.read("#{Rails.root}/db/seeds/meta_blocks/javascript.txt")
+  )
+end
+
 create_admins
 create_pages
 create_cities
@@ -50,3 +61,4 @@ create_shipping_methods
 create_shipping_prices_for('courier')
 create_shipping_prices_for('regions')
 create_payment_methods
+create_default_meta_block

@@ -1,0 +1,49 @@
+.clearfix
+  h4 Настройки
+
+
+= simple_form_for @meta_block, url: update_meta_block_admin_settings_path, method: :patch, wrapper: :horizontal_form, html: { class: 'form-horizontal' } do |f|
+  .row
+    .col-lg-6
+      section class="panel pos-rlt clearfix"
+        header.panel-heading
+          | Мета данные
+        .panel-body.clearfix
+          = f.input :title
+          = f.input :description
+          = f.input :keywords
+
+          .line.line-dashed.m-t-large
+
+          .form-group
+            label.col-lg-3.control-label Превью
+            .col-lg-9.media
+              .bg-light.pull-left.text-center.media-large.thumb-large
+                - if f.object.fb_image?
+                  = image_tag f.object.fb_image_url, width: 90
+                - else
+                  i.icon-picture.inline.icon-light.icon-3x.m-t-large.m-b-large
+              .media-body
+                = f.file_field :fb_image, title: 'Поменять', class: 'btn btn-sm btn-info m-b-small'
+                = f.hidden_field :fb_image_cache
+                - if f.object.fb_image?
+                  = f.hidden_field :remove_fb_image, id: "remove_image#{f.object.id}"
+                  br/
+                  button.btn.btn-sm.btn-default onClick="$('#remove_image#{f.object.id}').val(1);$(this).remove();return false;" Удалить
+
+          = f.input :fb_title
+          = f.input :fb_description
+
+          .form-group
+          .col-lg-9.col-lg-offset-3
+            => f.button :submit, t('shared.save'), class: 'btn-primary'
+
+    .col-lg-6
+      section class="panel pos-rlt clearfix"
+        header.panel-heading
+          | Скрипты
+        .panel-body.clearfix
+          = f.input :javascript
+        .form-group
+          .col-lg-9.col-lg-offset-3
+            => f.button :submit, t('shared.save'), class: 'btn-primary'

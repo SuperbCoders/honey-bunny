@@ -6,7 +6,7 @@ module MetaHelper
   # @return [String] title tag
   def title_tag(value = nil)
     content_tag :title do
-      value || page_title
+      value || page_meta.title
     end
   end
 
@@ -26,25 +26,15 @@ module MetaHelper
 
   private
 
-    # Returns title for the current page
-    # @return [String] title for the current page
-    def page_title
-      page_meta.title.present? ? page_meta.title : default_meta.title
-    end
-
     # Tries to retrieve meta data for current context
     # or returns default meta data if nothing else was found
     # @return [MetaBlock] page meta data
     def page_meta
-      @page_meta ||= @page.try(:meta_block) || default_meta
+      @page_meta ||= @page.try(:meta_block).try(:merge, default_meta) || default_meta
     end
 
     # @return [MetaBlock] default meta data, use it if nothing else was found
     def default_meta
-      MetaBlock.new title: 'Honey Bunny',
-                    description: '',
-                    keywords: '',
-                    fb_title: 'Honey Bunny',
-                    fb_description: ''
+      @default_meta ||= MetaBlock.default
     end
 end

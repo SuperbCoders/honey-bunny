@@ -81,6 +81,12 @@ html lang="en"
               - lists_set.each do |link|
                 li= link
 
+        - if can? :manage, MetaBlock
+          li class=('active' if params[:controller] == 'admin/settings')
+            = link_to admin_settings_path do
+              i.icon-cogs.icon-xlarge
+              span Настройки
+
     /! / nav
     section#content
       section.main.padder.m-t

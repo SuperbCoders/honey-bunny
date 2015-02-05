@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150203192814) do
+ActiveRecord::Schema.define(version: 20150205144526) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -104,6 +104,7 @@ ActiveRecord::Schema.define(version: 20150203192814) do
     t.text     "fb_description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "default",             default: false
   end
 
   add_index "meta_blocks", ["meta_blockable_id", "meta_blockable_type"], name: "index_meta_blocks_on_meta_blockable_id_and_meta_blockable_type", using: :btree
