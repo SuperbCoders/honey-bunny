@@ -68,6 +68,11 @@ class Order < ActiveRecord::Base
     new?
   end
 
+  # @return [String] full address
+  def full_address
+    [zipcode, city, address].select(&:present?).join(', ')
+  end
+
   private
 
     # Validate that selected shipping method is available for this order

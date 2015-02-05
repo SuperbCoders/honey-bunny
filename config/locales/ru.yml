@@ -123,6 +123,13 @@ ru:
         success: Товар восстановлен
         fail: Не удалось восстановить товар
 
+
+  order_mailer:
+    user_success_email:
+      subject: 'Ваш заказ косметики Honey Bunny №%{order_id}'
+    admin_success_email:
+      subject: 'Новый заказ №%{order_id}'
+
   shared:
     create: Создать
     edit: Редактировать

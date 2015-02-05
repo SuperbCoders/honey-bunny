@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>Honey Bunny</title>
+</head>
+<body style="margin: 0; border-collapse:collapse;" dir="ltr">
+  <table width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#fff">
+    <tr>
+      <td colspan="3" height="100">&nbsp;</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td width="630">
+        <table width="100%" cellpadding="0" cellspacing="0" border="0">
+          <tr>
+            <td colspan="3" align="center" valign="top">
+               <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                 <tr>
+                   <td height="10" style="border-top: 2px solid #000; border-left: 2px solid #000;">&nbsp;</td>
+                   <td height="10" style="border-top: 2px solid #000; border-right: 2px solid #000;">&nbsp;</td>
+                 </tr>
+               </table>
+             </td>
+          </tr>
+          <tr>
+            <td style="border-left: 2px solid #000;">&nbsp;</td>
+            <td width="560">
+              <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td align="center" valign="top">
+                    <h1 style="margin: 15px 0 30px 0; color: #101010; font-size: 28px; font-weight: bold; font-family: Arial, Helvetica, sans-serif; line-height: 32px;"><%= @order.name %>,<br /> спасибо за ваш заказ!</h1>
+                    <p style="margin: 15px 0 15px 0; color: #545454; font-size: 15px; font-family: Arial, Helvetica, sans-serif; line-height: 22px;">
+                      В ближайшее время мы свяжемся с вами для уточнения информации по доставке.<br /><br />
+                      Если вы еще не залайкали нашу <a href="<%= Settings::Social.facebook %>">страницу на Фейсбуке</a>, то советуем это сделать прямо сейчас. Там вся информация о новинках и специальных предложениях, небольшие заметки о нашей продукции и новости.
+                    </p>
+                    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                      <tr>
+                        <th style="padding: 15px 20px 15px 0; color: #929292; font-size: 11px; font-family: Arial, Helvetica, sans-serif; text-align: left; text-transform: uppercase; border-bottom: 1px solid #f1f1f1;">Название товара</th>
+                        <th style="padding: 15px 20px 15px 0; color: #929292; font-size: 11px; font-family: Arial, Helvetica, sans-serif; text-align: center; text-transform: uppercase; border-bottom: 1px solid #f1f1f1;">Цена, руб.</th>
+                        <th style="padding: 15px 20px 15px 0; color: #929292; font-size: 11px; font-family: Arial, Helvetica, sans-serif; text-align: center; text-transform: uppercase; border-bottom: 1px solid #f1f1f1;">Количество</th>
+                        <th style="padding: 15px 0 15px 0; color: #929292; font-size: 11px; font-family: Arial, Helvetica, sans-serif; text-align: center; text-transform: uppercase; border-bottom: 1px solid #f1f1f1;">Итоговая цена, руб.</th>
+                      </tr>
+                      <% @order.order_items.each do |order_item| %>
+                        <tr>
+                          <td style="padding: 20px 20px 20px 0; color: #000; font-size: 14px; font-family: Arial, Helvetica, sans-serif; text-align: left; border-bottom: 1px solid #f1f1f1;"><%= order_item.item.title %></td>
+                          <td style="padding: 20px 20px 20px 0; color: #000; font-size: 14px; font-family: Arial, Helvetica, sans-serif; text-align: center; border-bottom: 1px solid #f1f1f1;"><b><%= humanized_money order_item.price %></b></td>
+                          <td style="padding: 20px 20px 20px 0; color: #000; font-size: 14px; font-family: Arial, Helvetica, sans-serif; text-align: center; border-bottom: 1px solid #f1f1f1;"><%= order_item.quantity %></td>
+                          <td style="padding: 20px 0 20px 0; color: #000; font-size: 14px; font-family: Arial, Helvetica, sans-serif; text-align: center; border-bottom: 1px solid #f1f1f1;"><b><%= humanized_money order_item.total_price %></b></td>
+                        </tr>
+                      <% end %>
+                      <tr>
+                        <td style="padding: 20px 20px 20px 0; color: #000; font-size: 14px; font-family: Arial, Helvetica, sans-serif; text-align: left; border-bottom: 1px solid #f1f1f1;">Доставка (<%= @order.shipping_method.title %>)</td>
+                        <td style="padding: 20px 20px 20px 0; color: #000; font-size: 14px; font-family: Arial, Helvetica, sans-serif; text-align: center; border-bottom: 1px solid #f1f1f1;">&nbsp;</td>
+                        <td style="padding: 20px 20px 20px 0; color: #000; font-size: 14px; font-family: Arial, Helvetica, sans-serif; text-align: center; border-bottom: 1px solid #f1f1f1;">&nbsp;</td>
+                        <td style="padding: 20px 0 20px 0; color: #000; font-size: 14px; font-family: Arial, Helvetica, sans-serif; text-align: center; border-bottom: 1px solid #f1f1f1;"><b><%= humanized_money @order.shipping_price %></b></td>
+                      </tr>
+                    </table>
+                    <div style="width: 300px; margin: 0 auto;">
+                      <p style="padding: 20px 0 20px 0; margin: 15px 0 0 0; color: #000; font-size: 22px; font-family: Arial, Helvetica, sans-serif; letter-spacing: 0.1em; text-transform: uppercase; border-bottom: 2px solid #000;">Итого <span style="color: #fa3e27;"><%= humanized_money @order.total_price %> рублей</span></p>
+                      <p style="margin: 15px 0 80px 0; color: #545454; font-size: 15px; font-family: Arial, Helvetica, sans-serif; line-height: 22px;"><%= @order.full_address %><br /> Тел.: <%= @order.phone %></p>
+                    </div>
+                    <p style="margin: 15px 0 15px 0;"><img width="78" height="78" border="0" src="<%= asset_path('mail/label.png') %>" alt="" /></p>
+                  </td>
+                </tr>
+              </table>
+            </td>
+            <td style="border-right: 2px solid #000;">&nbsp;</td>
+          </tr>
+          <tr>
+            <td colspan="3" height="45" style="border-left: 2px solid #000; border-right: 2px solid #000; border-bottom: 2px solid #000;">&nbsp;</td>
+          </tr>
+        </table>
+      </td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="3" height="100">&nbsp;</td>
+    </tr>
+  </table>
+</body>
+</html>

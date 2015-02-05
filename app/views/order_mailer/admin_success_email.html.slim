@@ -1,0 +1,21 @@
+h1 Новый заказ №#{@order.id}
+
+table
+  tr
+    th Название товара
+    th Цена, руб.
+    th Количество
+    th Итоговая цена, руб
+  - @order.order_items.each do |order_item|
+    tr
+      td= order_item.item.title
+      td= humanized_money order_item.price
+      td= order_item.quantity
+      td= humanized_money order_item.total_price
+
+p Имя: #{@order.name}
+p Email: #{@order.email}
+p Адрес: #{@order.full_address}
+p Телефон: #{@order.phone}
+
+p= link_to 'Просмотреть', edit_admin_order_url(@order)

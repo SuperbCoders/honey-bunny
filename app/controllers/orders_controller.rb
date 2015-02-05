@@ -18,6 +18,14 @@ class OrdersController < ApplicationController
     @order = Order.new(order_params)
     @order.use_cart(current_cart)
     if @order.save
+      # Notify customer
+      OrderMailer.user_success_email(@order.id, @order.email).deliver!
+
+      # Notify admins
+      User.admins.each do |admin|
+        OrderMailer.admin_success_email(@order.id, admin.email).deliver! if admin.email.present?
+      end
+
       reset_current_cart
       cookies[order_hash(@order)] = 'true' # Set cookie that allows to visit callbacks pages
       redirect_to success_order_url(@order)

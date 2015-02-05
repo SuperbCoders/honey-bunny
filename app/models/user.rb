@@ -25,6 +25,7 @@ class User < ActiveRecord::Base
     define_method "#{role}?" do
       self.role == role
     end
+    scope role.pluralize.to_sym, -> { where(role: role) }
   end
 
   # @return [String] present name that could be displayed
