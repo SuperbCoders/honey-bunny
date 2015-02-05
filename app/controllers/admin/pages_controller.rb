@@ -26,6 +26,8 @@ class Admin::PagesController < Admin::ApplicationController
   # PUT/PATCH /admin/pages/:id
   def update
     if @page.update_attributes(page_params)
+      # Fix broken CarrierWave remove_image behavior
+      @page.meta_block.remove_fb_image! if params[:page][:meta_block_attributes][:remove_fb_image].present?
       redirect_to admin_pages_url, notice: I18n.t('shared.saved')
     else
       render 'edit'
