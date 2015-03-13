@@ -4,7 +4,11 @@ class QuestionsController < ApplicationController
   def create
     @question = Question.new(question_params)
     @question.user = current_user
-    @question.save
+    if @question.save
+      User.admins.notify_about_questions.each do |user|
+        QuestionMailer.notify_admin(@question.id, user.email).deliver! if user.email.present?
+      end
+    end
   end
 
   private

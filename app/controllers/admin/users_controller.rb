@@ -51,6 +51,6 @@ class Admin::UsersController < Admin::ApplicationController
   private
 
     def user_params
-      params.require(:user).permit(:email, :name, :role, :avatar, :remove_avatar, :password, :password_confirmation)
+      params.require(:user).permit(:email, :name, :role, :avatar, :remove_avatar, :password, :password_confirmation, :notify_about_orders, :notify_about_questions)
     end
 end

@@ -27,6 +27,8 @@ class User < ActiveRecord::Base
     end
     scope role.pluralize.to_sym, -> { where(role: role) }
   end
+  scope :notify_about_orders, -> { where(notify_about_orders: true) }
+  scope :notify_about_questions, -> { where(notify_about_questions: true) }
 
   # @return [String] present name that could be displayed
   def display_name

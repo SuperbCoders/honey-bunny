@@ -22,7 +22,7 @@ class OrdersController < ApplicationController
       OrderMailer.user_success_email(@order.id, @order.email).deliver!
 
       # Notify admins
-      User.admins.each do |admin|
+      User.admins.notify_about_orders.each do |admin|
         OrderMailer.admin_success_email(@order.id, admin.email).deliver! if admin.email.present?
       end
 

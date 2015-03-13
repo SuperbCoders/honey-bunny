@@ -19,11 +19,23 @@ section class="panel pos-rlt clearfix"
                 = f.check_box :remove_avatar
                 = f.label :remove_avatar
 
-
       .form-group
         .col-lg-9.col-lg-offset-3
           => f.button :submit, @user.new_record? ? t('shared.create') : t('shared.save'), class: 'btn-primary'
           => link_to t('shared.back'), admin_users_path, class: 'btn btn-default'
+
+- if @user.persisted? && @user.admin?
+  section class="panel pos-rlt clearfix"
+    header.panel-heading Уведомления
+    .panel-body.clearfix
+      = simple_form_for [:admin, @user], wrapper: :horizontal_form, html: { class: 'form-horizontal' } do |f|
+        = f.input :notify_about_orders
+        = f.input :notify_about_questions
+
+        .form-group
+          .col-lg-9.col-lg-offset-3
+            => f.button :submit, @user.new_record? ? t('shared.create') : t('shared.save'), class: 'btn-primary'
+            => link_to t('shared.back'), admin_users_path, class: 'btn btn-default'
 
 .row
   - if @user.persisted? && @user.id == current_user.id

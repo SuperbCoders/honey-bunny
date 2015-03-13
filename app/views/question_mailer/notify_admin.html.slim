@@ -1,0 +1,5 @@
+h1 Новый вопрос на Honey Bunny
+
+p #{@question.name} (#{@question.email}) спросил:
+p= @question.text
+p= link_to 'Просмотреть', admin_questions_url

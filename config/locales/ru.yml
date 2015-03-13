@@ -14,6 +14,8 @@ ru:
         remove_avatar: Удалить аватару
         password: Пароль
         password_confirmation: Подтверждеие пароля
+        notify_about_orders: Уведомлять о новых заказах
+        notify_about_questions: Уведомлять о новых вопросах
       item:
         title: Название
         main_image: Изображение
@@ -129,6 +131,9 @@ ru:
       subject: 'Ваш заказ косметики Honey Bunny №%{order_id}'
     admin_success_email:
       subject: 'Новый заказ №%{order_id}'
+  question_mailer:
+    notify_admin:
+      subject: Новый вопрос на Honey Bunny
 
   shared:
     create: Создать
