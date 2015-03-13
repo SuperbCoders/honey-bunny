@@ -1,4 +1,15 @@
 class Question < ActiveRecord::Base
+  include Workflow
+
+  workflow do
+    state :new do
+      event :archive, transitions_to: :archived
+    end
+    state :archived do
+      event :restore, transitions_to: :new
+    end
+  end
+
   belongs_to :user
 
   validates :text, presence: true

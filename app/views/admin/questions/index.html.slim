@@ -5,24 +5,45 @@ section#content
         i.icon-question
         |  Вопросы
     .row
-      section.panel
-        .table-responsive
-          table.table.table-striped.b-t.text-small
-            thead
-              tr
-                th Имя
-                th Email
-                th Телефон
-                th Вопрос
-            tbody
-              - @questions.each do |question|
+      .col-lg-3
+        .list-group.m-b-small
+          = link_to admin_questions_path, class: "list-group-item#{' bg-lighter' if params[:workflow_state] == 'new' || params[:workflow_state].blank?}" do
+            i.icon-chevron-right
+            i.icon-question
+            | Новые
+          = link_to admin_questions_path(workflow_state: 'archived'), class: "list-group-item#{' bg-lighter' if params[:workflow_state] == 'archived'}" do
+            i.icon-chevron-right
+            i.icon-archive
+            | Архив
+      .col-lg-9
+        section.panel
+          .table-responsive
+            table.table.table-striped.b-t.text-small
+              thead
                 tr
-                  td
-                    - if question.user
-                      = link_to question.name, edit_admin_user_path(question.user)
-                    - else
-                      = question.name
-                  td= question.email
-                  td= question.phone
-                  td= question.text
-        footer.panel-footer
+                  th Имя
+                  th Email
+                  th Телефон
+                  th Вопрос
+                  th
+              tbody
+                - @questions.each do |question|
+                  tr
+                    td
+                      - if question.user
+                        = link_to question.name, edit_admin_user_path(question.user)
+                      - else
+                        = question.name
+                    td= question.email
+                    td= question.phone
+                    td= question.text
+                    td
+                      - if question.can_archive?
+                        = link_to archive_admin_question_path(question), method: :patch do
+                          i.icon-archive
+                          | В архив
+                      - if question.can_restore?
+                        = link_to restore_admin_question_path(question), method: :patch do
+                          i.icon-reply
+                          | Восстановить
+          footer.panel-footer

@@ -33,7 +33,12 @@ Rails.application.routes.draw do
       post :up, on: :member
       post :down, on: :member
     end
-    resources :questions, only: :index
+    resources :questions, only: :index do
+      member do
+        patch :archive
+        patch :restore
+      end
+    end
     resources :settings, only: :index do
       patch :update_meta_block, on: :collection
     end
