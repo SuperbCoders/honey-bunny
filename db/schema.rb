@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150313114526) do
+ActiveRecord::Schema.define(version: 20150316130725) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -236,6 +236,7 @@ ActiveRecord::Schema.define(version: 20150313114526) do
     t.string   "lon"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "official",   default: true
   end
 
   create_table "superb_text_constructor_blocks", force: true do |t|

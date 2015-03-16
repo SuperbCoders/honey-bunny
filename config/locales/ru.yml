@@ -73,6 +73,7 @@ ru:
         email: E-mail
         lat: Широта
         lon: Долгота
+        official: Официальный магазин?
       review:
         name: Имя
         email: E-mail

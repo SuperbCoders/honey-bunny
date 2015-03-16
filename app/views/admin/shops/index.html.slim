@@ -23,6 +23,10 @@ section#content
                   td= image_tag shop.logo.full
                   td= shop.name
                   td
+                    - if shop.official?
+                      p
+                        i.icon-ok
+                        | Официальный магазин
                     p= shop.address
                     p= shop.phone
                     p= shop.email

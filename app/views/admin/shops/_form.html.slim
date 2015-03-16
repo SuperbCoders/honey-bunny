@@ -7,6 +7,7 @@ section class="panel pos-rlt clearfix"
     = simple_form_for [:admin, @shop], wrapper: :horizontal_form, html: { class: 'form-horizontal' } do |f|
       = f.input :name
       = f.input :logo, hint: (image_tag @shop.logo.full if @shop.logo?)
+      = f.input :official
       = f.input :address
       = f.input :phone
       = f.input :email
