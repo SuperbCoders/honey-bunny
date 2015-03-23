@@ -17,3 +17,10 @@
               | Запомнить меня
         = f.submit 'Войти', class: 'btn btn-info'
         .line.line-dashed
+        a.btn.btn-facebook.btn-block.m-b-small href=user_omniauth_authorize_path('facebook')
+          i.icon-facebook.pull-left
+          | Войти через Facebook
+        a.btn.btn-twitter.btn-block.m-b-small href=user_omniauth_authorize_path('vkontakte')
+          i.icon-vk.pull-left
+          | Войти через Вконтакте
+        .line.line-dashed
