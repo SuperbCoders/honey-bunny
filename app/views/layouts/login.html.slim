@@ -1,0 +1,37 @@
+doctype html
+html lang="en" 
+  head
+    meta charset="utf-8" /
+    title Панель администрирования Honey-Bunny
+    meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport" /
+    = stylesheet_link_tag "admin"
+    = javascript_include_tag "admin"
+    /![if lt IE 9]
+      = javascript_include_tag 'html5shiv'
+    = csrf_meta_tags
+  body
+    /! header
+    header#header.navbar.bg.bg-black
+      a.navbar-brand href="/"  Honey Bunny
+
+    section#content
+      .container
+        section.main.padder.m-t
+          - if flash.present?
+            .flashes style="padding-top: 20px"
+              - flash.each do |kind, messages|
+                - [messages].flatten.each do |msg|
+                  = content_tag :div, class: "alert alert-#{kind == 'notice' ? 'success' : 'error'}" do
+                    button.close type="button" data-dismiss="alert"
+                      i.icon-remove
+                    |  
+                    i.icon-large class="icon-#{kind == 'notice' ? 'ok-sign' : 'remove-sign'}"
+                    |  
+                    = msg
+      .main.padder
+        = yield
+    /! footer
+    footer#footer
+      .text-center.padder.clearfix
+        p
+          small &copy; Honey Bunny 2015

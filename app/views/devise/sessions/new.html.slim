@@ -1,0 +1,19 @@
+.row
+  .col-lg-4.col-lg-offset-4.m-t-large
+    section.panel
+      header.panel-heading.text-center
+        | Вход
+      = form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'panel-body' }) do |f|
+        .block
+          label.control-label E-mail
+          = f.email_field :email, required: false, autofocus: true, class: 'form-control'
+        .block
+          label.control-label Пароль
+          = f.password_field :password, required: false, class: 'form-control'
+        - if devise_mapping.rememberable? 
+          .checkbox
+            label
+              = f.check_box :remember_me
+              | Запомнить меня
+        = f.submit 'Войти', class: 'btn btn-info'
+        .line.line-dashed

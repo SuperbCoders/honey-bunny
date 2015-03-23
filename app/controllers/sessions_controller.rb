@@ -1,4 +1,5 @@
 class SessionsController < Devise::SessionsController
+  layout 'login'
 
   # GET /resource/sign_in
   def new
