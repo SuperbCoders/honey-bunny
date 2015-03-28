@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks', sessions: 'sessions' }
+  devise_for :wholesalers
+
   delete 'identities/:provider' => 'admin/identities#destroy', as: :identity
 
   namespace :admin do
@@ -60,6 +62,7 @@ Rails.application.routes.draw do
   resources :reviews, only: [:create]
   resources :faqs, only: :index, path: 'faq', controller: 'faq'
   resources :questions, only: :create
+  resources :wholesalers, only: [:new, :create]
 
   post 'carts/items/:item_id' => 'carts#add', as: :add_to_cart
   delete 'carts/items/:item_id' => 'carts#remove', as: :remove_from_cart

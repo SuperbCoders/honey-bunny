@@ -1,0 +1,67 @@
+<section class="case-article covered darkstyle" style="background: #566069;">
+  <div class="container globalwidth">
+    <div class="wrapper">
+      <h2 class="center">Оптовый заказ косметики Honey Bunny</h2>
+      <div class="text">
+        <p>Спасибо за ваш интерес к нашей косметике! Чтобы оформить оптовый заказ, сообщите нам свои реквизиты, контактную информацию и пожелания по доставке. В ответ мы выставим вам счет, где вы увидите оптовые цены.
+        <br /> По всем вопросам пишите на почту <a href="mailto:myhoneybunny.ru@gmail.com">myhoneybunny.ru@gmail.com</a>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="case-cart">
+  <%= form_for @wholesaler do |f| %>
+    <div class="case-row case-cart-address">
+      <div class="container globalwidth">
+        <div class="wrapper">
+          <div class="forms" style="text-align:center">
+            <%= link_to 'У меня уже есть аккаунт оптового покупателя', '#' %>
+          </div>
+          <h2 class="center">1. Регистрационные данные</h2>
+          <div class="forms">
+            <div class="field<%= ' error' if f.object.errors['email'].any? %>"><%= f.text_field :email, placeholder: 'Эл. почта' %></div>
+            <div class="field<%= ' error' if f.object.errors['password'].any? %>"><%= f.password_field :password, placeholder: 'Пароль' %></div>
+            <div class="field<%= ' error' if f.object.errors['password_confirmation'].any? %>"><%= f.password_field :password_confirmation, placeholder: 'Пароль еще раз' %></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="case-row case-cart-address">
+      <div class="container globalwidth">
+        <div class="wrapper">
+          <h2 class="center">2. Реквизиты вашей компании или ИП</h2>
+          <%= f.fields_for :company do |ff| %>
+            <div class="forms">
+              <div class="field<%= ' error' if ff.object.errors['name'].any? %>"><%= ff.text_field :name, placeholder: 'Название' %></div>
+              <div class="field<%= ' error' if ff.object.errors['address'].any? %>"><%= ff.text_field :address, placeholder: 'Адрес' %></div>
+              <div class="field">
+                <div class="table">
+                  <div class="tr">
+                    <div class="td td1<%= ' error' if ff.object.errors['inn'].any? %>"><%= ff.text_field :inn, placeholder: 'ИНН' %></div>
+                    <div class="td td2<%= ' error' if ff.object.errors['kpp'].any? %>"><%= ff.text_field :kpp, placeholder: 'КПП' %></div>
+                  </div>
+                </div>
+              </div>
+              <div class="field">
+                <div class="table">
+                  <div class="tr">
+                    <div class="td td1<%= ' error' if ff.object.errors['ogrn'].any? %>"><%= ff.text_field :ogrn, placeholder: 'ОГРН' %></div>
+                    <div class="td td2<%= ' error' if ff.object.errors['okpo'].any? %>"><%= ff.text_field :okpo, placeholder: 'ОКПО' %></div>
+                  </div>
+                </div>
+              </div>
+              <div class="field<%= ' error' if ff.object.errors['bank_details'].any? %>"><%= ff.text_area :bank_details, placeholder: 'Банковские реквизиты' %></div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="case-row case-cart-payment">
+      <div class="container globalwidth">
+        <div class="btn-wrap">
+          <button class="btn btn-orn" type="submit">Зарегистрироваться</button>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</section>
