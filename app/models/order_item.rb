@@ -1,5 +1,5 @@
 class OrderItem < ActiveRecord::Base
-  belongs_to :order, inverse_of: :order_items
+  belongs_to :order, inverse_of: :order_items, polymorphic: true
   belongs_to :item
 
   monetize :price_cents
