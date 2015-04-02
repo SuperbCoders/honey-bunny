@@ -72,6 +72,15 @@ html lang="en"
         - lists_notifications_count = 0
         - if can? :manage, User
           - lists_set << link_to('Пользователи', admin_users_path)
+        - if can? :manage, Wholesaler
+          - if new_wholesalers_count > 0
+            - lists_notifications_count += new_wholesalers_count
+            - link = link_to admin_wholesalers_path do
+              | Оптовики 
+              span.badge= new_wholesalers_count
+            - lists_set << link
+          - else
+            - lists_set << link_to('Оптовики', admin_wholesalers_path)
         - if can? :manage, ShippingMethod
           - lists_set << link_to('Способы доставки', admin_shipping_methods_path)
         - if can? :manage, Shop
@@ -95,7 +104,7 @@ html lang="en"
               i.icon-book.icon-xlarge
               span Справочники
               - if lists_notifications_count > 0
-                span.badge= new_questions_count
+                span.badge= lists_notifications_count
             ul.dropdown-menu
               - lists_set.each do |link|
                 li= link

@@ -39,6 +39,12 @@ Rails.application.routes.draw do
       end
     end
     resources :users, except: :show
+    resources :wholesalers, except: :show do
+      member do
+        patch :approve
+        patch :decline
+      end
+    end
     resources :faqs, except: :show, path: 'faq', controller: 'faq' do
       post :up, on: :member
       post :down, on: :member
@@ -73,7 +79,9 @@ Rails.application.routes.draw do
   resources :reviews, only: [:create]
   resources :faqs, only: :index, path: 'faq', controller: 'faq'
   resources :questions, only: :create
-  resources :wholesalers, only: [:new, :create]
+  resources :wholesalers, only: [:new, :create] do
+    get :pending, on: :collection
+  end
 
   # Default cart
   post 'carts/items/:item_id' => 'carts#add', as: :add_to_cart

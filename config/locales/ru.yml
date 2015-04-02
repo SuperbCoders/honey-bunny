@@ -16,6 +16,7 @@ ru:
         password_confirmation: Подтверждеие пароля
         notify_about_orders: Уведомлять о новых заказах
         notify_about_questions: Уведомлять о новых вопросах
+        notify_about_wholesalers: Уведомлять о новых оптовиках
       item:
         title: Название
         main_image: Изображение
@@ -88,6 +89,17 @@ ru:
       faq:
         question: Вопрос
         answer: Ответ
+      wholesaler:
+        email: E-mail
+        password: Пароль
+      company:
+        name: Название
+        address: Адрес
+        inn: ИНН
+        kpp: КПП
+        ogrn: ОГРН
+        okpo: ОКПО
+        bank_details: Банковские реквизиты
   simple_form:
     labels:
       <<: *activerecord_attributes
@@ -113,6 +125,12 @@ ru:
     role:
       user: Пользователь
       admin: Администратор
+
+  wholesaler:
+    workflow_state:
+      new: Новый
+      approved: Подтвержден
+      declined: Отклонен
 
   review:
     place:
@@ -143,6 +161,9 @@ ru:
   question_mailer:
     notify_admin:
       subject: Новый вопрос на Honey Bunny
+  wholesaler_mailer:
+    notify_admin:
+      subject: Новый оптовый покупатель Honey Bunny
 
   shared:
     create: Создать

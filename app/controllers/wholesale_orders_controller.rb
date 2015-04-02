@@ -1,5 +1,6 @@
 class WholesaleOrdersController < ApplicationController
   include OrderHashable
+  include OrderStoreable
 
   layout 'item'
 
@@ -10,7 +11,7 @@ class WholesaleOrdersController < ApplicationController
 
   # GET /wholesale_orders/new
   def new
-    @wholesale_order = WholesaleOrder.new
+    @wholesale_order = WholesaleOrder.new(stored_order_details(:wholesale_order))
     @wholesale_order.set_default_values
   end
 
@@ -18,6 +19,9 @@ class WholesaleOrdersController < ApplicationController
   def create
     @wholesale_order = WholesaleOrder.new(wholesale_order_params)
     @wholesale_order.use_cart(current_wholesale_cart)
+
+    store_order_details(@wholesale_order)
+
     if @wholesale_order.save
       # Notify customer
       WholesaleOrderMailer.user_success_email(@wholesale_order.id, @wholesale_order.email).deliver!
@@ -45,7 +49,11 @@ class WholesaleOrdersController < ApplicationController
   private
 
     def authenticate_wholesaler!
-      redirect_to new_wholesaler_url unless current_wholesaler
+      if current_wholesaler
+        redirect_to pending_wholesalers_url unless current_wholesaler.approved?
+      else
+        redirect_to new_wholesaler_url
+      end
     end
 
     def set_lists

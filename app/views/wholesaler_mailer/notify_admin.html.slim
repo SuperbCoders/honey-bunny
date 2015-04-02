@@ -1,0 +1,12 @@
+h1 Новый оптовый покупатель
+
+p Email: #{@wholesaler.email}
+p Название компании: #{@wholesaler.company.name}
+p Адрес: #{@wholesaler.company.address}
+p ИНН: #{@wholesaler.company.inn}
+p КПП: #{@wholesaler.company.kpp}
+p ОГРН: #{@wholesaler.company.ogrn}
+p ОКПО: #{@wholesaler.company.okpo}
+p Банковские реквизиты: #{@wholesaler.company.bank_details}
+
+= link_to 'Просмотреть', admin_wholesalers_url

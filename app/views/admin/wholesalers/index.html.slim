@@ -1,0 +1,74 @@
+section#content
+  section.main.padder
+    .clearfix
+      h4
+        i.icon-group
+        |  Оптовики
+    .row
+      .col-lg-3
+        .list-group.m-b-small
+          = link_to admin_wholesalers_path(workflow_state: 'approved'), class: "list-group-item#{' bg-lighter' if params[:workflow_state] == 'approved'}" do
+            i.icon-chevron-right
+            i.icon-ok
+            | Подтверждены
+          = link_to admin_wholesalers_path(workflow_state: 'declined'), class: "list-group-item#{' bg-lighter' if params[:workflow_state] == 'declined'}" do
+            i.icon-chevron-right
+            i.icon-remove
+            | Отклонены
+          = link_to admin_wholesalers_path, class: "list-group-item#{' bg-lighter' if params[:workflow_state] == 'new' || params[:workflow_state].blank?}" do
+            i.icon-chevron-right
+            i.icon-question
+            | Новые
+      .col-lg-9
+        section.panel
+          header.panel-heading
+            | Найдено <b>#{@wholesalers.total_count}</b> #{Russian.p(@wholesalers.total_count, 'оптовик', 'оптовика', 'оптовиков')}
+          .panel-body
+            - if can? :create, Wholesaler
+              => link_to 'Добавить', new_admin_wholesaler_path, class: 'btn btn-primary btn-sm'
+          .table-responsive
+            table.table.table-striped.b-t.text-small
+              thead
+                tr
+                  th width='32px'
+                  th Компания
+                  th Email
+                  th Статус
+                  th
+              tbody
+                - @wholesalers.each do |wholesaler|
+                  tr
+                    td
+                      - if wholesaler.approved?
+                        i.icon-ok
+                    td= wholesaler.company.name
+                    td= wholesaler.email
+                    td
+                      - actions = []
+                      - if wholesaler.can_approve?
+                        - actions << (link_to t("wholesaler.workflow_state.approved"), approve_admin_wholesaler_path(wholesaler), method: :patch, data: { confirm: t('shared.are_you_sure') })
+                      - if wholesaler.can_decline?
+                        - actions << (link_to t("wholesaler.workflow_state.declined"), decline_admin_wholesaler_path(wholesaler), method: :patch, data: { confirm: t('shared.are_you_sure') })
+                      - if can?(:update, wholesaler) && actions.any?
+                        .btn-group
+                          button.btn.btn-default.btn-sm.dropdown-toggle data-toggle='dropdown' type='button'
+                            = t("wholesaler.workflow_state.#{wholesaler.workflow_state}")
+                            span.caret
+                          ul.dropdown-menu role="menu"
+                            - actions.each do |action|
+                              li= action
+                      - else
+                        = t("order.workflow_state.#{order.workflow_state}")
+                    td
+                      .btn-group
+                        a.dropdown-toggle data-toggle="dropdown" href="#"
+                          i.icon-pencil
+                        ul.dropdown-menu.pull-right
+                          - if can? :update, wholesaler
+                            li
+                              = link_to edit_admin_wholesaler_path(wholesaler) do
+                                i.icon-external-link
+                                | Редактировать
+          footer.panel-footer
+            .text-right.text-center-sm
+              = paginate @wholesalers, theme: 'twitter-bootstrap-3'

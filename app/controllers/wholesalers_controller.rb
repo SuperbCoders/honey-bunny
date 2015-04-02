@@ -11,12 +11,20 @@ class WholesalersController < ApplicationController
   def create
     @wholesaler = Wholesaler.new(wholesaler_params)
     if @wholesaler.save
+      User.admins.where(notify_about_wholesalers: true).pluck(:email).select(&:present?).each do |email|
+        WholesalerMailer.notify_admin(@wholesaler.id, email).deliver!
+      end
       sign_in @wholesaler
       redirect_to new_wholesale_order_url
     else
       @wholesaler.build_company unless @wholesaler.company
       render :new
     end
+  end
+
+  # GET /wholesalers/pending
+  def pending
+    render layout: 'simple'
   end
 
   private
