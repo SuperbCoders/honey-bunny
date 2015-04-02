@@ -1,15 +1,29 @@
 class CartItem < ActiveRecord::Base
-  belongs_to :cart, inverse_of: :cart_items
+  belongs_to :cart, inverse_of: :cart_items, polymorphic: true
   belongs_to :item
 
   validates :cart, presence: true
   validates :item, presence: true
-  validates :quantity, presence: true, numericality: { only_integer: true, greater_than: 0 }
-
-  delegate :price, to: :item
+  validates :quantity, presence: true
+  validates :quantity, numericality: { only_integer: true, greater_than: 0 }, unless: :wholesale?
+  validates :quantity, numericality: { only_integer: true, greater_than_or_equal_to: 0 }, if: :wholesale?
 
   # @return [Integer] total price of this line
   def total_price
     price * quantity
   end
+
+  def price
+    if wholesale?
+      item.wholesale_price
+    else
+      item.price
+    end
+  end
+
+  private
+
+    def wholesale?
+      cart.is_a?(WholesaleCart)
+    end
 end

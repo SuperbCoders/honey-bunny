@@ -14,9 +14,9 @@ class Admin::OrderItemsController < Admin::ApplicationController
   def create
     @order_item = @order.order_items.build(order_item_params)
     if @order_item.save
-      redirect_to edit_admin_order_url(@order), notice: I18n.t('shared.saved')
+      redirect_to url_for([:edit, :admin, @order]), notice: I18n.t('shared.saved')
     else
-      redirect_to edit_admin_order_url(@order), alert: I18n.t('shared.not_saved')
+      redirect_to url_for([:edit, :admin, @order]), alert: I18n.t('shared.not_saved')
     end
   end
 
@@ -28,25 +28,29 @@ class Admin::OrderItemsController < Admin::ApplicationController
   # PUT/PATCH /admin/orders/:order_id/order_items/:id
   def update
     if @order_item.update_attributes(order_item_params)
-      redirect_to edit_admin_order_url(@order), notice: I18n.t('shared.saved')
+      redirect_to url_for([:edit, :admin, @order]), notice: I18n.t('shared.saved')
     else
-      redirect_to edit_admin_order_url(@order), alert: I18n.t('shared.not_saved')
+      redirect_to url_for([:edit, :admin, @order]), alert: I18n.t('shared.not_saved')
     end
   end
 
   # DELETE /admin/orders/:order_id/order_items/:id
   def destroy
     if @order_item.destroy
-      redirect_to edit_admin_order_url(@order), notice: I18n.t('shared.saved')
+      redirect_to url_for([:edit, :admin, @order]), notice: I18n.t('shared.saved')
     else
-      redirect_to edit_admin_order_url(@order), alert: I18n.t('shared.not_saved')
+      redirect_to url_for([:edit, :admin, @order]), alert: I18n.t('shared.not_saved')
     end
   end
 
   private
 
     def set_order
-      @order = Order.find(params[:order_id])
+      if params[:order_id].present?
+        @order = Order.find(params[:order_id])
+      elsif params[:wholesale_order_id]
+        @order = WholesaleOrder.find(params[:wholesale_order_id])
+      end
     end
 
     def set_order_item

@@ -1,4 +1,6 @@
 class OrdersController < ApplicationController
+  include OrderHashable
+
   layout 'item'
 
   before_action :check_cart, only: :new
@@ -47,26 +49,17 @@ class OrdersController < ApplicationController
       redirect_to items_url if current_cart.empty_cart?
     end
 
-    # Allow to visit some pages only with correct cookies
-    def check_order_hash
-      redirect_to root_url unless cookies[order_hash(@order)].present?
-    end
-
     def order_params
       params.require(:order).permit(:shipping_method_id, :payment_method_id, :city, :zipcode, :address, :name, :phone, :email, :comment)
     end
 
     def set_lists
-      @shipping_methods = ShippingMethod.includes(:shipping_prices).order(priority: :asc)
+      @shipping_methods = ShippingMethod.where(available_for_default_order: true).includes(:shipping_prices).order(priority: :asc)
       @payment_methods = PaymentMethod.all
       @cities = City.all
     end
 
     def set_order
       @order = Order.find(params[:id])
-    end
-
-    def order_hash(order)
-      Digest::SHA1.hexdigest("#{order.id}_#{order.created_at}")
     end
 end

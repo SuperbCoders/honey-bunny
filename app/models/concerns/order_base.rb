@@ -28,13 +28,13 @@ module OrderBase
   # @param cart [Cart] cart that should be used
   def use_cart(cart)
     cart.cart_items.each do |cart_item|
-      order_items.build(item_id: cart_item.item.id, price: cart_item.item.price, quantity: cart_item.quantity)
+      order_items.build(item_id: cart_item.item.id, price: cart_item.item.send(item_price_method_name), quantity: cart_item.quantity) if cart_item.quantity.to_i > 0
     end
   end
 
   # @return [Float] total price of all items + shipping price
   def total_price
-    items_price + shipping_price
+    items_price.to_f + shipping_price.to_f
   end
 
   # @return [Float] total price of all items
@@ -51,4 +51,29 @@ module OrderBase
   def full_address
     [zipcode, city, address].select(&:present?).join(', ')
   end
+
+  # Special rules for default shipping price value
+  def set_default_shipping_price
+    if new_record? || shipping_price.blank?
+      self.shipping_price = shipping_method.try(:calculate_price, { city_id: city_id }) || 0
+    end
+  end
+
+  protected
+
+    # Rollback items' quantities
+    def cancel
+      order_items.each { |oi| oi.increase_item_quantity(force: true) }
+    end
+
+    # @reutrn [Integer] id of the selected city
+    # @reutrn [nil] if city was not found
+    def city_id
+      City.where(name: city).pluck(:id).first
+    end
+
+    # @return [Symbol] name of the Item's method that returns proper product price
+    def item_price_method_name
+      :price
+    end
 end

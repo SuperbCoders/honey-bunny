@@ -6,12 +6,14 @@ class Item < ActiveRecord::Base
   mount_uploader :main_image, ItemMainImageUploader
 
   monetize :price_cents
+  monetize :wholesale_price_cents
 
   has_and_belongs_to_many :reviews
 
   validates :title, presence: true
   validates :main_image, presence: true
   validates :price_cents, presence: true, numericality: { greater_than: 0 }
+  validates :wholesale_price_cents, presence: true, numericality: { greater_than: 0 }
   validates :quantity, presence: true
   validates :quantity, numericality: { greater_than_or_equal_to: 0 }, unless: :negative_quantity_allowed?
 

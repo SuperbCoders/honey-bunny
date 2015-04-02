@@ -12,8 +12,7 @@ class WholesalersController < ApplicationController
     @wholesaler = Wholesaler.new(wholesaler_params)
     if @wholesaler.save
       sign_in @wholesaler
-      # redirect_to new_wholesale_order_url
-      render text: 'Registered'
+      redirect_to new_wholesale_order_url
     else
       @wholesaler.build_company unless @wholesaler.company
       render :new

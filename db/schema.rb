@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150328131429) do
+ActiveRecord::Schema.define(version: 20150402082720) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,10 +22,13 @@ ActiveRecord::Schema.define(version: 20150328131429) do
     t.integer  "quantity"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "cart_type"
   end
 
-  add_index "cart_items", ["cart_id", "item_id"], name: "index_cart_items_on_cart_id_and_item_id", unique: true, using: :btree
+  add_index "cart_items", ["cart_id", "cart_type", "item_id"], name: "index_cart_items_on_cart_id_and_cart_type_and_item_id", unique: true, using: :btree
+  add_index "cart_items", ["cart_id", "cart_type"], name: "index_cart_items_on_cart_id_and_cart_type", using: :btree
   add_index "cart_items", ["cart_id"], name: "index_cart_items_on_cart_id", using: :btree
+  add_index "cart_items", ["cart_type"], name: "index_cart_items_on_cart_type", using: :btree
   add_index "cart_items", ["item_id"], name: "index_cart_items_on_item_id", using: :btree
 
   create_table "carts", force: true do |t|
@@ -33,6 +36,8 @@ ActiveRecord::Schema.define(version: 20150328131429) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "carts", ["token"], name: "index_carts_on_token", unique: true, using: :btree
 
   create_table "cities", force: true do |t|
     t.string   "name"
@@ -95,6 +100,8 @@ ActiveRecord::Schema.define(version: 20150328131429) do
     t.integer  "quantity",                  default: 0
     t.boolean  "negative_quantity_allowed", default: false
     t.datetime "deleted_at"
+    t.integer  "wholesale_price_cents",     default: 0,     null: false
+    t.string   "wholesale_price_currency",  default: "RUB", null: false
   end
 
   add_index "items", ["deleted_at"], name: "index_items_on_deleted_at", using: :btree
@@ -137,7 +144,7 @@ ActiveRecord::Schema.define(version: 20150328131429) do
   end
 
   add_index "order_items", ["item_id"], name: "index_order_items_on_item_id", using: :btree
-  add_index "order_items", ["order_id", "item_id"], name: "index_order_items_on_order_id_and_item_id", unique: true, using: :btree
+  add_index "order_items", ["order_id", "order_type", "item_id"], name: "index_order_items_on_order_id_and_order_type_and_item_id", unique: true, using: :btree
   add_index "order_items", ["order_id", "order_type"], name: "index_order_items_on_order_id_and_order_type", using: :btree
   add_index "order_items", ["order_id"], name: "index_order_items_on_order_id", using: :btree
   add_index "order_items", ["order_type"], name: "index_order_items_on_order_type", using: :btree
@@ -221,13 +228,15 @@ ActiveRecord::Schema.define(version: 20150328131429) do
     t.string   "name"
     t.string   "title"
     t.string   "rate_type"
-    t.integer  "rate_cents",            default: 0,     null: false
-    t.string   "rate_currency",         default: "RUB", null: false
-    t.integer  "extra_charge_cents",    default: 0,     null: false
-    t.string   "extra_charge_currency", default: "RUB", null: false
+    t.integer  "rate_cents",                    default: 0,     null: false
+    t.string   "rate_currency",                 default: "RUB", null: false
+    t.integer  "extra_charge_cents",            default: 0,     null: false
+    t.string   "extra_charge_currency",         default: "RUB", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "priority"
+    t.boolean  "available_for_default_order",   default: false
+    t.boolean  "available_for_wholesale_order", default: false
   end
 
   add_index "shipping_methods", ["name"], name: "index_shipping_methods_on_name", unique: true, using: :btree
@@ -316,6 +325,37 @@ ActiveRecord::Schema.define(version: 20150328131429) do
   add_index "users", ["notify_about_questions"], name: "index_users_on_notify_about_questions", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["role"], name: "index_users_on_role", using: :btree
+
+  create_table "wholesale_carts", force: true do |t|
+    t.string   "token"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "wholesale_carts", ["token"], name: "index_wholesale_carts_on_token", unique: true, using: :btree
+
+  create_table "wholesale_orders", force: true do |t|
+    t.integer  "wholesaler_id"
+    t.integer  "shipping_method_id"
+    t.integer  "payment_method_id"
+    t.string   "workflow_state"
+    t.boolean  "paid",                    default: false
+    t.string   "city"
+    t.string   "zipcode"
+    t.text     "address"
+    t.string   "name"
+    t.string   "phone"
+    t.string   "email"
+    t.text     "comment"
+    t.integer  "shipping_price_cents",    default: 0,     null: false
+    t.string   "shipping_price_currency", default: "RUB", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "wholesale_orders", ["payment_method_id"], name: "index_wholesale_orders_on_payment_method_id", using: :btree
+  add_index "wholesale_orders", ["shipping_method_id"], name: "index_wholesale_orders_on_shipping_method_id", using: :btree
+  add_index "wholesale_orders", ["wholesaler_id"], name: "index_wholesale_orders_on_wholesaler_id", using: :btree
 
   create_table "wholesalers", force: true do |t|
     t.string   "email",                  default: "", null: false

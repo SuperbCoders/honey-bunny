@@ -12,6 +12,15 @@ module CartsHelper
     @current_cart = create_cart
   end
 
+  def current_wholesale_cart
+    @current_wholesale_cart ||= WholesaleCart.find_by(token: session[:wholesale_cart_token]) || create_wholesale_cart
+  end
+
+  def reset_current_wholesale_cart
+    current_wholesale_cart.destroy
+    @current_wholesale_cart = create_wholesale_cart
+  end
+
   # Renders link to add item to the cart if items quantity is greater than 0.
   # Otherwise it renders button with 'no items' caption.
   # @param item [Item] item that should be added to cart
@@ -32,5 +41,11 @@ module CartsHelper
       cart = Cart.create
       session[:cart_token] = cart.token
       cart
+    end
+
+    def create_wholesale_cart
+      wholesale_cart = WholesaleCart.create!
+      session[:wholesale_cart_token] = wholesale_cart.token
+      wholesale_cart
     end
 end

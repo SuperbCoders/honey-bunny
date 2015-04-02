@@ -4,8 +4,8 @@ module ShippingMethodsHelper
   # @return [String] icon name for shipping method
   def shipping_method_icon(shipping_method)
     case shipping_method.name
-    when 'courier' then 'moto'
-    when 'regions' then 'truck'
+    when 'courier', 'own_expense' then 'moto'
+    when 'regions', 'transport_company' then 'truck'
     else 'truck'
     end
   end

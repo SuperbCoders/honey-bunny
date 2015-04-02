@@ -1,0 +1,90 @@
+.clearfix
+  h4 #{@order.persisted? ? t('shared.edit') : t('shared.create')} заказ
+
+.row
+  .col-md-6
+    section class="panel pos-rlt clearfix"
+      header.panel-heading Информация
+      .panel-body.clearfix
+        = simple_form_for [:admin, @order], wrapper: :horizontal_form, html: { class: 'form-horizontal' } do |f|
+          = f.input :name
+          = f.input :phone
+          = f.input :email
+          = f.input :comment
+
+          .form-group
+            .col-lg-9.col-lg-offset-3
+              => f.button :submit, @order.new_record? ? t('shared.create') : t('shared.save'), class: 'btn-primary'
+              => link_to t('shared.back'), admin_wholesale_orders_path(workflow_state: @order.workflow_state), class: 'btn btn-default'
+  .col-md-6
+    section class="panel pos-rlt clearfix"
+      header.panel-heading Адрес
+      .panel-body.clearfix
+        = simple_form_for [:admin, @order], wrapper: :horizontal_form, html: { class: 'form-horizontal' } do |f|
+          = f.input :city
+          = f.input :zipcode
+          = f.input :address
+
+          .form-group
+            .col-lg-9.col-lg-offset-3
+              => f.button :submit, @order.new_record? ? t('shared.create') : t('shared.save'), class: 'btn-primary'
+              => link_to t('shared.back'), admin_wholesale_orders_path(workflow_state: @order.workflow_state), class: 'btn btn-default'
+.row
+  .col-md-6
+    section class="panel pos-rlt clearfix"
+      header.panel-heading Доставка
+      .panel-body.clearfix
+        = simple_form_for [:admin, @order], wrapper: :horizontal_form, html: { class: 'form-horizontal' } do |f|
+          = f.association :shipping_method, label_method: :title, include_blank: false
+          = f.input :shipping_price
+
+          .form-group
+            .col-lg-9.col-lg-offset-3
+              => f.button :submit, @order.new_record? ? t('shared.create') : t('shared.save'), class: 'btn-primary'
+              => link_to t('shared.back'), admin_wholesale_orders_path(workflow_state: @order.workflow_state), class: 'btn btn-default'
+  .col-md-6
+    section class="panel pos-rlt clearfix"
+      header.panel-heading Оплата
+      .panel-body.clearfix
+        = simple_form_for [:admin, @order], wrapper: :horizontal_form, html: { class: 'form-horizontal' } do |f|
+          = f.association :payment_method, label_method: :title, include_blank: false
+          = f.input :paid
+
+          .form-group
+            .col-lg-9.col-lg-offset-3
+              => f.button :submit, @order.new_record? ? t('shared.create') : t('shared.save'), class: 'btn-primary'
+              => link_to t('shared.back'), admin_wholesale_orders_path(workflow_state: @order.workflow_state), class: 'btn btn-default'
+
+section class="panel pos-rlt clearfix"
+  header.panel-heading Содержимое
+  .panel-body.clearfix
+    table.table
+      tr
+        th width='64px' ID
+        th Название
+        th width='64px' Фото
+        th Количество
+        th Стоимость за шт., руб.
+        th Подитог, руб.
+        th
+      - @order.order_items.each do |order_item|
+        tr
+          td= order_item.item.id
+          td= link_to order_item.item.title, order_item.item
+          td= image_tag order_item.item.main_image.thumb_square_small
+          td= order_item.quantity
+          td= humanized_money order_item.price
+          td= humanized_money order_item.total_price
+          td
+            = link_to edit_admin_wholesale_order_order_item_path(@order, order_item), data: { toggle: "modal", target: "#myModal" } do
+              i.icon-edit
+            = link_to admin_wholesale_order_order_item_path(@order, order_item), method: :delete, data: { confirm: t('shared.are_you_sure') } do
+              i.icon-trash
+      tr
+        td colspan='4'
+        td.text-right Итого
+        td= humanized_money @order.items_price
+        td
+    .text-right
+      = link_to new_admin_wholesale_order_order_item_path(@order), data: { toggle: "modal", target: "#myModal" }, class: 'btn btn-success' do
+        i.icon-plus

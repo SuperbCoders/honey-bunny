@@ -56,10 +56,17 @@ html lang="en"
         - if can? :manage, Order
           li class=('active' if params[:controller] == 'admin/orders')
             = link_to admin_orders_path(workflow_state: 'new') do
-              i.icon-list.icon-xlarge
+              i.icon-shopping-cart.icon-xlarge
               span Заказы
               - if new_orders_count > 0
-              span.badge= new_orders_count
+                span.badge= new_orders_count
+        - if can? :manage, WholesaleOrder
+          li class=('active' if params[:controller] == 'admin/wholesale_orders')
+            = link_to admin_wholesale_orders_path(workflow_state: 'new') do
+              i.icon-list.icon-xlarge
+              span Оптовые заказы
+              - if new_wholesale_orders_count > 0
+                span.badge= new_wholesale_orders_count
 
         - lists_set = []
         - lists_notifications_count = 0

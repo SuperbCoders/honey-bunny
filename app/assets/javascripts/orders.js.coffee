@@ -21,11 +21,11 @@ $ ->
   # Filters cities list by current shipping method
   filterCitiesByShippingMethod = ->
     options = $(cities).filter("option[data-shipping-method-#{currentShippingMethod().val()}]")
-    $('#order_city').html(options).trigger("chosen:updated")
+    $('.js-order-city').html(options).trigger("chosen:updated")
 
   # Updates shipping methods with subtitles for current city
   updateShippingMethodSubtitles = ->
-    $("input[name='order[shipping_method_id]']").each (index, shippingMethod) ->
+    $("input.js-order-shipping-method-id").each (index, shippingMethod) ->
       price = shippingPriceFor(shippingMethod, currentCity())
       unless price is undefined
         $(shippingMethod).closest('label').find('span.price').text("#{humanizedMoney(price)} руб.")
@@ -38,11 +38,11 @@ $ ->
     $('#order-total-price').text(totalPrice)
 
   currentCity = ->
-    value = $('#order_city').val()
-    $("#order_city option[value='#{value}']")
+    value = $('.js-order-city').val()
+    $(".js-order-city option[value='#{value}']")
 
   currentShippingMethod = ->
-    $("input:checked[name='order[shipping_method_id]']")
+    $("input.js-order-shipping-method-id:checked")
 
   currentShippingPrice = ->
     shippingPriceFor(currentShippingMethod(), currentCity())
@@ -58,25 +58,25 @@ $ ->
         str[1] = str[1].replace(/(\d{3})/g, '$1 ')
     str.join('.')
 
-  # Initialize scripts on /orders/new page
-  if $('#new_order').length
+  # Initialize scripts on /orders/new and /wholesale_orders/new pages
+  if $('#new_order').length or $('#new_wholesale_order').length
     # Full list of cities. It could be filtered by data-shipping-method-* attribute
-    cities = $('#order_city').html()
+    cities = $('.js-order-city').html()
 
     # Setup input masks
-    $('#order_phone').mask('+7 (999) 999-99-99')
+    $('.js-order-phone').mask('+7 (999) 999-99-99')
 
     filterCitiesByShippingMethod()
     updateShippingMethodSubtitles()
     updateTotalPrice()
 
     # Callback on city select
-    $('#order_city').on 'change', ->
+    $('.js-order-city').on 'change', ->
       updateShippingMethodSubtitles()
       updateTotalPrice()
 
     # Callback on shipping method change
-    $("input[name='order[shipping_method_id]']").on 'change', ->
+    $("input.js-order-shipping-method-id").on 'change', ->
       filterCitiesByShippingMethod()
       updateShippingMethodSubtitles()
       updateTotalPrice()
@@ -93,3 +93,9 @@ $ ->
 
     $('input.js-order-item-quantity').on 'focusout', (event) ->
       $(this).closest('form').submit()
+
+  # Initialize scripts on /wholesale_orders/new page
+  if $('#new_wholesale_order').length
+    # Callback on shipping method change
+    $("input.js-order-shipping-method-id").on 'change', ->
+      $('.js-order-shipping-info-fields').toggle(currentShippingMethod().val() == '4')

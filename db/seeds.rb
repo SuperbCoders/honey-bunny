@@ -24,8 +24,13 @@ def create_cities
 end
 
 def create_shipping_methods
-  ShippingMethod.where(name: 'courier').first_or_create(title: 'Курьер по Москве', rate_type: 'city_rate')
-  ShippingMethod.where(name: 'regions').first_or_create(title: 'Почта в регионы', rate_type: 'city_and_fix_rate', rate: 1000)
+  # For default orders
+  ShippingMethod.where(name: 'courier').first_or_create(title: 'Курьер по Москве', rate_type: 'city_rate', available_for_default_order: true)
+  ShippingMethod.where(name: 'regions').first_or_create(title: 'Почта в регионы', rate_type: 'city_and_fix_rate', rate: 1000, available_for_default_order: true)
+
+  # For wholesale orders
+  ShippingMethod.where(name: 'own_expense').first_or_create(title: 'Самовывоз со склада', rate_type: 'fix_rate', available_for_wholesale_order: true)
+  ShippingMethod.where(name: 'transport_company').first_or_create(title: 'Транспортная компания', rate_type: 'fix_rate', rate: 500, available_for_wholesale_order: true)
 end
 
 def create_shipping_prices_for(shipping_method_name)

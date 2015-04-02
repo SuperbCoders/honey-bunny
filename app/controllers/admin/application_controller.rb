@@ -8,6 +8,11 @@ class Admin::ApplicationController < ApplicationController
   end
   helper_method :new_orders_count
 
+  def new_wholesale_orders_count
+    @new_wholesale_orders_count ||= WholesaleOrder.with_new_state.count
+  end
+  helper_method :new_wholesale_orders_count
+
   def new_questions_count
     @new_questions_count ||= Question.with_new_state.count
   end

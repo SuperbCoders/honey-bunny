@@ -23,6 +23,7 @@ ru:
         volume: 'Объем, мл'
         short_description: Краткое описание
         price: 'Цена, руб.'
+        wholesale_price: 'Оптовая цена, руб.'
         quantity: Количество
         negative_quantity_allowed: Разрешать продажи при нуле?
         tag_list: Теги
@@ -50,7 +51,7 @@ ru:
         rate: Стоимость
         extra_charge: Наценка
         priority: Приоритет
-      order:
+      order: &order_attributes
         city: Город
         zipcode: Индекс
         address: Адрес
@@ -62,6 +63,8 @@ ru:
         shipping_price: Стоимость доставки
         payment_method: Способ оплаты
         paid: Оплачено?
+      wholesale_order:
+        <<: *order_attributes
       order_item:
         item: Товар
         quantity: Количество
@@ -132,6 +135,11 @@ ru:
       subject: 'Ваш заказ косметики Honey Bunny №%{order_id}'
     admin_success_email:
       subject: 'Новый заказ №%{order_id}'
+  wholesale_order_mailer:
+    user_success_email:
+      subject: 'Ваш заказ косметики Honey Bunny №%{order_id}'
+    admin_success_email:
+      subject: 'Новый оптовый заказ №%{order_id}'
   question_mailer:
     notify_admin:
       subject: Новый вопрос на Honey Bunny

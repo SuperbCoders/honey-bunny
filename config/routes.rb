@@ -20,6 +20,14 @@ Rails.application.routes.draw do
         patch :cancel
       end
     end
+    resources :wholesale_orders, except: [:show, :destroy] do
+      resources :order_items, except: [:index, :show]
+      member do
+        patch :ship
+        patch :deliver
+        patch :cancel
+      end
+    end
     resources :shipping_methods, except: [:show, :destroy] do
       resources :shipping_prices, only: [:create, :destroy]
     end
@@ -59,11 +67,18 @@ Rails.application.routes.draw do
   resources :orders, only: [:new, :create] do
     get :success, on: :member
   end
+  resources :wholesale_orders, only: [:new, :create] do
+    get :success, on: :member
+  end
   resources :reviews, only: [:create]
   resources :faqs, only: :index, path: 'faq', controller: 'faq'
   resources :questions, only: :create
   resources :wholesalers, only: [:new, :create]
 
+  # Default cart
   post 'carts/items/:item_id' => 'carts#add', as: :add_to_cart
   delete 'carts/items/:item_id' => 'carts#remove', as: :remove_from_cart
+
+  # Wholesale cart
+  post 'wholesale_carts/items/:item_id' => 'wholesale_carts#add', as: :add_to_wholesale_cart
 end
