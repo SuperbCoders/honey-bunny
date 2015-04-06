@@ -32,7 +32,7 @@ class W1Controller < ApplicationController
   private
 
     def create_notification
-      @notification = W1::Notification.new(request.raw_post, secret: Billing::W1.signature)
+      @notification = W1::Notification.new(request.raw_post, secret: Settings::W1.signature)
     end
 
     def proccess_order(order_id)
