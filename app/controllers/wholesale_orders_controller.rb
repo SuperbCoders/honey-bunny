@@ -52,7 +52,7 @@ class WholesaleOrdersController < ApplicationController
       if current_wholesaler
         redirect_to pending_wholesalers_url unless current_wholesaler.approved?
       else
-        redirect_to new_wholesaler_url
+        redirect_to select_wholesalers_url
       end
     end
 

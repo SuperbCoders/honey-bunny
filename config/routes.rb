@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks', sessions: 'sessions' }
-  devise_for :wholesalers
+  devise_for :wholesalers, controllers: { sessions: 'wholesaler_devise/sessions' }
 
   delete 'identities/:provider' => 'admin/identities#destroy', as: :identity
 
@@ -80,6 +80,7 @@ Rails.application.routes.draw do
   resources :faqs, only: :index, path: 'faq', controller: 'faq'
   resources :questions, only: :create
   resources :wholesalers, only: [:new, :create] do
+    get :select, on: :collection
     get :pending, on: :collection
   end
 

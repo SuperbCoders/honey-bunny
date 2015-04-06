@@ -21,7 +21,6 @@
           <div class="forms">
             <div class="field<%= ' error' if f.object.errors['email'].any? %>"><%= f.text_field :email, placeholder: 'Эл. почта' %></div>
             <div class="field<%= ' error' if f.object.errors['password'].any? %>"><%= f.password_field :password, placeholder: 'Пароль' %></div>
-            <div class="field<%= ' error' if f.object.errors['password_confirmation'].any? %>"><%= f.password_field :password_confirmation, placeholder: 'Пароль еще раз' %></div>
           </div>
         </div>
       </div>

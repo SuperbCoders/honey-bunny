@@ -22,6 +22,10 @@ class WholesalersController < ApplicationController
     end
   end
 
+  # GET /wholesalers/select
+  def select
+  end
+
   # GET /wholesalers/pending
   def pending
     render layout: 'simple'
