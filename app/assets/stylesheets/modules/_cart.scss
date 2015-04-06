@@ -109,6 +109,16 @@
 	.current & {@include retina-sprite(icon-card_w);}
 }
 
+.icon-login {
+	@include retina-sprite(icon-login_b);
+	.current & {@include retina-sprite(icon-login_w);}
+}
+
+.icon-new-user {
+	@include retina-sprite(icon-create_b);
+	.current & {@include retina-sprite(icon-create_w);}
+}
+
 .case-cart-list {
 	h2 {
 		@include respond-to(medium-screen) {

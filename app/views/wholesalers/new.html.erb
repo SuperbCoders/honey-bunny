@@ -14,9 +14,6 @@
     <div class="case-row case-cart-address">
       <div class="container globalwidth">
         <div class="wrapper">
-          <div class="forms" style="text-align:center">
-            <%= link_to 'У меня уже есть аккаунт оптового покупателя', '#' %>
-          </div>
           <h2 class="center">1. Регистрационные данные</h2>
           <div class="forms">
             <div class="field<%= ' error' if f.object.errors['email'].any? %>"><%= f.text_field :email, placeholder: 'Эл. почта' %></div>
