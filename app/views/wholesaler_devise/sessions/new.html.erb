@@ -3,7 +3,7 @@
     <div class="case-row case-cart-address">
       <div class="container globalwidth">
         <div class="wrapper">
-          <h2 class="center">Войти как оптовый покупатель</h2>
+          <h2 class="center">Вход для оптовых покупателей</h2>
           <div class="forms">
             <div class="field<%= ' error' if f.object.errors['email'].any? %>"><%= f.text_field :email, placeholder: 'Эл. почта' %></div>
             <div class="field<%= ' error' if f.object.errors['password'].any? %>"><%= f.password_field :password, placeholder: 'Пароль' %></div>
@@ -11,7 +11,7 @@
         </div>
       </div>
     </div>
-    <div class="case-row case-cart-payment" style="padding-top: 0">
+    <div class="case-cart-payment">
       <div class="container globalwidth">
         <div class="btn-wrap" style="padding-top: 0">
           <button class="btn btn-orn" type="submit">Войти</button>
