@@ -6,6 +6,12 @@ Rails.application.routes.draw do
 
   delete 'identities/:provider' => 'admin/identities#destroy', as: :identity
 
+  scope :w1, controller: 'w1', as: 'w1' do
+    post :callback, action: 'callback'
+    match 'success/:klass/:id', action: 'success', via: [:get, :post], as: :success
+    match 'fail/:klass/:id', action: 'fail', via: [:get, :post], as: :fail
+  end
+
   namespace :admin do
     root 'orders#index', workflow_state: 'new'
     resources :pages, except: :show
@@ -71,7 +77,9 @@ Rails.application.routes.draw do
     end
   end
   resources :orders, only: [:new, :create] do
+    get :payment, on: :member
     get :success, on: :member
+    get :fail, on: :member
   end
   resources :wholesale_orders, only: [:new, :create] do
     get :success, on: :member

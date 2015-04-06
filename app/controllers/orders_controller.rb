@@ -4,8 +4,8 @@ class OrdersController < ApplicationController
   layout 'item'
 
   before_action :check_cart, only: :new
-  before_action :set_order, only: [:success]
-  before_action :check_order_hash, only: [:success]
+  before_action :set_order, only: [:payment, :success, :fail]
+  before_action :check_order_hash, only: [:payment, :success, :fail]
 
   # GET /orders/new
   def new
@@ -30,15 +30,28 @@ class OrdersController < ApplicationController
 
       reset_current_cart
       cookies[order_hash(@order)] = 'true' # Set cookie that allows to visit callbacks pages
-      redirect_to success_order_url(@order)
+
+      # Redirect to the next page
+      redirect_to @order.payment_method.name == 'w1' ? payment_order_url(@order) : success_order_url(@order)
     else
       set_lists
       render 'new'
     end
   end
 
+  # GET /orders/:id/payment
+  def payment
+    render layout: false
+  end
+
   # GET /orders/:id/success
   def success
+    cookies.delete order_hash(@order)
+    render layout: 'simple'
+  end
+
+  # GET /orders/:id/fail
+  def fail
     cookies.delete order_hash(@order)
     render layout: 'simple'
   end

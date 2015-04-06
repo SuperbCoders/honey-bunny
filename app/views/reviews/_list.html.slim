@@ -35,6 +35,6 @@ section.case-comments
           a.btn.btn-more.btn-gry-cut.hidden-phone.js-reviews-more href="#"  Показать еще #{reviews.count - 3} #{Russian.p(reviews.count - 3, 'отзыв', 'отзыва', 'отзывов')}
           a.btn-refresh.hidden.visible-phone.js-reviews-more href="#"
 
-- if signed_in?
+- if user_signed_in?
   = render 'reviews/popup_form'
   = render 'reviews/popup_thanks'

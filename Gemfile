@@ -66,6 +66,7 @@ gem 'bootstrap-kaminari-views'
 gem 'acts-as-taggable-on'
 gem 'settingslogic'
 gem 'exception_notification'
+gem 'activemerchant', git: 'https://github.com/ImmaculatePine/active_merchant.git', branch: 'new-service-url'
 
 gem 'superb_auth', github: 'SuperbCoders/superb_auth'
 gem 'superb_pages', github: 'SuperbCoders/superb_pages'
