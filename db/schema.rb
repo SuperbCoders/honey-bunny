@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150402114316) do
+ActiveRecord::Schema.define(version: 20150406190832) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -165,6 +165,7 @@ ActiveRecord::Schema.define(version: 20150402114316) do
     t.string   "shipping_price_currency", default: "RUB", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "paid_at"
   end
 
   add_index "orders", ["payment_method_id"], name: "index_orders_on_payment_method_id", using: :btree
@@ -352,6 +353,7 @@ ActiveRecord::Schema.define(version: 20150402114316) do
     t.string   "shipping_price_currency", default: "RUB", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "paid_at"
   end
 
   add_index "wholesale_orders", ["payment_method_id"], name: "index_wholesale_orders_on_payment_method_id", using: :btree

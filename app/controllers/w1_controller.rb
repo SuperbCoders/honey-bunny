@@ -37,8 +37,9 @@ class W1Controller < ApplicationController
 
     def proccess_order(order_id)
       order = Order.find_by(id: order_id)
-      if order
+      if order && !order.paid?
         order.update_column(:paid, true)
+        order.update_column(:paid_at, Time.now)
       end
     end
 
