@@ -138,6 +138,23 @@ ru:
       item: Для товара
       both: Везде
 
+  payment_method:
+    order:
+      cash:
+        title: Наличными
+        icon: money
+      w1:
+        title: Банковской картой
+        icon: card
+    wholesale_order:
+      cash:
+        title: Безналичный расчет
+        icon: account-sale
+      w1:
+        title: Картой на сайте
+        icon: card
+
+
   admin:
     items:
       destroy:

@@ -6,8 +6,8 @@ class WholesaleOrdersController < ApplicationController
 
   before_action :authenticate_wholesaler!
   before_action :set_lists
-  before_action :set_wholesale_order, only: [:success]
-  before_action :check_order_hash, only: [:success]
+  before_action :set_wholesale_order, only: [:payment, :success, :fail]
+  before_action :check_order_hash, only: [:payment, :success, :fail]
 
   # GET /wholesale_orders/new
   def new
@@ -33,17 +33,30 @@ class WholesaleOrdersController < ApplicationController
 
       reset_current_wholesale_cart
       cookies[order_hash(@wholesale_order)] = 'true' # Set cookie that allows to visit callbacks pages
-      redirect_to success_wholesale_order_url(@wholesale_order)
+
+      # Redirect to the next page
+      redirect_to @wholesale_order.payment_method.name == 'w1' ? payment_wholesale_order_url(@wholesale_order) : success_wholesale_order_url(@wholesale_order)
     else
       set_lists
       render :new
     end
   end
 
+  # GET /wholesale_orders/:id/payment
+  def payment
+    render layout: false
+  end
+
   # GET /wholesale_orders/:id/success
   def success
     cookies.delete order_hash(@order)
     render template: 'orders/success', layout: 'simple'
+  end
+
+  # GET /wholesale_orders/:id/fail
+  def fail
+    cookies.delete order_hash(@order)
+    render template: 'orders/fail', layout: 'simple'
   end
 
   private
@@ -58,6 +71,7 @@ class WholesaleOrdersController < ApplicationController
 
     def set_lists
       @shipping_methods = ShippingMethod.where(available_for_wholesale_order: true).includes(:shipping_prices).order(priority: :asc)
+      @payment_methods = PaymentMethod.all
       @items = Item.not_deleted
       @cities = City.all
     end

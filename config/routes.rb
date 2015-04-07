@@ -82,7 +82,9 @@ Rails.application.routes.draw do
     get :fail, on: :member
   end
   resources :wholesale_orders, only: [:new, :create] do
+    get :payment, on: :member
     get :success, on: :member
+    get :fail, on: :member
   end
   resources :reviews, only: [:create]
   resources :faqs, only: :index, path: 'faq', controller: 'faq'

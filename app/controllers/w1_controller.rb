@@ -8,6 +8,7 @@ class W1Controller < ApplicationController
       klass, id = @notification.item_id.split('-')
       case klass
       when 'order' then proccess_order(id)
+      when 'wholesale_order' then proccess_wholesale_order(id)
       end
       render text: @notification.success_response
     else
@@ -18,6 +19,7 @@ class W1Controller < ApplicationController
   def success
     case params[:klass]
     when 'order' then redirect_to success_order_url(params[:id])
+    when 'wholesale_order' then redirect_to success_wholesale_order_url(params[:id])
     else redirect_to root_url
     end
   end
@@ -25,6 +27,7 @@ class W1Controller < ApplicationController
   def fail
     case params[:klass]
     when 'order' then redirect_to fail_order_url(params[:id])
+    when 'wholesale_order' then redirect_to fail_wholesale_order_url(params[:id])
     else redirect_to root_url
     end
   end
@@ -37,6 +40,14 @@ class W1Controller < ApplicationController
 
     def proccess_order(order_id)
       order = Order.find_by(id: order_id)
+      if order && !order.paid?
+        order.update_column(:paid, true)
+        order.update_column(:paid_at, Time.now)
+      end
+    end
+
+    def proccess_wholesale_order(order_id)
+      order = WholesaleOrder.find_by(id: order_id)
       if order && !order.paid?
         order.update_column(:paid, true)
         order.update_column(:paid_at, Time.now)

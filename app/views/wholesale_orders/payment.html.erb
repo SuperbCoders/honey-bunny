@@ -1,0 +1,4 @@
+<%= payment_form_for @wholesale_order, amount: @wholesale_order.total_price, description: "Оптовый заказ №#{@wholesale_order.id}" %>
+<script type="text/javascript">
+  document.getElementById('js-payment-form').submit();
+</script>

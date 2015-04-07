@@ -122,8 +122,8 @@
             <div class="switcher-cnt tr">
               <% @payment_methods.each do |payment_method| %>
                 <label class="td<%= ' current' if @order.payment_method_id == payment_method.id %>">
-                  <i class="icon icon-<%= payment_method_icon(payment_method) %>"></i>
-                  <span class="title"><%= payment_method.title %></span>
+                  <i class="icon icon-<%=t "payment_method.order.#{payment_method.name}.icon" %>"></i>
+                  <span class="title"><%=t "payment_method.order.#{payment_method.name}.title" %></span>
                   <%= f.radio_button :payment_method_id, payment_method.id, class: 'hidden' %>
                 </label>
               <% end %>

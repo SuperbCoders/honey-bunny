@@ -119,6 +119,11 @@
 	.current & {@include retina-sprite(icon-create_w);}
 }
 
+.icon-account-sale {
+	@include retina-sprite(icon-account-sale_b);
+	.current & {@include retina-sprite(icon-account-sale_w);}
+}
+
 .case-cart-list {
 	h2 {
 		@include respond-to(medium-screen) {
