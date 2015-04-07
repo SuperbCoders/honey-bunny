@@ -124,6 +124,11 @@
 	.current & {@include retina-sprite(icon-account-sale_w);}
 }
 
+.icon-takeaway {
+  @include retina-sprite(icon-takeaway_b);
+  .current & {@include retina-sprite(icon-takeaway_w);}
+}
+
 .case-cart-list {
 	h2 {
 		@include respond-to(medium-screen) {
