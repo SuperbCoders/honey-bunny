@@ -1,4 +1,4 @@
-<%= payment_form_for @order, amount: @order.total_price, description: "Заказ №#{@order.id}" %>
+<%= payment_form_for @order, amount: @order.total_price, description: "Заказ №#{@order.id}", customer: { email: @order.email } %>
 <script type="text/javascript">
   document.getElementById('js-payment-form').submit();
 </script>
