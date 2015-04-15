@@ -9,7 +9,7 @@ class WholesaleOrder < ActiveRecord::Base
 
   validates :shipping_method, presence: true
   validates :payment_method, presence: true
-  validates :city, :zipcode, :address, presence: true, unless: :own_expense?
+  validates :city, :address, presence: true, unless: :own_expense?
   validates :name, :phone, :email, presence: true
   validates :email, format: { with: /([\.A-Za-z0-9_-]+@[\.A-Za-z0-9_-]+\.[A-Za-z]{2,})+/ }
   validates :shipping_price_cents, presence: true, numericality: { greater_than_or_equal_to: 0 }
