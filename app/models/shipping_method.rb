@@ -1,5 +1,5 @@
 class ShippingMethod < ActiveRecord::Base
-  RATE_TYPES = %w(fix_rate city_rate city_and_fix_rate)
+  RATE_TYPES = %w(fix_rate city_rate city_and_fix_rate individual)
 
   has_many :shipping_prices
   has_many :cities, through: :shipping_prices
@@ -28,9 +28,10 @@ class ShippingMethod < ActiveRecord::Base
       shipping_prices.select { |sp| sp.city_id == options[:city_id] }.first.try(:price)
     when 'city_and_fix_rate'
       shipping_prices.select { |sp| sp.city_id == options[:city_id] }.first.try(:price) || rate
+    when 'individual' then 0
     else nil
     end
-    price.nil? ? nil : (price + extra_charge).to_f
+    price.nil? ? nil : (price.to_f + extra_charge.to_f)
   end
 
   # @param options [Hash] options
@@ -38,7 +39,7 @@ class ShippingMethod < ActiveRecord::Base
   # @return [Boolean] whether this shipping method is available with passed options
   def available?(options = {})
     case rate_type
-    when 'fix_rate', 'city_and_fix_rate' then true
+    when 'fix_rate', 'city_and_fix_rate', 'individual' then true
     when 'city_rate' then shipping_prices.where(city_id: options[:city_id]).exists?
     else false
     end

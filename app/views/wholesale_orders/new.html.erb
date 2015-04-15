@@ -2,7 +2,7 @@
   <div class="case-row case-cart-list">
     <div class="container globalwidth">
       <div class="wrapper">
-        <h2 class="center">Заказ</h2>
+        <h2 class="center">Выберите товары для заказа оптом</h2>
         <div class="table items">
           <div class="tr caption hidden-tablet">
             <div class="th">Товар</div>
@@ -64,7 +64,7 @@
                   <i class="icon icon-<%= shipping_method_icon(shipping_method) %>"></i>
                   <span class="title"><%= shipping_method.title %></span>
                   <span class="price"><%= humanized_money shipping_method.calculate_price(city_id: 1) %> руб.</span>
-                  <%= f.radio_button :shipping_method_id, shipping_method.id, class: 'hidden js-order-shipping-method-id' %>
+                  <%= f.radio_button :shipping_method_id, shipping_method.id, class: 'hidden js-order-shipping-method-id', data: { name: shipping_method.name, rate_type: shipping_method.rate_type} %>
                 </label>
               <% end %>
             </div>
@@ -76,7 +76,7 @@
     <div class="case-row case-cart-address">
       <div class="container globalwidth">
         <div class="wrapper">
-          <h2 class="center">Укажите адрес доставки<br />и контактные данные</h2>
+          <h2 class="js-contact-info-title center" data-own-expense="<%=t ".contact_info.title.own_expense" %>" data-transport-company="<%=t ".contact_info.title.transport_company" %>"><%=t ".contact_info.title.#{f.object.shipping_method.name}" %></h2>
           <div class="forms">
             <div class="js-order-shipping-info-fields" style="<%= 'display:none' if @wholesale_order.own_expense? %>">
               <div class="field">
@@ -110,13 +110,16 @@
 
     <div class="sum">
       <div class="container globalwidth">
-        <span>Итого с доставкой <b><span id="order-total-price"><%= humanized_money @wholesale_order.total_price %></span> руб.</b></span>
+        <span>
+          Итого к оплате <b><span id="order-total-price"><%= humanized_money @wholesale_order.total_price %></span> руб.</b>
+          <span class="js-transport-company-additional-summary" style="<%= 'display:none;' unless f.object.shipping_method.name == 'transport_company' %>">+ доставка будет рассчитана индивидуально</span>
+        </span>
       </div>
     </div>
     <div class="case-row case-cart-payment">
       <div class="container globalwidth">
         <div class="wrapper">
-          <h2 class="center">Как предпочитаете<br /> оплатить покупку</h2>
+          <h2 class="center">Оплатите заказ</h2>
         </div>
         <div class="switcher-wrap">
           <div class="js-switcher switcher table">
@@ -125,14 +128,14 @@
                 <label class="td<%= ' current' if f.object.payment_method_id == payment_method.id %>">
                   <i class="icon icon-<%=t "payment_method.wholesale_order.#{payment_method.name}.icon" %>"></i>
                   <span class="title"><%=t "payment_method.wholesale_order.#{payment_method.name}.title" %></span>
-                  <%= f.radio_button :payment_method_id, payment_method.id, class: 'hidden' %>
+                  <%= f.radio_button :payment_method_id, payment_method.id, class: 'hidden js-order-payment-method-id', data: { name: payment_method.name} %>
                 </label>
               <% end %>
             </div>
           </div>
         </div>
         <div class="btn-wrap">
-          <button class="btn btn-orn" type="submit">Отправить заказ</button>
+          <button class="js-submit-button btn btn-orn" type="submit" data-cash="<%=t ".submit.title.cash" %>" data-w1="<%=t ".submit.title.w1" %>"><%=t ".submit.title.#{f.object.payment_method.name}" %></button>
         </div>
       </div>
     </div>

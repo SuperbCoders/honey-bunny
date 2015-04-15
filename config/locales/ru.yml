@@ -109,6 +109,7 @@ ru:
       fix_rate: Фиксированая цена
       city_rate: По городам
       city_and_fix_rate: По городам + фиксированая цена
+      individual: Расчитывается индивидуально
 
   order:
     workflow_state:
@@ -154,6 +155,17 @@ ru:
         title: Картой на сайте
         icon: card
 
+
+  wholesale_orders:
+    new:
+      contact_info:
+        title:
+          own_expense: Ваши контактные данные
+          transport_company: Адрес доставки и ваши контактные данные
+      submit:
+        title:
+          cash: Отправить заказ
+          w1: Перейти к оплате
 
   admin:
     items:

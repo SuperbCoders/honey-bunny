@@ -26,9 +26,12 @@ $ ->
   # Updates shipping methods with subtitles for current city
   updateShippingMethodSubtitles = ->
     $("input.js-order-shipping-method-id").each (index, shippingMethod) ->
-      price = shippingPriceFor(shippingMethod, currentCity())
-      unless price is undefined
-        $(shippingMethod).closest('label').find('span.price').text("#{humanizedMoney(price)} руб.")
+      if $(shippingMethod).data('rate-type') is 'individual'
+        $(shippingMethod).closest('label').find('span.price').text("+ X руб.")
+      else
+        price = shippingPriceFor(shippingMethod, currentCity())
+        unless price is undefined
+          $(shippingMethod).closest('label').find('span.price').text("#{humanizedMoney(price)} руб.")
 
   # Updates order total price value as sum of items price and shipping price
   window.updateTotalPrice = ->
@@ -43,6 +46,9 @@ $ ->
 
   currentShippingMethod = ->
     $("input.js-order-shipping-method-id:checked")
+
+  currentPaymentMethod = ->
+    $("input.js-order-payment-method-id:checked")
 
   currentShippingPrice = ->
     shippingPriceFor(currentShippingMethod(), currentCity())
@@ -98,4 +104,23 @@ $ ->
   if $('#new_wholesale_order').length
     # Callback on shipping method change
     $("input.js-order-shipping-method-id").on 'change', ->
-      $('.js-order-shipping-info-fields').toggle(currentShippingMethod().val() == '4')
+      # Show or hide address and additional summary
+      $('.js-order-shipping-info-fields').toggle(currentShippingMethod().data('name') == 'transport_company')
+      $('.js-transport-company-additional-summary').toggle(currentShippingMethod().data('name') == 'transport_company')
+
+      # Change contact info title
+      $title = $('.js-contact-info-title')
+      title = if currentShippingMethod().data('name') == 'own_expense'
+        $title.data('own-expense')
+      else
+        $title.data('transport-company')
+      $title.text(title)
+
+    # Callback on payment method change
+    $("input.js-order-payment-method-id").on 'change', ->
+      $submitButton = $('.js-submit-button')
+      title = if currentPaymentMethod().data('name') == 'cash'
+        $submitButton.data('cash')
+      else
+        $submitButton.data('w1')
+      $submitButton.text(title)
