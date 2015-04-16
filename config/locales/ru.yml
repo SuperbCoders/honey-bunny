@@ -193,6 +193,8 @@ ru:
   wholesaler_mailer:
     notify_admin:
       subject: Новый оптовый покупатель Honey Bunny
+    approved:
+      subject: Ваш аккаунт в Honey Bunny подтвержден
 
   shared:
     create: Создать

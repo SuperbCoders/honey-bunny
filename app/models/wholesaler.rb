@@ -23,4 +23,10 @@ class Wholesaler < ActiveRecord::Base
   accepts_nested_attributes_for :company
 
   validates :company, presence: true
+
+  private
+
+    def approve
+      WholesalerMailer.approved(id).deliver!
+    end
 end

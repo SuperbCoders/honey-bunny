@@ -6,4 +6,9 @@ class WholesalerMailer < ActionMailer::Base
     @wholesaler = Wholesaler.find(wholesaler_id)
     mail to: email
   end
+
+  def approved(wholesaler_id)
+    @wholesaler = Wholesaler.find(wholesaler_id)
+    mail to: @wholesaler.email
+  end
 end
