@@ -1,8 +1,6 @@
 class SetDefaultWholesalePriceToItems < ActiveRecord::Migration
   def up
-    Item.all.each do |item|
-      item.update_attributes!(wholesale_price: item.price)
-    end
+    execute("UPDATE items SET wholesale_price_cents = price_cents, wholesale_price_currency = price_currency")
   end
 
   def down
