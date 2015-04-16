@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
   root 'welcome#index'
 
+  # "Pretty" URLs for wholesalers and wholesale orders
+  get 'wholesale' => 'wholesalers#select'#, as: :wholesalers_select
+  devise_scope :wholesaler do
+    get 'wholesale/log-in' => 'wholesaler_devise/sessions#new'#, as: :new_wholesaler_session
+  end
+  get 'wholesale/sign-up' => 'wholesalers#new'#, as: :new_wholesaler
+
   devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks', sessions: 'sessions' }
   devise_for :wholesalers, controllers: { sessions: 'wholesaler_devise/sessions' }
 
