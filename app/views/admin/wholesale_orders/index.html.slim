@@ -78,11 +78,11 @@ section#content
                     td
                       - actions = []
                       - if order.can_ship?
-                        - actions << (link_to t("order.workflow_state.shipped"), ship_admin_wholesale_order_path(order), method: :patch, data: { confirm: t('shared.are_you_sure') })
+                        - actions << (link_to t("order.workflow_state.shipped"), ship_admin_wholesale_order_path(order), method: :patch)
                       - if order.can_deliver?
-                        - actions << (link_to t("order.workflow_state.delivered"), deliver_admin_wholesale_order_path(order), method: :patch, data: { confirm: t('shared.are_you_sure') })
+                        - actions << (link_to t("order.workflow_state.delivered"), deliver_admin_wholesale_order_path(order), method: :patch)
                       - if order.can_cancel?
-                        - actions << (link_to t("order.workflow_state.canceled"), cancel_admin_wholesale_order_path(order), method: :patch, data: { confirm: t('shared.are_you_sure') })
+                        - actions << (link_to t("order.workflow_state.canceled"), cancel_admin_wholesale_order_path(order), method: :patch)
                       - if can?(:update, order) && actions.any?
                         .btn-group
                           button.btn.btn-default.btn-sm.dropdown-toggle data-toggle='dropdown' type='button'
