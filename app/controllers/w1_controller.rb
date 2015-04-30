@@ -43,6 +43,10 @@ class W1Controller < ApplicationController
       if order && !order.paid?
         order.update_column(:paid, true)
         order.update_column(:paid_at, Time.now)
+        # Notify admins
+        User.admins.notify_about_orders.each do |admin|
+          OrderMailer.admin_paid(order.id, admin.email).deliver! if admin.email.present?
+        end
       end
     end
 
@@ -51,6 +55,10 @@ class W1Controller < ApplicationController
       if order && !order.paid?
         order.update_column(:paid, true)
         order.update_column(:paid_at, Time.now)
+        # Notify admins
+        User.admins.notify_about_orders.each do |admin|
+          WholesaleOrderMailer.admin_paid(order.id, admin.email).deliver! if admin.email.present?
+        end
       end
     end
 

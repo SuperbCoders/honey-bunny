@@ -182,11 +182,15 @@ ru:
       subject: 'Ваш заказ косметики Honey Bunny №%{order_id}'
     admin_success_email:
       subject: 'Новый заказ №%{order_id}'
+    admin_paid:
+      subject: 'Заказ №%{order_id} оплачен'
   wholesale_order_mailer:
     user_success_email:
       subject: 'Ваш заказ косметики Honey Bunny №%{order_id}'
     admin_success_email:
       subject: 'Новый оптовый заказ №%{order_id}'
+    admin_paid:
+      subject: 'Оптовый заказ №%{order_id} оплачен'
   question_mailer:
     notify_admin:
       subject: Новый вопрос на Honey Bunny

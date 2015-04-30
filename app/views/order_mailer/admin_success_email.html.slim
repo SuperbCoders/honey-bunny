@@ -18,4 +18,7 @@ p Email: #{@order.email}
 p Адрес: #{@order.full_address}
 p Телефон: #{@order.phone}
 
+p Способ доставки: #{@order.shipping_method.title}
+p Способ оплаты: #{t "payment_method.order.#{@order.payment_method.name}.title"}
+
 p= link_to 'Просмотреть', edit_admin_order_url(@order)

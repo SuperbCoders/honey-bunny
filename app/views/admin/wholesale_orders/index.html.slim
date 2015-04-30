@@ -61,11 +61,7 @@ section#content
                       - else 'question'
                       i class="icon-#{icon}" title=order.shipping_method.title
                     td
-                      - icon =  case order.payment_method.name
-                      - when 'cash' then 'money'
-                      - when 'w1' then 'credit-card'
-                      - else 'question'
-                      i class="icon-#{icon}" title=order.payment_method.title
+                      small=t "payment_method.wholesale_order.#{order.payment_method.name}.title"
                     td= order.name
                     td
                       - order.order_items.each do |order_item|
