@@ -35,7 +35,7 @@ class OrderItem < ActiveRecord::Base
   private
 
     def set_default_values
-      self.price = item.try(:price) if price_cents.nil? || price_cents == 0
+      self.price = item.try(order.send(:item_price_method_name)) if price_cents.nil? || price_cents == 0
     end
 
     # Validate that requested quantity is ok
