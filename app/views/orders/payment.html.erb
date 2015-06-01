@@ -1,4 +1,7 @@
 <%= payment_form_for @order, amount: @order.total_price, description: "Заказ №#{@order.id}", customer: { email: @order.email } %>
+<%= render partial: 'orders/google_analytics', object: @order, as: :order %>
+<%= javascript_block %>
+<%= yield(:js) if content_for?(:js) %>
 <script type="text/javascript">
   document.getElementById('js-payment-form').submit();
 </script>

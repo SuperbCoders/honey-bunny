@@ -1,0 +1,28 @@
+<% if Rails.env.production? %>
+  <% content_for :js do %>
+    <script>
+      ga('require','ecommerce','ecommerce.js');
+
+      ga('ecommerce:addTransaction',{
+        'id':'<%= order.id %>',
+        'affiliation':'Honey-Bunny',
+        'revenue':'<%= order.items_price %>',
+        'shipping':'<%= order.shipping_price %>',
+        'tax':'0'
+      });
+
+      <% order.order_items.includes(:item).each do |order_item| %>
+        ga('ecommerce:addItem',{
+          'id':'<%= order.id %>',
+          'name':'<%= order_item.item.title %>',
+          'sku':'<%= order_item.item.id %>',
+          'category':'<%= order_item.item.tag_list.to_s %>',
+          'price':'<%= order_item.price %>',
+          'quantity':'<%= order_item.quantity %>'
+        });
+      <% end %>
+      ga('ecommerce:send');
+      ga('ecommerce:clear');
+    </script>
+  <% end %>
+<% end %>

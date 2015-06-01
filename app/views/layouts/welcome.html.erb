@@ -73,5 +73,6 @@
   <![endif]-->
   <%= javascript_include_tag 'application' %>
   <%= javascript_block %>
+  <%= yield(:js) if content_for?(:js) %>
 </body>
 </html>
