@@ -6,7 +6,7 @@ class Order < ActiveRecord::Base
 
   validates :shipping_method, presence: true
   validates :payment_method, presence: true
-  validates :city, :zipcode, :address, :name, :phone, :email, presence: true
+  validates :city, :address, :name, :phone, :email, presence: true
   validates :email, format: { with: /([\.A-Za-z0-9_-]+@[\.A-Za-z0-9_-]+\.[A-Za-z]{2,})+/ }
   validates :shipping_price_cents, presence: true, numericality: { greater_than_or_equal_to: 0 }
   validate :validate_shipping_method

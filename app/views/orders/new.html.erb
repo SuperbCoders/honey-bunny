@@ -87,7 +87,6 @@
                       <%= f.select :city, order_city_options_for_select(@cities, @order.city, shipping_methods: @shipping_methods), {}, class: 'chosen-select js-order-city' %>
                     </div>
                   </div>
-                  <div class="td td2<%= ' error' if @order.errors['zipcode'].any? %>"><%= f.text_field :zipcode, placeholder: 'Индекс' %></div>
                 </div>
               </div>
             </div>
