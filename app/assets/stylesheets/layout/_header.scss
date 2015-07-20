@@ -1,253 +1,455 @@
 .page-header-short {
-	padding-bottom: 40px;
-	border-bottom: 1px solid #f0f0f0;
-	@include respond-to(medium-screen) {
-		padding: 0;
-	}
+    padding-bottom: 40px;
+    border-bottom: 1px solid #f0f0f0;
+    @include respond-to(medium-screen) {
+        padding: 0;
+        border-color: #848484;
+    }
 }
 
 .page-header-top {
-	height: 90px;
-	padding-top: 40px;
-	position: relative;
-	@include respond-to(medium-screen) {
-		height: 110px;
-		padding-top: 0;
-		background: #fff;
-	}
-	@include respond-to(small-screen) {
-		height: 80px;
-	}
-	.logo {
-		display: block;
-		width: 90px;
-		height: 90px;
-		text-decoration: none;
-		.page-header-center & {
-			margin-left: -45px;
-			position: absolute;
-			top: 40px;
-			left: 50%;
-		}
-		.page-header-left & {
-			float: left;
-		}
-		@include respond-to(medium-screen) {
-			margin-left: -45px;
-			float: none!important;
-			position: absolute;
-			top: 10px!important;
-			left: 50%;
-		}
-		@include respond-to(small-screen) {
-			width: 60px;
-			height: 60px;
-			margin-left: -30px!important;
-		}
-	}
-	.logo-fn {
-		@include retina-sprite(logo-fn_b);
-		@include respond-to(medium-screen) {@include retina-sprite(logo-fn_b);}
-		@include respond-to(small-screen) {@include retina-sprite(logo-mob-fn_b);}
-		.darkstyle & {
-			@include retina-sprite(logo-fn_w);
-			@include respond-to(medium-screen) {@include retina-sprite(logo-fn_b);}
-			@include respond-to(small-screen) {@include retina-sprite(logo-mob-fn_b);}
-		}
-	}
-	.logo-min {
-		@include retina-sprite(logo-min_b);
-		@include respond-to(small-screen) {@include retina-sprite(logo-mob-min_b);}
-		.darkstyle & {
-			@include retina-sprite(logo-min_w);
-			@include respond-to(medium-screen) {@include retina-sprite(logo-min_b);}
-			@include respond-to(small-screen) {@include retina-sprite(logo-mob-min_b);}
-		}
-	}
-	.navbar {
-		.items {
-			height: 90px;
-			line-height: 90px;
-			overflow: hidden;
-			.page-header-center & {
-				margin-right: -80px;
-				@include respond-to(middle-screen) {
-					margin-right: 0;
-				}
-				.item3 {
-					padding-right: 96px;
-					margin-right: 40px;
-				}
-			}
-			.page-header-left & {
-				float: right;			
-			}
-		}
-		.item {
-			font-size: 17px;
-			float: left;
-			.page-header-center & {
-				margin-left: 40px;
-			}
-			.page-header-left & {
-				margin-left: 30px;
-			}
-			a {
-				color: #292b2d;
-				text-decoration: none;
-				.darkstyle & {
-					color: #fff;
-				}
-				&:hover {
-					@include respond-to(large-screen) {
-						color: #a5eac9;
-					}
-				}
-			}
-			.count {
-				display: inline-block;
-				width: 30px;
-				height: 20px;
-				margin-left: 10px;
-				color: #fff;
-				font-size: 17px;
-				font-weight: bold;
-				line-height: 16px;
-				text-align: center;
-				background: #64d095;
-				border-radius: 10px;
-			}
-		}
-		.current {
-			a {
-				@include respond-to(large-screen) {
-					color: #a5eac9!important;
-				}
-			}
-		}
-		@include respond-to(medium-screen) {
-			display: none;
-			width: 100%;
-			height: 100%;
-			position: fixed;
-			top: 0;
-			left: 0;
-			background: rgba(#000, 0.8);
-			overflow-y: auto;
-			z-index: 100;
-			.navbar-wrap & {
-				display: block!important;
-			}
-			.navbar-cnt {
-				padding: 100px 0 100px 35px;
-				position: relative;
-			}
-			.items {
-				height: auto!important;
-				padding-bottom: 20px;
-				float: none!important;
-			}
-			.item {
-				margin: 0 0 25px 0!important;
-				font-size: 30px!important;
-				font-weight: bold;
-				line-height: 1!important;
-				float: none!important;
-				white-space: nowrap;
-				a {
-					color: #fff!important;
-				}
-			}
-			.close {
-				display: block;
-				width: 23px;
-				height: 23px;
-				position: absolute;
-				top: 25px;
-				left: 20px;
-				@include retina-sprite(btn-close);
-			}
-		}
-	}
-	.btn-navbar {
-		display: block;
-		width: 28px;
-		height: 25px;
-		padding: 5px 5px 0;
-		margin: 40px 0 0 35px;
-		float: left;
-		text-decoration: none;
-		@include respond-to(small-screen) {
-			margin: 25px 0 0 20px;
-		}
-		.icon-bar {
-			display: block;
-			width: 28px;
-			height: 3px;
-			margin-bottom: 5px;
-			background: #4a4a4a;
-		}
-	}
-	.store {
-		display: block;
-		width: 110px;
-		height: 110px;
-		float: right;
-		color: #fff;
-		font-size: 30px;
-		font-weight: bold;
-		line-height: 110px;
-		text-align: center;
-		text-decoration: none;
-		background: #64d095;
-		@include respond-to(small-screen) {
-			width: 80px;
-			height: 80px;
-			font-size: 22px;
-			line-height: 80px;
-		}
-	}
+    height: 90px;
+    padding-top: 45px;
+    position: relative;
+    @include respond-to(medium-screen) {
+        height: 120px;
+        padding-top: 0;
+        background: #fff;
+    }
+    @include respond-to(small-screen) {
+        height: 80px;
+    }
+    .logo {
+        display: block;
+        width: 90px;
+        height: 90px;
+        text-decoration: none;
+        position: relative;
+        z-index: 100;
+        .page-header-center & {
+            float: left;
+        }
+        .page-header-left & {
+            float: left;
+        }
+        @include respond-to(medium-screen) {
+            margin-left: -45px;
+            float: none!important;
+            position: absolute;
+            top: 10px!important;
+            left: 50%;
+        }
+        @include respond-to(small-screen) {
+            width: 60px;
+            height: 60px;
+            margin-left: -30px!important;
+        }
+    }
+    .logo-fn {
+        @include retina-sprite(logo-fn_b);
+        @include respond-to(medium-screen) {
+            @include retina-sprite(logo-fn_b);
+            position: absolute;
+            margin-left: -45px;
+            top: 12px !important;
+            left: 50% !important;
+        }
+        @include respond-to(small-screen) {
+            @include retina-sprite(logo-mob-fn_b);
+        }
+        .darkstyle & {
+            @include retina-sprite(logo-fn_w);
+            @include respond-to(medium-screen) {
+                @include retina-sprite(logo-fn_b);
+            }
+            @include respond-to(small-screen) {
+                @include retina-sprite(logo-mob-fn_b);
+            }
+        }
+    }
+    .logo-min {
+        @include retina-sprite(logo-min_b);
+        @include respond-to(small-screen) {
+            margin-top: 10px;
+            margin-left: -50px !important;
+            @include retina-sprite(logo-cart);
+        }
+        .darkstyle & {
+            @include retina-sprite(logo-min_w);
+            @include respond-to(medium-screen) {
+                @include retina-sprite(logo-min_b);
+            }
+            @include respond-to(small-screen) {
+                @include retina-sprite(logo-mob-min_b);
+            }
+        }
+    }
+    .navbar {
+        position: relative;
+        .items {
+            height: 75px;
+            line-height: 90px;
+            padding-top: 15px;
+            float: none !important;
+            .page-header-center & {
+                // Непонятно зачем этот класс.
+                // Он только приводит к появленю горз. скроллбара в мобильном варианте
+                //margin-right: -80px;
+                @include respond-to(middle-screen) {
+                    margin-right: 0;
+                }
+            }
+            .page-header-left & {
+                float: right;
+            }
+            // Свернутое/развернутое состояние
+            .dots {
+                display: none;
+            }
+            .dots span {
+                background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACYAAAAHCAYAAABkzT89AAAB+ElEQVQ4T32TTWsTURiFezMhYRSh3UQsKTqWcfJBpBhLV11JkS50oS1YxFXppn+huBF/hTu7FUVKQWhdREHtomhpJ5+ahQQSI2UICW1IyYfP1Bu4TjteONyZM+c997wvd8TI36XFYrFEIBAIRiKRg0wm05X8mc0wDEvX9dFcLrfHx85/dFdDoVC00Wjs1ev1Iz+d5B+yL4EnoO1ygkDXhBCvwS0pyhFwwbbtvGqWSqXGut3uK3R3JF/p9XpLxWLxk6pLJpMh3l8OBoNHkneoWy6VSm99wl2E3wfXwQdwHzQFRluYzKlF/X5/t1AoTKscDbwg8IrH/BeTi8L1hrxlWWuapj336I47nY5RLpd/+4SbgH8PboBdMC/i8XiTKVxSCwjaJ4SezWZPhjwN7MOnzjE2CfdjyCcSiQ2e73l1TG2OqbmH+y2LDzYIgm032EeCzXqC2fl8/p8QBFsnmHsH1OVQe0VtgIk9Y2JPPbqTVqtlVCqVqk+qcfh34Cb4Du4K7k6MbjY4wHSLOPwn2wOCfVVNuPSXw+HwJpO8LXWHBHjMXdxSdel0+kK73X7jmkv+CM9V/NZ9QunwB2ASfAPzoC6kOGya5gx/UZDuv8Cd/hnnLI0JTxNutFarfXYcp+mjG2HCUzQbRbNTrVYP/XSSX2R37+8COPX8Ax+hwveb6+8DAAAAAElFTkSuQmCC);
+                width: 38px;
+                height: 7px;
+                display: inline-block;
+                vertical-align: middle;
+            }
+            &.collapsed {
+                .item {
+                    display: none;
+                }
+                .item.item1,
+                .dots {
+                    display: list-item;
+                    cursor: pointer;
+                }
+            }
+            .item {
+                font-size: 17px;
+                float: left;
+                margin-left: 25px;
+                padding-left: 20px;
+                border-top-left-radius: 5px;
+                border-top-right-radius: 5px;
+                height: 60px;
+                line-height: 60px;
+                position: relative;
+                .page-header-center &.item1 {
+                    margin-left: 20px;
+                }
+                &.faq {
+                    box-sizing: border-box;
+                    width: 166px;
+                    margin-right: -70px;
+                    ul {
+                        display: none;
+                    }
+                }
+                &.faq:hover {
+                    background-color: rgba(255, 255, 255, .91);
+                    border-top-left-radius: 5px;
+                    border-top-right-radius: 5px;
+                    z-index: 1;
+                    .darkstyle & {
+                        background-color: rgba(0, 0, 0, .91);
+                    }
+                    ul {
+                        display: block;
+                        background-color: inherit;
+                        position: absolute;
+                        top: 60px;
+                        left: 0;
+                        width: 166px;
+                        padding: 0 20px 30px 20px;
+                        box-sizing: border-box;
+                        line-height: 25px;
+                        font-size: 14px;
+                        color: #616161;
+                        border-bottom-left-radius: 5px;
+                        border-bottom-right-radius: 5px;
+                    }
+                }
+                &.collapsable {
+                    //                    margin-left: 0px;
+                    //                    letter-spacing: -9px;
+                    @include respond-to(medium-screen) {
+                        letter-spacing: 0px;
+                    }
+                    &.first {
+                        margin-left: 25px;
+                    }
+                }
+                .page-header-center & {
+                    margin-left: 45px;
+                }
+                .page-header-left & {
+                    margin-left: 30px;
+                }
+                a {
+                    color: #000;
+                    text-decoration: none;
+                    font-weight: bold;
+                    .darkstyle & {
+                        color: #fff;
+                    }
+                    //                    &:hover {
+                    //                        @include respond-to(large-screen) {
+                    //                            color: #a5eac9;
+                    //                        }
+                    //                    }
+                }
+                .count {
+                    display: inline-block;
+                    width: 30px;
+                    height: 20px;
+                    margin-left: 10px;
+                    color: #fff;
+                    font-size: 17px;
+                    font-weight: bold;
+                    line-height: 16px;
+                    text-align: center;
+                    background: #64d095;
+                    border-radius: 10px;
+                }
+            }
+        }
+        .current {
+            a {
+                @include respond-to(large-screen) {
+                    color: #a5eac9!important;
+                }
+            }
+        }
+        @include respond-to(medium-screen) {
+            display: none;
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background: rgba(#000, 0.8);
+            overflow-y: auto;
+            z-index: 100;
+            .navbar-wrap & {
+                display: block!important;
+            }
+            .navbar-cnt {
+                padding: 100px 0 100px 35px;
+                position: relative;
+            }
+            .items {
+                height: auto!important;
+                padding-bottom: 20px;
+                float: none!important;
+            }
+            .item {
+                margin: 0 0 25px 0!important;
+                font-size: 30px!important;
+                font-weight: bold;
+                line-height: 1!important;
+                float: none!important;
+                white-space: nowrap;
+                a {
+                    color: #fff!important;
+                }
+            }
+            .close {
+                display: block;
+                width: 23px;
+                height: 23px;
+                position: absolute;
+                top: 25px;
+                left: 20px;
+                @include retina-sprite(btn-close);
+            }
+        }
+        .callme {
+            display: inline-block;
+            position: absolute;
+            right: 20px;
+            top: 30px;
+            font-size: 12px;
+            color: #777;
+            font-family: sans-serif;
+            width: 180px;
+            // При уменьшении ширины клиента этот блок наползает на меню
+            @media screen and (max-width: 1200px) {
+                top: -20px;
+                right: 70px;
+            }
+            .icon {
+                float: left;
+                margin-right: 15px;
+                @include retina-sprite(icon-phone);
+            }
+            .tel {
+                font-size: 16px;
+                color: #000;
+                font-weight: bold;
+                margin-bottom: 5px;
+                display: inline-block;
+            }
+        }
+    }
+    .btn-navbar {
+        display: block;
+        width: 28px;
+        height: 25px;
+        padding: 5px 5px 0;
+        margin: 40px 0 0 35px;
+        float: left;
+        text-decoration: none;
+        @include respond-to(small-screen) {
+            margin: 25px 0 0 20px;
+        }
+        .icon-bar {
+            display: block;
+            width: 28px;
+            height: 3px;
+            margin-bottom: 5px;
+            background: #4a4a4a;
+        }
+    }
+    // Зеленая кнопка
+    //    .store {
+    //        display: block;
+    //        width: 110px;
+    //        height: 110px;
+    //        float: right;
+    //        color: #fff;
+    //        font-size: 30px;
+    //        font-weight: bold;
+    //        line-height: 110px;
+    //        text-align: center;
+    //        text-decoration: none;
+    //        background: #64d095;
+    //        @include respond-to(small-screen) {
+    //            width: 80px;
+    //            height: 80px;
+    //            font-size: 22px;
+    //            line-height: 80px;
+    //        }
+    //    }
+    // Корзина
+    .cart {
+        display: block;
+        width: 106px;
+        display: block;
+        position: fixed;
+        right: 0;
+        top: 0;
+        text-align: center;
+        color: white;
+        font-size: 13px;
+        padding: 21px 10px 0 10px;
+        text-decoration: none;
+        box-sizing: border-box;
+        z-index: 1;
+        .pic {
+            display: inline-block;
+            width: 56px;
+            height: 56px;
+            position: relative;
+            margin-bottom: 6px;
+            .count {
+                display: none;
+                width: 25px;
+                height: 25px;
+                background: #45cc8c;
+                border-radius: 50%;
+                position: absolute;
+                top: -5px;
+                right: -10px;
+                text-align: center;
+                line-height: 25px;
+                font-size: 14px;
+                font-family: sans-serif;
+            }
+        }
+        p {
+            display: none;
+            line-height: 17px;
+            color: black;
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        &.has-orders {
+            &.bg-filled {
+                background-color: rgba(43, 43, 43, 0.9);
+                border-bottom-left-radius: 5px;
+                border-bottom-right-radius: 5px;
+                p {
+                    color: white;
+                }
+            }
+            p {
+                display: block;
+            }
+            .count {
+                display: block;
+            }
+        }
+        @include respond-to(small-screen) {
+            padding-top: 14px;
+            padding-right: 0px;
+            position: absolute;
+            p {
+                display: none !important;
+            }
+        }
+    }
+}
+
+.icon-cart {
+    @include retina-sprite(icon-cart);
+    &:hover {
+        @include retina-sprite(icon-cart-hover);
+    }
 }
 
 .page-header-bottom {
-	padding: 100px 0 200px;
-	@include respond-to(medium-screen) {
-		padding: 120px 0;
-	}
-	.main & {
-		padding: 80px 0 110px;
-		@include respond-to(medium-screen) {
-			padding: 70px 0;
-		}
-	}
-	.caption {
-		padding: 0 125px;
-		letter-spacing: 0.1em;
-		@include respond-to(medium-screen) {
-			padding: 0 60px;
-			text-align: center;
-		}
-		@include respond-to(small-screen) {
-			padding: 0 30px!important;
-		}
-		.main & {
-			padding: 0 70px;
-			margin-bottom: 70px;
-			@include respond-to(medium-screen) {
-				margin: 0;
-			}
-
-			h1 {
-				font-size: 70px;
-				letter-spacing: 3px;
-				@include respond-to(small-screen) {
-					font-size: 45px;
-				}
-			}
-		}
-	}
-	.btn {
-		@include btn(230px, 64px);
-		font-size: 20px;
-	}
+    padding: 100px 0 200px;
+    @include respond-to(medium-screen) {
+        padding: 120px 0;
+    }
+    .main & {
+        padding: 80px 0 110px;
+        @include respond-to(medium-screen) {
+            padding: 70px 0;
+        }
+        .case-worth-min {
+            margin-bottom: 0;
+            margin-top: 70px;
+        }
+    }
+    .caption {
+        padding: 0 125px;
+        letter-spacing: 0.1em;
+        @include respond-to(medium-screen) {
+            padding: 0 60px;
+            text-align: center;
+        }
+        @include respond-to(small-screen) {
+            padding: 0 30px!important;
+        }
+        .main & {
+            padding: 0 70px;
+            margin-bottom: 60px;
+            @include respond-to(medium-screen) {
+                margin: 0;
+            }
+            h1 {
+                font-size: 70px;
+                letter-spacing: 3px;
+                color: #000;
+                @include respond-to(small-screen) {
+                    font-size: 45px;
+                }
+            }
+        }
+    }
+    .btn {
+        @include btn(230px, 64px);
+        font-size: 20px;
+    }
 }

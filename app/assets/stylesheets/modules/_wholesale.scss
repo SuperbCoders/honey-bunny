@@ -1,0 +1,588 @@
+html,
+button,
+input,
+select,
+textarea,
+.pure-g [class*="pure-u"] {
+    font-family: 'arkadia', Arial, Helvetica, serif;
+}
+
+// Для лендинга и личного кабинета
+.wholesale {
+    .globalwidth {
+        width: 960px;
+        padding-left: 10px;
+        padding-right: 10px;
+        box-sizing: border-box;
+    }
+    .btn {
+        height: 60px;
+        width: 250px;
+        line-height: 59px;
+        border-radius: 30px;
+        font-size: 18px;
+        &:hover {
+            background-color: #323232;
+        }
+    }
+    .text-gray {
+        color: gray;
+    }
+    .text-green {
+        color: #6ae3ab;
+    }
+    table {
+        width: 100%;
+        text-align: left;
+        font-size: 15px;
+        tr {
+            border-bottom: 1px solid #ededed;
+            &:hover {
+                background: #f8fcff;
+            }
+        }
+        .wholesale-materials & td,
+        .wholesale-materials & th {
+            width: 33.33%;
+            // Адаптивности тут нет, так что...
+            // сделаем удобный text-oferflow в ячейке
+            width: 320px;
+        }
+        th {
+            color: gray;
+            font-size: 12px;
+            padding-bottom: 13px;
+        }
+        td {
+            padding: 20px 0px;
+            .icon-wrap {
+                width: 50px;
+                display: inline-block;
+                vertical-align: middle;
+            }
+            .text-wrap {
+                display: inline-block;
+                vertical-align: middle;
+                width: 260px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+            .icon {
+                display: inline-block;
+                vertical-align: middle;
+                max-height: 30px;
+            }
+            a {
+                text-decoration: none;
+                color: inherit;
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+    p {
+        margin-bottom: 20px;
+    }
+    hr.wide {
+        margin: 50px 0;
+    }
+    .page-body {
+        padding-bottom: 150px;
+    }
+}
+
+// Для лендинга
+.wholesale-landing {
+    header {
+        h1 {
+            margin-bottom: 20px;
+            font-size: 40px;
+            font-weight: bold;
+        }
+        p {
+            margin-bottom: 50px;
+            font-size: 20px;
+            line-height: 1.3;
+        }
+        btn {
+            font-size: 18px;
+        }
+    }
+    main {
+        padding: 0 0 46px 0;
+        .icon {
+            margin: 66px auto 35px auto;
+        }
+        .pure-g {
+            &:last-child {
+                margin-bottom: 60px;
+            }
+        }
+        .pure-u-1 {
+            text-align: center;
+            text-transform: uppercase;
+            font-weight: bold;
+            font-size: 12px;
+            color: #121212;
+            line-height: 22px;
+            @media (max-width: 567px) {
+                text-transform: none;
+                font-size: 18px;
+            }
+        }
+        .btn-wrap {
+            margin-top: 60px;
+        }
+    }
+    footer {
+        color: #565656;
+        text-align: center;
+    }
+}
+
+// Страница материалов
+.wholesale-materials {
+    table {
+        margin-top: 55px;
+    }
+}
+
+// Страница заказов
+.wholesale-orders {
+    &.cabinet .header {
+        margin-bottom: 73px !important;
+    }
+    .globalwidth {
+        width: 1024px;
+        max-width: none;
+    }
+    .table-head tr,
+    .table-zippy tr {
+        th:first-child, td:first-child {
+            padding-left: 25px;
+        }
+        th:last-child,
+        td:last-child {
+            padding-right: 25px;
+        }
+        th:first-child,
+        th:nth-child(2) {
+            width: 25%;
+        }
+        th:nth-child(3) {
+            width: 33.3333%;
+        }
+        th:last-child {
+            width: 16.6667%;
+            text-align: right;
+        }
+    }
+    .flaticon-ruble:before {
+        font-size: 9px;
+    }
+    .table-zippy th,
+    .table-zippy td {
+        color: black;
+        font-size: 15px;
+    }
+    .table-zippy {
+        tr.container {
+            display: none;
+        }
+        tr {
+            th {
+                cursor: pointer;
+                padding: 25px 0;
+                &.order-id {
+                    padding-left: 45px;
+                    color: #7ce59c;
+                    position: relative;
+                    &:before {
+                        content: '';
+                        position: absolute;
+                        top: 30px;
+                        left: 30px;
+                        @include retina-sprite(wholesale-order-close);
+                    }
+                }
+            }
+        }
+        &.active {
+            tr {
+                background: #f9f9f9;
+                &:first-of-type {
+                    background: #f3f3f3;
+                }
+                &.container {
+                    display: table-row;
+                }
+                th.order-id:before {
+                    @include retina-sprite(wholesale-order-open);
+                }
+            }
+        }
+        tr.container {
+            td:first-child {
+                padding: 0;
+                padding-bottom: 18px;
+            }
+            tr {
+                border: none;
+                td:first-child {
+                    padding-left: 30px;
+                }
+                td:last-child {
+                    padding-right: 30px;
+                    text-align: right;
+                }
+            }
+            tr,
+            td {
+                background: none;
+                padding-left: 0;
+                padding-right: 0;
+            }
+            tr.gray {
+                background: none;
+                border: none;
+                td {
+                    color: gray;
+                    font-size: 12px;
+                    padding-bottom: 25px;
+                    padding-top: 30px;
+                }
+            }
+            tr.item {
+                margin-bottom: 20px;
+            }
+            td {
+                vertical-align: top;
+                padding-top: 0;
+            }
+            .col1 {
+                width: 11%;
+            }
+            .col2 {
+                width: 48%;
+                padding-right: 30%;
+            }
+            .col3 {
+                width: 16%;
+                font-weight: bold;
+            }
+            .col4 {
+                width: 10%;
+                font-weight: bold;
+            }
+            .col5 {
+                width: 15%;
+                font-weight: bold;
+            }
+        }
+    }
+}
+
+// Для личного кабинета
+.wholesale.cabinet {
+    .cell {
+        display: table-cell;
+        vertical-align: middle;
+    }
+    // Шапка
+    .header {
+        height: 145px;
+        width: 100%;
+        background-color: #5e52a4;
+        color: white;
+        margin-bottom: 100px;
+        font-size: 17px;
+        .back {
+            display: inline-block;
+            height: 95%;
+            width: 130px;
+            vertical-align: middle;
+            background: none;
+            line-height: 130px;
+            text-align: center;
+            .wholesale-back {
+                display: inline-block;
+                @include retina-sprite(wholesale-back-w);
+            }
+        }
+        .wrapper {
+            display: table;
+            height: 100%;
+            width: 1200px;
+            margin: 0 auto;
+        }
+        .logo,
+        ul,
+        li,
+        .btn {
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .logo-link {
+            color: transparent;
+        }
+        .logo {
+            margin-right: 20px;
+        }
+        li {
+            margin: 0;
+            padding: 20px;
+            &>a {
+                padding: 0 0 8px 0;
+                border-bottom: 2px solid transparent;
+                cursor: pointer;
+            }
+            position: relative;
+            &.current > a,
+            &:hover > a {
+                border-bottom: 2px solid white;
+            }
+            a {
+                color: inherit;
+                text-decoration: none;
+            }
+            // подменю
+            &.has-submenu {
+                padding-right: 30px;
+                &:after {
+                    content: '';
+                    position: absolute;
+                    width: 12px;
+                    height: 7px;
+                    right: 10px;
+                    top: 25px;
+                    @include retina-sprite(wholesale-dropdown-down);
+                }
+                &:hover {
+                    &:after {
+                        @include retina-sprite(wholesale-dropdown);
+                    }
+                    background-color: #252525;
+                    z-index: 1;
+                    ul {
+                        display: block;
+                        background-color: inherit;
+                        position: absolute;
+                        top: 37px;
+                        left: 0;
+                        width: 100%;
+                        padding: 0 20px 30px 20px;
+                        box-sizing: border-box;
+                        line-height: 16px;
+                        font-size: 14px;
+                        color: #616161;
+                        li {
+                            padding: 20px 0 0 0;
+                            a {
+                                padding: 0;
+                                border: none;
+                                font-size: 14px;
+                                &:hover {
+                                    color: white;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            ul {
+                display: none;
+            }
+        }
+    }
+}
+
+// Всплывающие окна
+.popup {
+    width: 490px;
+    min-height: 479px;
+    box-sizing: border-box;
+    margin: 0 auto;
+    background-color: white;
+    display: table;
+    padding: 50px 40px;
+    font-size: 24px;
+    text-align: center;
+    position: relative;
+    .icon {
+        margin: 0 auto;
+    }
+    .icon.wholesale-hb {
+        margin-bottom: 55px;
+    }
+    .title {
+        color: #434343;
+        font-weight: bold;
+        margin-bottom: 55px;
+        line-height: 1.3;
+    }
+    .mfp-close {
+        @include retina-sprite(btn-close);
+        color: transparent;
+        right: -45px;
+        top: 0px !important;
+    }
+    input[type="text"],
+    input[type="email"],
+    textarea {
+        width: 100%;
+        display: block;
+        box-sizing: border-box;
+        border: 2px solid #d2d2d2;
+        border-radius: 2px;
+        padding: 12px 20px;
+        font-size: 18px;
+        color: #202020;
+        margin-bottom: 20px;
+        &.gray {
+            background: #ededed;
+            border-color: #ededed;
+            padding-right: 160px;
+        }
+        &.valid {
+            border-color: #5ce09b;
+        }
+        &.error {
+            border-color: #f64040;
+        }
+    }
+    .btn-wrap {
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+    .input-wrap {
+        position: relative;
+        .right {
+            position: absolute;
+            top: 0;
+            right: 10px;
+            display: inline-block;
+            height: 50px;
+            line-height: 50px;
+            color: #202020;
+            font-size: 18px;
+            &:hover {
+                cursor: pointer;
+                text-decoration: underline;
+            }
+        }
+        label {
+            position: absolute;
+            height: 50px;
+            width: 180px;
+            top: 0;
+            left: -200px;
+            background: #f64040;
+            color: white;
+            font-size: 15px;
+            padding: 7px 10px;
+            box-sizing: border-box;
+            text-align: left;
+            line-height: 16px;
+            border-radius: 2px;
+            box-shadow: 0 0 4px black;
+        }
+    }
+    &#popupNew {
+        .title {
+            margin-top: 85px;
+            margin-bottom: 40px;
+        }
+    }
+    &#popupWelcome {
+        padding-bottom: 0;
+        .icon.wholesale-hb {
+            margin-bottom: 40px;
+        }
+        hr {
+            margin: 0 -40px;
+            border: none;
+            border-bottom: 1px solid #d8d8d8;
+            margin-bottom: 50px;
+        }
+        .icon {
+            margin-bottom: 25px;
+        }
+        .text {
+            margin-bottom: 50px;
+            text-align: center;
+            color: #6ae3ab;
+            font-size: 17px;
+        }
+        a {
+            text-decoration: none;
+        }
+    }
+}
+
+// Иконки
+.wholesale-1 {
+    @include retina-sprite(wholesale-1);
+}
+
+.wholesale-2 {
+    @include retina-sprite(wholesale-2);
+}
+
+.wholesale-3 {
+    @include retina-sprite(wholesale-3);
+}
+
+.wholesale-4 {
+    @include retina-sprite(wholesale-4);
+}
+
+.wholesale-5 {
+    @include retina-sprite(wholesale-5);
+}
+
+.wholesale-6 {
+    @include retina-sprite(wholesale-6);
+}
+
+.wholesale-7 {
+    @include retina-sprite(wholesale-7);
+}
+
+.wholesale-hb {
+    @include retina-sprite(wholesale-hb);
+}
+
+.wholesale-hb-w {
+    @include retina-sprite(wholesale-hb-w);
+}
+
+.wholesale-login {
+    @include retina-sprite(wholesale-login);
+}
+
+.wholesale-new {
+    @include retina-sprite(wholesale-new);
+}
+
+.wholesale-doc {
+    @include retina-sprite(wholesale-doc);
+}
+
+.wholesale-pdf {
+    @include retina-sprite(wholesale-pdf);
+}
+
+.btn.btn-green {
+    background: #42d689;
+    height: 50px;
+    width: 175px;
+    line-height: 49px;
+    border-radius: 25px;
+    font-size: 18px;
+    &:hover {
+        background-color: #49E292;
+    }
+    position: relative;
+    left: 115px;
+}

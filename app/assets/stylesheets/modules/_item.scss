@@ -1,0 +1,145 @@
+.ingredients-popup {
+    cursor: pointer;
+    text-decoration: underline;
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+.ingr-popup {
+    h1, p {
+        margin-left: 72px;
+        color: #1a1a1a;
+    }
+
+    h1 {
+        font-size: 18px;
+    }
+
+    p {
+        font-size: 13px;
+        line-height: 16px;
+    }
+
+    .icon-wrap {
+        width: 52px;
+        height: 52px;
+        //background-color: #60c745;
+        float: left;
+        //border-radius: 50%;
+        text-align: center;
+    }
+
+    .icon {
+        width: 52px;
+        height: 52px;
+        display: inline-block;
+
+        &.natural {
+            margin-top: 12px;
+        }
+
+        &.synthetic {
+            margin-top: 10px;
+        }
+    }
+}
+
+body.item header.page-header {
+    background-color: #EEEEEE;
+}
+
+body.item section.ingredients .column2 {
+    h2 {
+        margin-bottom: 15px;
+    }
+
+    .full-descr {
+        display: none;
+   
+    }
+
+    table.full-d tr {
+        border-bottom: 1px solid #d8d8d8;
+        font-size: 13px;
+        color: #1a1a1a;
+        line-height: 20px;
+
+        &:last-child {
+            border: none;
+        }
+        &:first-child td {
+            padding-top: 0;
+        }
+
+        td {
+            padding: 30px 0;
+            width: 10%;
+            vertical-align: top;
+
+            &:nth-child(2) {
+                text-align: center;
+            }
+
+            &:first-child {
+                width: 20%;
+                font-size: 18px;
+                font-weight: bold;
+                line-height: 22px;
+            }
+
+            &:last-child {
+                width: 70%;
+            }
+        }
+    }
+}
+
+.bi-button {
+    div:first-child {
+        border-top-left-radius: 17px;
+        border-bottom-left-radius: 17px;
+    }
+
+    div:last-child {
+        border-top-right-radius: 17px;
+        border-bottom-right-radius: 17px;
+    }
+
+    & > div {
+        float: left;
+        width: 50%;
+        height: 33px;
+        background-color: #f5f6f7;
+        color: #8f9aa8;
+        line-height: 30px;
+        font-size: 13px;
+        text-align: center;
+        box-sizing: border-box;
+        border: 1px solid #8f9aa8;
+        cursor: pointer;
+
+        &.current {
+            background-color: #8f9aa8;
+            color: #fff;
+        }
+    }
+}
+
+.icon.natural {
+    @include retina-sprite(leaf);
+}
+
+.icon.synthetic {
+    @include retina-sprite(chemistry);
+}
+
+section.press-about-us {
+    background-color: #f3f3f3;
+    .column2 img {
+        margin-right: 50px;
+    }
+    .wrapper.cols {
+        padding: 50px 0 80px 0;
+    }
+}

@@ -41,6 +41,9 @@ group :development do
   gem 'capistrano-rvm'
   gem 'capistrano-rails'
   gem 'capistrano3-unicorn'
+  gem 'quiet_assets'
+  gem 'better_errors'
+  gem 'binding_of_caller', platforms: [:mri_19, :mri_20, :rbx]
 end
 
 # Use debugger

@@ -1,344 +1,474 @@
 .case-cart {
-	.case-row {
-		padding-top: 80px;
-		@include respond-to(medium-screen) {
-			padding-top: 60px;
-		}
-		@include respond-to(small-screen) {
-			padding-top: 30px;
-		}
-	}
-	.wrapper {
-		@include respond-to(medium-screen) {
-			padding: 0 60px;
-		}
-		@include respond-to(small-screen) {
-			padding: 0 30px;
-		}
-	}
-	.sum {
-		padding: 35px 0;
-		color: #fff;
-		font-size: 24px;
-		line-height: 1.2;
-		text-align: center;
-		background: #97e9bd;
-		@include respond-to(small-screen) {
-			padding: 17px 0;
-			font-size: 16px;
-		}
-		b {
-			@extend .circe;
-		}
-	}
-	.switcher-wrap {
-		max-width: 600px;
-		margin: 0 auto;
-	}
-	.switcher {
-		width: 100%;
-		text-align: center;
-		label {
-			width: 50%;
-			height: 220px;
-			padding: 0 0 20px 0;
-			border: 1px solid #f0f0f0;
-			cursor: pointer;
-			@include respond-to(small-screen) {
-				height: 120px;
-			}
-			&:hover {
-				@include respond-to(large-screen) {
-					background: #f7f7f7;
-				}
-			}
-			&.current {
-				color: #fff;
-				background: #566069;
-			}
-			&:first-child {
-				border-right: 0;
-			}
-			&:last-child {
-				border-left: 0;
-			}
-		}
-		.icon {
-			display: inline-block;
-			width: 110px;
-			height: 110px;
-		}
-		.title {
-			display: block;
-			font-size: 22px;
-			@include respond-to(small-screen) {
-				font-size: 13px;
-			}
-		}
-		.price {
-			display: block;
-			padding-top: 15px;
-			font-size: 30px;
-			font-weight: bold;
-			@extend .circe;
-			@include respond-to(small-screen) {
-				padding-top: 10px;
-				font-size: 16px;
-			}
-		}
-	}
+    .case-row {
+        padding-top: 80px;
+        @include respond-to(medium-screen) {
+            padding-top: 60px;
+        }
+        @include respond-to(small-screen) {
+            padding-top: 30px;
+        }
+    }
+    .wrapper {
+        @include respond-to(medium-screen) {
+            padding: 0 60px;
+        }
+        @include respond-to(small-screen) {
+            padding: 0 15px;
+        }
+    }
+    .sum {
+        padding: 35px 0;
+        color: #fff;
+        font-size: 24px;
+        line-height: 1.2;
+        text-align: center;
+        background: #00cdb4;
+        @include respond-to(medium-screen) {
+            padding: 17px 0;
+            font-size: 20px;
+            margin: 60px 0;
+        }
+        b {
+            @extend .circe;
+        }
+    }
+    .switcher-wrap {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+    .switcher {
+        width: 100%;
+        text-align: center;
+        label {
+            width: 50%;
+            height: 220px;
+            padding: 0 0 20px 0;
+            border: 1px solid #f0f0f0;
+            cursor: pointer;
+            @include respond-to(small-screen) {
+                height: 120px;
+            }
+            &:hover {
+                @include respond-to(large-screen) {
+                    background: #f7f7f7;
+                }
+            }
+            &.current {
+                color: #fff;
+                background: #566069;
+            }
+            &:first-child {
+                border-right: 0;
+            }
+            &:last-child {
+                border-left: 0;
+            }
+        }
+        .icon {
+            display: inline-block;
+            width: 110px;
+            height: 110px;
+        }
+        .title {
+            display: block;
+            font-size: 22px;
+            @include respond-to(small-screen) {
+                font-size: 13px;
+            }
+        }
+        .price {
+            display: block;
+            padding-top: 15px;
+            font-size: 30px;
+            font-weight: bold;
+            @extend .circe;
+            @include respond-to(small-screen) {
+                padding-top: 10px;
+                font-size: 16px;
+            }
+        }
+    }
+    .tablet-bottom {
+        display: none;
+        h2 {
+            margin-bottom: 31px;
+            text-align: center;
+        }
+        input[type="text"] {
+            display: block;
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 280px;
+            height: 50px;
+            font-size: 14px;
+            color: #505050;
+            padding: 8px 15px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+            background-color: #f2f2f2;
+            border: none;
+            outline: none;
+            &.phone {
+                margin-bottom: 30px;
+            }
+        }
+        .contacts {
+            padding: 0 20px;
+        }
+        .payment-method {
+            padding: 30px 10px;
+            text-align: center;
+            color: white;
+            background-color: #566069;
+            .title {
+                font-size: 20px;
+                line-height: 1.4;
+            }
+            .method {
+                margin-top: 50px;
+                .icon {
+                    margin: 0 auto 20px auto;
+                }
+                p {
+                    font-size: 18px;
+                    color: #979da3;
+                    .current & {
+                        color: white;
+                    }
+                }
+                &.current {
+                    p {
+                        color: white;
+                    }
+                    .icon-cash {
+                        @include retina-sprite(cash);
+                    }
+                    .icon-card-big {
+                        @include retina-sprite(card-big);
+                    }
+                }
+            }
+        }
+    }
+}
+
+.btn-grn {
+    height: 60px;
+    max-width: 280px;
+    line-height: 60px;
+    border-radius: 120px;
+    font-size: 18px;
+    margin-top: 80px;
+    width: 100%;
+    background: #46cc8c;
+}
+
+.icon-cash {
+    @include retina-sprite(cash-selected);
 }
 
 .icon-moto {
-	@include retina-sprite(icon-moto_b);
-	.current & {@include retina-sprite(icon-moto_w);}
+    @include retina-sprite(icon-moto_b);
+    .current & {
+        @include retina-sprite(icon-moto_w);
+    }
 }
 
 .icon-truck {
-	@include retina-sprite(icon-truck_b);
-	.current & {@include retina-sprite(icon-truck_w);}
+    @include retina-sprite(icon-truck_b);
+    .current & {
+        @include retina-sprite(icon-truck_w);
+    }
 }
 
 .icon-money {
-	@include retina-sprite(icon-money_b);
-	.current & {@include retina-sprite(icon-money_w);}
+    @include retina-sprite(icon-money_b);
+    .current & {
+        @include retina-sprite(icon-money_w);
+    }
 }
 
 .icon-card {
-	@include retina-sprite(icon-card_b);
-	.current & {@include retina-sprite(icon-card_w);}
+    @include retina-sprite(icon-card_b);
+    .current & {
+        @include retina-sprite(icon-card_w);
+    }
+}
+
+.icon-card-big {
+    // Наверное. дизайнер перепутал названия. Поэтому, перепутаем здесь обратно
+    @include retina-sprite(card-big-selected);
 }
 
 .icon-login {
-	@include retina-sprite(icon-login_b);
-	.current & {@include retina-sprite(icon-login_w);}
+    @include retina-sprite(icon-login_b);
+    .current & {
+        @include retina-sprite(icon-login_w);
+    }
 }
 
 .icon-new-user {
-	@include retina-sprite(icon-create_b);
-	.current & {@include retina-sprite(icon-create_w);}
+    @include retina-sprite(icon-create_b);
+    .current & {
+        @include retina-sprite(icon-create_w);
+    }
 }
 
 .icon-account-sale {
-	@include retina-sprite(icon-account-sale_b);
-	.current & {@include retina-sprite(icon-account-sale_w);}
+    @include retina-sprite(icon-account-sale_b);
+    .current & {
+        @include retina-sprite(icon-account-sale_w);
+    }
 }
 
 .icon-takeaway {
-  @include retina-sprite(icon-takeaway_b);
-  .current & {@include retina-sprite(icon-takeaway_w);}
+    @include retina-sprite(icon-takeaway_b);
+    .current & {
+        @include retina-sprite(icon-takeaway_w);
+    }
 }
 
 .case-cart-list {
-	h2 {
-		@include respond-to(medium-screen) {
-			text-align: left!important;
-		}
-	}
-	.items {
-		.caption {
-			padding-bottom: 17px;
-			color: #b5b5b5;
-			font-size: 12px;
-			text-transform: uppercase;
-			.th {
-				padding-left: 40px;
-				padding-bottom: 17px;
-				&:first-child {
-					padding-left: 0;
-				}
-			}
-		}
-		.item {
-			.td {
-				padding: 40px 0 40px 40px;
-				border-top: 1px solid #f0f0f0;
-				&:first-child {
-					padding-left: 0;
-				}
-				@include respond-to(medium-screen) {
-					display: block;
-					padding: 0;
-					border: 0;
-				}
-			}
-			@include respond-to(medium-screen) {
-				display: block;
-				padding: 40px 0;
-				border-top: 1px solid #f0f0f0;
-				overflow: hidden;
-				.td1 {
-					padding: 0;
-					margin-right: 40px;
-					margin-bottom: 20px;
-					float: left;
-				}
-				.td2 {
-					margin-left: 162px;
-				}
-				.td4 {
-					display: inline-block;
-					height: 46px;
-					margin-bottom: 20px;
-				}
-				.td5 {
-					display: inline-block;
-					height: 46px;
-					margin-bottom: 20px;
-					line-height: 46px;
-					vertical-align: middle;
-				}
-				.td6 {
-					margin-left: 162px;
-				}
-			}
-			@include respond-to(small-screen) {
-				padding: 30px 0;
-				.td1 {
-					margin-right: 20px;
-					margin-bottom: 80px;
-				}
-				.td2 {
-					margin-left: 82px;
-				}
-				.td6 {
-					margin-left: 82px;
-				}
-			}
-		}
-		figure {
-			width: 120px;
-			height: 120px;
-			text-align: center;
-			border: 1px solid #f0f0f0;
-			overflow: hidden;
-			@include respond-to(small-screen) {
-				width: 60px;
-				height: 60px;
-			}
-			img {
-				width: 100%;
-				height: 100%;
-			}
-		}
-		.title {
-			font-size: 18px;
-			line-height: 1.6;
-			@include respond-to(medium-screen) {
-				margin-bottom: 20px;
-				line-height: 1.4;
-			}
-			@include respond-to(small-screen) {
-				font-size: 16px;
-			}
-			a {
-				color: #121C17;
-				text-decoration: none;
-			}
-		}
-		.price {
-			font-size: 24px;
-			font-weight: bold;
-			@extend .circe;
-			white-space: nowrap;
-			@include respond-to(small-screen) {
-				font-size: 18px;
-			}
-		}
-		.count {
-			width: 46px;
-			padding: 0 14px;
-			position: relative;
-			@include respond-to(medium-screen) {
-				padding: 0;
-				margin-right: 30px;
-			}
-			@include respond-to(small-screen) {
-				margin-right: 20px;
-			}
-			input {
-				width: 100%;
-				height: 46px;
-				padding: 10px 5px;
-				color: #121C17;
-				font-size: 24px;
-				font-weight: bold;
-				@extend .circe;
-				text-align: center;
-				border: 1px solid #fff;
-				background: #fff;
-				box-sizing: border-box;
-				@include respond-to(medium-screen) {
-					border-color: #cfcfcf;
-				}
-			}
-			a {
-				display: block;
-				width: 14px;
-				height: 14px;
-				margin-top: -7px;
-				position: absolute;
-				top: 50%;
-				&.minus {
-					left: 0;
-					@include retina-sprite(icon-minus);
-					&:hover {
-						@include retina-sprite(icon-minus-hover);
-					}
-				}
-				&.plus {
-					right: 0;
-					@include retina-sprite(icon-plus);
-					&:hover {
-						@include retina-sprite(icon-plus-hover);
-					}
-				}
-			}
-		}
-		.delete {
-			display: block;
-			width: 14px;
-			height: 14px;
-			@include retina-sprite(icon-delete);
-		}
-		.btn {
-			@include btn(115px, 36px);
-			font-size: 16px;
-		}
-	}
+    h2 {
+        @include respond-to(medium-screen) {
+            //font-size: 40px;
+        }
+    }
+    .items {
+        .caption {
+            padding-bottom: 17px;
+            color: #b5b5b5;
+            font-size: 12px;
+            text-transform: uppercase;
+            .th {
+                padding-left: 40px;
+                padding-bottom: 17px;
+                &:first-child {
+                    padding-left: 0;
+                }
+            }
+        }
+        .item {
+            .td {
+                padding: 40px 0 40px 40px;
+                border-top: 1px solid #f0f0f0;
+                &:first-child {
+                    padding-left: 0;
+                }
+                @include respond-to(medium-screen) {
+                    display: block;
+                    padding: 0;
+                    border: 0;
+                }
+            }
+            @include respond-to(medium-screen) {
+                display: block;
+                padding: 40px 0 0 0;
+                border-top: none;
+                overflow: hidden;
+                .td1 {
+                    padding: 0;
+                    margin-right: 20px;
+                    margin-bottom: 20px;
+                    float: left;
+                }
+                .td2 {
+                    margin-left: 130px;
+                }
+                .td4 {
+                    display: block;
+                    height: 46px;
+                    position: relative;
+                    margin-left: 130px;
+                    top: 50px;
+                }
+                .td5 {
+                    height: 46px;
+                    line-height: 46px;
+                    vertical-align: middle;
+                    position: relative;
+                    top: -60px;
+                    margin-left: 130px;
+                }
+                .td6 {
+                    margin-left: 162px;
+                }
+            }
+            &.inactive {
+                @include respond-to(medium-screen) {
+                    .td1, .td3, .td5 {
+                        opacity: 0.5;
+                    }
+                    .count a.minus {
+                        @include retina-sprite(cart-minus-inactive);
+                    }
+                }
+            }
+        }
+        figure {
+            width: 120px;
+            height: 120px;
+            text-align: center;
+            border: 1px solid #f0f0f0;
+            overflow: hidden;
+            @include respond-to(medium-screen) {
+                width: 110px;
+                height: 110px;
+            }
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+        .title {
+            font-size: 18px;
+            line-height: 1.6;
+            @include respond-to(medium-screen) {
+                margin-bottom: 20px;
+                line-height: 1.4;
+            }
+            a {
+                color: #121C17;
+                text-decoration: none;
+            }
+        }
+        .price {
+            font-size: 24px;
+            font-weight: bold;
+            @extend .circe;
+            white-space: nowrap;
+        }
+        .count {
+            width: 46px;
+            padding: 0 14px;
+            position: relative;
+            input {
+                width: 100%;
+                height: 46px;
+                padding: 10px 5px;
+                color: #121C17;
+                font-size: 24px;
+                font-weight: bold;
+                @extend .circe;
+                text-align: center;
+                border: 1px solid #fff;
+                background: #fff;
+                box-sizing: border-box;
+                @include respond-to(medium-screen) {
+                    border-color: #cfcfcf;
+                    height: 30px;
+                    border: none;
+                    background-color: transparent;
+                    width: 40px;
+                }
+            }
+            .unit {
+                font-size: 34px;
+                color: #aeaeae;
+                display: none;
+                @include respond-to(medium-screen) {
+                    display: inline;
+                    font-size: 17px;
+                }
+            }
+            a {
+                display: block;
+                width: 14px;
+                height: 14px;
+                margin-top: -7px;
+                position: absolute;
+                top: 50%;
+                &.minus {
+                    left: 0;
+                    @include retina-sprite(icon-minus);
+                    &:hover {
+                        @include retina-sprite(icon-minus-hover);
+                    }
+                }
+                &.plus {
+                    right: 0;
+                    @include retina-sprite(icon-plus);
+                    &:hover {
+                        @include retina-sprite(icon-plus-hover);
+                    }
+                }
+            }
+            @include respond-to(medium-screen) {
+                padding: 0;
+                margin-right: 40px;
+                width: 70px;
+                border-radius: 3px;
+                border: 1px solid #7d7d7d;
+                margin-left: 40px;
+                position: relative;
+                padding: 0;
+                a.minus, a.plus {
+                    height: 60px;
+                    top: 6px;
+                    width: 60px;
+                    border-radius: 4px;
+                }
+                a.minus {
+                    left: -40px;
+                    @include retina-sprite(cart-minus);
+                    &:hover {
+                        @include retina-sprite(cart-minus-hover);
+                    }
+                }
+                a.plus {
+                    right: -40px;
+                    @include retina-sprite(cart-plus);
+                    &:hover {
+                        @include retina-sprite(cart-plus-hover);
+                    }
+                }
+            }
+        }
+        .delete {
+            display: block;
+            width: 14px;
+            height: 14px;
+            @include retina-sprite(icon-delete);
+        }
+        .btn {
+            @include btn(115px, 36px);
+            font-size: 16px;
+        }
+    }
 }
 
 .case-cart-delivery,
 .case-cart-address,
 .case-cart-payment {
-	.wrapper {
-		max-width: 600px;
-		margin: 0 auto;
-	}
+    .wrapper {
+        max-width: 600px;
+        margin: 0 auto;
+    }
 }
 
 .case-cart-address {
-	.forms {
-		padding-bottom: 25px;
-	}
+    .forms {
+        padding-bottom: 25px;
+    }
 }
 
 .case-cart-payment {
-	.btn-wrap {
-		padding: 80px 0;
-		@include respond-to(medium-screen) {
-			padding: 60px 0;
-		}
-		@include respond-to(small-screen) {
-			padding: 30px 0;
-		}
-	}
-	.btn {
-		@include btn(310px, 64px);
-		font-size: 19px;
-		@include respond-to(small-screen) {
-			@include btn(250px, 50px);
-			font-size: 16px;
-		}
-	}
+    .btn-wrap {
+        padding: 80px 0;
+        @include respond-to(medium-screen) {
+            padding: 60px 0;
+        }
+        @include respond-to(small-screen) {
+            padding: 30px 0;
+        }
+    }
+    .btn {
+        @include btn(310px, 64px);
+        font-size: 19px;
+        @include respond-to(small-screen) {
+            @include btn(250px, 50px);
+            font-size: 16px;
+        }
+    }
 }

@@ -1,80 +1,102 @@
-html, body {
-	height: 100%;
+html,
+body {
+    height: 100%;
 }
 
 .page {
-	min-width: 320px;
-	min-height: 100%;
-	overflow: hidden;
-	.navbar-wrap & {
-		@include respond-to(medium-screen) {
-			height: 100%;
-		}
-	}
+    min-width: 320px;
+    min-height: 100%;
+    overflow: hidden;
+    .navbar-wrap & {
+        @include respond-to(medium-screen) {
+            height: 100%;
+        }
+    }
 }
 
 .globalwidth {
-	max-width: 960px;
-	margin: 0 auto;
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+.width1040 {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 0 20px;
+    @include respond-to(medium-screen) {
+        padding: 0;
+    }
 }
 
 .center {
-	text-align: center;
+    text-align: center;
 }
 
 .separate {
-	.line {
-		height: 0;
-		font-size: 0;
-		border-bottom: 1px solid #f0f0f0;
-	}
+    .line {
+        height: 0;
+        font-size: 0;
+        border-bottom: 1px solid #f0f0f0;
+    }
 }
 
 .darkstyle {
-	color: #fff;
+    color: #fff;
 }
 
 .covered {
-	background-repeat: no-repeat;
-	background-position: 50% 0;
-	background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 0;
+    background-size: cover;
 }
 
-.blackout {
-	background: rgba(#000,0.4);
+.darkstyle .blackout {
+    background: rgba(#000, 0.4);
 }
 
 .pagination {
-	height: 16px;
-	text-align: center;
-	overflow: hidden;
-	a {
-		display: inline-block;
-		width: 8px;
-		height: 8px;
-		margin: 0 5px;
-		background: #dbdbdb;
-		border-radius: 50%;
-		&.selected {
-			background: #64d196;
-		}
-		span {
-			display: none;
-		}
-	}
+    height: 16px;
+    text-align: center;
+    overflow: hidden;
+    a {
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        margin: 0 5px;
+        background: #dbdbdb;
+        border-radius: 50%;
+        &.selected {
+            background: #64d196;
+        }
+        span {
+            display: none;
+        }
+    }
 }
 
 .table {
-	display: table;
-	width: 100%;
-	.tr {
-		display: table-row;
-	}
-	.th {
-		display: table-cell;
-	}
-	.td {
-		display: table-cell;
-		vertical-align: middle;
-	}
+    display: table;
+    width: 100%;
+    .tr {
+        display: table-row;
+    }
+    .th {
+        display: table-cell;
+    }
+    .td {
+        display: table-cell;
+        vertical-align: middle;
+    }
+}
+
+.clearfix:after {
+   content: " ";
+   visibility: hidden;
+   display: block;
+   height: 0;
+   clear: both;
+}
+
+.text-black {
+    color: black;
 }

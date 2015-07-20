@@ -1,0 +1,28 @@
+.page-header-top
+  a.btn-navbar.navbar-toggle.hidden.visible-tablet[href="#"]
+    span.icon-bar
+    span.icon-bar
+    span.icon-bar
+  a.logo.logo-min[href="/"]
+  nav.navbar
+    .navbar-cnt
+      ul.items
+        = render 'navigation'
+      a.close.navbar-toggle.hidden.visible-tablet[href="#"]
+      .callme.hidden-tablet
+        .icon
+        span.tel
+          | 8 800 775-82-54
+        br
+        |  Есть вопросы? Звоните 
+      .follow-mob.hidden.visible-tablet
+        = link_to Settings::Social.instagram do
+          i.icon.icon-ig_grn
+        = link_to Settings::Social.facebook do
+          i.icon.icon-fb_grn
+        = link_to Settings::Social.vkontakte do
+          i.icon.icon-vk_grn
+  = link_to new_order_path,id: 'cart-desktop', class: "cart not-hidden-tablet #{'has-orders' unless current_cart.total_quantity.zero?}" do
+    .pic.icon-cart
+      .count= current_cart.total_quantity
+    p Оформить заказ

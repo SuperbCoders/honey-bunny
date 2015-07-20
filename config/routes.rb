@@ -95,7 +95,7 @@ Rails.application.routes.draw do
   end
   resources :reviews, only: [:create]
   resources :faqs, only: :index, path: 'faq', controller: 'faq'
-  resources :questions, only: :create
+  resources :questions, only: [:create, :index]
   resources :wholesalers, only: [:new, :create] do
     get :select, on: :collection
     get :pending, on: :collection

@@ -18,7 +18,8 @@
 	margin-bottom: 110px;
 	.item {
 		display: inline-block;
-		width: 16%;
+        // Почему-то стало уезжать при 16%
+		width: 15%;
 		vertical-align: top;
 		.icon {
 			display: block;
@@ -27,7 +28,7 @@
 			margin: 0 auto 20px;
 		}
 		.ttl {
-			font-size: 12px;
+			font-size: 14px;
 			font-weight: bold;
 			text-align: center;
 			text-transform: uppercase;

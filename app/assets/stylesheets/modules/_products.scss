@@ -1,138 +1,189 @@
 .case-products {
-	.items {
-		position: relative;
-		border-bottom: 1px solid #f0f0f0;
-		&:after {
-			@include respond-to(large-screen) {
-				display: block;
-				content: '';
-				width: 0;
-				height: 100%;
-				position: absolute;
-				top: 0;
-				left: 50%;
-				border-left: 1px solid #f0f0f0;
-			}
-		}
-	}
-	.item {
-		display: inline-block;
-		width: 50%;
-		font-weight: bold;
-		vertical-align: top;
-		border-top: 1px solid #f0f0f0;
-		background-color: #EEEEEE;
-		@include respond-to(medium-screen) {
-			width: 100%;
-		}
-		.item-cnt {
-			padding: 40px;
-			overflow: hidden;
-			@include respond-to(small-screen) {
-				padding: 30px;
-			}
-		}
-		figure {
-			width: 200px;
-			margin-right: 40px;
-			float: left;
-			text-align: center;
-			overflow: hidden;
-			@include respond-to(small-screen) {
-				width: 100px;
-				margin-right: 20px;
-			}
-			img {
-				width: 100%;
-				height: 100%;
-			}
-		}
-		.info {
-			padding-top: 40px;
-			padding-bottom: 5px;
-			overflow: hidden;
-			@include respond-to(small-screen) {
-				padding-top: 20px;
-			}
-		}
-		.descript {
-			margin-bottom: 15px;
-			color: #64d095;
-			font-size: 14px;
-		}
-		.ttl {
-			margin-bottom: 20px;
-			font-size: 26px;
-			line-height: 1.5;
-			@include respond-to(small-screen) {
-				font-size: 16px;
-				line-height: 1.3;
-			}
-			a {
-				color: #252929;
-				text-decoration: none;
-			}
-		}
-		.size {
-			margin-bottom: 20px;
-			color: #adbfbf;
-			font-size: 21px;
-			@extend .circe;
-		}
-		.price {
-			margin-bottom: 20px;
-			font-size: 50px;
-			@extend .circe;
-			@include respond-to(small-screen) {
-				margin-bottom: 15px;
-				font-size: 25px;
-			}
-		}
-		.btn-wrap {
-			width: 210px;
-			.btn {
-				@include btn(210px, 50px);
-				font-size: 18px;
-			}
-			.more {
-				padding-top: 18px;
-				font-size: 16px;
-			}
-			@include respond-to(small-screen) {
-				width: 140px;
-				.btn {
-					@include btn(140px, 36px);
-					font-size: 16px;
-				}
-				.more {
-					padding-top: 15px;
-					font-size: 12px;
-					a {
-						text-decoration: none;
-					}
-				}
-			}
-		}
-		&:nth-child(2n) {
-			.item-cnt {
-				
-			}
-			figure {
-				@include respond-to(medium-screen) {
-					margin: 0 0 0 40px;
-					float: right;
-				}
-				@include respond-to(small-screen) {
-					margin: 0 0 0 20px;
-				}
-			}
-		}
-		&:hover {
-			.btn-wrap {
-				@include respond-to(large-screen) {
-					display: block!important;
-				}
-			}
-		}
-	}
+    background-color: #EEEEEE;
+    .items {
+        position: relative;
+        border-bottom: 1px solid #f0f0f0;
+        &:after {
+            @include respond-to(large-screen) {
+                display: block;
+                content: '';
+                width: 0;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                left: 50%;
+                border-left: 1px solid #f0f0f0;
+            }
+        }
+    }
+    .item {
+        display: inline-block;
+        width: 49.5%;
+        font-weight: bold;
+        vertical-align: top;
+        border-top: 1px solid #f0f0f0;
+        background-color: #EEEEEE;
+        @include respond-to(medium-screen) {
+            width: 100%;
+        }
+        .item-cnt {
+            padding: 40px;
+            overflow: hidden;
+            @include respond-to(small-screen) {
+                padding: 30px;
+            }
+        }
+        figure {
+            width: 200px;
+            margin-right: 40px;
+            float: left;
+            text-align: center;
+            overflow: hidden;
+            @include respond-to(small-screen) {
+                width: 100px;
+                margin-right: 20px;
+            }
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+        .info {
+            padding-top: 40px;
+            padding-bottom: 5px;
+            overflow: hidden;
+            @include respond-to(small-screen) {
+                padding-top: 20px;
+            }
+            .rates {
+                margin-bottom: 10px;
+                color: #B6BDBC;
+                font-size: 14px;
+            }
+            .rates-text {
+                cursor: pointer;
+            }
+            .stars-cnt {
+                display: inline-block;
+                vertical-align: text-bottom;
+                margin-right: 8px;
+            }
+            .star {
+                @include retina_sprite(star-green);
+            }
+            .halfstar {
+                @include retina_sprite(half-star-green);
+            }
+            .star, .halfstar {
+                display: inline-block;
+            }
+        }
+        .descript {
+            margin-bottom: 20px;
+            color: white;
+            font-size: 14px;
+            background-color: #00cd84;
+            display: inline-block;
+            line-height: 16px;
+            padding: 10px 15px;
+            position: relative;
+            &.lemon {
+                background-color: #e2d35d;
+            }
+            &.gray {
+                background-color: #00CDB4;
+            }
+            &.blue {
+                background-color: #5CBCE1;
+            }
+            &:after {
+                content: '';
+                width: 8px;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                right: 0;
+                background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAABACAYAAAAnBDaKAAAB5klEQVRIS6XVzStEURjHcXde05SUkiQhQhYWFvY2FhayQUNMhIaFjYV/QBY2FhIihLCRhYV/QFlYWAgRk+5M5n3+Bd+jRl7O88zC3U3nc8/vOec8545Tpjy5XK7D0UA+n58tBU5VUCgUUiLIZrPtXq/3XgTkRx3HWdfACWBIA++AGiso5pstsALyZ3h7QwPHgGENJAC1VpDJZFp9Pt9j8Qj+1ED+NG9vauAIENbAV/6fGtLpdIvf73/63gI/aqBBpjwez5YIKPCQ/BENuIA6KyC/mfzn3y34VQP5k+Rvi4D8A6Yf1cAboN4KUqlUUyAQeLFdgc8ayJ8gf0cE5O8z/ZgGrPmfZ5FMJhuDweCrdAUdGjTCBdkVAQXuUeC4CLh/MQYb/gVMfkSbwax/XyuyjiJdEZgBCjV90Kzt5BZbPaWBMOBIBFy3Wq5bQgRmgBN9YJY2raPWAVERcCaDLPdUBBx7NceeNC3wHf34QR13xHRoYA0wJwKaZ4DmORNBPB6vCoVCaYCniGyfoFtiOkXAcldZ7rwIONl+Bs9FEIvFKnmyAK9B1k8xs9ww1iUCNmyFQhc00Ae4EAErqWAleVOH9odyzSzdGlgGLIqAmF5iLkVAf4Toj0Kpf96rUmBJBfRHjwpc1y3/AMcF7sFyOeH3AAAAAElFTkSuQmCC);
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: left center;
+            }
+        }
+        .ttl {
+            margin-bottom: 20px;
+            font-size: 26px;
+            line-height: 1.5;
+            @include respond-to(small-screen) {
+                font-size: 16px;
+                line-height: 1.3;
+            }
+            a {
+                color: #252929;
+                text-decoration: none;
+                &:hover {
+                    color: #00CDB4;
+                    cursor: pointer;
+                }
+            }
+        }
+        .size {
+            margin-bottom: 40px;
+            color: #adbfbf;
+            //font-size: 21px;
+            @extend .circe;
+        }
+        .price {
+            margin-bottom: 20px;
+            font-size: 50px;
+            @extend .circe;
+            @include respond-to(small-screen) {
+                margin-bottom: 15px;
+                font-size: 25px;
+            }
+        }
+        .btn-wrap {
+            width: 210px;
+            .btn {
+                @include btn(210px, 50px);
+                font-size: 18px;
+            }
+            .more {
+                padding-top: 18px;
+                font-size: 16px;
+            }
+            @include respond-to(small-screen) {
+                width: 140px;
+                .btn {
+                    @include btn(140px, 36px);
+                    font-size: 16px;
+                }
+                .more {
+                    padding-top: 15px;
+                    font-size: 12px;
+                    a {
+                        text-decoration: none;
+                    }
+                }
+            }
+        }
+        &:nth-child(2n) {
+            .item-cnt {}
+            figure {
+                @include respond-to(medium-screen) {
+                    margin: 0 0 0 40px;
+                    float: right;
+                }
+                @include respond-to(small-screen) {
+                    margin: 0 0 0 20px;
+                }
+            }
+        }
+        &:hover {
+            .btn-wrap {
+                @include respond-to(large-screen) {
+                    display: block!important;
+                }
+            }
+        }
+    }
 }

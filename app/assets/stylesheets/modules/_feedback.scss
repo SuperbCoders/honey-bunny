@@ -1,0 +1,369 @@
+// Для index.html
+.webui-popover-title {
+    display: none;
+}
+
+.webui-popover-content {
+    padding: 30px;
+    padding-top: 0;
+    margin-top: 30px;
+    position: relative;
+}
+
+// Для index.html и item_feedback.html
+.webui-popover-content,
+.item-feedback .sec-feedback {
+    .item {
+        font-size: 14px;
+        line-height: 18px;
+        border-bottom: 2px solid rgb(216, 216, 216);
+        padding-bottom: 25px;
+        margin-bottom: 40px;
+        &:last-of-type {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+        .rates {
+            margin-bottom: 15px;
+            color: #1a1a1a;
+            font-weight: bold;
+            .rates-text {
+                cursor: pointer;
+            }
+            .stars-cnt {
+                display: inline-block;
+                vertical-align: text-bottom;
+                margin-right: 8px;
+            }
+            .star {
+                @include retina_sprite(star);
+            }
+            .halfstar {
+                @include retina_sprite(half-star);
+            }
+            .star,
+            .halfstar {
+                display: inline-block;
+            }
+        }
+        .person {
+            margin-top: 15px;
+            .avatar {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                float: left;
+                margin-right: 10px;
+            }
+            .name {
+                color: gray;
+                line-height: 40px;
+            }
+        }
+    }
+}
+
+// Для item_feedback.html
+.item-feedback .sec-feedback {
+    .item {
+        margin-bottom: 10px;
+        border-bottom: none;
+        display: none;
+        // Покажем только три первые отзыва
+        // Остальные покажет кнопка "Еще отзывы"
+        &:first-child, &:nth-child(2), &:nth-child(3) {
+            display: block;
+        }
+    }
+}
+
+body.item-feedback {
+    background: #f6f6f6;
+    .percentage {
+        .col {
+            height: 325px;
+            float: left;
+            background-color: #5ed193;
+            width: 25%;
+            box-sizing: border-box;
+            &:first-child {
+                background-color: #d9f000;
+                width: 65%;
+            }
+            &:last-child {
+                background-color: #8d92d2;
+                width: 10%;
+            }
+            padding-top: 75px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 20px;
+            .number {
+                font-size: 60px;
+            }
+            .text {
+                font-size: 20px;
+                margin-top: 10px;
+            }
+            @media (max-width: 1030px) {
+                .number {
+                    font-size: 40px;
+                }
+                .text {
+                    font-size: 16px;
+                }
+            }
+            @media (max-width: 760px) {
+                .number {
+                    font-size: 30px;
+                }
+                .text {
+                    font-size: 14px;
+                }
+                height: 200px;
+            }
+            @media (max-width: 600px) {
+                float: none;
+                width: 100% !important;
+                padding: 5px 40px;
+                height: auto;
+                text-align: left;
+                div {
+                    display: inline-block;
+                }
+                .number {
+                    width: 80px;
+                }
+            }
+        }
+    }
+    .main {
+        margin-top: 50px;
+    }
+    section .left {
+        font-size: 20px;
+        font-weight: bold;
+        width: 25%;
+        float: left;
+        padding-bottom: 20px;
+    }
+    section .right {
+        width: 75%;
+        float: left;
+        font-size: 14px;
+        line-height: 18px;
+    }
+    @media (max-width: 600px) {
+        section .left, section .right {
+            width: 100%;
+            float: none;
+        }
+    }
+    .sec-feedback .globalwidth,
+    .sec-ingredients .globalwidth {
+        padding: 40px 10px;
+    }
+    .sec-feedback {
+        background: #f6f6f6;
+    }
+    .sec-ingredients {
+        background: #fff;
+    }
+    #compose {
+        height: 64px;
+        width: 100%;
+        max-width: 450px;
+        line-height: 64px;
+        border-radius: 33px;
+        font-size: 20px;
+        margin-bottom: 40px;
+        display: inline-block;
+    }
+    #btnMore {
+        // Скроем кнопку
+        // Отобразим её скриптом, если будет более 3-х отзывов
+        display: none;
+        box-sizing: border-box;
+        padding: 15px 50px;
+        border: 1px solid #979797;
+        border-radius: 100px;
+        margin-top: 20px;
+        cursor: pointer;
+    }
+    // Всплывающие окна
+    .popup {
+        width: 490px;
+        height: 479px;
+        box-sizing: border-box;
+        margin: 0 auto;
+        background-color: white;
+        display: table;
+        padding: 40px;
+        font-size: 24px;
+        text-align: center;
+        position: relative;
+        .wrapper {
+            display: table-cell;
+            vertical-align: top;
+        }
+        .title {
+            color: #434343;
+            font-weight: bold;
+            margin-top: 15px;
+            margin-bottom: 35px;
+        }
+        .btn {
+            width: 250px;
+            height: 60px;
+            display: block;
+            margin: 0 auto;
+            line-height: 60px;
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+            cursor: pointer;
+            color: white;
+            border-radius: 60px;
+        }
+        .mfp-close {
+            @include retina-sprite(btn-close);
+            color: transparent;
+            right: -45px;
+            top: 0px !important;
+        }
+        textarea {
+            background: #ededed;
+            width: 100%;
+            color: #ababab;
+            margin-bottom: 20px;
+            border: none;
+            padding: 10px 20px;
+            box-sizing: border-box;
+            font-size: 18px;
+            height: 150px;
+            font-weight: normal;
+            font-family: inherit;
+        }
+    }
+    #popupDone {
+        background-image: url(http://www.ilikewallpaper.net/ipad-wallpapers/download/6605/Dark-Blue-Water-ipad-wallpaper-ilikewallpaper_com.jpg);
+        background-size: cover;
+        color: white;
+        .wrapper {
+            vertical-align: middle;
+        }
+        .title {
+            color: white;
+            margin-top: 0;
+        }
+        .small {
+            font-size: 18px;
+            margin-bottom: 40px;
+            line-height: 22px;
+        }
+        .btn {
+            background-color: #50e3c2;
+            &:hover {
+                background-color: #61f0d0;
+            }
+        }
+    }
+    .btn-black {
+        background-color: black;
+        margin-top: 50px;
+        &:hover {
+            background-color: #323232;
+        }
+    }
+    #popupPop {
+        .social {
+            .btn {
+                width: 100%;
+                margin-bottom: 20px;
+                position: relative;
+            }
+            .btn-fb {
+                background-color: #475E97;
+                &:hover {
+                    background-color: #516CAF;
+                }
+                &:before {
+                    content: '';
+                    display: block;
+                    position: absolute;
+                    top: 18px;
+                    left: 40px;
+                    @include retina-sprite(fb);
+                }
+            }
+            .btn-vk {
+                background-color: #356CA1;
+                &:hover {
+                    background-color: #4380BC;
+                }
+                &:before {
+                    content: '';
+                    display: block;
+                    position: absolute;
+                    top: 19px;
+                    left: 40px;
+                    @include retina-sprite(vk);
+                }
+            }
+            .btn-mm {
+                background-color: #168DE2;
+                &:hover {
+                    background-color: #2D9EEF;
+                }
+                &:before {
+                    content: '';
+                    display: block;
+                    position: absolute;
+                    top: 19px;
+                    left: 40px;
+                    @include retina-sprite(mail);
+                }
+            }
+        }
+        #rating {
+            margin: 0 auto 40px auto;
+        }
+        .step2 {
+            display: none;
+            .title {
+                margin-bottom: 50px;
+            }
+        }
+    }
+    #popupSteal {
+        .avatar {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 20px auto;
+            border-radius: 50%;
+        }
+        .text-gray {
+            color: #939393;
+            font-size: 14px;
+        }
+        .text-green {
+            color: #5ce09b;
+            font-size: 14px;
+            margin-bottom: 32px;
+        }
+        input[type="text"],
+        input[type="email"] {
+            width: 100%;
+            display: block;
+            box-sizing: border-box;
+            border: 2px solid #5ce09b;
+            padding: 16px;
+            font-size: 18px;
+            color: #202020;
+            margin-bottom: 20px;
+        }
+        input[type="email"] {
+            margin-bottom: 40px;
+        }
+    }
+}

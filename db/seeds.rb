@@ -3,7 +3,7 @@
 require 'csv'
 
 def create_admins
-  User.where(email: 'kostia.pizhon@gmail.com').first_or_create(role: 'admin', password: 'qwerty123')
+  User.where(email: 'schumi@live.ru').first_or_create(role: 'admin', password: 'qwerty123')
 end
 
 def create_pages
@@ -13,6 +13,7 @@ def create_pages
   Page.where(slug: 'values').first_or_create(title: 'Наши ценности', motto: 'Приятно познакомиться', subtitle: 'Мы делаем хорошую косметику для людей', published: true, cover: File.open("#{Rails.root}/db/seeds/values_cover.jpg"))
   Page.where(slug: 'cosmetics').first_or_create(title: 'О косметике', motto: '', subtitle: '', published: true, cover: File.open("#{Rails.root}/db/seeds/products_cover.jpg"))
   Page.where(slug: 'faq').first_or_create(title: 'Вопросы и ответы', motto: 'Отвечаем на ваши вопросы', subtitle: 'Про нашу классную косметику', published: true, cover: File.open("#{Rails.root}/db/seeds/faq_cover.jpg"))
+  Page.where(slug: 'difference').first_or_create(title: 'В чем отличие', published: true, cover: File.open("#{Rails.root}/db/seeds/products_cover.jpg"))
 end
 
 def create_cities

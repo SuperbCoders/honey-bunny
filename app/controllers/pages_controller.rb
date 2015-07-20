@@ -15,5 +15,4 @@ class PagesController < ApplicationController
   def cosmetics
     @page = Page.find_by!(slug: 'cosmetics')
   end
-
 end

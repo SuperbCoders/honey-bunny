@@ -2,7 +2,7 @@
   <div class="case-row case-cart-list">
     <div class="container globalwidth">
       <div class="wrapper">
-        <h2 class="center">Корзина</h2>
+        <h2 class="center">Вы в 1 минуте от покупки</h2>
         <div class="table items">
           <div class="tr caption hidden-tablet">
             <div class="th">Товар</div>
@@ -53,7 +53,7 @@
     </div>
   </div>
   <%= form_for @order do |f| %>
-    <div class="case-row case-cart-delivery">
+    <div class="case-row case-cart-delivery hidden-tablet">
       <div class="container globalwidth">
         <div class="wrapper">
           <h2 class="center">Как вам доставить товар</h2>
@@ -74,7 +74,7 @@
         </div>
       </div>
     </div>
-    <div class="case-row case-cart-address">
+    <div class="case-row case-cart-address hidden-tablet">
       <div class="container globalwidth">
         <div class="wrapper">
           <h2 class="center">Укажите адрес доставки<br />и контактные данные</h2>
@@ -86,6 +86,9 @@
                     <div class="chosen">
                       <%= f.select :city, order_city_options_for_select(@cities, @order.city, shipping_methods: @shipping_methods), {}, class: 'chosen-select js-order-city' %>
                     </div>
+                  </div>
+                  <div class="td td2">
+                    <%= f.text_field :zip_code, placeholder: 'Индекс' %>
                   </div>
                 </div>
               </div>
@@ -106,10 +109,19 @@
         </div>
       </div>
     </div>
-    <div class="sum">
+    <div class="sum hidden-tablet">
       <div class="container globalwidth">
         <span>Итого с доставкой <b><span id="order-total-price"><%= humanized_money @order.total_price %></span> руб.</b></span>
       </div>
+    </div>
+    <div class="tablet-bottom visible-tablet">
+        <div class="contacts">
+            <h2>Мы перезвоним вам, согласуем адрес и время доставки</h2>
+            <div class="field<%= ' error' if @order.errors['name'].any? %>"><%= f.text_field :name, placeholder: 'Как вас зовут?' %></div>
+            <div class="td td1<%= ' error' if @order.errors['phone'].any? %>"><%= f.text_field :phone, placeholder: 'Ваш номер телефона', class: 'js-order-phone' %></div>
+            <!-- <input type="text" name="name" placeholder="Как вас зовут?"> -->
+            <!-- <input type="text" name="phone" class="phone" placeholder="Ваш номер телефона"> -->
+        </div>
     </div>
     <div class="case-row case-cart-payment">
       <div class="container globalwidth">

@@ -1,17 +1,17 @@
-li.item.item1 class=('current' if @page.try(:slug) == 'cosmetics')
-  = link_to 'О косметике', page_path('cosmetics')
-li.item.item2 class=('current' if @page.try(:slug) == 'products')
-  = link_to 'Продукты', items_path
-li.item.item3 class=('current' if @page.try(:slug) == 'company')
-  = link_to 'О компании', company_pages_path
-li.item.item4 class=('current' if @page.try(:slug) == 'values')
-  = link_to 'Наши ценности', page_path('values')
-li.item.item5 class=('current' if @page.try(:slug) == 'faq')
-  = link_to 'Вопросы', faqs_path
-li.item.item6 class=('current' if params[:controller] == 'wholesale_orders')
+- current_page = @page.try(:slug)
+li.item.item1 class=('current' if current_page == 'products')
+  = link_to 'Косметика', items_path
+li.item.dots.hidden-tablet
+  span
+li.item.item2.collapsable.first.item2 class=('current' if current_page == 'difference')
+  = link_to 'В чем отличие', page_path('difference')
+li.item.item3.collapsable class=('current' if current_page == 'cosmetics')
+  = link_to 'Идея и состав', page_path('cosmetics')
+li.item.item4.collapsable.item5.faq class=('current' if (current_page == 'faq' || current_page == 'company' || controller_name == 'questions'))
+  a Вопросы
+  ul
+    li= link_to 'О компании', company_pages_path
+    li= link_to 'О косметике', faqs_path
+    li= link_to 'Задать вопрос', questions_path
+li.item.collapsable.item5 class=('current' if params[:controller] == 'wholesale_orders')
   = link_to 'Опт', new_wholesale_order_path
-li#cart-desktop.item.item6.hidden-tablet class=('current' if params[:controller] == 'orders' && params[:action] == 'new')
-  = link_to new_order_path do
-    | Корзина
-    span.count class=('hidden' if current_cart.empty_cart?)
-      = current_cart.total_quantity

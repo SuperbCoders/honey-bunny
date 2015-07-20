@@ -21,3 +21,34 @@
 	font-weight: bold;
 	font-style: normal;
 }
+
+// Flaticons
+@font-face {
+	font-family: 'Flaticon';
+	src: asset-url('laticon.eot');
+	src: asset-url('laticon.eot?#iefix') format('embedded-opentype'),
+		 asset-url('laticon.woff2') format('woff2'),
+		 asset-url('laticon.woff') format('woff'),
+		 asset-url('laticon.ttf') format('truetype'),
+		 asset-url('laticon.svg#arkadiabold') format('svg');
+	font-weight: bold;
+	font-style: normal;
+}
+
+[class^="flaticon-"]:before,
+[class*=" flaticon-"]:before,
+[class^="flaticon-"]:after,
+[class*=" flaticon-"]:after {
+    font-family: Flaticon;
+    font-size: 20px;
+    font-style: normal;
+    //margin-left: 20px;
+}
+
+.flaticon-left217:before {
+	content: "\e000";
+}
+
+.flaticon-ruble:before {
+    content: "\e001";
+}

@@ -16,7 +16,9 @@
 /tmp
 .DS_Store
 /public/uploads
-
+.secret
+*.__*
+*.sublime*
 # Ignore credentials
 config/database.yml
 config/secrets.yml

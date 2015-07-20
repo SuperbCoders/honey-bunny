@@ -1,5 +1,10 @@
 class QuestionsController < ApplicationController
 
+  # GET /questions
+  def index
+    @question = Question.new
+  end
+
   # POST /questions
   def create
     @question = Question.new(question_params)
@@ -13,7 +18,7 @@ class QuestionsController < ApplicationController
 
   private
 
-    def question_params
-      params.require(:question).permit(:name, :email, :phone, :text)
-    end
+  def question_params
+    params.require(:question).permit(:name, :email, :phone, :text)
+  end
 end

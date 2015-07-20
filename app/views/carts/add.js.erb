@@ -1,7 +1,6 @@
 <% if @cart_item.quantity == @quantity %>
-  $('#cart-desktop span.count').text('<%= current_cart.total_quantity %>');
-  $('#cart-desktop span.count').toggleClass('hidden', $('#cart-desktop span.count').text() == 0);
-  $('#cart-tablet').text('<%= current_cart.total_quantity %>');
+  $('#cart-desktop .count').text('<%= current_cart.total_quantity %>');
+  $('#cart-desktop').toggleClass('has-orders', $('#cart-desktop .count').text() != 0);
 
   if ($('section.case-cart').length) {
     $('#cart-item-<%= @cart_item.item.id %> .js-cart-item-total-price').text('<%= humanized_money @cart_item.total_price %>');

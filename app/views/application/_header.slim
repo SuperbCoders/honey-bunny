@@ -1,0 +1,15 @@
+header.page-header.page-header-left.covered class=('darkstyle' if @page.try(:dark_cover?)) style="background-image: url(#{@page.try(:cover).try(:full) || '/images/main_bg.jpg'});"
+  div class=('blackout' if @page.try(:shadow_cover?))
+    .container.globalwidth
+      = render 'header_top'
+      .page-header-bottom.hidden-tablet
+        .caption
+          - if @page.try(:motto).present?
+            .subtitle
+              = @page.motto
+          - if @page.try(:title).present?
+            h1
+              = @page.title
+          - if @page.try(:subtitle).present?
+            .dubtitle
+              = @page.subtitle

@@ -1,0 +1,38 @@
+header.page-header.page-header-left.covered class=('darkstyle' if @page.try(:dark_cover?)) style="background-image: url(#{@page.try(:cover).try(:full) || '/images/main_bg.jpg'});"
+  div class=('blackout' if @page.try(:shadow_cover?))
+    .container.width1040
+      = render 'header_top'
+      .page-header-bottom
+        .caption.center
+          h1
+            | Новая классная
+            br
+            |  косметика
+        .btn-wrap.hidden-tablet
+          = link_to 'Закажите сейчас', items_path, class: 'btn btn-grn', style: 'opacity:0.8;'
+        section.case-worth-min.hidden-tablet[style="margin-top:70px;"]
+          ul.items[style="color:#000000;"]
+            li.item
+              i.icon.icon-worth1_min
+              .ttl
+                | Качественная
+            li.item
+              i.icon.icon-worth2_min
+              .ttl
+                | Минималистичная
+            li.item
+              i.icon.icon-worth3_min
+              .ttl
+                | Для России
+            li.item
+              i.icon.icon-worth4_min
+              .ttl
+                | Доступная
+            li.item
+              i.icon.icon-worth5_min
+              .ttl
+                | Честная
+            li.item
+              i.icon.icon-worth6_min
+              .ttl
+                | Сделана с любовью

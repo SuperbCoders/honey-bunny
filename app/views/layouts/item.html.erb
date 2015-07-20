@@ -15,28 +15,7 @@
   <article class="page">
     <header class="page-header page-header-left page-header-short">
       <div class="container globalwidth">
-        <div class="page-header-top">
-          <a class="btn-navbar navbar-toggle hidden visible-tablet" href="#">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="logo logo-min" href="/"></a>
-          <nav class="navbar">
-            <div class="navbar-cnt">
-              <ul class="items">
-                <%= render 'navigation' %>
-              </ul>
-              <a class="close navbar-toggle hidden visible-tablet" href="#"></a>
-              <div class="follow-mob hidden visible-tablet">
-                <a href="<%= Settings::Social.instagram %>" target="_blank"><i class="icon icon-ig_grn"></i></a>
-                <a href="<%= Settings::Social.facebook %>" target="_blank"><i class="icon icon-fb_grn"></i></a>
-                <a href="<%= Settings::Social.vkontakte %>" target="_blank"><i class="icon icon-vk_grn"></i></a>
-              </div>
-            </div>
-          </nav>
-          <a id="cart-tablet" class="store hidden visible-tablet" href="<%= new_order_path %>"><%= current_cart.total_quantity %></a>
-        </div>
+        <%= render 'header_top' %>
       </div>
     </header>
     <section class="page-body">
