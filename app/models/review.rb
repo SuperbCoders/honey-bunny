@@ -31,7 +31,7 @@ class Review < ActiveRecord::Base
 
   private
 
-    def set_default_values
-      self.place ||= items.any? ? 'item' : 'index'
-    end
+  def set_default_values
+    self.place ||= items.any? ? 'item' : 'index'
+  end
 end

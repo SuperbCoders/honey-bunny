@@ -36,7 +36,7 @@ $ ->
   # Updates order total price value as sum of items price and shipping price
   window.updateTotalPrice = ->
     itemsPrice = parseFloat($('#order-items-price').text().toString().replace(' ', ''))
-    shippingPrice = parseFloat(currentShippingPrice().toString().replace(' ', ''))
+    shippingPrice = parseFloat(currentShippingPrice().toString().replace(' ', '')) || 0
     totalPrice = humanizedMoney(itemsPrice + shippingPrice)
     $('#order-total-price').text(totalPrice)
 
@@ -51,7 +51,7 @@ $ ->
     $("input.js-order-payment-method-id:checked")
 
   currentShippingPrice = ->
-    shippingPriceFor(currentShippingMethod(), currentCity())
+    shippingPriceFor(currentShippingMethod(), currentCity()) || ""
 
   shippingPriceFor = (shippingMethod, city) ->
     $(city).data("shipping-method-#{$(shippingMethod).val()}")
