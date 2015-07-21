@@ -21,7 +21,7 @@ class OrdersController < ApplicationController
     @order.use_cart(current_cart)
     if @order.save
       # Notify customer
-      OrderMailer.user_success_email(@order.id, @order.email).deliver!
+      OrderMailer.user_success_email(@order.id, @order.email).deliver! if @order.email
 
       # Notify admins
       User.admins.notify_about_orders.each do |admin|
@@ -58,24 +58,24 @@ class OrdersController < ApplicationController
 
   private
 
-    def check_cart
-      redirect_to items_url if current_cart.empty_cart?
-    end
+  def check_cart
+    redirect_to items_url if current_cart.empty_cart?
+  end
 
-    def order_params
-      added_params = mobile_device? ? {from_mobile: true} : {}
-      params.require(:order).permit(:shipping_method_id, :payment_method_id,
-                                    :city, :zipcode, :address, :name,
-                                    :phone, :email, :comment, :zip_code).merge(added_params)
-    end
+  def order_params
+    added_params = mobile_device? ? {from_mobile: true} : {}
+    params.require(:order).permit(:shipping_method_id, :payment_method_id,
+                                  :city, :zipcode, :address, :name,
+                                  :phone, :email, :comment, :zip_code).merge(added_params)
+  end
 
-    def set_lists
-      @shipping_methods = ShippingMethod.where(available_for_default_order: true).includes(:shipping_prices).order(priority: :asc)
-      @payment_methods = PaymentMethod.all
-      @cities = City.all
-    end
+  def set_lists
+    @shipping_methods = ShippingMethod.where(available_for_default_order: true).includes(:shipping_prices).order(priority: :asc)
+    @payment_methods = PaymentMethod.all
+    @cities = City.all
+  end
 
-    def set_order
-      @order = Order.find(params[:id])
-    end
+  def set_order
+    @order = Order.find(params[:id])
+  end
 end
