@@ -7,11 +7,14 @@ li.item.item2.collapsable.first.item2 class=('current' if current_page == 'diffe
   = link_to 'В чем отличие', page_path('difference')
 li.item.item3.collapsable class=('current' if current_page == 'cosmetics')
   = link_to 'Идея и состав', page_path('cosmetics')
-li.item.item4.collapsable.item5.faq class=('current' if (current_page == 'faq' || current_page == 'company' || controller_name == 'questions'))
+li.item.item4.collapsable.item5.faq
   a Вопросы
   ul
-    li= link_to 'О компании', company_pages_path
-    li= link_to 'О косметике', faqs_path
-    li= link_to 'Задать вопрос', questions_path
+    li class=('current' if (current_page == 'company'))
+      = link_to 'О компании', company_pages_path
+    li class=('current' if (current_page == 'faq'))
+      = link_to 'О косметике', faqs_path
+    li class=('current' if (controller_name == 'questions'))
+      = link_to 'Задать вопрос', questions_path
 li.item.collapsable.item5 class=('current' if params[:controller] == 'wholesale_orders')
   = link_to 'Опт', new_wholesale_order_path

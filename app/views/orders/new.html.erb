@@ -30,14 +30,15 @@
               <div class="td td4">
                 <div class="count">
                   <%= form_tag add_to_cart_path(cart_item.item), remote: true, class: 'js-order-item' do %>
-                    <a class="minus hidden-tablet" href="#"></a>
+                    <a class="minus" href="#"></a>
                     <%= text_field_tag :quantity, cart_item.quantity, class: 'js-order-item-quantity', autocomplete: 'off' %>
-                    <a class="plus hidden-tablet" href="#"></a>
+                    <span class="unit">шт</span>
+                    <a class="plus" href="#"></a>
                   <% end %>
                 </div>
               </div>
               <div class="td td5"><div class="price"><span class="js-cart-item-total-price"><%= humanized_money cart_item.total_price %></span> руб.</div></div>
-              <div class="td td6">
+              <div class="td td6 hidden-tablet">
                 <%= link_to '', remove_from_cart_path(cart_item.item), method: :delete, remote: true, class: 'delete hidden-tablet' %>
                 <%= link_to 'Удалить', remove_from_cart_path(cart_item.item), method: :delete, remote: true, class: 'btn btn-grn hidden visible-tablet' %>
               </div>
@@ -49,80 +50,84 @@
   </div>
   <div class="sum">
     <div class="container globalwidth">
-      <span>Итого <span id="cart-total-quantity"><%= current_cart.total_quantity %> <%= Russian.p(current_cart.total_quantity, 'товар', 'товара', 'товаров') %></span> на сумму <b><span id="order-items-price"><%= humanized_money current_cart.total_price %></span> руб.</b></span>
+      <span>Итого <span id="cart-total-quantity"><%= current_cart.total_quantity %> <%= Russian.p(current_cart.total_quantity, 'товар', 'товара', 'товаров') %></span><br class="visible-tablet"/> на сумму <b><span id="order-items-price"><%= humanized_money current_cart.total_price %></span> руб.</b></span>
     </div>
   </div>
   <%= form_for @order do |f| %>
-    <div class="case-row case-cart-delivery hidden-tablet">
-      <div class="container globalwidth">
-        <div class="wrapper">
-          <h2 class="center">Как вам доставить товар</h2>
-        </div>
-        <div class="switcher-wrap">
-          <div class="js-switcher switcher table">
-            <div class="switcher-cnt tr">
-              <% @shipping_methods.each do |shipping_method| %>
-                <label class="td<%= ' current' if @order.shipping_method_id == shipping_method.id %>">
-                  <i class="icon icon-<%= shipping_method_icon(shipping_method) %>"></i>
-                  <span class="title"><%= shipping_method.title %></span>
-                  <span class="price"><%= humanized_money shipping_method.calculate_price(city_id: 1) %> руб.</span>
-                  <%= f.radio_button :shipping_method_id, shipping_method.id, class: 'hidden js-order-shipping-method-id' %>
-                </label>
-              <% end %>
+    <% unless mobile_device? %>
+      <div class="case-row case-cart-delivery">
+        <!-- hidden-tablet -->
+        <div class="container globalwidth">
+          <div class="wrapper">
+            <h2 class="center">Как вам доставить товар</h2>
+          </div>
+          <div class="switcher-wrap">
+            <div class="js-switcher switcher table">
+              <div class="switcher-cnt tr">
+                <% @shipping_methods.each do |shipping_method| %>
+                  <label class="td<%= ' current' if @order.shipping_method_id == shipping_method.id %>">
+                    <i class="icon icon-<%= shipping_method_icon(shipping_method) %>"></i>
+                    <span class="title"><%= shipping_method.title %></span>
+                    <span class="price"><%= humanized_money shipping_method.calculate_price(city_id: 1) %> руб.</span>
+                    <%= f.radio_button :shipping_method_id, shipping_method.id, class: 'hidden js-order-shipping-method-id' %>
+                  </label>
+                <% end %>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="case-row case-cart-address hidden-tablet">
-      <div class="container globalwidth">
-        <div class="wrapper">
-          <h2 class="center">Укажите адрес доставки<br />и контактные данные</h2>
-          <div class="forms">
-            <div class="field">
-              <div class="table">
-                <div class="tr">
-                  <div class="td td1<%= ' error' if @order.errors['city'].any? %>">
-                    <div class="chosen">
-                      <%= f.select :city, order_city_options_for_select(@cities, @order.city, shipping_methods: @shipping_methods), {}, class: 'chosen-select js-order-city' %>
+      <div class="case-row case-cart-address">
+        <!-- hidden-tablet -->
+        <div class="container globalwidth">
+          <div class="wrapper">
+            <h2 class="center">Укажите адрес доставки<br />и контактные данные</h2>
+            <div class="forms">
+              <div class="field">
+                <div class="table">
+                  <div class="tr">
+                    <div class="td td1<%= ' error' if @order.errors['city'].any? %>">
+                      <div class="chosen">
+                        <%= f.select :city, order_city_options_for_select(@cities, @order.city, shipping_methods: @shipping_methods), {}, class: 'chosen-select js-order-city' %>
+                      </div>
+                    </div>
+                    <div class="td td2<%=' error' if @order.errors['address'].any? %>">
+                      <%= f.text_field :zip_code, placeholder: 'Индекс' %>
                     </div>
                   </div>
-                  <div class="td td2">
-                    <%= f.text_field :zip_code, placeholder: 'Индекс' %>
+                </div>
+              </div>
+              <div class="field<%= ' error' if @order.errors['address'].any? %>"><%= f.text_field :address, placeholder: 'Адрес' %></div>
+              <div class="field<%= ' error' if @order.errors['name'].any? %>"><%= f.text_field :name, placeholder: 'Имя' %></div>
+              <div class="field">
+                <div class="table">
+                  <div class="tr">
+                    <div class="td td1<%= ' error' if @order.errors['phone'].any? %>"><%= f.text_field :phone, placeholder: 'Телефон', class: 'js-order-phone' %></div>
+                    <div class="td td2<%= ' error' if @order.errors['email'].any? %>"><%= f.text_field :email, placeholder: 'Эл. почта' %></div>
                   </div>
                 </div>
               </div>
+              <div class="field"><%= f.text_area :comment, placeholder: 'Комментарий' %></div>
+              <div class="field"><%= text_field_tag :discount_code, nil, placeholder: 'Подарочная карта или купон' %></div>
             </div>
-            <div class="field<%= ' error' if @order.errors['address'].any? %>"><%= f.text_field :address, placeholder: 'Адрес' %></div>
-            <div class="field<%= ' error' if @order.errors['name'].any? %>"><%= f.text_field :name, placeholder: 'Имя' %></div>
-            <div class="field">
-              <div class="table">
-                <div class="tr">
-                  <div class="td td1<%= ' error' if @order.errors['phone'].any? %>"><%= f.text_field :phone, placeholder: 'Телефон', class: 'js-order-phone' %></div>
-                  <div class="td td2<%= ' error' if @order.errors['email'].any? %>"><%= f.text_field :email, placeholder: 'Эл. почта' %></div>
-                </div>
-              </div>
-            </div>
-            <div class="field"><%= f.text_area :comment, placeholder: 'Комментарий' %></div>
-            <div class="field"><%= text_field_tag :discount_code, nil, placeholder: 'Подарочная карта или купон' %></div>
           </div>
         </div>
       </div>
-    </div>
+    <% end %>
     <div class="sum hidden-tablet">
       <div class="container globalwidth">
         <span>Итого с доставкой <b><span id="order-total-price"><%= humanized_money @order.total_price %></span> руб.</b></span>
       </div>
     </div>
-    <div class="tablet-bottom visible-tablet">
-        <div class="contacts">
-            <h2>Мы перезвоним вам, согласуем адрес и время доставки</h2>
-            <div class="field<%= ' error' if @order.errors['name'].any? %>"><%= f.text_field :name, placeholder: 'Как вас зовут?' %></div>
-            <div class="td td1<%= ' error' if @order.errors['phone'].any? %>"><%= f.text_field :phone, placeholder: 'Ваш номер телефона', class: 'js-order-phone' %></div>
-            <!-- <input type="text" name="name" placeholder="Как вас зовут?"> -->
-            <!-- <input type="text" name="phone" class="phone" placeholder="Ваш номер телефона"> -->
-        </div>
-    </div>
+    <% if mobile_device? %>
+      <div class="tablet-bottom visible-tablet">
+          <div class="contacts">
+              <h2>Мы перезвоним вам, согласуем адрес и время доставки</h2>
+              <div class="field<%= ' error' if @order.errors['name'].any? %>"><%= f.text_field :name, placeholder: 'Как вас зовут?' %></div>
+              <div class="td td1<%= ' error' if @order.errors['phone'].any? %>"><%= f.text_field :phone, placeholder: 'Ваш номер телефона', class: 'js-order-phone' %></div>
+          </div>
+      </div>
+    <% end %>
     <div class="case-row case-cart-payment">
       <div class="container globalwidth">
         <div class="wrapper">

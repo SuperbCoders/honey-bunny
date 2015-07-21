@@ -1,13 +1,16 @@
 class Order < ActiveRecord::Base
   include OrderBase
 
+  attr_accessor :from_mobile
+
   belongs_to :shipping_method
   belongs_to :payment_method
 
-  validates :shipping_method, presence: true
+  validates :shipping_method, presence: true, unless: :from_mobile
   validates :payment_method, presence: true
-  validates :city, :address, :name, :phone, :email, presence: true
-  validates :email, format: { with: /([\.A-Za-z0-9_-]+@[\.A-Za-z0-9_-]+\.[A-Za-z]{2,})+/ }
+  validates :city, :name, :phone, presence: true
+  validates :address, :email, :zip_code, presence: true, unless: :from_mobile
+  validates :email, format: { with: /([\.A-Za-z0-9_-]+@[\.A-Za-z0-9_-]+\.[A-Za-z]{2,})+/ }, unless: :from_mobile
   validates :shipping_price_cents, presence: true, numericality: { greater_than_or_equal_to: 0 }
   validate :validate_shipping_method
 
@@ -22,11 +25,11 @@ class Order < ActiveRecord::Base
 
   private
 
-    # Validate that selected shipping method is available for this order
-    def validate_shipping_method
-      if shipping_method && !shipping_method.available?(city_id: city_id)
-        errors.add(:shipping_method, :invalid)
-      end
+  # Validate that selected shipping method is available for this order
+  def validate_shipping_method
+    if shipping_method && !shipping_method.available?(city_id: city_id)
+      errors.add(:shipping_method, :invalid)
     end
+  end
 
 end
