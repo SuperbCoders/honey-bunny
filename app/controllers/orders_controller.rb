@@ -66,7 +66,7 @@ class OrdersController < ApplicationController
       added_params = mobile_device? ? {from_mobile: true} : {}
       params.require(:order).permit(:shipping_method_id, :payment_method_id,
                                     :city, :zipcode, :address, :name,
-                                    :phone, :email, :comment).merge(added_params)
+                                    :phone, :email, :comment, :zip_code).merge(added_params)
     end
 
     def set_lists
