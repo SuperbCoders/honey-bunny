@@ -1,6 +1,6 @@
 .form-group
-  = f.label field.name.to_sym, class: 'col-sm-2 control-label'
-  .col-sm-10
+  = f.label field.name.to_sym, class: 'col-sm-1 control-label'
+  .col-sm-9
     - сollection = %w(none background color).map do |item|
       - [t("superb_text_constructor.background_type.#{item}"), item]
-    = f.select field.name.to_sym, options_for_select(сollection, f.object.send(field.name)), class: 'form-control'
+    = f.select field.name.to_sym, options_for_select(сollection, f.object.send(field.name)), {}, {class: 'form-control'}

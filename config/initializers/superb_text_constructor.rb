@@ -61,6 +61,15 @@ SuperbTextConstructor.configure do
     end
   end
 
+  block :item_ingredients do
+    field :title
+    nested_blocks :elements do
+      field :title
+      field :text, partial: :text
+      field :kind, partial: :item_kind
+    end
+  end
+
   block :press_about_us do
     field :title
     nested_blocks :elements do
@@ -108,6 +117,7 @@ SuperbTextConstructor.configure do
     end
     use :page_block
     use :item_2_columns_block
+    use :item_ingredients
     use :item_feature
     use :item_elements_list
     use :press_about_us

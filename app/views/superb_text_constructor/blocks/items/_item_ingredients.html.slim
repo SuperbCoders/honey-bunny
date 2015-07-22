@@ -1,0 +1,27 @@
+- elements = block.elements.order(:id)
+section.case-article.ingredients
+  .container.globalwidth
+    .wrapper.cols
+      .column1
+        h2= block.title
+        .bi-button
+          .short.current Краткий
+          .full Подробный
+      .column2
+        .text.small.short-descr
+          p
+            - elements.each_with_index do |element, i|
+              span.ingredients-popup(data-id="ingredient-#{element.id}")= element.title
+              - if i < elements.size - 1
+                | , &nbsp;
+              - else
+                | . &nbsp;
+        .full-descr style=("display: none;") 
+          table.full-d
+            tbody
+              - elements.each do |element|
+                tr id="ingredient-#{element.id}"
+                  td.title= element.title
+                  td.type data-type=element.kind
+                    .icon class=element.kind
+                  td.desc= element.text

@@ -20,6 +20,7 @@
 //= require jquery.touchSwipe.min
 //= require jquery.carouFredSel
 //= require jquery.rateyo.min
+//= require jquery.webui-popover.min
 //= require carousel
 //= require popup
 //= require script

@@ -31,6 +31,9 @@ ru:
     font_size:
       normal: Обычный
       small: Маленький
+    ingredient_type:
+      natural: Натуральный
+      synthetic: Синтетический
 
     blocks:
       big: Врезка
@@ -48,6 +51,7 @@ ru:
       item_reviews: Отзывы о товаре
       shops: Магазины
       press_about_us: Пресса о нас
+      item_ingredients: Состав
 
     groups:
       images: Изображения

@@ -1,3 +1,5 @@
+'use strict';
+
 $(function(){
 	$('.navbar-toggle').click(function(){$('body').toggleClass('navbar-wrap');return false;});
 	$('.case-faq .item .capt a').click(function(){$(this).parents('.item').toggleClass('item_open');return false;});
@@ -7,7 +9,7 @@ $(function(){
 
 
 window.jQuery(function ($) {
-    'use strict';
+
     var menu = $('.page-header-top .navbar .items'),
         items = menu.find('.collapsable').not('.first'),
         firstItem = menu.find('.collapsable.first'),
@@ -16,22 +18,17 @@ window.jQuery(function ($) {
         win = $(window),
         navbar = $('header .navbar .navbar-cnt');
 
-    // Разворачивание буковок меню
     function unfoldLetters() {
         menu.removeClass('collapsed');
     }
 
-    // Сворачивание буковок меню
     function foldLetters() {
         menu.addClass('collapsed');
     }
 
-    // Нажатие на кнопку "Купить" сворачивает меню
     $('.btn.btn-orn.js-thanks').click(foldLetters);
-    // Клик по точкам в меню восстанавливает свернутое меню
     menu.find('.item.dots').click(unfoldLetters);
 
-    // При скроллинге вниз добавим заливку корзине
     win.scroll(function () {
         if (win.scrollTop() > 75 && !cartPinned) {
             cart.addClass('bg-filled');
@@ -41,4 +38,36 @@ window.jQuery(function ($) {
             cartPinned = false;
         }
     });
+});
+
+
+window.jQuery(function ($) {
+	$('.ingredients-popup').webuiPopover({
+		placement: 'top',
+		trigger: 'hover',
+		width: 380,
+		content:function(){
+			var ingredient_id = $(this).data('id');
+			var source = $("#"+ingredient_id);
+			var html = "<section class='ingr-popup'>" +
+										"<div class='icon-wrap'><div class='icon "+source.find('.type').data('type')+"'></div></div>"+
+										"<h1>"+source.find('.title').text()+"</h1>"+
+										"<p>"+source.find('.desc').text()+"</p>"+
+								 "</section>";
+	    return html;
+	  }
+	});
+
+	$('.bi-button .short').click(function () {
+		$(this).siblings().removeClass('current');
+		$(this).addClass('current');
+		$('section.ingredients .short-descr').show();
+		$('section.ingredients .full-descr').hide();
+	});
+	$('.bi-button .full').click(function () {
+		$(this).siblings().removeClass('current');
+		$(this).addClass('current');
+		$('section.ingredients .short-descr').hide();
+		$('section.ingredients .full-descr').show();
+	});
 });

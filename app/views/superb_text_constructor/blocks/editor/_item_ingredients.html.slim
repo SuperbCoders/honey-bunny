@@ -1,0 +1,13 @@
+h2= block.title
+.icon.synthetic
+- block.elements.order(:id).each do |element|
+  .row
+    .col-md-5
+      h5
+        = element.title
+        - if element.kind == 'synthetic'
+          .label.label-primary<> Синтетический
+        - else
+          .label.label-success<> Натуральный
+    / .col-md-9
+    /   .well= element.text

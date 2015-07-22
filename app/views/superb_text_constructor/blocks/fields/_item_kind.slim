@@ -1,6 +1,6 @@
 .form-group
   = f.label field.name.to_sym, class: 'col-sm-1 control-label'
   .col-sm-9
-    - сollection = %w(normal small).map do |item|
-      - [t("superb_text_constructor.font_size.#{item}"), item]
+    - сollection = %w(natural synthetic).map do |item|
+      - [t("superb_text_constructor.ingredient_type.#{item}"), item]
     = f.select field.name.to_sym, options_for_select(сollection, f.object.send(field.name)), {}, {class: 'form-control'}
