@@ -61,6 +61,14 @@ SuperbTextConstructor.configure do
     end
   end
 
+  block :press_about_us do
+    field :title
+    nested_blocks :elements do
+      field :url
+      field :image, type: BlockElementUploader, partial: :image
+    end
+  end
+
   block :item_chart do
     field :title
     nested_blocks :bars do
@@ -90,6 +98,7 @@ SuperbTextConstructor.configure do
     use :social_panel
     use :reviews
     use :shops
+    use :press_about_us
   end
 
   namespace :items do
@@ -101,6 +110,7 @@ SuperbTextConstructor.configure do
     use :item_2_columns_block
     use :item_feature
     use :item_elements_list
+    use :press_about_us
     use :item_chart
     use :items_list
     use :separator

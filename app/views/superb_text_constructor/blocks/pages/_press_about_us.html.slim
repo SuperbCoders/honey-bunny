@@ -1,0 +1,9 @@
+section.case-article.press-about-us
+  .container.globalwidth
+    .wrapper.cols
+      .column1
+        h2= block.title
+      .column2
+        - block.elements.order(:id).each do |element|
+          = link_to element.url , target: '_blank' do
+            = image_tag element.image.thumb

@@ -1,0 +1,6 @@
+.row
+  .col-md-12
+    h2= block.title
+  - block.elements.order(:id).each do |element|
+    .col-md-2= link_to element.url do
+      = image_tag element.image.full

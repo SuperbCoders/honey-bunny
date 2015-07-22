@@ -28,10 +28,17 @@ class Review < ActiveRecord::Base
   validates :rating, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 5 }
 
   before_validation :set_default_values
+  after_commit :notify_about_review
 
   private
 
   def set_default_values
     self.place ||= items.any? ? 'item' : 'index'
+  end
+
+  def notify_about_review
+    User.admins.notify_about_questions.each do |admin|
+      ReviewMailer.notify_admin(id, admin.email).deliver! if admin.email.present?
+    end
   end
 end

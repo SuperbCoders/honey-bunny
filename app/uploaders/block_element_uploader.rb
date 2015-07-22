@@ -7,4 +7,8 @@ class BlockElementUploader < BaseImageUploader
     process resize_to_fill: [100, 100]
   end
 
+  version :thumb do
+    process resize_to_limit: [85, nil]
+  end
+
 end

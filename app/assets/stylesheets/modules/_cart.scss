@@ -368,8 +368,12 @@
                 color: #aeaeae;
                 display: none;
                 @include respond-to(medium-screen) {
-                    display: inline;
+                    display: inline-block;
                     font-size: 17px;
+                    float: right;
+                    height: 30px;
+                    line-height: 30px;
+                    padding-right: 5px; 
                 }
             }
             a {

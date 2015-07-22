@@ -1,0 +1,7 @@
+h1 
+  | Новый комментарий о товаре 
+  = link_to @review.items.first.title, item_url(@review.items.first)
+
+p #{@review.name} (#{@review.email}) написал:
+p= @review.message
+p= link_to 'Просмотреть', admin_reviews_url
