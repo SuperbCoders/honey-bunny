@@ -19,7 +19,7 @@ ExceptionNotification.configure do |config|
   config.add_notifier :email, {
     email_prefix: "[Honey Bunny] ",
     sender_address: %{"Honey Bunny Notifier" <notifier@myhoneybunny.ru>},
-    exception_recipients: %w{immaculate.pine@gmail.com}
+    exception_recipients: %w{schumi+hb_errors@live.ru}
   }
 
   # Campfire notifier sends notifications to your Campfire room. Requires 'tinder' gem.

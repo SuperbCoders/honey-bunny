@@ -1,0 +1,3 @@
+class ItemReviews < Review
+
+end

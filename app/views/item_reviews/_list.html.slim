@@ -1,0 +1,37 @@
+section.sec-feedback
+  .globalwidth.clearfix
+    .left
+      | Отзывы
+    .right
+      p
+        a#compose.btn.btn-grn.open-feedback-popup href="#popupPop" Написать отзыв
+      #feedbacksContainer
+        - @item.reviews.includes(:user).with_approved_state.order(created_at: :desc).each do |review|
+          .item
+            .rates
+              .stars-cnt
+                - review.rating.times do |_i|
+                  .star
+              /.halfstar
+              /span.title Влюбилась в этот шампунь!
+            p= review.message
+            .person
+              = image_tag(review.user.try(:avatar), class: 'avatar')
+              .name= review.name
+
+      #btnMore
+        | Еще отзывы (
+        span.feedbacks-left
+        | )
+
+#item_popups
+  = render 'item_reviews/popup_forms'
+
+- if user_signed_in? && cookies[:not_created_review].present?
+  - content_for(:js) do
+    coffee:
+      $ ->
+        $.magnificPopup.open
+          items:
+            src: '#popupSteal'
+          type: 'inline'

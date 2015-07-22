@@ -16,6 +16,7 @@ SuperbTextConstructor.configure do
   block :separator
   block :social_panel
   block :reviews
+  block :item_reviews
   block :shops
 
   block :gallery_column do
@@ -104,7 +105,8 @@ SuperbTextConstructor.configure do
     use :items_list
     use :separator
     use :social_panel
-    use :reviews
+    #use :reviews
+    use :item_reviews
     use :shops
   end
 

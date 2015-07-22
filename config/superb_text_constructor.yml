@@ -24,6 +24,7 @@ blocks:
   separator:
   social_panel:
   reviews:
+  item_reviews:
   shops:
   gallery_columns:
     fields:
@@ -109,4 +110,5 @@ namespaces:
       - separator
       - social_panel
       - reviews
+      - item_reviews
       - shops

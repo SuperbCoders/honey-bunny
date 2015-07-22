@@ -4,17 +4,21 @@
   <meta charset="utf-8" />
   <meta name="keywords" content="" />
   <meta name="description" content="" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <% if controller_name == 'orders' %>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+  <% else %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <% end %>
   <%= title_tag %>
   <%= meta_tags %>
   <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body class='item-feedback'>
   <%= render 'social_buttons/facebook_header' %>
   <article class="page">
     <header class="page-header page-header-left page-header-short">
-      <div class="container globalwidth">
+      <div class="container width1040">
         <%= render 'header_top' %>
       </div>
     </header>

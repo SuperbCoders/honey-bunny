@@ -19,6 +19,7 @@
 //= require jquery.maskedinput
 //= require jquery.touchSwipe.min
 //= require jquery.carouFredSel
+//= require jquery.rateyo.min
 //= require carousel
 //= require popup
 //= require script
@@ -28,3 +29,4 @@
 //= require questions
 //= require mobile
 //= require carts
+//= require item_reviews

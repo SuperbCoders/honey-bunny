@@ -22,7 +22,7 @@ class Review < ActiveRecord::Base
   validates :user, presence: true
   validates :name, presence: true
   validates :email, presence: true, format: { with: /([\.A-Za-z0-9_-]+@[\.A-Za-z0-9_-]+\.[A-Za-z]{2,})+/ }
-  validates :city, presence: true
+  #validates :city, presence: true
   validates :message, presence: true
   validates :place, presence: true, inclusion: { in: PLACES }
   validates :rating, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 1, less_than_or_equal_to: 5 }

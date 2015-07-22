@@ -76,7 +76,10 @@ Rails.application.routes.draw do
     superb_text_constructor_for :items
   end
 
-  resources :items, only: [:index, :show]
+  resources :items, only: [:index, :show] do
+    resources :reviews, only: [:create], controller: 'item_reviews'
+  end
+
   resources :pages, only: :show, path: :info do
     collection do
       get :company

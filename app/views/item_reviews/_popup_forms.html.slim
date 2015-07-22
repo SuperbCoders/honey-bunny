@@ -1,0 +1,40 @@
+#popupDone.popup.mfp-hide
+  .wrapper
+    p.title Спасибо за ваш отзыв! Мы проверим его и в ближайшее время опубликуем на сайте.
+    .small А пока вы можете посмотреть наши красивые фотографии в инстаграме
+    = link_to 'Инстаграм НВ', Settings::Social.instagram, class: 'btn'
+
+#popupPop.popup.mfp-hide
+  .wrapper
+    .step1
+      p.title Написать отзыв
+      = form_for @review, url: item_reviews_path(@item), remote: true do |f|
+        = f.text_area :message, placeholder: 'Сообщение', required: true
+        = f.hidden_field :rating, class: 'js-review-rating', required: true
+        #rating
+        = f.submit 'Отправить отзыв', class: 'btn btn-black'
+        br
+        .errors.error
+    .step2
+      p.title
+        | Представьтесь
+        br/
+        | пожалуйста
+      .social
+        = link_to 'Через фейсбук', user_omniauth_authorize_path('facebook'), class: 'btn btn-fb'
+        = link_to 'Через Вконтакте', user_omniauth_authorize_path('vkontakte'), class: 'btn btn-vk'
+        / a.btn.btn-mm href="#"  Через МойМир
+
+- if user_signed_in? && cookies[:not_created_review].present?
+  #popupSteal.popup.mfp-hide
+    .wrapper
+      p.title
+        | Приятно познакомиться,
+        br/
+        span.username= current_user.name
+        | !
+      = image_tag(current_user.avatar, class: 'avatar')
+      = form_for @review, url: item_reviews_path(@item), remote: true do |f|
+        = f.text_field :name, value: current_user.name, placeholder: 'Имя', required: true
+        = f.text_field :email, value: current_user.email, placeholder: 'Email', required: true
+        = f.submit 'Отправить отзыв', class: 'btn btn-black'
