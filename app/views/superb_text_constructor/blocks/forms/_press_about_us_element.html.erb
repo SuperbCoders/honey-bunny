@@ -1,5 +1,5 @@
   <div class="nested-block well fields">
-    <%= form_for block, url: block_path(block), remote: true, html: { class: 'form-horizontal nested-block-form' } do |f| %>
+    <%= form_for block, url: block_path(block), remote: true, html: { class: 'form-horizontal block-form' } do |f| %>
       <%= hidden_field_tag :type, block.type %>
       <%= f.hidden_field :type %>
       <% block.fields.each do |field| %>

@@ -1,4 +1,4 @@
-header.page-header.page-header-left.covered class=('darkstyle' if @page.try(:dark_cover?)) style="background-image: url(#{@page.try(:cover).try(:full) || '/images/main_bg.jpg'});"
+header.page-header.page-header-center.covered class=('darkstyle' if @page.try(:dark_cover?)) style="background-image: url(#{@page.try(:cover).try(:full) || '/images/main_bg.jpg'});"
   div class=('blackout' if @page.try(:shadow_cover?))
     .container.width1040
       = render 'header_top'

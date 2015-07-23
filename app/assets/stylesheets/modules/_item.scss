@@ -143,3 +143,19 @@ section.press-about-us {
         padding: 50px 0 80px 0;
     }
 }
+
+section.with-border {
+    font-size: 24px;
+    .wrapper {
+        margin: 0;
+    }
+    .column1, .column2 {
+        padding: 20px 0;
+    }
+    .column2 {
+        border-bottom: 1px solid #ddd;
+        p {
+            margin: 0;
+        }
+    }
+}
