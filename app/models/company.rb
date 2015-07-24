@@ -3,6 +3,7 @@ class Company < ActiveRecord::Base
 
   validates :name, presence: true
   validates :address, presence: true
+  validates :site, presence: true
   validates :inn, presence: true
   validates :kpp, presence: true
   validates :ogrn, presence: true

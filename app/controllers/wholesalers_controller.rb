@@ -1,5 +1,5 @@
 class WholesalersController < ApplicationController
-  layout 'item'
+  layout 'wholesalers'
 
   # GET /wholesalers/new
   def new
@@ -24,6 +24,7 @@ class WholesalersController < ApplicationController
 
   # GET /wholesalers/select
   def select
+    new
   end
 
   # GET /wholesalers/pending
@@ -33,7 +34,7 @@ class WholesalersController < ApplicationController
 
   private
 
-    def wholesaler_params
-      params.require(:wholesaler).permit(:email, :password, :password_confirmation, company_attributes: [:name, :address, :inn, :kpp, :ogrn, :okpo, :bank_details])
-    end
+  def wholesaler_params
+    params.require(:wholesaler).permit(:email, :password, :password_confirmation, company_attributes: [:name, :address, :site, :inn, :kpp, :ogrn, :okpo, :bank_details])
+  end
 end

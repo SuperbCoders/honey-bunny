@@ -20,6 +20,11 @@ gem 'compass-rails'
 # JavaScript libs
 gem 'jquery-rails'
 gem 'chosen-rails'
+gem 'jquery-validation-rails'
+
+source 'https://rails-assets.org' do
+  gem 'rails-assets-jquery-validation'
+end
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'

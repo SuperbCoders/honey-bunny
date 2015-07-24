@@ -1,0 +1,26 @@
+doctype html
+html[lang="ru"]
+  head
+    meta[charset="utf-8"]
+    meta[name="keywords" content=""]
+    meta[name="description" content=""]
+    meta[name="viewport" content="width=device-width, initial-scale=1.0"]
+    = title_tag
+    = meta_tags
+    link[rel="shortcut icon" type="image/x-icon" href="/favicon.ico"]
+    = stylesheet_link_tag 'application', media: 'all'
+    = stylesheet_link_tag "http://yui.yahooapis.com/combo?pure/0.6.0/base-min.css&pure/0.6.0/grids-min.css&pure/0.6.0/grids-responsive-min.css", media: 'all'
+    = csrf_meta_tags
+  body class='wholesale wholesale-landing'
+    = render 'social_buttons/facebook_header'
+    article.page
+      = render 'header'
+      section.page-body
+        = yield
+      = render 'footer'
+    - unless signed_in?
+      = render 'popup_login'
+    = javascript_include_tag 'application'
+    = javascript_block
+    = yield(:js) if content_for?(:js)
+    = render 'popups'

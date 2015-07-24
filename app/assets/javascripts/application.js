@@ -21,6 +21,10 @@
 //= require jquery.carouFredSel
 //= require jquery.rateyo.min
 //= require jquery.webui-popover.min
+
+//= require jquery.validate
+//= require jquery.validate.additional-methods
+
 //= require carousel
 //= require popup
 //= require script
@@ -31,3 +35,4 @@
 //= require mobile
 //= require carts
 //= require item_reviews
+//= require wholesale

@@ -1,0 +1,14 @@
+//header.page-header.page-header-center.covered class=('darkstyle' if @page.try(:dark_cover?)) style="background-image: url(#{@page.try(:cover).try(:full) || '/images/main_bg.jpg'});"
+header.page-header.page-header-center.covered.not-darkstyle style=("background-image: url(#{asset_path 'wholesale.jpg'});") 
+  div class=('blackout' if @page.try(:shadow_cover?))
+    .container.width1040
+      = render 'header_top'
+      .page-header-bottom
+        .caption.center
+          h1 Оптовые закупки
+          p
+            | Российское производство, качественный
+            br.hidden-phone/
+            | продукт, выгодное сотрудничество
+        .btn-wrap
+          a.btn.btn-black.open-feedback-done href="#popupLogin"  Вход в кабинет
