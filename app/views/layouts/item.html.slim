@@ -4,16 +4,21 @@ html[lang="ru"]
     meta[charset="utf-8"]
     meta[name="keywords" content=""]
     meta[name="description" content=""]
-    meta[name="viewport" content="width=device-width, initial-scale=1.0"]
+    - if controller_name == 'orders'
+      meta[name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no"]
+    - else
+      meta[name="viewport" content="width=device-width, initial-scale=1.0"]
     = title_tag
     = meta_tags
     link[rel="shortcut icon" type="image/x-icon" href="/favicon.ico"]
     = stylesheet_link_tag 'application', media: 'all'
     = csrf_meta_tags
-  body.main
+  body class=('item-feedback item' if controller_name == 'items')
     = render 'social_buttons/facebook_header'
     article.page
-      = render 'header'
+      header.page-header.page-header-center.page-header-short
+        .container.width1040
+          = render 'header_top'
       section.page-body
         = yield
       = render 'footer'

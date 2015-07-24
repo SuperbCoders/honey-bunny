@@ -8,6 +8,7 @@ html[lang="ru"]
     = title_tag
     = meta_tags
     link[rel="shortcut icon" type="image/x-icon" href="/favicon.ico"]
+    = stylesheet_link_tag 'application', media: 'all'
     = csrf_meta_tags
   body
     = render 'social_buttons/facebook_header'
@@ -18,7 +19,6 @@ html[lang="ru"]
       = render 'footer'
     - unless signed_in?
       = render 'popup_login'
-    = stylesheet_link_tag 'application', media: 'all'
     = javascript_include_tag 'application'
     = javascript_block
     = yield(:js) if content_for?(:js)
