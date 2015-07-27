@@ -49,6 +49,6 @@ class Cabinet::ProfileController < Cabinet::BaseController
   end
 
   def wholesaler_params
-    params.require(:wholesaler).permit(:email, :password, :password_confirmation, :current_password, company_attributes: [:name, :address, :site, :inn, :kpp, :ogrn, :okpo, :bank_details])
+    params.require(:wholesaler).permit(:email, :password, :password_confirmation, :current_password, company_attributes: [:id, :name, :address, :site, :inn, :kpp, :ogrn, :okpo, :bank_details])
   end
 end
