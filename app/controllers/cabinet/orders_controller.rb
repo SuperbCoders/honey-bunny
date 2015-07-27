@@ -1,23 +1,24 @@
-class WholesaleOrdersController < ApplicationController
+class Cabinet::OrdersController < Cabinet::BaseController
   include OrderHashable
   include OrderStoreable
 
-  layout 'wholesalers'
-
-  before_action :authenticate_wholesaler!
   before_action :set_lists
   before_action :set_wholesale_order, only: [:payment, :success, :fail]
   before_action :check_order_hash, only: [:payment, :success, :fail]
 
+  def index
+    @wholesale_orders = current_wholesaler.wholesale_orders
+  end
+
   # GET /wholesale_orders/new
   def new
-    @wholesale_order = WholesaleOrder.new(stored_order_details(:wholesale_order))
+    @wholesale_order = current_wholesaler.wholesale_orders.new(stored_order_details(:wholesale_order))
     @wholesale_order.set_default_values
   end
 
   # POST /wholesales_orders
   def create
-    @wholesale_order = WholesaleOrder.new(wholesale_order_params)
+    @wholesale_order = current_wholesaler.wholesale_orders.new(wholesale_order_params)
     @wholesale_order.use_cart(current_wholesale_cart)
 
     store_order_details(@wholesale_order)
@@ -35,7 +36,8 @@ class WholesaleOrdersController < ApplicationController
       cookies[order_hash(@wholesale_order)] = 'true' # Set cookie that allows to visit callbacks pages
 
       # Redirect to the next page
-      redirect_to @wholesale_order.payment_method.name == 'w1' ? payment_wholesale_order_url(@wholesale_order) : success_wholesale_order_url(@wholesale_order)
+      redirect_url = @wholesale_order.payment_method.name == 'w1' ? payment_cabinet_order_path(@wholesale_order) : cabinet_orders
+      redirect_to redirect_url
     else
       set_lists
       render :new
@@ -61,26 +63,18 @@ class WholesaleOrdersController < ApplicationController
 
   private
 
-    def authenticate_wholesaler!
-      if current_wholesaler
-        redirect_to pending_wholesalers_url unless current_wholesaler.approved?
-      else
-        redirect_to '/wholesale' #select_wholesalers_url
-      end
-    end
+  def set_lists
+    @shipping_methods = ShippingMethod.where(available_for_wholesale_order: true).includes(:shipping_prices).order(priority: :asc)
+    @payment_methods = PaymentMethod.all
+    @items = Item.not_deleted
+    @cities = City.all
+  end
 
-    def set_lists
-      @shipping_methods = ShippingMethod.where(available_for_wholesale_order: true).includes(:shipping_prices).order(priority: :asc)
-      @payment_methods = PaymentMethod.all
-      @items = Item.not_deleted
-      @cities = City.all
-    end
+  def set_wholesale_order
+    @order = WholesaleOrder.find(params[:id])
+  end
 
-    def set_wholesale_order
-      @order = WholesaleOrder.find(params[:id])
-    end
-
-    def wholesale_order_params
-      params.require(:wholesale_order).permit(:shipping_method_id, :payment_method_id, :city, :zipcode, :address, :name, :phone, :email, :comment)
-    end
+  def wholesale_order_params
+    params.require(:wholesale_order).permit(:shipping_method_id, :payment_method_id, :city, :zipcode, :address, :name, :phone, :email, :comment)
+  end
 end

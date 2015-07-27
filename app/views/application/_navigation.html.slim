@@ -17,4 +17,4 @@ li.item.item4.collapsable.item5.faq
     li class=('current' if (controller_name == 'questions'))
       = link_to 'Задать вопрос', questions_path
 li.item.collapsable.item5 class=('current' if params[:controller] == 'wholesale_orders')
-  = link_to 'Опт', new_wholesale_order_path
+  = link_to 'Опт', cabinet_orders_path

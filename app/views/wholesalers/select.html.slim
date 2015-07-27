@@ -67,38 +67,8 @@ main.page-body1.globalwidth
         br
         | материалам
   .btn-wrap
-    a.btn.btn-black.open-feedback-done href="#popupNew"
+    a.btn.btn-black.popup-open href="#popupNew"
       | Зарегистрироваться
 
 
-/ section.case-article.covered.darkstyle[style="background: #566069;"]
-/   .container.globalwidth
-/     .wrapper
-/       h2.center
-/         | Оптовый заказ косметики Honey Bunny
-/       .text
-/         p
-/           | Спасибо за ваш интерес к нашей косметике! Чтобы оформить оптовый заказ, вам нужно зарегистрироваться на сайте.
-/         p
-/           | После прохождения модерации вы увидите оптовые цены и сможете сделать заказ онлайн. Оплатить заказ вы сможете картой на сайте, или как обычно по безналу. Также можно заказать доставку или воспользоваться самовывозом.
-/         p
-/           | По всем вопросам пишите на почту 
-/           a[href="mailto:myhoneybunny.ru@gmail.com"] myhoneybunny.ru@gmail.com
-/           span<>.
-/ section.case-cart
-/   .case-row.case-cart-payment
-/     .container.globalwidth
-/       .switcher-wrap
-/         .switcher.table
-/           .switcher-cnt.tr
-/             label.td
-/               = link_to '/wholesale/log-in' do
-/                 i.icon.icon-login
-/                 span.title
-/                   | Войти и сделать заказ
-/             label.td
-/               = link_to '/wholesale/sign-up' do
-/                 i.icon.icon-new-user
-/                 span.title
-/                   | Я - новый заказчик
-/       .btn-wrap
+= render 'popups'

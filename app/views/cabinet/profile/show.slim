@@ -1,0 +1,47 @@
+.container.globalwidth
+  .wrapper.popup
+    - flash.each do |key, value|
+      .alert class="alert-#{key.sub(/alert/, 'danger')}"
+        = raw(value)
+    br  
+    br
+    
+    = form_for @resource, url: update_password_cabinet_profile_path, html: {novalidate: :novalidate, class: 'edit_wholesaler_update_password'} do |f|
+      p.title Данные аккаунта
+      .input-wrap
+        = f.text_field :email, placeholder: 'Ваш email', class: "gray #{'error' if f.object.errors['email'].any?}"
+        - if f.object.errors['email'].any?
+          label#wholesaler_email-error.error for='wholesaler_email'= f.object.errors['email'].first
+      .input-wrap
+        = f.password_field :current_password, placeholder: 'Текущий пароль', class: 'gray'
+      .input-wrap
+        = f.password_field :password, placeholder: 'Новый пароль', class: 'gray'
+      .input-wrap
+        = f.password_field :password_confirmation, placeholder: 'Подтверждение', class: 'gray'
+      .btn-wrap
+        button.btn.btn-black.register type="submit" Сохранить
+
+
+    br
+    br
+    = form_for @resource, url: cabinet_profile_path, html: {novalidate: :novalidate, class: 'edit_wholesaler_profile'} do |f|
+      p.title Реквизиты Вашей компании или ИП
+      = f.fields_for :company do |ff|
+        .input-wrap
+          = ff.text_field :name, placeholder: 'Название', class: 'gray'
+        .input-wrap
+          = ff.text_field :address, placeholder: 'Адрес', class: 'gray'
+        .input-wrap
+          = ff.text_field :site, placeholder: 'Адрес вашего сайта', class: 'gray'
+        .input-wrap
+          = ff.text_field :inn, placeholder: 'ИНН', class: 'gray'
+        .input-wrap
+          = ff.text_field :kpp, placeholder: 'КПП', class: 'gray'
+        .input-wrap
+          = ff.text_field :ogrn, placeholder: 'ОГРН', class: 'gray'
+        .input-wrap
+          = ff.text_field :okpo, placeholder: 'ОГРН', class: 'gray'
+        .input-wrap
+          = ff.text_area :bank_details, placeholder: 'Банковские реквизиты', class: 'gray'
+      .btn-wrap
+        button.btn.btn-black.register type="submit" Сохранить

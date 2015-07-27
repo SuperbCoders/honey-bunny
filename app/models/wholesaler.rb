@@ -17,10 +17,12 @@ class Wholesaler < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :omniauthable,
   # :registerable, :recoverable, :rememberable
-  devise :database_authenticatable, :trackable, :validatable
+  devise :database_authenticatable, :trackable, :validatable, :rememberable, :recoverable
 
   has_one :company, as: :member
   accepts_nested_attributes_for :company
+
+  has_many :wholesale_orders
 
   validates :company, presence: true
 

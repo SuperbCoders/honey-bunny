@@ -8,3 +8,9 @@ $ ->
     event.preventDefault()
     $.magnificPopup.instance.close()
     false
+
+  $('.popup-open').each ->
+    $(this).magnificPopup
+      type: 'inline'
+      midClick: true
+    return

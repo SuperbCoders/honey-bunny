@@ -1,0 +1,11 @@
+#popupLogin.popup.mfp-hide
+  .icon.wholesale-hb
+  p.title Войти и сделать заказ
+  = form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'login'}) do |f|
+    = f.text_field :email, placeholder: 'Ваш email'
+    .input-wrap
+      = f.password_field :password, placeholder: 'Пароль', class: 'gray'
+      a.right.popup-open href="#popupForgot" Забыли пароль?
+      .btn-wrap
+        button.btn.btn-black.login type="submit" Войти
+/! New client

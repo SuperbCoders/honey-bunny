@@ -156,16 +156,17 @@ ru:
         icon: card
 
 
-  wholesale_orders:
-    new:
-      contact_info:
-        title:
-          own_expense: Ваши контактные данные
-          transport_company: Адрес доставки и ваши контактные данные
-      submit:
-        title:
-          cash: Отправить заказ
-          w1: Перейти к оплате
+  cabinet:
+    orders:
+      new:
+        contact_info:
+          title:
+            own_expense: Ваши контактные данные
+            transport_company: Адрес доставки и ваши контактные данные
+        submit:
+          title:
+            cash: Отправить заказ
+            w1: Перейти к оплате
 
   admin:
     items:

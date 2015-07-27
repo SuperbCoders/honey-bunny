@@ -1,0 +1,9 @@
+/! Forgot
+#popupForgot.popup.mfp-hide
+  .icon.wholesale-hb
+  = form_for(resource, as: resource_name, url: password_path(resource_name), remote: true, html: { method: :post, class: 'forgot'}) do |f|
+    p.title Введите Ваш email
+    .input-wrap
+      = f.email_field :email, placeholder: "Ваш email"
+    .btn-wrap
+      button.btn.btn-black.forgot type='submit' Восстановить пароль

@@ -25,12 +25,12 @@
 // Flaticons
 @font-face {
 	font-family: 'Flaticon';
-	src: asset-url('laticon.eot');
-	src: asset-url('laticon.eot?#iefix') format('embedded-opentype'),
-		 asset-url('laticon.woff2') format('woff2'),
-		 asset-url('laticon.woff') format('woff'),
-		 asset-url('laticon.ttf') format('truetype'),
-		 asset-url('laticon.svg#arkadiabold') format('svg');
+	src: asset-url('flaticons/flaticon.eot');
+	src: asset-url('flaticons/flaticon.eot?#iefix') format('embedded-opentype'),
+		 asset-url('flaticons/flaticon.woff2') format('woff2'),
+		 asset-url('flaticons/flaticon.woff') format('woff'),
+		 asset-url('flaticons/flaticon.ttf') format('truetype'),
+		 asset-url('flaticons/flaticon.svg#arkadiabold') format('svg');
 	font-weight: bold;
 	font-style: normal;
 }

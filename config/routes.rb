@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get 'wholesale/sign-up' => 'wholesalers#new'#, as: :new_wholesaler
 
   devise_for :users, controllers: { omniauth_callbacks: 'omniauth_callbacks', sessions: 'sessions' }
-  devise_for :wholesalers, controllers: { sessions: 'wholesaler_devise/sessions' }
+  devise_for :wholesalers, controllers: { sessions: 'wholesaler_devise/sessions', passwords: 'wholesaler_devise/passwords'}
 
   delete 'identities/:provider' => 'admin/identities#destroy', as: :identity
 
@@ -110,4 +110,19 @@ Rails.application.routes.draw do
 
   # Wholesale cart
   post 'wholesale_carts/items/:item_id' => 'wholesale_carts#add', as: :add_to_wholesale_cart
+
+
+  namespace :cabinet do
+    resources :orders, only: [:index, :new, :create] do
+      get :payment, on: :member
+      get :success, on: :member
+      get :fail, on: :member
+    end
+    resource :profile, only: [:show, :update], controller: 'profile' do
+      member do
+        match 'update_password', to: 'profile#update_password', via: :patch
+      end
+    end
+    post 'carts/items/:item_id' => 'carts#add', as: :add_to_cart
+  end
 end

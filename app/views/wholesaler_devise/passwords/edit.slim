@@ -1,0 +1,15 @@
+section.case-cart
+  = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
+    = f.hidden_field :reset_password_token
+    .case-row.case-cart-address
+      .container.globalwidth
+        .wrapper
+          h2.center
+            | Изменение пароля
+          .forms
+            .field= f.password_field :password, autofocus: true, autocomplete: "off", placeholder: 'Новый пароль'
+            .field= f.password_field :password_confirmation, autocomplete: "off", placeholder: 'Подтвердите новый пароль'
+    .case-cart-payment
+      .container.globalwidth
+        .btn-wrap[style="padding-top: 0"]
+          button.btn.btn-orn[type="submit"] Сохранить

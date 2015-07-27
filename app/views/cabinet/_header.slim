@@ -1,0 +1,20 @@
+header.header
+  .wrapper
+    .cell
+      = link_to root_path, class: 'back' do
+        span.icon.wholesale-back
+      a.logo-link href="#" 
+      .logo.wholesale-hb-w
+      ul
+        li class=('current' if controller_name == 'orders')
+          = link_to 'Мои заказы', cabinet_orders_path
+        li
+          a href="#"  Материалы
+        li
+          a href="#"  Обучение
+        li.has-submenu
+          a href="#"=current_wholesaler.company.name
+          ul
+            li= link_to 'Профиль компании', cabinet_profile_path
+            li= link_to 'Выход', destroy_wholesaler_session_path, method: :delete
+      = link_to 'Новый заказ', new_cabinet_order_path, class: 'btn btn-green', style: 'color: #fff;'

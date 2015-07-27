@@ -15,16 +15,18 @@ class WholesalersController < ApplicationController
         WholesalerMailer.notify_admin(@wholesaler.id, email).deliver!
       end
       sign_in @wholesaler
-      redirect_to new_wholesale_order_url
+      #redirect_to new_wholesale_order_url
     else
       @wholesaler.build_company unless @wholesaler.company
-      render :new
+      #render :new
     end
+    render layout: false
   end
 
   # GET /wholesalers/select
   def select
     new
+    render layout: 'wholesalers'
   end
 
   # GET /wholesalers/pending

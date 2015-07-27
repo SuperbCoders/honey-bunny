@@ -1,0 +1,40 @@
+table.table-head
+  tbody
+    tr
+      th Номер заказа
+      th Дата заказа
+      th Статус
+      th Сумма
+
+
+- @wholesale_orders.each do |order|
+  table.table-zippy
+    tbody
+      tr.heading
+        th.order-id= order.id
+        th=l order.created_at, format: :short
+        th= t("order.workflow_state.#{order.workflow_state}")
+        th
+          | #{humanized_money order.items_price} + #{humanized_money order.shipping_price} = #{humanized_money order.total_price}
+          span.flaticon-ruble<>
+      tr.container
+        td colspan="4" 
+          table
+            tbody
+              tr.gray
+                td colspan="2"  Номер заказа
+                td Цена
+                td Кол-во
+                td Всего
+              - order.order_items.each do |order_item|
+                tr.item
+                  td.col1
+                    = image_tag(order_item.item.main_image.thumb_square_small.url)
+                  td.col2= link_to order_item.item.title, order_item.item
+                  td.col3
+                    = humanized_money order_item.total_price
+                    span.flaticon-ruble<>
+                  td.col4= order_item.quantity
+                  td.col5
+                    = humanized_money (order_item.total_price * order_item.quantity)
+                    span.flaticon-ruble<>
