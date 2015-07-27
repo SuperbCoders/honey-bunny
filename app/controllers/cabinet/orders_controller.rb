@@ -7,7 +7,7 @@ class Cabinet::OrdersController < Cabinet::BaseController
   before_action :check_order_hash, only: [:payment, :success, :fail]
 
   def index
-    @wholesale_orders = current_wholesaler.wholesale_orders
+    @wholesale_orders = current_wholesaler.wholesale_orders.includes(:shipping_method, :payment_method, order_items: :item).order(created_at: :desc)
   end
 
   # GET /wholesale_orders/new
