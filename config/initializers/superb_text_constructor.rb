@@ -13,6 +13,11 @@ SuperbTextConstructor.configure do
     field :background_type, type: String, partial: :bg_or_color_select
   end
 
+  block :subparagraph do
+    field :title
+    field :text, partial: :text
+  end
+
   block :separator
   block :social_panel
   block :reviews
@@ -101,6 +106,7 @@ SuperbTextConstructor.configure do
       use :gallery_slideshow
     end
     use :page_block
+    use :subparagraph
     use :big
     use :items_list
     use :separator
@@ -116,6 +122,7 @@ SuperbTextConstructor.configure do
       use :gallery_slideshow
     end
     use :page_block
+    use :subparagraph
     use :item_2_columns_block
     use :item_ingredients
     use :item_feature

@@ -38,6 +38,7 @@ ru:
     blocks:
       big: Врезка
       page_block: Блок
+      subparagraph: Абзац
       separator: Разделитель
       gallery_column: Галерея (колонки)
       gallery_slideshow: Галерея (слайды)
