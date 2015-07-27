@@ -36,7 +36,7 @@ class Cabinet::OrdersController < Cabinet::BaseController
       cookies[order_hash(@wholesale_order)] = 'true' # Set cookie that allows to visit callbacks pages
 
       # Redirect to the next page
-      redirect_url = @wholesale_order.payment_method.name == 'w1' ? payment_cabinet_order_path(@wholesale_order) : cabinet_orders
+      redirect_url = @wholesale_order.payment_method.name == 'w1' ? payment_cabinet_order_path(@wholesale_order) : cabinet_orders_path
       redirect_to redirect_url
     else
       set_lists
