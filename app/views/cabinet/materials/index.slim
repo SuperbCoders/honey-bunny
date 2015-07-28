@@ -2,20 +2,20 @@ table
   tbody
     tr
       th Название
-      th Тип файла
       th Дата изменения
     - @resources.each do |resource|
       tr
         td
           .icon-wrap
-            - if resource.file.file.extension.in?(%w(doc pdf))
-              .icon. class=("wholesale-#{resource.file.file.extension}")
-            - else
-              img.icon alt="" src="http://placehold.it/30"
+            img.icon src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAABiElEQVRoQ+3a0U3DMBAA0DtPUjboBnQENgCkxMonnQCYgPIX+fIRRmCDMgFsQCfxIUuAoqrUwb4QU10+W9vxy90plh2EE7nwRBygkNIiOToiVVWtEPESABa5CER8c86tc8cZ9h8FsdbeAMCD5I2ZuSeia6kxo5CmaRbe+3epGw7HkcREIdbaOwC4FYI8AUBIz+9LChOF1HW9RcRzCYhzDq21/RSYP4eEBzIFZhbIFJjZINKYWSGSmNkhUpgiIBKYYiC5mKIgRzCPRBSWST9exUEOYZj5hYhWxUCY+ehk9ia6QcRl+K04SOoyRyHDJye5aNSIlFbsGhGNyCAHtNhTC+JAP32P6HtEMJ32tozKWjSmOrVGtEZScyfST1NLU0tT6/gT0BrRGpmuRp6J6CJrX0v46C2Veu+cC0eAWTuNS0R8TZ2BRD9jzFnbtrssyOcWpvjx9C+Aa+fcJtY+uvf7NUD4YMAYc8XM2R8MxCYV/kfEnfe+77puO6r9mEb/oc3oiJSOUUhpEfoA3gF4Qm0HuBoAAAAASUVORK5CYII="
+
+            / - if resource.file.file.extension.in?(%w(doc pdf))
+            /   .icon. class=("wholesale-#{resource.file.file.extension}")
+            / - else
+            /   img.icon alt="" src="http://placehold.it/30"
           .text-wrap
             = link_to resource.title, cabinet_material_path(resource)
             //= link_to resource.title, resource.file.url, download: resource.title
-        td Тип файла
         td 
           =time_ago_in_words resource.updated_at
           span<> назад

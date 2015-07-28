@@ -4,6 +4,6 @@ class WholesalerDevise::SessionsController < Devise::SessionsController
   protected
 
   def after_sign_in_path_for(resource)
-    cabinet_orders_url
+    new_cabinet_order_url
   end
 end
