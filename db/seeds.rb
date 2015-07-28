@@ -14,6 +14,7 @@ def create_pages
   Page.where(slug: 'cosmetics').first_or_create(title: 'О косметике', motto: '', subtitle: '', published: true, cover: File.open("#{Rails.root}/db/seeds/products_cover.jpg"))
   Page.where(slug: 'faq').first_or_create(title: 'Вопросы и ответы', motto: 'Отвечаем на ваши вопросы', subtitle: 'Про нашу классную косметику', published: true, cover: File.open("#{Rails.root}/db/seeds/faq_cover.jpg"))
   Page.where(slug: 'difference').first_or_create(title: 'В чем отличие', published: true, cover: File.open("#{Rails.root}/db/seeds/products_cover.jpg"))
+  Page.where(slug: 'teaching').first_or_create(title: 'Обучение', published: true, cover: File.open("#{Rails.root}/db/seeds/index_cover.jpg"))
 end
 
 def create_cities

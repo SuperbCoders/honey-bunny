@@ -85,6 +85,8 @@ html lang="en"
           - lists_set << link_to('Способы доставки', admin_shipping_methods_path)
         - if can? :manage, Shop
           - lists_set << link_to('Магазины', admin_shops_path)
+        - if can? :manage, Material
+          - lists_set << link_to('Материалы', admin_materials_path)
         - if can? :manage, Review
           - lists_set << link_to('Отзывы', admin_reviews_path)
         - if can? :manage, FAQ

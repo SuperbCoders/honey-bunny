@@ -1,8 +1,8 @@
 .ingredients-popup {
     cursor: pointer;
-    text-decoration: underline;
+    border-bottom: 1px dotted #ccc;
     &:hover {
-        text-decoration: none;
+        border-bottom: none; 
     }
 }
 
@@ -135,7 +135,6 @@ body.item section.ingredients .column2 {
 }
 
 section.press-about-us {
-    background-color: #f3f3f3;
     .column2 img {
         margin-right: 50px;
     }
@@ -157,5 +156,8 @@ section.with-border {
         p {
             margin: 0;
         }
+    }
+    h2 {
+        margin-bottom: 0;
     }
 }

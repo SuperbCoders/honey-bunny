@@ -1,0 +1,21 @@
+table
+  tbody
+    tr
+      th Название
+      th Тип файла
+      th Дата изменения
+    - @resources.each do |resource|
+      tr
+        td
+          .icon-wrap
+            - if resource.file.file.extension.in?(%w(doc pdf))
+              .icon. class=("wholesale-#{resource.file.file.extension}")
+            - else
+              img.icon alt="" src="http://placehold.it/30"
+          .text-wrap
+            = link_to resource.title, cabinet_material_path(resource)
+            //= link_to resource.title, resource.file.url, download: resource.title
+        td Тип файла
+        td 
+          =time_ago_in_words resource.updated_at
+          span<> назад

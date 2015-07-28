@@ -1,0 +1,38 @@
+section#content
+  section.main.padder
+    .clearfix
+      h4
+        i.icon-file
+        |  Материалы
+    .row
+      .col-md-6
+        section.panel
+          .panel-body
+            - if can? :create, Shop
+              => link_to 'Добавить', new_admin_material_path, class: 'btn btn-primary btn-sm'
+          .table-responsive
+            table.table.table-striped.b-t.text-small
+              thead
+                tr
+                  th Файл
+                  th
+              tbody
+                - @materials.each do |material|
+                  tr
+                    td= [material.title, material.file.file.extension].join('.')
+                    td
+                      .btn-group
+                        a.dropdown-toggle data-toggle="dropdown" href="#"
+                          i.icon-pencil
+                        ul.dropdown-menu.pull-right
+                          - if can? :update, material
+                            li
+                              = link_to edit_admin_material_path(material) do
+                                i.icon-external-link
+                                | Редактировать
+                          - if can? :destroy, material
+                            li
+                              = link_to admin_material_path(material), method: :delete, data: { confirm: t('shared.are_you_sure') } do
+                                i.icon-trash
+                                | Удалить
+        footer.panel-footer

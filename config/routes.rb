@@ -22,6 +22,9 @@ Rails.application.routes.draw do
   namespace :admin do
     root 'orders#index', workflow_state: 'new'
     resources :pages, except: :show
+
+    resources :materials, except: :show
+
     resources :items, except: [:show] do
       patch :restore, on: :member
     end
@@ -118,6 +121,10 @@ Rails.application.routes.draw do
       get :success, on: :member
       get :fail, on: :member
     end
+
+    resources :materials, only: [:index, :show]
+
+    get 'teaching' => 'base#teaching'
     resource :profile, only: [:show, :update], controller: 'profile' do
       member do
         match 'update_password', to: 'profile#update_password', via: :patch

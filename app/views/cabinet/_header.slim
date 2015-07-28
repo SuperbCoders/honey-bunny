@@ -1,3 +1,4 @@
+- current_page = @page.try(:slug)
 header.header
   .wrapper
     .cell
@@ -8,10 +9,10 @@ header.header
       ul
         li class=('current' if controller_name == 'orders')
           = link_to 'Мои заказы', cabinet_orders_path
-        li
-          a href="#"  Материалы
-        li
-          a href="#"  Обучение
+        li class=('current' if controller_name == 'materials')
+          = link_to 'Материалы', cabinet_materials_path
+        li class=('current' if current_page == 'teaching')
+          = link_to 'Обучение', cabinet_teaching_path
         li.has-submenu
           a href="#"=current_wholesaler.company.name
           ul

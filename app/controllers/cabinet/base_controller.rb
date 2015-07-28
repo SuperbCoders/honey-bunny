@@ -3,6 +3,12 @@ class Cabinet::BaseController < ApplicationController
   respond_to :js, :html
   before_action :authenticate_wholesaler!
 
+  def teaching
+    @page = Page.published.find_by!(slug: 'teaching')
+    @blocks = @page.blocks
+    render 'pages/show'
+  end
+
   private
 
   def authenticate_wholesaler!
