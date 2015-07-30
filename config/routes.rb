@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   namespace :admin do
     root 'orders#index', workflow_state: 'new'
     resources :pages, except: :show
+    resources :posts, except: :show
 
     resources :materials, except: :show
 
@@ -76,6 +77,7 @@ Rails.application.routes.draw do
     end
 
     superb_text_constructor_for :pages
+    superb_text_constructor_for :posts
     superb_text_constructor_for :items
   end
 
@@ -131,5 +133,10 @@ Rails.application.routes.draw do
       end
     end
     post 'carts/items/:item_id' => 'carts#add', as: :add_to_cart
+  end
+
+  namespace :blog do
+    resources :posts, only: [:index, :show]
+    root 'posts#index'
   end
 end

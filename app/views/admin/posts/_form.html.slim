@@ -1,0 +1,69 @@
+.clearfix
+  h4 #{@post.persisted? ? t('shared.edit') : t('shared.create')} страницу
+
+section class="panel pos-rlt clearfix"
+  header.panel-heading Информация
+  .panel-body.clearfix
+    = simple_form_for [:admin, @post], wrapper: :horizontal_form, html: { class: 'form-horizontal' } do |f|
+      - if @post.new_record?
+        = f.input :slug
+      = f.input :title
+      = f.input :subtitle
+      = f.input :cover, hint: (image_tag @post.cover.thumb if @post.cover?)
+      = f.input :description
+      = f.input :tag_list
+      = f.input :published
+      = f.input :dark_cover
+
+      .form-group
+        .col-lg-9.col-lg-offset-3
+          => f.button :submit, @post.new_record? ? t('shared.create') : t('shared.save'), class: 'btn-primary'
+          => link_to t('shared.back'), admin_posts_path, class: 'btn btn-default'
+
+      = f.simple_fields_for :meta_block do |ff|
+        .row
+          .col-lg-6
+            section class="panel pos-rlt clearfix"
+              header.panel-heading
+                | Мета данные
+              .panel-body.clearfix
+                = ff.input :title
+                = ff.input :description
+                = ff.input :keywords
+
+                .line.line-dashed.m-t-large
+
+                .form-group
+                  label.col-lg-3.control-label Превью
+                  .col-lg-9.media
+                    .bg-light.pull-left.text-center.media-large.thumb-large
+                      - if ff.object.fb_image?
+                        = image_tag ff.object.fb_image_url, width: 90
+                      - else
+                        i.icon-picture.inline.icon-light.icon-3x.m-t-large.m-b-large
+                    .media-body
+                      = ff.file_field :fb_image, title: 'Поменять', class: 'btn btn-sm btn-info m-b-small'
+                      = ff.hidden_field :fb_image_cache
+                      - if ff.object.fb_image?
+                        = ff.hidden_field :remove_fb_image, id: "remove_image#{ff.object.id}"
+                        br/
+                        button.btn.btn-sm.btn-default onClick="$('#remove_image#{ff.object.id}').val(1);$(this).remove();return false;" Удалить
+
+                = ff.input :fb_title
+                = ff.input :fb_description
+
+                .form-group
+                .col-lg-9.col-lg-offset-3
+                  => f.button :submit, @post.new_record? ? t('shared.create') : t('shared.save'), class: 'btn-primary', onClick: 'setTextValue();'
+                  => link_to t('shared.back'), admin_posts_path, class: 'btn btn-default'
+
+          .col-lg-6
+            section class="panel pos-rlt clearfix"
+              header.panel-heading
+                | Скрипты
+              .panel-body.clearfix
+                = ff.input :javascript
+              .form-group
+                .col-lg-9.col-lg-offset-3
+                  => f.button :submit, @post.new_record? ? t('shared.create') : t('shared.save'), class: 'btn-primary', onClick: 'setTextValue();'
+                  => link_to t('shared.back'), admin_posts_path, class: 'btn btn-default'

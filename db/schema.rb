@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150728074231) do
+ActiveRecord::Schema.define(version: 20150730040949) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -205,6 +205,18 @@ ActiveRecord::Schema.define(version: 20150728074231) do
   end
 
   add_index "payment_methods", ["name"], name: "index_payment_methods_on_name", unique: true, using: :btree
+
+  create_table "posts", force: true do |t|
+    t.string   "title"
+    t.string   "subtitle"
+    t.string   "slug"
+    t.text     "description"
+    t.boolean  "published"
+    t.string   "cover"
+    t.boolean  "dark_cover",  default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "questions", force: true do |t|
     t.integer  "user_id"

@@ -1,0 +1,13 @@
+.blog-grid.grid
+  .container
+    .row
+      - @resources.each_with_index do |post, i|
+        div class=grid_class(i)
+          .item class=('text-black' if post.dark_cover?) style="background-image:url(#{post.cover.full.url})" 
+            a.button class=%w(blue pink nil).sample
+              = post.subtitle
+            .digits
+              =time_ago_in_words post.updated_at
+              span<> назад
+            .text
+              = link_to post.title, blog_post_path(post)

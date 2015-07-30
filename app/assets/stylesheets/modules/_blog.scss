@@ -19,6 +19,8 @@ $height: 60px;
             font-size: 22px;
             text-align: center;
             line-height: 55px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
         .btn-back {
             position: absolute;
@@ -45,6 +47,11 @@ $height: 60px;
         font-size: 14px;
         color: #c7c7c7;
         margin-right: 15px;
+        text-decoration: none; 
+        
+        &:hover {
+            text-decoration: underline;
+        }
     }
     article {
         h1 {
@@ -78,6 +85,9 @@ $height: 60px;
         }
     }
     .product-info {
+        * {
+            text-decoration: none; 
+        }
         font-size: 20px;
         line-height: 1.5;
         max-width: 580px;
@@ -245,5 +255,14 @@ $height: 60px;
         box-sizing: border-box;
         font-size: 32px;
         line-height: 44px;
+        
+        a {
+            color: inherit; 
+            text-decoration: none;
+            
+            &:hover {
+                text-decoration: underline;
+            } 
+        }
     }
 }

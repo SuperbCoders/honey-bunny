@@ -1,0 +1,46 @@
+section#content
+  section.main.padder
+    .clearfix
+      h4
+        i.icon-file
+        |  Блог
+    .row
+      section.panel
+        .panel-body
+          - if can? :create, Post
+            => link_to 'Добавить', new_admin_post_path, class: 'btn btn-primary btn-sm'
+        .table-responsive
+          table.table.table-striped.b-t.text-small
+            thead
+              tr
+                th URL
+                th Опубликовано?
+                th Заголовок
+                th
+            tbody
+              - @posts.each do |post|
+                tr
+                  td= post.slug
+                  td= '✓' if post.published?
+                  td= post.title
+                  td
+                    .btn-group
+                      a.dropdown-toggle data-toggle="dropdown" href="#"
+                        i.icon-pencil
+                      ul.dropdown-menu.pull-right
+                        - if can? :update, post
+                          li
+                            = link_to edit_admin_post_path(post) do
+                              i.icon-external-link
+                              | Редактировать
+                        - if can?(:update, post)
+                          li
+                            = link_to admin_post_superb_text_constructor_path(post, namespace: :pages) do
+                              i.icon-edit
+                              | Контент
+                        - if can?(:destroy, post)
+                          li
+                            = link_to admin_post_path(post), method: :delete, data: { confirm: t('shared.are_you_sure') } do
+                              i.icon-trash
+                              | Удалить
+        footer.panel-footer
