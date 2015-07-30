@@ -37,6 +37,16 @@ ru:
         cover: Обложка
         dark_cover: Белый текст на обложке?
         shadow_cover: Добавить тень на обложку?
+      post:
+        slug: URL
+        title: Заголовок
+        motto: Эпиграф
+        subtitle: Подзаголовок
+        published: Опубликовано?
+        cover: Картинка
+        description: Краткое описание
+        dark_cover: Темный текст в списке?
+        tag_list: Теги
       meta_block:
         title: Meta title
         description: Meta description

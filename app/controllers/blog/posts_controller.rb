@@ -13,7 +13,7 @@ class Blog::PostsController < ApplicationController
   private
 
   def find_resources
-    @resources = Post.all.order(id: :asc)
+    @resources = Post.published.order(id: :asc)
   end
 
   def find_resource
