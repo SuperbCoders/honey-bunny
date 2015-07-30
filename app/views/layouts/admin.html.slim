@@ -110,7 +110,10 @@ html lang="en"
             ul.dropdown-menu
               - lists_set.each do |link|
                 li= link
-
+        li class=('active' if controller_name == 'posts')
+          = link_to admin_posts_path do
+            i.icon-building.icon-xlarge
+            span Блог
         - if can? :manage, MetaBlock
           li class=('active' if params[:controller] == 'admin/settings')
             = link_to admin_settings_path do
