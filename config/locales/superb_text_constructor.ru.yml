@@ -53,6 +53,9 @@ ru:
       shops: Магазины
       press_about_us: Пресса о нас
       item_ingredients: Состав
+      text: Текст
+      wide_image: Широкая картинка
+      middle_image: Картинка
 
     groups:
       images: Изображения

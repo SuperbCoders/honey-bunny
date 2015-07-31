@@ -7,7 +7,7 @@ class Blog::PostsController < ApplicationController
   end
 
   def show
-    @blocks = @resource.blocks
+    @blocks = @page.blocks
   end
 
   private
@@ -17,6 +17,6 @@ class Blog::PostsController < ApplicationController
   end
 
   def find_resource
-    @resource = Post.find(params[:id])
+    @page = Post.find(params[:id])
   end
 end

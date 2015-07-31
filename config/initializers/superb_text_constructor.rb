@@ -116,6 +116,26 @@ SuperbTextConstructor.configure do
     use :press_about_us
   end
 
+  block :wide_image do
+    field :image, type: BlockImageUploader, partial: :image
+  end
+
+  block :middle_image do
+    field :image, type: BlockImageUploader, partial: :image
+  end
+
+  block :text do
+    field :text, partial: :text
+  end
+
+  namespace :blog do
+    use :subparagraph
+    use :text
+    use :wide_image
+    use :middle_image
+    use :items_list
+  end
+
   namespace :items do
     group :images do
       use :gallery_column

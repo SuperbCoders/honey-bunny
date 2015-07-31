@@ -36,7 +36,7 @@ class Admin::PostsController < Admin::ApplicationController
 
   # DELETE /admin/pages:/id
   def destroy
-    if @post.destroyable? && @post.destroy!
+    if @post.destroy!
       redirect_to admin_posts_url, notice: I18n.t('shared.destroyed')
     else
       redirect_to admin_posts_url, alert: I18n.t('shared.not_destroyed')

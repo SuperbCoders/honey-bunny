@@ -1,6 +1,6 @@
 .globalwidth.hashtags
-  - @resource.tag_list.each do |tag|
+  - @page.tag_list.each do |tag|
     a.hashtag ##{tag}
 
 article
-  = render_blocks @blocks, namespace: :posts
+  = render_blocks @blocks, namespace: :blog

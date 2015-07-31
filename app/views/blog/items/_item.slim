@@ -2,12 +2,12 @@
   = link_to item do
     .photo
       .wrapper
-        = image_tag item.main_image.thumb, height: '420', width: '200'
+        = image_tag item.main_image.thumb
   .info
     = link_to item_path(item) 
       p.name=item.title
       - if item.volume.to_i > 0
-        p.descr — #{item.volume} мл / #{}
+        p.descr — #{item.volume} мл / #{item.motto}
     p
       = link_to item_path(item)
         span.price
