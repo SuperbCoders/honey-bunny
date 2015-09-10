@@ -35,10 +35,9 @@
 				overflow: hidden;
 			}
 			figure {
-				width: 122px;
+				@include retina-sprite(placeholder);
 				@include respond-to(medium-screen) {
-					width: 61px;
-					height: 61px;
+					@include retina-sprite(placeholder_min);
 				}
 				@include respond-to(small-screen) {
 					margin-right: 20px;
