@@ -1,8 +1,8 @@
 class QuestionsController < ApplicationController
-
   # GET /questions
   def index
     @question = Question.new
+    render layout: 'item'
   end
 
   # POST /questions
