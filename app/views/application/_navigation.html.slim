@@ -1,6 +1,6 @@
 - current_page = @page.try(:slug)
 li.item.item1 class=('current' if current_page == 'products')
-  = link_to 'Наша косметика', items_path
+  = link_to 'Продукты', items_path
 li.item.dots.hidden-tablet
   span
 li.item.item2.collapsable.first.item2 class=('current' if current_page == 'difference')
