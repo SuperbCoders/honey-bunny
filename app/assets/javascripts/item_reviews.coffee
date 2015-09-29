@@ -7,7 +7,7 @@ $ ->
     midClick: true
 
   $('#rating').rateYo
-    rating: 0
+    rating: 5
     fullStar: true
     starWidth: '32px'
     spacing: '10px'

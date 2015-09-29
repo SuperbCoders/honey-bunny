@@ -3,4 +3,6 @@
     a.hashtag ##{tag}
 
 article
+  .globalwidth
+    h1= @page.title
   = render_blocks @blocks, namespace: :blog
