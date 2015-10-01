@@ -3,8 +3,10 @@ li.item.item1 class=('current' if current_page == 'products')
   = link_to 'Продукты', items_path
 li.item.dots.hidden-tablet
   span
-li.item.item2.collapsable.first.item2 class=('current' if current_page == 'difference')
-  = link_to 'В чем отличие', page_path('difference')
+li.item.item2.collapsable.first.item2 
+  //class=('current' if current_page == 'difference')
+  //= link_to 'В чем отличие', page_path('difference')
+  = link_to 'Блог', blog_root_path
 li.item.item3.collapsable class=('current' if current_page == 'cosmetics')
   = link_to 'Идея и состав', page_path('cosmetics')
 li.item.item4.collapsable.item5.faq
