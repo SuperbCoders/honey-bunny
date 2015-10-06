@@ -2,7 +2,7 @@ class Post < ActiveRecord::Base
   include SuperbPages::Concerns::Models::Page
   include SuperbTextConstructor::Concerns::Models::Blockable
 
-  before_validation :check_slug
+  before_validation :update_slug
   after_save :check_meta
 
   acts_as_taggable
@@ -14,8 +14,7 @@ class Post < ActiveRecord::Base
 
   private
 
-  def check_slug
-    return if slug.present?
+  def update_slug
     self[:slug] = title.parameterize.underscore
   end
 

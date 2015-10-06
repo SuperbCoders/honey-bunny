@@ -10,3 +10,14 @@ role :db,  %w{w3dev-hb@ono.rrv.ru:2223}
 
 set :branch, 'develop'
 set :deploy_to, '/www/dev-hb.onomnenado.ru'
+
+namespace :deploy do
+  task :robots do
+    on roles(:app), in: :sequence, wait: 5 do
+      within release_path do
+        execute "echo 'Disallow: /' > public/robots.txt"
+      end
+    end
+  end
+end
+after 'deploy:updated', 'deploy:robots'

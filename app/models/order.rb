@@ -1,8 +1,6 @@
 class Order < ActiveRecord::Base
   include OrderBase
 
-  attr_accessor :from_mobile
-
   belongs_to :shipping_method
   belongs_to :payment_method
 
