@@ -139,4 +139,6 @@ Rails.application.routes.draw do
     resources :posts, only: [:index, :show], path: '/'
     root 'posts#index'
   end
+
+  resource :sitemap, :only => [:show]
 end
