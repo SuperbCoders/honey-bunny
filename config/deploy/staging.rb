@@ -15,7 +15,7 @@ namespace :deploy do
   task :robots do
     on roles(:app), in: :sequence, wait: 5 do
       within release_path do
-        execute "echo 'Disallow: /' > public/robots.txt"
+        execute "echo 'Disallow: /' > #{release_path}/public/robots.txt"
       end
     end
   end
