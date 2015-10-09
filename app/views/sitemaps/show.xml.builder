@@ -55,9 +55,9 @@ xml.urlset(xmlns: "http://www.sitemaps.org/schemas/sitemap/0.9") do
       xml.lastmod item.updated_at.strftime("%F")
       xml.changefreq("weekly")
       xml.priority("0.80")
-      xml.image :image do
-        xml.image :loc, root_url+item.main_image.full.url
-      end
+      # xml.image :image do
+      #   xml.image :loc, root_url+item.main_image.full.url
+      # end
     end
   end
 end
