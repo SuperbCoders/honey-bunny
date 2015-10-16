@@ -12,11 +12,11 @@ section#content
             span.badge= Order.with_new_state.count
             i.icon-bell
             | Новые
-          = link_to admin_orders_path(workflow_state: 'shipped'), class: "list-group-item#{' bg-lighter' if params[:workflow_state] == 'shipped'}" do
-            i.icon-chevron-right
-            span.badge= Order.with_shipped_state.count
-            i.icon-truck
-            | Отправленные
+          / = link_to admin_orders_path(workflow_state: 'shipped'), class: "list-group-item#{' bg-lighter' if params[:workflow_state] == 'shipped'}" do
+          /   i.icon-chevron-right
+          /   span.badge= Order.with_shipped_state.count
+          /   i.icon-truck
+          /   | Отправленные
           = link_to admin_orders_path(workflow_state: 'delivered'), class: "list-group-item#{' bg-lighter' if params[:workflow_state] == 'delivered'}" do
             i.icon-chevron-right
             span.badge= Order.with_delivered_state.count
@@ -33,6 +33,21 @@ section#content
             i.icon-list
             | Все
       .col-lg-9
+        .btn-group.panel
+          a.btn.btn-info.btn-sm href=admin_orders_path(from: 1.day.ago.beginning_of_day, to: 1.day.ago.end_of_day) Вчера
+          a.btn.btn-info.btn-sm href=admin_orders_path(from: DateTime.now.to_date) Сегодня
+          a.btn.btn-info.btn-sm href=admin_orders_path(from: 1.week.ago.beginning_of_day) За неделю
+          a.btn.btn-info.btn-sm href=admin_orders_path(from: 1.month.ago.beginning_of_day) За месяц
+          a.btn.btn-info.btn-sm href=admin_orders_path За все время
+        = form_tag admin_orders_path, :method => 'get', :class => 'form'
+          .col-lg-12.well style="margin-bottom: 30px"
+            .form-group.row
+              .col-lg-4
+                input.form-control.js-datetime-picker type="date" name="from" value=@from.try{ |v| v.strftime("%F") }
+              .col-lg-4
+                input.form-control.js-datetime-picker type="date" name="to" value=@to.try{ |v| v.strftime("%F") }
+            = submit_tag "Применить",:class => "btn btn-info"
+          .clearfix
         section.panel
           header.panel-heading
             | Найдено <b>#{@total_count}</b> #{Russian.p(@total_count, 'заказ', 'заказа', 'заказов')} на сумму <b>#{humanized_money @total_price}</b> руб.
@@ -44,6 +59,7 @@ section#content
                   th width='48px' ID
                   th width='48px'
                   th width='48px'
+                  th Коммент. админа
                   th Имя
                   th Содержимое
                   th Стоимость, руб.
@@ -66,6 +82,8 @@ section#content
                       - when 'w1' then 'Картой'
                       - else '?'
                       small= payment_method
+                    td
+                      small= order.admin_comment
                     td= order.name
                     td
                       - order.order_items.each do |order_item|
@@ -77,8 +95,8 @@ section#content
                     td=l order.created_at, format: :short
                     td
                       - actions = []
-                      - if order.can_ship?
-                        - actions << (link_to t("order.workflow_state.shipped"), ship_admin_order_path(order), method: :patch)
+                      / - if order.can_ship?
+                      /   - actions << (link_to t("order.workflow_state.shipped"), ship_admin_order_path(order), method: :patch)
                       - if order.can_deliver?
                         - actions << (link_to t("order.workflow_state.delivered"), deliver_admin_order_path(order), method: :patch)
                       - if order.can_cancel?

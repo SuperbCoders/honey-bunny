@@ -10,6 +10,7 @@ class Admin::OrdersController < Admin::ApplicationController
   def index
     @orders = Order.includes(:shipping_method, :payment_method, order_items: :item).order(created_at: :desc)
     @orders = @orders.where(workflow_state: params[:workflow_state]) if params[:workflow_state].present?
+    @orders = @orders.where(created_at: from_to) if from_to
     @total_price = OrderItem.where(order_type: 'Order', order_id: @orders.pluck(:id)).sum('price_cents * quantity') / 100
     @total_count = @orders.count
 
@@ -31,12 +32,19 @@ class Admin::OrdersController < Admin::ApplicationController
 
   private
 
-    def set_order
-      @order = Order.find(params[:id])
-    end
+  def set_order
+    @order = Order.find(params[:id])
+  end
 
-    def order_params
-      params.require(:order).permit(:shipping_method_id, :payment_method_id, :city, :zipcode, :address, :name, :phone, :email, :comment, :shipping_price, :paid)
-    end
+  def order_params
+    params.require(:order).permit(:shipping_method_id, :payment_method_id, :city, :zipcode, :address, :name, :phone, :email, :comment, :admin_comment, :shipping_price, :paid)
+  end
+
+  def from_to
+    return if params[:from].blank? && params[:to].blank?
+    @from = DateTime.parse(params[:from]).beginning_of_day
+    @to = (params[:to] ? DateTime.parse(params[:to]) : DateTime.now).end_of_day
+    @from..@to
+  end
 
 end
