@@ -64,6 +64,10 @@ $ ->
         str[1] = str[1].replace(/(\d{3})/g, '$1 ')
     str.join('.')
 
+  if $('#new_order').length
+    $("input.js-order-shipping-method-id").on 'change', ->
+      $('.js-order-shipping-info-fields').toggle($("input.js-order-shipping-method-id:checked").val() is '2')
+
   # Initialize scripts on /orders/new and /wholesale_orders/new pages
   if $('#new_order').length or $('#new_wholesale_order').length
     # Full list of cities. It could be filtered by data-shipping-method-* attribute
