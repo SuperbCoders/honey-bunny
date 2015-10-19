@@ -7,7 +7,7 @@ class Order < ActiveRecord::Base
   validates :shipping_method, presence: true, unless: :from_mobile
   validates :payment_method, presence: true
   validates :city, :name, :phone, presence: true
-  validates :address, :email, :zip_code, presence: true, unless: :from_mobile
+  validates :address, :email, presence: true, unless: :from_mobile
   validates :email, format: { with: /([\.A-Za-z0-9_-]+@[\.A-Za-z0-9_-]+\.[A-Za-z]{2,})+/ }, unless: :from_mobile
   validates :shipping_price_cents, presence: true, numericality: { greater_than_or_equal_to: 0 }
   validate :validate_shipping_method

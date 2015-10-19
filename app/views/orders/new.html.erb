@@ -83,7 +83,7 @@
           <div class="wrapper">
             <h2 class="center">Укажите адрес доставки<br />и контактные данные</h2>
             <div class="forms">
-              <div class="field">
+              <div class="field js-order-shipping-info-fields" style='display:none'>
                 <div class="table">
                   <div class="tr">
                     <div class="td td1<%= ' error' if @order.errors['city'].any? %>">
@@ -91,7 +91,7 @@
                         <%= f.select :city, order_city_options_for_select(@cities, @order.city, shipping_methods: @shipping_methods), {}, class: 'chosen-select js-order-city' %>
                       </div>
                     </div>
-                    <div class="td td2<%=' error' if @order.errors['address'].any? %> js-order-shipping-info-fields" style='display:none'>
+                    <div class="td td2<%=' error' if @order.errors['address'].any? %>">
                       <%= f.text_field :zip_code, placeholder: 'Индекс' %>
                     </div>
                   </div>
