@@ -1,11 +1,19 @@
 .page-footer {
-	padding: 54px 0 45px;
+    padding: 74px 0 54px 0;
 	background: #212424;
+	text-align: center;
 	@include respond-to(small-screen) {
 		padding-top: 22px;
 	}
+	.globalwidth {
+		max-width: 1300px;
+	}
 	.contact {
 		margin-bottom: 25px;
+		width: 435px;
+		margin: 0;
+		display: inline-block;
+		vertical-align: middle;
 		@include respond-to(small-screen) {
 			margin: 0;
 			position: relative;
@@ -31,11 +39,11 @@
 			display: inline-block;
 			width: 64px;
 			height: 64px;
-			padding: 10px; 
+			padding: 10px;
 			@include respond-to(small-screen) {
 				width: 34px;
 				height: 34px;
-				padding: 0; 
+				padding: 0;
 				position: absolute;
 				top: 30px;
 			}
@@ -52,16 +60,27 @@
 				display: inline-block;
 				width: 34px;
 				height: 34px;
+				&.icon-tel {
+					position: relative;
+					top: 5px;
+					left: 5px;
+				}
 			}
-			
+
 		}
+	}
+	.logo-wrap {
+		display: inline-block;
+		vertical-align: middle;
+		margin-left: 110px;
+		margin-right: 110px;
 	}
 	.logo {
 		display: block;
 		width: 90px;
 		height: 90px;
 		margin: 0 auto;
-		margin-bottom: 45px;
+		// margin-bottom: 45px;
 		text-decoration: none;
 		@include retina-sprite(logo-fn_w);
 		@include respond-to(small-screen) {
@@ -71,11 +90,96 @@
 			@include retina-sprite(logo-ft_w);
 		}
 	}
+	.mailer {
+		width: 435px;
+		display: inline-block;
+		vertical-align: middle;
+		color: #7c7c7c;
+		font-size: 13px;
+		text-align: left;
+		.title {
+			color: white;
+			text-transform: uppercase;
+			margin-bottom: 11px;
+			font-size: 12px;
+			font-weight: bold;
+		}
+		.input-wrap {
+			height: 40px;
+			margin-bottom: 14px;
+			input {
+				height: 100%;
+				float: left;
+				display: block;
+				border: none;
+				outline: none;
+				box-sizing: border-box;
+				font-size: 13px;
+			}
+			input.email {
+				background: #3e3e3e;
+				border-top-left-radius: 4px;
+				border-bottom-left-radius: 4px;
+				padding: 0 18px;
+				color: white !important;
+				width: 220px;
+			}
+			input.button {
+				background: #4d4d4d;
+				border-top-right-radius: 4px;
+				border-bottom-right-radius: 4px;
+				padding: 0 10px;
+				font-weight: bold;
+				cursor: pointer;
+				width: 100px;
+				text-align: center;
+				color: #7c7c7c !important;
+				&:hover {
+					color: white;
+					background: #37c563;
+					color: white !important;
+				}
+				&:active {
+					background: #17b548;
+					color: white !important;
+				}
+			}
+		}
+		.after-send {
+			display: none;
+			font-weight: bold;
+			color: white;
+			text-align: center;
+			.strange-pic {
+				@include retina-sprite(subscriber-final-bottom);
+				display: inline-block;
+				-webkit-transform: scale(0.5);
+				-ms-transform: scale(0.5);
+				transform: scale(0.5);
+			}
+		}
+
+	}
 	.copyright {
 		font-size: 13px;
 		text-align: center;
+		margin-top: 75px;
 		@include respond-to(small-screen) {
 			font-size: 11px;
+		}
+	}
+	@media (max-width:1210px) {
+		.contact, .logo-wrap {
+			display: block;
+			margin: 0 auto 10px auto;
+		}
+		.mailer {
+			display: block;
+			margin: 40px auto;
+			width: 320px;
+		}
+		.copyright {
+			margin-top: 0;
 		}
 	}
 }

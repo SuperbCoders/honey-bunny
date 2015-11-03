@@ -21,6 +21,7 @@ html[lang="ru"]
       = render 'footer'
     - unless signed_in?
       = render 'popup_login'
+    = render 'subscribe'
     = javascript_include_tag 'application'
     = javascript_block
     = yield(:js) if content_for?(:js)

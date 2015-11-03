@@ -1,0 +1,28 @@
+#subscriber.subscriber.hidden-phone
+  .kolobok-cnt
+    .kolobok.kolobok-smile
+    .kolobok.kolobok-wink
+    .kolobok.kolobok-laugh
+  .subscriber-buble
+    | Уроки по уходу за собой и рекомендации по выбору косметики!
+  = form_tag user_email_path, remote: true do
+    div#subscriber-close.close
+    p
+      | Уроки по уходу за собой и рекомендации по выбору косметики.
+      span.icons-nails
+      | Подпишитесь на нашу рассылку. Пишем только по делу.
+    = text_field(:user_email, :email, class: 'subscriber-email', placeholder: "Введите ваш email", required: true)
+    p.unsubscribe.error style="display:none"
+    = submit_tag 'Подписаться', class: 'subscribe-button'
+    .unsubscribe Отписаться можно в любой момент
+  .final
+    .subscriber-final-check
+    .title Вы успешно подписаны!
+    .title2
+      | Ожидайте новостей 
+      br
+      | на почту 
+      span#subscriber-email-confirm
+    .subscriber-final-bottom
+
+script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"

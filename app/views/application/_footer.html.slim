@@ -19,6 +19,16 @@ footer.page-footer.darkstyle
             i.icon.icon-vk
     .logo-wrap
       a.logo href='/'
+    .mailer.hidden-phone
+      = form_tag user_email_path, class: 'subscribe-form', remote: true do
+        .title РАССЫЛКА
+        .input-wrap
+          = text_field(:user_email, :email, class: 'email', placeholder: "Ваш email", required: true)
+          = submit_tag 'Подписаться', class: 'button', id: 'subscribe_btn'
+        .msg Пишем только по делу! 
+      #mailer-thanks.after-send
+        .strange-pic
+        .thanks Спасибо, ожидайте новостей!
     .copyright © 2015 Honey-Bunny
 
 #popup-phone.mfp-hide.white-popup-block

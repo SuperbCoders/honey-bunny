@@ -37,7 +37,7 @@ class User < ActiveRecord::Base
 
   private
 
-    def set_default_values
-      self.role ||= 'user'
-    end
+  def set_default_values
+    self.role ||= 'user'
+  end
 end

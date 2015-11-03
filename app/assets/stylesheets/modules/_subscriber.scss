@@ -1,0 +1,213 @@
+.subscriber {
+	position: fixed;
+	right: 20px;
+	bottom: 20px;
+	width: 293px;
+	height: 94px;
+	overflow: visible;
+
+	* {
+		box-sizing: border-box;
+	}
+	.subscriber-buble {
+		@include retina-sprite(subscriber-buble);
+		font-size: 16px;
+		line-height: 21px;
+		padding: 13px 26px 0 15px;
+		color: white;
+		position: absolute;
+		bottom: 0;
+		right: 65px;
+		cursor: pointer;
+
+		&:hover {
+			@include retina-sprite(subscriber-buble_h);
+		}
+	}
+	// Опишем колобков здесь (а не в .kolobok-cnt), чтобы потом не мудрить с весами
+	.kolobok {
+		display: none;
+	}
+	.kolobok-laugh {
+		display: block;
+	}
+	&.closed {
+		.subscriber-buble {
+			display: none;
+		}
+		.kolobok-laugh {
+			display: none;
+		}
+		.kolobok-smile {
+			display: block;
+		}
+	}
+	// После клика по колобку или зеленому блоку, установится этот класс
+	&.clicked {
+		form {
+			display: block;
+		}
+		.subscriber-buble {
+			display: none;
+		}
+		// Оставим морду подмигивающей (блокируем hover поведение)
+		.kolobok-cnt {
+			.kolobok-laugh {
+				display: none;
+			}
+			.kolobok-wink {
+				display: block;
+			}
+		}
+	}
+	.kolobok-cnt {
+		width: 62px;
+		height: 63px;
+		position: absolute;
+		right: 0;
+		bottom: 0;
+
+		&:hover {
+			.kolobok-laugh {
+				display: none;
+			}
+			.kolobok-wink {
+				display: block;
+			}
+		}
+
+		.kolobok {
+			position: absolute;
+			right: 0;
+			bottom: 0;
+			cursor: pointer;
+		}
+		.kolobok-laugh {
+			@include retina-sprite(kolobok-laugh);
+		}
+		.kolobok-smile {
+			@include retina-sprite(kolobok-smile);
+		}
+		.kolobok-wink {
+			@include retina-sprite(kolobok-wink);
+		}
+	}
+	form {
+		@include retina-sprite(subscriber-buble-white);
+		display: none;
+		padding: 20px 30px 20px 21px;
+		color: black;
+		font-size: 16px;
+		line-height: 21px;
+		position: absolute;
+		bottom: 0;
+		right: 65px;
+
+		.close {
+			@include retina-sprite(subscriber-close);
+			position: absolute;
+			right: -28px;
+			top: 14px;
+			cursor: pointer;
+			opacity: 0.6;
+
+			&:hover {
+				opacity: 1;
+			}
+		}
+		p {
+			margin-bottom: 20px;
+		}
+		input {
+			height: 50px;
+			width: 100%;
+			display: block;
+			border-radius: 4px;
+			padding: 13px 20px;
+			outline: none;
+			font: inherit;
+
+			&:focus {
+				outline: none;
+			}
+			&[type="text"],
+			&[type="email"] {
+				border: 1px solid #979797;
+				margin-bottom: 11px;
+
+				&:focus {
+					border: 1px solid #37c563;
+				}
+			}
+			&[type="submit"], &[type="button"], .submitbtn {
+				background: #37c563;
+				color: #FFF !important;
+				text-align: center;
+				margin-bottom: 6px;
+				border: none;
+				cursor: pointer;
+
+				&:hover {
+					background: #31B55A;
+				}
+			}
+		}
+		.unsubscribe {
+			color: #AAA8A8;
+			text-align: center;
+			font-size: 14px;
+		}
+		.icons-nails {
+			@include retina-sprite(icons-nails);
+			display: inline-block;
+		}
+	}
+	&.subscribed {
+		.final {
+			display: block;
+		}
+		.subscriber-buble,
+		.kolobok-cnt {
+			display: none;
+		}
+	}
+	&.closed {
+		.final,
+		form,
+		.subscriber-buble {
+			display: none;
+		}
+	}
+	.final {
+		display: none;
+		width: 360px;
+		min-height: 360px;
+		border-radius: 13px;
+		position: absolute;
+	    background: rgba(0,0,0,0.9);
+		bottom: 0;
+    	right: 0;
+		padding: 45px;
+		text-align: center;
+		color: white;
+
+		.subscriber-final-check {
+			@include retina-sprite(subscriber-final-check);
+			display: inline-block;
+			margin-bottom: 23px;
+		}
+		.title {
+			font-size: 34px;
+			margin-bottom: 18px;
+		}
+		.title2 {
+			font-size: 18px;
+			margin-bottom: 42px;
+		    line-height: 22px;
+		}
+		.subscriber-final-bottom {
+			@include retina-sprite(subscriber-final-bottom);
+			display: inline-block;
+		}
+	}
+}

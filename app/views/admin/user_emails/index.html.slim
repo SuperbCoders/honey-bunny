@@ -1,0 +1,29 @@
+section#content
+  section.main.padder
+    .clearfix
+      h4
+        i.icon-file
+        |  Email адреса
+    .row
+      .well= link_to "Скачать CSV", admin_user_emails_path(format: "csv"), class: 'btn btn-sm btn-info'
+      section.panel
+        .table-responsive
+          table.table.table-striped.b-t.text-small
+            thead
+              tr
+                th Email
+                th
+            tbody
+              - @user_emails.each do |user_email|
+                tr
+                  td= user_email.email
+                  td
+                    .btn-group
+                      a.dropdown-toggle data-toggle="dropdown" href="#"
+                        i.icon-pencil
+                      ul.dropdown-menu.pull-right
+                        li
+                          = link_to admin_user_email_path(user_email), method: :delete, data: { confirm: t('shared.are_you_sure') } do
+                            i.icon-trash
+                            | Удалить
+        footer.panel-footer

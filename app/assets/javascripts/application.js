@@ -36,3 +36,4 @@
 //= require carts
 //= require item_reviews
 //= require wholesale
+//= require subscribe

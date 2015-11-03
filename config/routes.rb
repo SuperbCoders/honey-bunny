@@ -23,6 +23,7 @@ Rails.application.routes.draw do
     root 'orders#index', workflow_state: 'new'
     resources :pages, except: :show
     resources :posts, except: :show
+    resources :user_emails, except: :show
 
     resources :materials, except: :show
 
@@ -102,6 +103,7 @@ Rails.application.routes.draw do
     get :fail, on: :member
   end
   resources :reviews, only: [:create]
+  resource :user_email, only: [:create]
   resources :faqs, only: :index, path: 'faq', controller: 'faq'
   resources :questions, only: [:create, :index]
   resources :wholesalers, only: [:new, :create] do

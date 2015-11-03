@@ -149,9 +149,6 @@
                     border-top-left-radius: 5px;
                     border-top-right-radius: 5px;
                     z-index: 1;
-                    .darkstyle & {
-                      background-color: rgba(0, 0, 0, .91);
-                    }
                     ul {
                         display: block;
                         background-color: inherit;
@@ -310,7 +307,7 @@
             background: #4a4a4a;
         }
     }
-    // Зеленая кнопка
+    // Зеленая кнопка 
     //    .store {
     //        display: block;
     //        width: 110px;

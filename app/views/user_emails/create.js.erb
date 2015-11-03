@@ -1,0 +1,9 @@
+
+<% if @email_subscription.persisted? %>
+  $('form.subscribe-form').hide();
+  $('#mailer-thanks').show();
+  subscriber.success();
+<% else %>
+  $('.subscribe-form .msg').text('Произошла ошибка, проверьте email');
+  $('#subscriber p.error').show().text('Произошла ошибка, проверьте email');
+<% end %>
