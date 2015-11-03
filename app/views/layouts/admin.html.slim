@@ -114,6 +114,10 @@ html lang="en"
           = link_to admin_posts_path do
             i.icon-building.icon-xlarge
             span Блог
+        li class=('active' if controller_name == 'user_emails')
+          = link_to admin_user_emails_path do
+            i.icon-male.icon-xlarge
+            span Email адреса
         - if can? :manage, MetaBlock
           li class=('active' if params[:controller] == 'admin/settings')
             = link_to admin_settings_path do
