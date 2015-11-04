@@ -1,6 +1,12 @@
 <% if @cart_item.quantity == @quantity %>
   $('#cart-desktop .count').text('<%= current_cart.total_quantity %>');
   $('#cart-desktop').toggleClass('has-orders', $('#cart-desktop .count').text() != 0);
+  
+  ga('send', {
+    'hitType': 'event',
+    'eventCategory': 'add-to-cart',
+    'eventAction': 'click',
+  });
 
   if ($('section.case-cart').length) {
     var quantity = <%=@quantity%>;

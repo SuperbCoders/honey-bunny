@@ -17,7 +17,18 @@
   }
 
   yaCounter30951776.reachGoal('ORDER', window.yaParams);
-  window.location.replace(redirect_path)
+  # dataLayer.push({
+  #     "ecommerce": {
+  #         "purchase": {
+  #             "actionField": {
+  #                 "id" : "<%= @order.id %>",
+  #                 "affiliation": "Яндекс.Маркет"
+  #             },
+  #             "products": <%= items.to_json.html_safe %>
+  #         }
+  #     }
+  # });
+  window.location.replace(redirect_path);
 <% else %>
   form = $("<%=j render file: 'orders/new' %>").find('.forms')
   $('section.page-body .case-cart-address .forms').replaceWith(form)
