@@ -5,6 +5,7 @@
 	width: 293px;
 	height: 94px;
 	overflow: visible;
+	display: none;
 
 	* {
 		box-sizing: border-box;
@@ -132,11 +133,11 @@
 			}
 			&[type="text"],
 			&[type="email"] {
-				border: 1px solid #979797;
+				border: 1px solid #3E3E3E;
 				margin-bottom: 11px;
 
 				&:focus {
-					border: 1px solid #37c563;
+					border: 1px solid #464646 ;
 				}
 			}
 			&[type="submit"], &[type="button"], .submitbtn {

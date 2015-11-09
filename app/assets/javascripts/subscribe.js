@@ -18,6 +18,9 @@ function Subscriber (id) {
 		jumpInterval;
 		emailConfirmEl = $('#subscriber-email-confirm');
 
+		this.getDiv = function() {
+			return subscriber;
+		};
 	/*
 	 * Анимашки
 	 */
@@ -133,3 +136,19 @@ function Subscriber (id) {
 
 // Обьект занимается анимациями и переключением окошек
 var subscriber = new Subscriber("#subscriber");
+
+subscriber.getDiv().show();
+
+// Когда в поле ввода почты в футере есть текст, то вешаем на неё класс has-text
+// для того, чтобы работала подсветка кнопки справа
+var footerEmailInput = $('.page-footer .mailer input.email');
+var footerEmailSubmit = footerEmailInput.next();
+footerEmailInput.keyup(function(event) {
+	if (this.value.length) {
+		footerEmailInput.addClass('has-text');
+		footerEmailSubmit.removeAttr('disabled')
+	} else {
+		footerEmailInput.removeClass('has-text');
+		footerEmailSubmit.attr('disabled', 'true');
+	}
+});

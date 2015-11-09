@@ -40,6 +40,7 @@
 			width: 64px;
 			height: 64px;
 			padding: 10px;
+		    vertical-align: middle;
 			@include respond-to(small-screen) {
 				width: 34px;
 				height: 34px;
@@ -63,7 +64,9 @@
 				&.icon-tel {
 					position: relative;
 					top: 5px;
-					left: 5px;
+					left: 0;
+					height: 22px;
+					width: 21px;
 				}
 			}
 
@@ -134,12 +137,12 @@
 				width: 100px;
 				text-align: center;
 				color: #7c7c7c !important;
+			}
+			input.email.has-text + input.button {
+				color: white;
+				background: #37c563;
+				color: white !important;
 				&:hover {
-					color: white;
-					background: #37c563;
-					color: white !important;
-				}
-				&:active {
 					background: #17b548;
 					color: white !important;
 				}
