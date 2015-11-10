@@ -3,8 +3,9 @@ $('#cart-desktop').toggleClass('has-orders', $('#cart-desktop .count').text() !=
 
 <% if @cart_item %>
   if ($('section.case-cart').length) {
+    window.totalItemsPrice = <%= current_cart.total_price%>;
     $('#cart-item-<%= @cart_item.item.id %>').hide();
-    $('#order-items-price').text('<%= humanized_money current_cart.total_price %>');
+    //$('#order-items-price').text('<%= humanized_money current_cart.total_price %>');
     $('#cart-total-quantity').text('<%= "#{current_cart.total_quantity} #{Russian.p(current_cart.total_quantity, 'товар', 'товара', 'товаров')}" %>');
     updateTotalPrice();
   }

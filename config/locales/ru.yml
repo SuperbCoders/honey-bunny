@@ -6,6 +6,12 @@ ru:
       page: Страница
       meta_block: Мета данные
     attributes: &activerecord_attributes
+      discount:
+        code: Код
+        amount: Размер скидки
+        kind: Тип скидки
+        mode: Режим активации
+        active: Активный
       user:
         email: E-mail
         role: Роль
@@ -112,6 +118,14 @@ ru:
         okpo: ОКПО
         bank_details: Банковские реквизиты
   simple_form:
+    options:
+      discount:
+        kind:
+          value: В рублях
+          percent: В процентах
+        mode:
+          disposable: Одноразовый
+          reusable: Многоразовый
     labels:
       <<: *activerecord_attributes
 

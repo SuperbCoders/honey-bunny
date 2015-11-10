@@ -20,8 +20,12 @@ module OrderBase
 
     monetize :shipping_price_cents
 
+    after_commit :check_discount, on: [:create]
+
     has_many :order_items, inverse_of: :order, dependent: :destroy, as: :order
     accepts_nested_attributes_for :order_items, allow_destroy: true
+
+    belongs_to :discount
   end
 
   # Adds items from the cart to the order
@@ -32,9 +36,20 @@ module OrderBase
     end
   end
 
-  # @return [Float] total price of all items + shipping price
-  def total_price
+  # @return [Float] order discount
+  def discount_amount
+    return 0 unless discount && discount.active?
+    discount.total(items_price)
+  end
+
+  # @return [Float] total price of all items + shipping price without discount
+  def total_price_without_discount
     items_price.to_f + shipping_price.to_f
+  end
+
+  # @return [Float] total price of all items + shipping price - discount
+  def total_price
+    total_price_without_discount.to_f - discount_amount.to_f
   end
 
   # @return [Float] total price of all items
@@ -59,21 +74,26 @@ module OrderBase
     end
   end
 
+  def check_discount
+    return unless discount && discount.disposable?
+    discount.update(active: false)
+  end
+
   protected
 
-    # Rollback items' quantities
-    def cancel
-      order_items.each { |oi| oi.increase_item_quantity(force: true) }
-    end
+  # Rollback items' quantities
+  def cancel
+    order_items.each { |oi| oi.increase_item_quantity(force: true) }
+  end
 
-    # @reutrn [Integer] id of the selected city
-    # @reutrn [nil] if city was not found
-    def city_id
-      City.where(name: city).pluck(:id).first
-    end
+  # @reutrn [Integer] id of the selected city
+  # @reutrn [nil] if city was not found
+  def city_id
+    City.where(name: city).pluck(:id).first
+  end
 
-    # @return [Symbol] name of the Item's method that returns proper product price
-    def item_price_method_name
-      :price
-    end
+  # @return [Symbol] name of the Item's method that returns proper product price
+  def item_price_method_name
+    :price
+  end
 end

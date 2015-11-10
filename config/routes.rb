@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     resources :pages, except: :show
     resources :posts, except: :show
     resources :user_emails, except: :show
+    resources :discounts, except: :show
 
     resources :materials, except: :show
 
@@ -114,6 +115,7 @@ Rails.application.routes.draw do
   # Default cart
   post 'carts/items/:item_id' => 'carts#add', as: :add_to_cart
   delete 'carts/items/:item_id' => 'carts#remove', as: :remove_from_cart
+  post 'check_discount' => 'orders#check_discount'
 
   # Wholesale cart
   post 'wholesale_carts/items/:item_id' => 'wholesale_carts#add', as: :add_to_wholesale_cart

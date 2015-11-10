@@ -7,7 +7,6 @@ class OrdersController < ApplicationController
   before_action :set_order, only: [:payment, :success, :fail]
   before_action :check_order_hash, only: [:payment, :success, :fail]
 
-  # GET /orders/new
   def new
     @order = Order.new
     @order.use_cart(current_cart)
@@ -15,7 +14,6 @@ class OrdersController < ApplicationController
     set_lists
   end
 
-  # POST /orders
   def create
     @order = Order.new(order_params)
     @order.use_cart(current_cart)
@@ -37,6 +35,22 @@ class OrdersController < ApplicationController
       set_lists
       #render 'new'
     end
+  end
+
+  def check_discount
+    discount_code = params[:discount_code]
+    discount = Discount.active.find_by(code: discount_code)
+
+    if discount
+      data = discount
+      status = 200
+    else
+      data = {
+        error: 'Введенный вами купон не существует или просрочен'
+      }
+      status = 404
+    end
+    render json: data.as_json, status: status
   end
 
   # GET /orders/:id/payment
@@ -66,7 +80,9 @@ class OrdersController < ApplicationController
     added_params = mobile_device? ? {from_mobile: true} : {}
     params.require(:order).permit(:shipping_method_id, :payment_method_id,
                                   :city, :zipcode, :address, :name,
-                                  :phone, :email, :comment, :zip_code).merge(added_params)
+                                  :phone, :email, :comment, :zip_code,
+                                  :discount_id
+                                  ).merge(added_params)
   end
 
   def set_lists

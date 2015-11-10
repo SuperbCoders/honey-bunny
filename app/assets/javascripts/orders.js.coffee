@@ -34,11 +34,42 @@ $ ->
           $(shippingMethod).closest('label').find('span.price').text("#{humanizedMoney(price)} руб.")
 
   # Updates order total price value as sum of items price and shipping price
+  window.updateTotalDiscount = (discount)->
+    window.totalDiscount = discount.amount
+    if discount.kind == 'value'
+      window.DiscountPercent = false
+    else
+      window.DiscountPercent = true
+
+
   window.updateTotalPrice = ->
-    itemsPrice = parseFloat($('#order-items-price').text().toString().replace(' ', ''))
+    #itemsPrice = parseFloat($('#order-items-price').text().toString().replace(' ', ''))
+    if window.DiscountPercent
+      itemsPrice = window.totalItemsPrice - (window.totalItemsPrice * window.totalDiscount / 100)
+    else
+      itemsPrice = window.totalItemsPrice - window.totalDiscount
+    itemsPrice = 0 if itemsPrice < 0
     shippingPrice = parseFloat(currentShippingPrice().toString().replace(' ', '')) || 0
     totalPrice = humanizedMoney(itemsPrice + shippingPrice)
+    $('#order-items-price').text(humanizedMoney(itemsPrice))
     $('#order-total-price').text(totalPrice)
+
+  $("#discount_code").on "change", ->
+    self = $(@)
+    http.post('/check_discount', {discount_code: self.val(), items_price: window.totalItemsPrice}).done((data) ->
+      $('.js-discount-id').val(data.id)
+      self.closest('.field').find('.message').text('')
+      updateTotalDiscount(data)
+      updateTotalPrice()
+      return
+    ).error((data) ->
+      data = JSON.parse(data.responseText)
+      $('.js-discount-id').val('')
+      self.closest('.field').find('.message').text(data.error)
+      window.totalDiscount = 0
+      window.DiscountPercent = false
+      updateTotalPrice()
+    )
 
   currentCity = ->
     value = $('.js-order-city').val()

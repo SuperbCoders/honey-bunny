@@ -1,0 +1,24 @@
+.clearfix
+  h4 #{@discount.persisted? ? t('shared.edit') : t('shared.create')} купон
+
+section class="panel pos-rlt clearfix"
+  .panel-body.clearfix
+    = simple_form_for [:admin, @discount], wrapper: :horizontal_form, html: { class: 'form-horizontal' } do |f|
+      //- if @discount.new_record?
+      = f.input :code, disabled: @discount.persisted?
+      = f.input :amount
+      = f.input :kind, as: :radio_buttons, collection: Discount.kinds.symbolize_keys.keys
+      = f.input :mode, as: :radio_buttons, collection: Discount.modes.symbolize_keys.keys
+      = f.input :active
+
+      .form-group
+        .col-lg-9.col-lg-offset-3
+          => f.button :submit, @discount.new_record? ? t('shared.create') : t('shared.save'), class: 'btn-primary'
+          => link_to t('shared.back'), admin_discounts_path, class: 'btn btn-default'
+
+scss:
+  .radio input.optional[type="radio"] {
+    width: auto!important;
+    height: auto!important;
+    border:0!important;
+  }

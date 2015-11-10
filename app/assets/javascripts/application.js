@@ -25,6 +25,8 @@
 //= require jquery.validate
 //= require jquery.validate.additional-methods
 
+//= require http
+
 //= require carousel
 //= require popup
 //= require script

@@ -60,6 +60,11 @@ html lang="en"
               span Заказы
               - if new_orders_count > 0
                 span.badge= new_orders_count
+        - if can? :manage, Discount
+          li class=('active' if controller_name == 'discounts')
+            = link_to admin_discounts_path do
+              i.icon-star.icon-xlarge
+              span Купоны
         - if can? :manage, WholesaleOrder
           li class=('active' if params[:controller] == 'admin/wholesale_orders')
             = link_to admin_wholesale_orders_path(workflow_state: 'new') do

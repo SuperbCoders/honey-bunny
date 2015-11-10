@@ -1,0 +1,43 @@
+section#content
+  section.main.padder
+    .clearfix
+      h4
+        i.icon-file
+        |  Купоны
+    .row
+      section.panel
+        .panel-body
+          - if can? :create, Discount
+            => link_to 'Добавить', new_admin_discount_path, class: 'btn btn-primary btn-sm'
+        .table-responsive
+          table.table.table-striped.b-t.text-small
+            thead
+              tr
+                th Код
+                th Активен?
+                th Значение
+                th
+            tbody
+              - @discounts.each do |discount|
+                tr
+                  td= discount.code
+                  td= '✓' if discount.active?
+                  td
+                    - symbol = discount.value? ? 'руб.' : '%'
+                    | #{discount.amount} #{symbol}
+                  td
+                    .btn-group
+                      a.dropdown-toggle data-toggle="dropdown" href="#"
+                        i.icon-pencil
+                      ul.dropdown-menu.pull-right
+                        - if can? :update, discount
+                          li
+                            = link_to edit_admin_discount_path(discount) do
+                              i.icon-external-link
+                              | Редактировать
+                        - if can?(:destroy, discount)
+                          li
+                            = link_to admin_discount_path(discount), method: :delete, data: { confirm: t('shared.are_you_sure') } do
+                              i.icon-trash
+                              | Удалить
+        footer.panel-footer

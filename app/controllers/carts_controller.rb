@@ -15,11 +15,11 @@ class CartsController < ApplicationController
 
   private
 
-    def set_item
-      @item = Item.find(params[:item_id])
-    end
+  def set_item
+    @item = Item.find(params[:item_id])
+  end
 
-    def quantity
-      @quantity ||= (params[:quantity] || 1).to_i
-    end
+  def quantity
+    @quantity ||= (params[:quantity] || 1).to_i
+  end
 end

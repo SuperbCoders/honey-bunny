@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151102114045) do
+ActiveRecord::Schema.define(version: 20151109165138) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,6 +63,18 @@ ActiveRecord::Schema.define(version: 20151102114045) do
   end
 
   add_index "companies", ["member_id", "member_type"], name: "index_companies_on_member_id_and_member_type", using: :btree
+
+  create_table "discounts", force: true do |t|
+    t.string   "code"
+    t.integer  "amount"
+    t.integer  "kind",       default: 0
+    t.integer  "mode",       default: 0
+    t.boolean  "active",     default: true
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "discounts", ["code"], name: "index_discounts_on_code", unique: true, using: :btree
 
   create_table "faqs", force: true do |t|
     t.text     "question"
@@ -178,8 +190,10 @@ ActiveRecord::Schema.define(version: 20151102114045) do
     t.string   "zip_code"
     t.boolean  "from_mobile",             default: false
     t.text     "admin_comment"
+    t.integer  "discount_id"
   end
 
+  add_index "orders", ["discount_id"], name: "index_orders_on_discount_id", using: :btree
   add_index "orders", ["payment_method_id"], name: "index_orders_on_payment_method_id", using: :btree
   add_index "orders", ["shipping_method_id"], name: "index_orders_on_shipping_method_id", using: :btree
 
