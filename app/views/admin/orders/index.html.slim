@@ -91,7 +91,19 @@ section#content
                           = link_to order_item.item.title, order_item.item
                           br/
                           | × #{order_item.quantity} = #{humanized_money order_item.total_price} руб.
-                    td #{humanized_money order.items_price} + #{humanized_money order.shipping_price} = #{humanized_money order.total_price}
+                    td 
+                      - if order.discount
+                        | #{humanized_money order.items_price} + 
+                        | #{humanized_money order.shipping_price} - 
+                        | #{humanized_money order.discount_amount} = 
+                        | #{humanized_money order.total_price_without_discount}
+                        p 
+                          strong Скидка - #{order.discount_amount}
+                          - if order.discount.percent?
+                            span<>
+                              | (#{order.discount.amount}%)
+                      - else
+                        | #{humanized_money order.items_price} + #{humanized_money order.shipping_price} = #{humanized_money order.total_price_without_discount}
                     td=l order.created_at, format: :short
                     td
                       - actions = []
