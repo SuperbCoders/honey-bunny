@@ -17,6 +17,7 @@ html[lang="ru"]
       = render 'cabinet/header'
       main.page-body.globalwidth
         = yield
+    script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"
     = javascript_include_tag 'application'
     = javascript_block
     = yield(:js) if content_for?(:js)
