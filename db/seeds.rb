@@ -3,7 +3,7 @@
 require 'csv'
 
 def create_admins
-  User.where(email: 'schumi@live.ru').first_or_create(role: 'admin', password: 'qwerty123')
+  User.where(email: 'corehook@gmail.com').first_or_create(role: 'admin', password: 'qwerty123')
 end
 
 def create_pages
