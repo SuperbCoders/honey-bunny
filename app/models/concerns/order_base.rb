@@ -70,7 +70,12 @@ module OrderBase
   # Special rules for default shipping price value
   def set_default_shipping_price
     if new_record? || shipping_price.blank?
-      self.shipping_price = shipping_method.try(:calculate_price, { city_id: city_id }) || 0
+      if city.eql? 'Москва' and items_price > 1000
+        self.shipping_price = 300
+      else
+        self.shipping_price = shipping_method.try(:calculate_price, { city_id: city_id , total_price: items_price.to_f }) || 0
+      end
+
     end
   end
 

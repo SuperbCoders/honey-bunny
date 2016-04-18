@@ -30,8 +30,16 @@ $ ->
         $(shippingMethod).closest('label').find('span.price').text("+ X руб.")
       else
         price = shippingPriceFor(shippingMethod, currentCity())
-        unless price is undefined
-          $(shippingMethod).closest('label').find('span.price').text("#{humanizedMoney(price)} руб.")
+
+        if currentShippingMethodName() == 'Курьер по Москве' and window.totalItemsPrice > 1000
+          price = 0
+        else
+          unless price is undefined
+            if $(shippingMethod).attr('title') != 'Курьер по Москве'
+              $(shippingMethod).closest('label').find('span.price').text("#{humanizedMoney(price)} руб.")
+
+  currentShippingMethodName = ->
+    $("input.js-order-shipping-method-id:checked").attr('title')
 
   # Updates order total price value as sum of items price and shipping price
   window.updateTotalDiscount = (discount)->
@@ -41,7 +49,6 @@ $ ->
     else
       window.DiscountPercent = true
 
-
   window.updateTotalPrice = ->
     #itemsPrice = parseFloat($('#order-items-price').text().toString().replace(' ', ''))
     if window.DiscountPercent
@@ -50,6 +57,10 @@ $ ->
       itemsPrice = window.totalItemsPrice - window.totalDiscount
     itemsPrice = 0 if itemsPrice < 0
     shippingPrice = parseFloat(currentShippingPrice().toString().replace(' ', '')) || 0
+
+    if currentShippingMethodName() == 'Курьер по Москве' and itemsPrice > 1000
+      shippingPrice = 0
+
     totalPrice = humanizedMoney(itemsPrice + shippingPrice)
     $('#order-items-price').text(humanizedMoney(itemsPrice))
     $('#order-total-price').text(totalPrice)
