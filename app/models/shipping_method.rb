@@ -25,6 +25,11 @@ class ShippingMethod < ActiveRecord::Base
     price = case rate_type
     when 'fix_rate' then rate
     when 'city_rate'
+
+      if options[:total_price] and options[:city_id] == 1 and options[:total_price] > 1000
+        return 0
+      end
+
       shipping_prices.select { |sp| sp.city_id == options[:city_id] }.first.try(:price)
     when 'city_and_fix_rate'
       shipping_prices.select { |sp| sp.city_id == options[:city_id] }.first.try(:price) || rate
