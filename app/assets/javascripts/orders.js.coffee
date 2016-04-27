@@ -60,8 +60,12 @@ $ ->
 
     if currentShippingMethodName() == 'Курьер по Москве' and itemsPrice > 1000
       shippingPrice = 0
+      $("input.js-order-shipping-method-id:checked").closest('label').find('span.price').text(shippingPrice+" руб.")
+    else
+      $("input.js-order-shipping-method-id:checked").closest('label').find('span.price').text(shippingPrice+" руб.")
 
     totalPrice = humanizedMoney(itemsPrice + shippingPrice)
+
     $('#order-items-price').text(humanizedMoney(itemsPrice))
     $('#order-total-price').text(totalPrice)
 
