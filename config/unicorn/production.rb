@@ -4,7 +4,8 @@ pid               "#{app_path}/current/tmp/pids/unicorn.pid"
 
 # listen
 #listen "/tmp/unicorn-www.example.com.socket", :backlog => 64
-listen "127.0.0.1:3000", :tcp_nopush => true
+#listen "127.0.0.1:3000", :tcp_nopush => true
+listen "#{app_path}/current/tmp/sockets/unicorn.sock", :backlog => 64
 
 # logging
 stderr_path "log/unicorn.stderr.log"
