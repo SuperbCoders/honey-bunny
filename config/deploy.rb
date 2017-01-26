@@ -1,11 +1,10 @@
 # config valid only for Capistrano 3.1
 lock '3.2.1'
 
-set :application, 'honey_bunny'
+set :application, "myhoneybunny.ru"
 set :repo_url, 'git@github.com:honeybunnyru/honey-bunny.git'
 
-set :unicorn_conf, "#{deploy_to}/current/config/unicorn.rb"
-set :unicorn_pid, "#{deploy_to}/shared/tmp/pids/unicorn.pid"
+
 
 
 # Default value for :scm is :git
@@ -15,7 +14,7 @@ set :unicorn_pid, "#{deploy_to}/shared/tmp/pids/unicorn.pid"
 # set :format, :pretty
 
 # Default value for :log_level is :debug
-# set :log_level, :debug
+set :log_level, :debug
 
 # Default value for :pty is false
 # set :pty, true
@@ -66,6 +65,7 @@ namespace :deploy do
 end
 namespace :unicorn do
   task :restart do
+    pp unicorn_pid
     run "if [ -f #{unicorn_pid} ] && [ -e /proc/$(cat #{unicorn_pid}) ]; then kill -USR2 `cat #{unicorn_pid}`; else cd #{deploy_to}/current && bundle exec unicorn_rails -c #{unicorn_conf} -E #{rails_env} -D; fi"
   end
   task :start do
@@ -75,5 +75,4 @@ namespace :unicorn do
     run "if [ -f #{unicorn_pid} ] && [ -e /proc/$(cat #{unicorn_pid}) ]; then kill -QUIT `cat #{unicorn_pid}`; fi"
   end
 end
-
 after 'deploy:updated', 'deploy:seed'
