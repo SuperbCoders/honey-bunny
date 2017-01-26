@@ -4,9 +4,10 @@
 # is considered to be the first unless any hosts have the primary
 # property set.  Don't declare `role :all`, it's a meta role.
 
-role :app, %w{w3myhoneybunny@ono.rrv.ru:2222}
-role :web, %w{w3myhoneybunny@ono.rrv.ru:2222}
-role :db,  %w{w3myhoneybunny@ono.rrv.ru:2222}
+
+role :app, %w{deploy@89.223.29.241}
+role :web, %w{deploy@89.223.29.241}
+role :db,  %w{deploy@89.223.29.241}
 
 set :branch, 'master'
-set :deploy_to, '/www/myhoneybunny.ru'
+set :deploy_to, '/var/www/myhoneybunny.ru'

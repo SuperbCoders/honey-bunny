@@ -2,7 +2,7 @@
 lock '3.2.1'
 
 set :application, 'honey_bunny'
-set :repo_url, 'git@github.com:SuperbCoders/honey-bunny.git'
+set :repo_url, 'git@github.com:honeybunnyru/honey-bunny.git'
 
 # Default value for :scm is :git
 # set :scm, :git
