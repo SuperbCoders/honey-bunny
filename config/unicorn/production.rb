@@ -1,30 +1,22 @@
-app_path = '/var/www/myhoneybunny.ru'
-working_directory "#{app_path}/current"
-pid               "#{app_path}/current/tmp/pids/unicorn.pid"
+root = "/home/deploy/honney-bunny/current"
+working_directory root
+pid "#{root}/tmp/pids/unicorn.pid"
 
-# listen
-#listen "/tmp/unicorn-www.example.com.socket", :backlog => 64
-#listen "127.0.0.1:3000", :tcp_nopush => true
-listen "#{app_path}/current/tmp/sockets/unicorn.sock", :backlog => 64
+stderr_path "#{root}/log/unicorn.log"
+stdout_path "#{root}/log/unicorn.log"
 
-# logging
-stderr_path "log/unicorn.stderr.log"
-stdout_path "log/unicorn.stdout.log"
-
-# workers
 worker_processes 3
-
-# use correct Gemfile on restarts
-before_exec do |server|
-  ENV['BUNDLE_GEMFILE'] = "#{app_path}/current/Gemfile"
-end
-
-# preload
+timeout 30
 preload_app true
 
+listen '/tmp/unicorn.spui.sock', backlog: 64
+
 before_fork do |server, worker|
-  # the following is highly recomended for Rails + "preload_app true"
-  # as there's no need for the master process to hold a connection
+  Signal.trap 'TERM' do
+    puts 'Unicorn master intercepting TERM and sending myself QUIT instead'
+    Process.kill 'QUIT', Process.pid
+  end
+
   if defined?(ActiveRecord::Base)
     ActiveRecord::Base.connection.disconnect!
   end
@@ -42,7 +34,17 @@ before_fork do |server, worker|
 end
 
 after_fork do |server, worker|
+  Signal.trap 'TERM' do
+    puts 'Unicorn worker intercepting TERM and doing nothing. Wait for master to send QUIT'
+  end
+
   if defined?(ActiveRecord::Base)
     ActiveRecord::Base.establish_connection
   end
+end
+
+# Force the bundler gemfile environment variable to
+# reference the capistrano "current" symlink
+before_exec do |_|
+  ENV['BUNDLE_GEMFILE'] = File.join(root, 'Gemfile')
 end

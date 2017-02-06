@@ -1,11 +1,8 @@
 # config valid only for Capistrano 3.1
 lock '3.2.1'
 
-set :application, "myhoneybunny.ru"
+set :application, "honey-bunny"
 set :repo_url, 'git@github.com:honeybunnyru/honey-bunny.git'
-
-
-
 
 # Default value for :scm is :git
 # set :scm, :git
