@@ -62,9 +62,9 @@ Rails.application.configure do
   config.action_mailer.asset_host = '136379.simplecloud.clubb'
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address: "136379.simplecloud.club",
-    port: 25,
-    domain: "136379.simplecloud.club",
+    address:                 "127.0.0.1",
+    port:                    25,
+    enable_starttls_auto:    false
   }
   config.action_mailer.default_url_options = { host: '136379.simplecloud.club' }
 
