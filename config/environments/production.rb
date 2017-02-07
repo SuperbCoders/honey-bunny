@@ -66,7 +66,7 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     address: "localhost",
     port: 25,
-    domain: "domain.com",
+    domain: "136379.simplecloud.club",
   }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
