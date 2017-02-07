@@ -58,9 +58,17 @@ Rails.application.configure do
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
-  # config.action_mailer.raise_delivery_errors = false
-  config.action_mailer.asset_host = 'http://myhoneybunny.ru'
-  config.action_mailer.default_url_options = { host: 'http://myhoneybunny.ru' }
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.asset_host = 'http://136379.simplecloud.club'
+  config.action_mailer.default_url_options = { host: 'http://136379.simplecloud.club' }
+
+  config.action_mailer.delivery_method = :sendmail
+  # Defaults to:
+  # config.action_mailer.sendmail_settings = {
+  #   location: '/usr/sbin/sendmail',
+  #   arguments: '-i -t'
+  # }
+  config.action_mailer.perform_deliveries = true
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
