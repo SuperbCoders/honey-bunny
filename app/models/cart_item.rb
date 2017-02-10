@@ -17,7 +17,11 @@ class CartItem < ActiveRecord::Base
     if wholesale?
       item.wholesale_price
     else
-      item.price
+      if item.discount > 0
+        item.discount
+      else
+        item.price
+      end
     end
   end
 

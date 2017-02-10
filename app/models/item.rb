@@ -6,6 +6,7 @@ class Item < ActiveRecord::Base
   mount_uploader :main_image, ItemMainImageUploader
 
   monetize :price_cents
+  monetize :discount_cents
   monetize :wholesale_price_cents
 
   has_and_belongs_to_many :reviews

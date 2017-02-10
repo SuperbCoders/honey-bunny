@@ -8,6 +8,7 @@
       = simple_form_for [:admin, @item], wrapper: :horizontal_form, html: { class: 'form-horizontal' } do |f|
         = f.input :title
         = f.input :price
+        = f.input :discount
         = f.input :wholesale_price
         = f.input :main_image, hint: (image_tag @item.main_image.thumb_small if @item.main_image?)
         = f.input :motto

@@ -17,6 +17,7 @@ class OrderItem < ActiveRecord::Base
 
   # @return [Float] total price of items
   def total_price
+
     price * quantity
   end
 
@@ -35,7 +36,11 @@ class OrderItem < ActiveRecord::Base
   private
 
     def set_default_values
-      self.price = item.try(order.send(:item_price_method_name)) if price_cents.nil? || price_cents == 0
+      if item.discount > 0
+        self.price = item.discount
+      else
+        self.price = item.try(order.send(:item_price_method_name)) if price_cents.nil? || price_cents == 0
+      end
     end
 
     # Validate that requested quantity is ok

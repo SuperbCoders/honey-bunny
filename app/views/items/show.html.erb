@@ -16,7 +16,12 @@
         <div class="text hidden-tablet">
           <p><%= @item.short_description %></p>
         </div>
-        <span class="price"><%= humanized_money @item.price %> руб.</span>
+        <% if @item.discount > 0 %>
+          <div class="discount"><%= humanized_money @item.price %> руб.</div>
+          <div class="price"><%= humanized_money @item.discount %> руб.</div>
+        <% else %>
+          <span class="price"><%= humanized_money @item.price %> руб.</span>
+        <% end %>
         <%= link_to_add_to_cart @item %>
       </div>
     </div>

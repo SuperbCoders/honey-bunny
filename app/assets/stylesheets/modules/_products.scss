@@ -141,6 +141,14 @@
                 font-size: 25px;
             }
         }
+        .discount {
+            font-size: 20px;
+            text-decoration: line-through;
+            @extend .circe;
+            @include respond-to(small-screen) {
+                font-size: 15px;
+            }
+        }
         .btn-wrap {
             width: 210px;
             .btn {

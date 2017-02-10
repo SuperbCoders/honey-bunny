@@ -30,6 +30,7 @@ ru:
         volume: 'Объем, мл'
         short_description: Краткое описание
         price: 'Цена, руб.'
+        discount: 'Цена со скидкой, руб.'
         wholesale_price: 'Оптовая цена, руб.'
         quantity: Количество
         negative_quantity_allowed: Разрешать продажи при нуле?

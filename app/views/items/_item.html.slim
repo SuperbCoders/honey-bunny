@@ -9,7 +9,11 @@ li.item
         = link_to item.title, item
       - if item.volume.to_i > 0
         .size.hidden-phone — #{item.volume} мл
-      .price #{humanized_money item.price} руб.
+      - if item.discount > 0
+        .discount #{humanized_money item.price} руб.
+        .price #{humanized_money item.discount} руб.
+      - else
+        .price #{humanized_money item.price} руб.
       .btn-wrap.hidden.visible-tablet
         = link_to_add_to_cart item
         p.more

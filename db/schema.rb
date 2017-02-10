@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151109165138) do
+ActiveRecord::Schema.define(version: 20170210110955) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -115,6 +115,8 @@ ActiveRecord::Schema.define(version: 20151109165138) do
     t.datetime "deleted_at"
     t.integer  "wholesale_price_cents",     default: 0,     null: false
     t.string   "wholesale_price_currency",  default: "RUB", null: false
+    t.integer  "discount_cents",            default: 0,     null: false
+    t.string   "discount_currency",         default: "RUB", null: false
   end
 
   add_index "items", ["deleted_at"], name: "index_items_on_deleted_at", using: :btree
