@@ -31,12 +31,15 @@ $ ->
       else
         price = shippingPriceFor(shippingMethod, currentCity())
 
-        if currentShippingMethodName() == 'Курьер по Москве' and window.totalItemsPrice > 1000
-          price = 0
-        else
-          unless price is undefined
-            if $(shippingMethod).attr('title') != 'Курьер по Москве'
-              $(shippingMethod).closest('label').find('span.price').text("#{humanizedMoney(price)} руб.")
+        unless price is undefined
+          if $(shippingMethod).attr('title') != 'Курьер по Москве'
+            $(shippingMethod).closest('label').find('span.price').text("#{humanizedMoney(price)} руб.")
+        # if currentShippingMethodName() == 'Курьер по Москве' and window.totalItemsPrice > 1000
+        #  price = 0
+        # else
+        #  unless price is undefined
+        #    if $(shippingMethod).attr('title') != 'Курьер по Москве'
+        #      $(shippingMethod).closest('label').find('span.price').text("#{humanizedMoney(price)} руб.")
 
   currentShippingMethodName = ->
     $("input.js-order-shipping-method-id:checked").attr('title')
@@ -58,11 +61,12 @@ $ ->
     itemsPrice = 0 if itemsPrice < 0
     shippingPrice = parseFloat(currentShippingPrice().toString().replace(' ', '')) || 0
 
-    if currentShippingMethodName() == 'Курьер по Москве' and itemsPrice > 1000
-      shippingPrice = 0
-      $("input.js-order-shipping-method-id:checked").closest('label').find('span.price').text(shippingPrice+" руб.")
-    else
-      $("input.js-order-shipping-method-id:checked").closest('label').find('span.price').text(shippingPrice+" руб.")
+    $("input.js-order-shipping-method-id:checked").closest('label').find('span.price').text(shippingPrice+" руб.")
+    # if currentShippingMethodName() == 'Курьер по Москве' and itemsPrice > 1000
+    #  shippingPrice = 0
+    #  $("input.js-order-shipping-method-id:checked").closest('label').find('span.price').text(shippingPrice+" руб.")
+    # else
+    #  $("input.js-order-shipping-method-id:checked").closest('label').find('span.price').text(shippingPrice+" руб.")
 
     totalPrice = humanizedMoney(itemsPrice + shippingPrice)
 

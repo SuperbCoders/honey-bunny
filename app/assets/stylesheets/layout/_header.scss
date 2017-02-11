@@ -8,6 +8,14 @@
 }
 
 .page-header-top {
+    .discount-text {
+        text-align: center;
+        font-weight: bold;
+        color: #000;
+        img {
+            width: 16px;
+        }
+    }
     height: 90px;
     padding-top: 45px;
     position: relative;
@@ -307,7 +315,7 @@
             background: #4a4a4a;
         }
     }
-    // Зеленая кнопка 
+    // Зеленая кнопка
     //    .store {
     //        display: block;
     //        width: 110px;
