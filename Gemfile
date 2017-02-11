@@ -55,6 +55,7 @@ group :development, :test do
   gem 'factory_girl_rails'
 end
 
+gem 'emoji'
 gem 'slim-rails'
 gem 'russian'
 gem 'cancancan'

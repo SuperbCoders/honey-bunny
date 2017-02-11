@@ -14,7 +14,7 @@
         span.tel
           | +7 985 747-60-60
         br
-        |  Есть вопросы? Звоните 
+        |  Есть вопросы? Звоните
       .follow-mob.hidden.visible-tablet
         = link_to Settings::Social.instagram do
           i.icon.icon-ig_grn
@@ -22,6 +22,8 @@
           i.icon.icon-fb_grn
         = link_to Settings::Social.vkontakte do
           i.icon.icon-vk_grn
+  .discount-text
+    = Emoji.replace_unicode_moji_with_images('⚡ Время подарков от Honey Bunny: скидка 40% на все средства! Акция ограничена по времени, успейте сделать заказ! ⚡')
   = link_to new_order_path,id: 'cart-desktop', class: "cart not-hidden-tablet #{'has-orders' unless current_cart.total_quantity.zero?}" do
     .pic.icon-cart
       .count= current_cart.total_quantity
