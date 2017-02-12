@@ -15,17 +15,21 @@
         img {
             width: 16px;
         }
+        @include respond-to(medium-screen) {
+            position: absolute;
+            bottom: 3px;
+        }
     }
     height: 90px;
     padding-top: 45px;
     position: relative;
     @include respond-to(medium-screen) {
-        height: 120px;
+        height: 140px;
         padding-top: 0;
         background: #fff;
     }
     @include respond-to(small-screen) {
-        height: 80px;
+        height: 130px;
     }
     .logo {
         display: block;
