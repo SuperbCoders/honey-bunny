@@ -1,6 +1,7 @@
 doctype html
 html[lang="ru"]
   head
+    = render 'gtm_script_head'
     meta[charset="utf-8"]
     meta[name="keywords" content=""]
     meta[name="description" content=""]
@@ -12,6 +13,7 @@ html[lang="ru"]
     = stylesheet_link_tag 'application', media: 'all'
     = csrf_meta_tags
   body
+    = render 'gtm_script'
     = render 'social_buttons/facebook_header'
     article.page
       = render 'header'
@@ -24,4 +26,3 @@ html[lang="ru"]
     = javascript_include_tag 'application'
     = javascript_block
     = yield(:js) if content_for?(:js)
-    = render 'gtm_script'
