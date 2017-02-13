@@ -1,6 +1,7 @@
 doctype html
 html[lang="ru"]
   head
+    = render 'gtm_script_head'
     meta[charset="utf-8"]
     meta[name="keywords" content=""]
     meta[name="description" content=""]
@@ -15,6 +16,7 @@ html[lang="ru"]
     = stylesheet_link_tag 'application', media: 'all'
     = csrf_meta_tags
   body class=('item-feedback item' if controller_name == 'items')
+    = render 'gtm_script_body'
     = render 'social_buttons/facebook_header'
     article.page
       header.page-header.page-header-center.page-header-short

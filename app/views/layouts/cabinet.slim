@@ -1,6 +1,7 @@
 doctype html
 html[lang="ru"]
   head
+    = render 'gtm_script_head'
     meta[charset="utf-8"]
     meta[name="keywords" content=""]
     meta[name="description" content=""]
@@ -13,6 +14,7 @@ html[lang="ru"]
     = stylesheet_link_tag "http://yui.yahooapis.com/combo?pure/0.6.0/base-min.css&pure/0.6.0/grids-min.css&pure/0.6.0/grids-responsive-min.css", media: 'all'
     = csrf_meta_tags
   body class='wholesale cabinet wholesale-orders'
+    = render 'gtm_script_body'
     article.page
       = render 'cabinet/header'
       main.page-body.globalwidth
