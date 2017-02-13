@@ -24,3 +24,4 @@ html[lang="ru"]
     = javascript_include_tag 'application'
     = javascript_block
     = yield(:js) if content_for?(:js)
+    = render 'gtm_script'
