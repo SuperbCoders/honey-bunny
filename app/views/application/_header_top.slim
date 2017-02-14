@@ -22,10 +22,6 @@
           i.icon.icon-fb_grn
         = link_to Settings::Social.vkontakte do
           i.icon.icon-vk_grn
-  .discount-text
-    = image_tag('high_voltage_sign.png')
-    | Время подарков от Honey Bunny: скидка 40% на все средства! Акция ограничена по времени, успейте сделать заказ!
-    = image_tag('high_voltage_sign.png')
   = link_to new_order_path,id: 'cart-desktop', class: "cart not-hidden-tablet #{'has-orders' unless current_cart.total_quantity.zero?}" do
     .pic.icon-cart
       .count= current_cart.total_quantity
