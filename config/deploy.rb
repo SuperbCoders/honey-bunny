@@ -60,11 +60,11 @@ namespace :deploy do
   end
 
   desc 'run some rake tasks with params'
-  task :run_rake_task, :param do
+  task :run_rake_task do
     on roles(:app) do
       within "#{current_path}" do
         with rails_env: "#{fetch(:stage)}" do
-          execute :rake, args[:param]
+          execute :rake, export_order_emails
         end
       end
     end
