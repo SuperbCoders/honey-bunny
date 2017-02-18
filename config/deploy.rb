@@ -59,5 +59,12 @@ namespace :deploy do
     end
   end
 
+  namespace :rake do
+    desc "Run a task on a remote server."
+    task :invoke do
+      run("cd #{deploy_to}/current; /usr/bin/env rake #{ENV['task']} RAILS_ENV=#{rails_env}")
+    end
+  end
+
 end
 after 'deploy:updated', 'deploy:seed'
