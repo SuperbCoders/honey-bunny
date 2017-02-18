@@ -59,12 +59,12 @@ namespace :deploy do
     end
   end
 
-  namespace :rake do
-    desc "Run a task on a remote server."
-    task :invoke do
-      run("cd #{deploy_to}/current; /usr/bin/env rake #{ENV['task']} RAILS_ENV=#{rails_env}")
-    end
-  end
+  desc "Run the super-awesome rake task"
+  task :export_emails do
+    rake = fetch(:rake, 'rake')
+    rails_env = fetch(:rails_env, 'production')
 
+    run "cd '#{current_path}' && #{rake} export_order_emails RAILS_ENV=#{rails_env}"
+  end
 end
 after 'deploy:updated', 'deploy:seed'
