@@ -59,12 +59,15 @@ namespace :deploy do
     end
   end
 
-  desc "Run the super-awesome rake task"
-  task :export_emails do
-    rake = fetch(:rake, 'rake')
-    rails_env = fetch(:rails_env, 'production')
-
-    run "cd '#{current_path}' && #{rake} export_order_emails RAILS_ENV=#{rails_env}"
+  desc 'run some rake tasks with params'
+  task :run_rake_task, :param do
+    on roles(:app) do
+      within "#{current_path}" do
+        with rails_env: "#{fetch(:stage)}" do
+          execute :rake, args[:param]
+        end
+      end
+    end
   end
 end
 after 'deploy:updated', 'deploy:seed'
