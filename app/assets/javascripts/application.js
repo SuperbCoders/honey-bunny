@@ -38,7 +38,6 @@
 //= require carts
 //= require item_reviews
 //= require wholesale
-//= require subscribe
 
 $( document ).ready(function() {
   $('[name="google_conversion_frame"]').remove();
