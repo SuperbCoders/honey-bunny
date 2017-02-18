@@ -15,6 +15,7 @@ html[lang="ru"]
     link[rel="shortcut icon" type="image/x-icon" href="/favicon.ico"]
     = stylesheet_link_tag 'application', media: 'all'
     = csrf_meta_tags
+    = render 'subscribe'
   body class=('item-feedback item' if controller_name == 'items')
     = render 'gtm_script_body'
     = render 'social_buttons/facebook_header'
@@ -28,7 +29,6 @@ html[lang="ru"]
       = render 'footer'
     - unless signed_in?
       = render 'popup_login'
-    = render 'subscribe'
     = javascript_include_tag 'application'
     = javascript_block
     = yield(:js) if content_for?(:js)
