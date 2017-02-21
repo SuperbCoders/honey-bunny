@@ -25,6 +25,7 @@ section#content
                   th Email
                   th Телефон
                   th Вопрос
+                  th Дата
                   th
               tbody
                 - @questions.each do |question|
@@ -37,6 +38,7 @@ section#content
                     td= question.email
                     td= question.phone
                     td= question.text
+                    td= question.created_at.strftime("%Y-%m-%d")
                     td
                       - if question.can_archive?
                         = link_to archive_admin_question_path(question), method: :patch do
