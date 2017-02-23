@@ -2,7 +2,7 @@ development: &defaults
   facebook: https://www.facebook.com/myhoneybunny.ru
   vkontakte: http://vk.com/myhoneybunny
   instagram: http://instagram.com/myhoneybunnyru
-  email: myhoneybunny.ru@gmail.com
+  email: news@myhoneybunny.ru
   phone: 8 (495) 699-20-51
 
 test:
