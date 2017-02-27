@@ -11,7 +11,7 @@ input {
 .input {
 	width: 100%;
 	padding: 16px 20px;
-	color: #000; 
+	color: #000;
 	font-size: 16px;
 	@extend .arkadia;
 	border: 1px solid #999;
@@ -27,6 +27,19 @@ input {
 }
 
 .forms {
+	.error-message {
+	  color: #F00;
+	}
+	.phone {
+		width: 50%;
+	}
+	.email {
+		width: 50%;
+		float: right;
+		input {
+			border-left: none !important;
+		}
+	}
 	.field {
 		margin-bottom: 15px;
 		position: relative;
