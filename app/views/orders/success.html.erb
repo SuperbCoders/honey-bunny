@@ -8,5 +8,12 @@
     </div>
   </div>
 </section>
-<%= render partial: 'orders/facebook_pixel', object: @order, as: :order %>
+
+<script>
+  fbq('track', 'Purchase', {
+    value: <%= @order.total_price_without_discount %>,
+    currency: 'RUB'
+  });
+</script>
+
 <%= render partial: 'orders/google_analytics', object: @order, as: :order %>

@@ -388,6 +388,3 @@ DEPENDENCIES
   unicorn
   workflow
   yaml_db!
-
-BUNDLED WITH
-   1.11.2

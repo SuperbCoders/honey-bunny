@@ -13,11 +13,16 @@
     window.updateTotalPrice();
   }
 
-    ga('send', {
-        'hitType': 'event',
-        'eventCategory': 'add-to-cart',
-        'eventAction': 'click',
-    });
+  ga('send', {
+      'hitType': 'event',
+      'eventCategory': 'add-to-cart',
+      'eventAction': 'click',
+  });
+
+  fbq('track', 'AddToCart', {
+    value: <%= @cart_item.price %>,
+    currency: 'RUB'
+  });
 
 <% else %>
   alert("Товара на складе меньше, чем вы хотите купить. Попробуйте заказать меньшее количество.")
