@@ -44,7 +44,11 @@ module OrderBase
 
   # @return [Float] total price of all items + shipping price without discount
   def total_price_without_discount
-    items_price.to_f + shipping_price.to_f
+    if city.eql? 'Москва' and items_price >= 1500
+      items_price.to_f
+    else
+      items_price.to_f + shipping_price.to_f
+    end
   end
 
   # @return [Float] total price of all items + shipping price - discount

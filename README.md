@@ -31,3 +31,10 @@ development:
   host: postgres
   username: postgres
 ```
+
+## SSH deploy
+
+```
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_rsa
+```
