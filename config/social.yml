@@ -3,7 +3,7 @@ development: &defaults
   vkontakte: http://vk.com/myhoneybunny
   instagram: http://instagram.com/myhoneybunnyru
   email: news@myhoneybunny.ru
-  phone: 8 (495) 699-20-51
+  phone: +7 985 747-60-60
 
 test:
   <<: *defaults
