@@ -7,6 +7,7 @@ body {
     min-width: 320px;
     min-height: 100%;
     overflow: hidden;
+    background-color: #eee;
     .navbar-wrap & {
         @include respond-to(medium-screen) {
             height: 100%;
