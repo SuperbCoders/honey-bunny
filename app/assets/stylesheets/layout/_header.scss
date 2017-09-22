@@ -7,12 +7,24 @@
     }
 }
 .page-header-top-banner {
-  // width: 100%;
+  @include respond-to(medium-screen){
+    padding-top: 141px;
+  }
+  @include respond-to(small-screen){
+    padding-top: 132px;
+  }
   position:absolute;
   text-align: center;
   margin-left: 10%;
   margin-right: 10%;
   p {
+    // @include respond-to(small-screen){
+    //   font-size: 16px !important;
+    // }
+    @include respond-to(small-screen){
+      font-size: 18px !important;
+      display: block;
+    }
     line-height: 1.1em !important;
     background-color: #e6475f;
     opacity: 0.65;

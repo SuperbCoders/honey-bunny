@@ -1,3 +1,9 @@
 .page-body {
+	@include respond-to(medium-screen){
+		margin-top: 56px;
+	}
+	@include respond-to(small-screen){
+		margin-top: 56px;
+	}
 	margin-top: 37px;
 }
