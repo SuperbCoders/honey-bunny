@@ -18,7 +18,7 @@ class Admin::ItemsController < Admin::ApplicationController
   # POST /admin/items
   def create
     @item = Item.new(item_params)
-    if @item.save
+    if @item.save!
       redirect_to admin_items_url
     else
       render 'new'
