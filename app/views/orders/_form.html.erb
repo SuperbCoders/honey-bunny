@@ -92,6 +92,10 @@
         <div class="td td1<%= ' error' if @order.errors['phone'].any? %>">
           <%= f.text_field :phone, placeholder: 'Ваш номер телефона', class: 'js-order-phone' %>
         </div>
+        <div class="email <%= ' error' if @order.errors['email'].any? %>">
+          <%= f.text_field :email, placeholder: 'Эл. почта' %>
+          <p class='error-message'><%= show_errors(@order, :email) %></p>
+        </div>
       </div>
     </div>
   <% end %>

@@ -1,6 +1,7 @@
 /*
  *= require_tree ./admin
  *= require chosen
+ *= require jquery-ui/sortable
  *= require_self
  */
 

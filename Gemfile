@@ -13,6 +13,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 gem 'therubyracer',  platforms: :ruby
+gem 'irbtools', require: 'irbtools/binding'
 
 # CSS libs
 gem 'compass-rails'
@@ -21,6 +22,7 @@ gem 'compass-rails'
 gem 'jquery-rails'
 gem 'chosen-rails'
 gem 'jquery-validation-rails'
+gem 'jquery-ui-rails'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
@@ -55,6 +57,7 @@ group :development, :test do
   gem 'factory_girl_rails'
 end
 
+gem 'to_spreadsheet'
 gem 'slim-rails'
 gem 'russian'
 gem 'cancancan'

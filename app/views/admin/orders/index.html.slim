@@ -39,6 +39,7 @@ section#content
           a.btn.btn-info.btn-sm href=admin_orders_path(from: 1.week.ago.beginning_of_day) За неделю
           a.btn.btn-info.btn-sm href=admin_orders_path(from: 1.month.ago.beginning_of_day) За месяц
           a.btn.btn-info.btn-sm href=admin_orders_path За все время
+          a.btn.btn-info.btn-sm href=admin_orders_path(from: @from, to: @to, format: :xlsx) Скачать XLSX
         = form_tag admin_orders_path, :method => 'get', :class => 'form'
           .col-lg-12.well style="margin-bottom: 30px"
             .form-group.row

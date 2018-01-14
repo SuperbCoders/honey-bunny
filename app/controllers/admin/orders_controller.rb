@@ -11,10 +11,15 @@ class Admin::OrdersController < Admin::ApplicationController
     @orders = Order.includes(:shipping_method, :payment_method, order_items: :item).order(created_at: :desc)
     @orders = @orders.where(workflow_state: params[:workflow_state]) if params[:workflow_state].present?
     @orders = @orders.where(created_at: from_to) if from_to
+    @all_orders = @orders
     @total_price = OrderItem.where(order_type: 'Order', order_id: @orders.pluck(:id)).sum('price_cents * quantity') / 100
     @total_count = @orders.count
 
     @orders = @orders.page(params[:page]).per(25)
+    respond_to do |format|
+      format.html
+      format.xlsx { render xlsx: :index, filename: "orders"  }
+    end
   end
 
   # GET /admin/orders/:id/edit

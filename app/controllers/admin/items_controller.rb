@@ -4,7 +4,7 @@ class Admin::ItemsController < Admin::ApplicationController
 
   # GET /admin/items
   def index
-    @items = Item.order(id: :desc)
+    @items = Item.order(position: :asc)
     @items = @items.available if params[:state] == 'available'
     @items = @items.deleted if params[:state] == 'deleted'
     @items = @items.page(params[:page]).per(25)
@@ -54,6 +54,13 @@ class Admin::ItemsController < Admin::ApplicationController
     else
       redirect_to admin_items_url, alert: I18n.t('admin.items.restore.fail')
     end
+  end
+
+  def sort
+    order = params[:order]
+    order.each { |id, position| Item.find(id).update_attributes(position: position) }
+
+    head :ok
   end
 
   private

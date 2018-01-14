@@ -30,6 +30,7 @@ Rails.application.routes.draw do
 
     resources :items, except: [:show] do
       patch :restore, on: :member
+      post :sort, on: :collection
     end
     resources :orders, except: [:show, :destroy] do
       resources :order_items, except: [:index, :show]

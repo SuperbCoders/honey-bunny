@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
 
   # GET /items
   def index
-    @items = Item.not_deleted
+    @items = Item.not_deleted.order(position: :asc)
     @items = @items.tagged_with(params[:tag]) if params[:tag].present?
     @page = Page.find_by(slug: 'products')
     set_tags

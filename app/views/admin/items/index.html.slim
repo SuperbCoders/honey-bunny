@@ -26,7 +26,7 @@ section#content
             - if can? :create, Item
               => link_to 'Добавить', new_admin_item_path, class: 'btn btn-primary btn-sm'
           .table-responsive
-            table.table.table-striped.b-t.text-small
+            table.table.table-striped.b-t.text-small.sortable
               thead
                 tr
                   th width='64px' ID
@@ -35,7 +35,7 @@ section#content
                   th
               tbody
                 - @items.each do |item|
-                  tr
+                  tr data-id=item.id
                     td= item.id
                     td= item.title
                     td= item.quantity
