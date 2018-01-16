@@ -83,7 +83,7 @@
     </div>
   </div>
   <% if mobile_device? %>
-    <div class="tablet-bottom visible-tablet">
+    <div class="tablet-bottom visible-tablet mobile-form">
       <div class="contacts">
         <h2>Мы перезвоним вам, согласуем адрес и время доставки</h2>
         <div class="field<%= ' error' if @order.errors['name'].any? %>">
@@ -94,7 +94,6 @@
         </div>
         <div class="email <%= ' error' if @order.errors['email'].any? %>">
           <%= f.text_field :email, placeholder: 'Эл. почта' %>
-          <p class='error-message'><%= show_errors(@order, :email) %></p>
         </div>
       </div>
     </div>

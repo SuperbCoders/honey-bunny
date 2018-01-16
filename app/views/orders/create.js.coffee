@@ -30,8 +30,12 @@
   # });
   window.location.replace(redirect_path);
 <% else %>
-  form = $("<%=j render 'orders/form' %>").find('.forms')
+  rend_temp = $("<%=j render 'orders/form' %>")
+  form = rend_temp.find('.forms')
+  mobile_form = rend_temp.find('.mobile-form')
+
   $('section.page-body .case-cart-address .forms').replaceWith(form)
+  $('.mobile-form').replaceWith(mobile_form)
   $('.chosen-select').chosen()
   $('html, body').animate({
       scrollTop: $(".case-cart-address").offset().top
