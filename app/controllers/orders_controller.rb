@@ -19,7 +19,7 @@ class OrdersController < ApplicationController
     @order.use_cart(current_cart)
     if @order.save
       # Notify customer
-      OrderMailer.user_success_email(@order.id, @order.email).deliver! if @order.email
+      OrderMailer.user_success_email(@order.id, @order.email).deliver! if @order.email and not_email(@order.comment)
 
       # Notify admins
       User.admins.notify_about_orders.each do |admin|
@@ -30,10 +30,10 @@ class OrdersController < ApplicationController
       cookies[order_hash(@order)] = 'true' # Set cookie that allows to visit callbacks pages
 
       # Redirect to the next page
-      #redirect_to @order.payment_method.name == 'w1' ? payment_order_url(@order) : success_order_url(@order)
+      redirect_to @order.payment_method.name == 'w1' ? payment_order_url(@order) : success_order_url(@order)
     else
       set_lists
-      #render 'new'
+      render 'new'
     end
   end
 
@@ -71,6 +71,10 @@ class OrdersController < ApplicationController
   end
 
   private
+
+  def not_email text
+    !text.match(/([\.A-Za-z0-9_-]+@[\.A-Za-z0-9_-]+\.[A-Za-z]{2,})+/)
+  end
 
   def check_cart
     redirect_to items_url if current_cart.empty_cart?

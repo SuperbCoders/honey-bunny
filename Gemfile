@@ -40,6 +40,7 @@ gem 'unicorn'
 
 # Use Capistrano for deployment
 group :development do
+  gem 'puma'
   gem 'capistrano'
   gem 'capistrano-rvm'
   gem 'capistrano-rails'
