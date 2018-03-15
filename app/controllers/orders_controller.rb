@@ -30,7 +30,7 @@ class OrdersController < ApplicationController
       cookies[order_hash(@order)] = 'true' # Set cookie that allows to visit callbacks pages
 
       # Redirect to the next page
-      redirect_to @order.payment_method.name == 'w1' ? payment_order_url(@order) : success_order_url(@order)
+      # redirect_to @order.payment_method.name == 'w1' ? payment_order_url(@order) : success_order_url(@order)
     else
       set_lists
       render 'new'
